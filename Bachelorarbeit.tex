@@ -37,8 +37,28 @@
 
 \section{Einleitung}
 \subsection{Motivation}
+
+(hier: warum/Motivation für automatisierte Anomalie- und Engpasserkennung, sowie verbesserte Beobachtbarkeit ?)
+
+- Möglichst geringe und kurze Ausfallzahlen
+- verringerter Mitarbeiterbedarf
+- vereinfachtes Arbeiten durch bessere Beobachtbarkeit
+
+
 \subsection{Problemstellung}
+
+Automatisierte Anomalie- und Engpasserkennung sind das Problem des automatisierten Erkennens außergewöhnlichen Verhaltens oder nicht ausreichender Ressourcen. Um eine automatisierte Erkennung zu ermöglichen, werden Daten sog. Metriken benötigt, die eine Entscheidung über das vorliegende Verhalten treffen lassen. Metriken müssen erhoben und ausgewertet werden, um eine Aktion aus ihnen schließen zu können, welche die vorliegende Anomalie oder den vorliegenden Engpass beheben kann.\\
+Die erhobenen Metriken müssen einerseits für Menschen lesbar sein, um aktuelle Zustände widerspiegeln und entsprechend darauf reagieren zu können, andererseits müssen sie ebenso für Maschinen auswertbar sein, um die Automatisierung durch diese zu ermöglichen.
+Kubernetes bietet die Möglichkeit, mittels des sog. Kubelet und des cAdvisor Metriken zu erheben, welche den Zustand des Clusters darstellen. 
+
 \subsection{Ziel}
+
+Ziel der Arbeit ist:
+- aus Metriken automatisierte Aktionen zu bauen (POC-mäßig)
+- verbesserte Beobachtbarkeit durch Grafen, Logs etc. (Grafana).
+- Benachrichtigung von Usern bei Anormalem oder grenzwertigem Verhalten
+- Planen und Umsetzen einer Infrastruktur die dies als Ganzes ermöglicht
+
 \subsection{Ansatz}
 \subsection{Struktur}
 
@@ -56,6 +76,7 @@
 \section{Stand der Technik}
 
 \section{Datenaggregation}
+\subsection{Toolauswahl}
 \subsection{Datenquellen}
 \subsection{'USE'-Methode}
 
