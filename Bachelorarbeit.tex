@@ -21,7 +21,7 @@
 
 
 
-\title{Evaluierung von Service Mesh Technologien zur Adressierung von Cross Cutting Concerns in einer Microservice-Landschaft}
+\title{}
 
 
 \author{Johannes Bohlig}
@@ -31,12 +31,98 @@
 
 \begin{document}
 
-\iffalse
- \includepdf{}
-\fi
-
 \tableofcontents
 
 \pagebreak
+
+\section{Einleitung}
+\subsection{Motivation}
+
+(hier: warum/Motivation für automatisierte Anomalie- und Engpasserkennung, sowie verbesserte Beobachtbarkeit ?)
+
+- Möglichst geringe und kurze Ausfallzahlen
+- verringerter Mitarbeiterbedarf
+- vereinfachtes Arbeiten durch bessere Beobachtbarkeit
+
+
+\subsection{Problemstellung}
+
+Automatisierte Anomalie- und Engpasserkennung sind das Problem des automatisierten Erkennens außergewöhnlichen Verhaltens oder nicht ausreichender Ressourcen. Um eine automatisierte Erkennung zu ermöglichen, werden Daten sog. Metriken benötigt, die eine Entscheidung über das vorliegende Verhalten treffen lassen. Metriken müssen erhoben und ausgewertet werden, um eine Aktion aus ihnen schließen zu können, welche die vorliegende Anomalie oder den vorliegenden Engpass beheben kann.\\
+Die erhobenen Metriken müssen einerseits für Menschen lesbar sein, um aktuelle Zustände widerspiegeln und entsprechend darauf reagieren zu können, andererseits müssen sie ebenso für Maschinen auswertbar sein, um die Automatisierung durch diese zu ermöglichen.
+Kubernetes bietet die Möglichkeit, mittels des sog. Kubelet und des cAdvisor Metriken zu erheben, welche den Zustand des Clusters darstellen. 
+
+\subsection{Ziel}
+
+Das Ziel der vorliegenden Arbeit ist der Nachweis der Durchführbarkeit und die Implementierung eines Systems, welches durch die Aggregation von Metriken die automatisierte Anomalie- und Engpasserkennung in einem bestehenden Kubernetes-Cluster realisiert. Durch Benachrichtigen bei Auftreten anormalen Verhaltens, sollen Stakeholder in Kenntnis gesetzt werden und dieses Verhalten durch die Aufbereitung von Cluster-Metriken jederzeit nachvollziehen können.\\
+Im Rahmen dieser Arbeit werden die passenden Komponenten gewählt, die zur Umsetzung der Anforderungen benötigt werden, die Infrastruktur geplant, erstellt und die korrekte Funktion evaluiert.\\
+Des Weiteren wird die Relevanz verschiedener erhobener Metriken in Bezug auf ihre Verwendbarkeit beim automatisierten Detektieren von Anomalien und Engpässen dargestellt und geklärt.
+
+\subsection{Ausgang}
+
+In dieser Arbeit wird eine Möglichkeit ermittelt, um eine automatisierte Anomalie- und Engpasserkennung in ein bestehendes Kubernetes-Cluster zu integrieren. Hierfür werden Tools verwendet die teilweise hohe Verbreitung auf dem Markt gefunden haben, sowie auch Eigenentwicklungen. Zu Beginn steht keine der Komponenten, ausgenommen dem Kubernetes-Cluster, fest und sollen im Laufe der Arbeit ermittelt, sowie ein Lösungsansatz mithilfe der Komponentenauswahl gefunden werden.
+
+\subsection{Struktur}
+
+Die nachfolgende Arbeit ist wie folgt strukturiert:\\
+
+\begin{description}
+
+\item [Kapitel 2] befasst sich mit den Grundlagen die für das weitere Verständnis der Arbeit erforderlich sind.
+\item [Kapitel 3] stellt den aktuellen Stand der Technik dar.
+\item [Kapitel 4] erläutert Tools und Vorgehensweise bei der Datenakquise
+\item [Kapitel 5] erläutert das Vorgen beim Auswerten der Metriken
+\item [Kapitel 6] befasst sich mit den Automatisierten Aktionen, die aus den ausgewerteten Metriken geschlossen werden können
+\item [Kapitel 7] zeigt, wie aufgestellte Regeln und Komponenten evaluiert werden
+\item [Kapitel 8] diskutiert die Ergebnisse dieser Arbeit
+\item [Kapitel 9] enthält das Fazit
+\item [Kapitel 10] gibt einen Ausblick in die Zukunft des Projekts über mögliche Weiterentwicklungen
+\end{description}
+
+\section{Grundlagen}
+\subsection{Kubernetes}
+\subsubsection{Funktionsweise}
+\subsubsection{Komponenten}
+\subsection{Metriken}
+\subsection{Prometheus}
+\subsubsection{Scraping}
+\subsubsection{Abfragen}
+\subsubsection{Alerting}
+\subsection{Grafana}
+
+\section{Stand der Technik}
+
+\section{Datenaggregation}
+\subsection{Toolauswahl}
+\subsection{Datenquellen}
+\subsection{'USE'-Methode}
+
+\section{Auswerten der Metriken}
+\subsection{Klassifizierung}
+\subsection{Logische Auswertung}
+\subsection{Graphische Aufbereitung}
+
+\section{Automatisierte Aktionen}
+\subsection{Aktionen}
+\subsubsection{Skalieren}
+\subsubsection{Anomalie-Detection}
+\subsection{Komponenten und Architektur}
+\subsubsection{Prometheus}
+\subsubsection{Alertmanager}
+\subsubsection{Alert-Action-Manager}
+\subsection{Regeln}
+\subsubsection{Metriken}
+\subsubsection{Grenzwerte}
+
+\section{Evaluation}
+\subsection{Regeln}
+\subsection{Grenzwerte}
+\subsection{Komponenten und Architektur}
+
+\section{Diskussion}
+
+\section{Fazit}
+
+\section{Ausblick}
+
 
 \end{document}
