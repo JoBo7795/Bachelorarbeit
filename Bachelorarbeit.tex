@@ -9,7 +9,7 @@
 \usetikzlibrary{automata,positioning}
 \usepackage{pdfpages}
 
-
+\bibliographystyle{unsrt}
 
 \hypersetup{
     colorlinks,
@@ -55,7 +55,7 @@ Des Weiteren wird die Relevanz verschiedener erhobener Metriken in Bezug auf ihr
 
 \subsection{Ausgang}
 
-In dieser Arbeit wird eine Möglichkeit ermittelt, um eine automatisierte Anomalie- und Engpasserkennung in ein bestehendes Kubernetes-Cluster zu integrieren. Hierfür werden Tools verwendet die teilweise hohe Verbreitung auf dem Markt gefunden haben, sowie auch Eigenentwicklungen. Zu Beginn steht keine der Komponenten, ausgenommen dem Kubernetes-Cluster, fest und sollen im Laufe der Arbeit ermittelt, sowie ein Lösungsansatz mithilfe der Komponentenauswahl gefunden werden.
+In dieser Arbeit wird eine Möglichkeit ermittelt, um eine automatisierte Anomalie- und Engpasserkennung in ein bestehendes, extern gehostetes Kubernetes-Cluster zu integrieren. Hierfür werden Tools verwendet die teilweise hohe Verbreitung auf dem Markt gefunden haben, sowie auch Eigenentwicklungen. Zu Beginn steht keine der Komponenten, ausgenommen dem Kubernetes-Cluster, fest und sollen im Laufe der Arbeit ermittelt, sowie ein Lösungsansatz mithilfe der Komponentenauswahl gefunden werden.
 
 \subsection{Struktur}
 
@@ -76,19 +76,45 @@ Die nachfolgende Arbeit ist wie folgt strukturiert:\\
 
 \section{Grundlagen}
 \subsection{Kubernetes}
-\subsubsection{Funktionsweise}
-\subsubsection{Komponenten}
+
+Kubernetes ist eine Open-Source Software und API zur Orchestrierung und Deployment von containerisierten Anwendungen. Seit seiner Einführung 2014 hat Kubernetes ein starkes Wachstum erlebt und ist zum Quasistandard bei der Entwicklung von Cloud-Native Applikationen geworden. Kubernetes ist eine mittlerweile bewährte Infrastruktur und bietet Software die nötig ist um zuverlässige und skalierbare verteile Systeme zu entwickeln. \cite{Burns.2019}
+
+\subsubsection{Grundlegender Aufbau}
+
+
+
+\subsubsection{Relevante Komponenten}
+
+Kubernetes bietet eine Vielzahl von Komponenten für unterschiedlichste Aufgaben. Die für dieses Projekt relevanten Komponenten werden hier erklärt:
+
+\begin{description}
+
+
+
+\item [kubelet]:
+\item [Deployment]:
+\item [Service]:
+\item [cAdvisor]:\\
+Da Container von sich aus keine Informationen zu ihrem Ressourcenstatus nach außen preisgeben oder exportieren, bedarf es eines Hilfsmittels, das genau dies macht.
+cAdvisor(Container Advisor) ist ein Daemon, der Ressourcen-Informationen aus Containern sammelt, verarbeitet und exportiert.\cite{.20200704T23:29:24.000Z}
+\item []:
+\item []:
+
+\end{description}
+
+\subsection{Cloud-Native}
 \subsection{Metriken}
 \subsection{Prometheus}
 \subsubsection{Scraping}
 \subsubsection{Abfragen}
 \subsubsection{Alerting}
-\subsection{Grafana}
 
 \section{Stand der Technik}
 
 \section{Datenaggregation}
 \subsection{Toolauswahl}
+\subsubsection{Metriken}
+\subsubsection{Visualisierung}
 \subsection{Datenquellen}
 \subsection{'USE'-Methode}
 
@@ -120,5 +146,7 @@ Die nachfolgende Arbeit ist wie folgt strukturiert:\\
 
 \section{Ausblick}
 
+\newpage
+\bibliography{Literatur}
 
 \end{document}
