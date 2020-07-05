@@ -36,26 +36,20 @@
 \pagebreak
 
 \section{Einleitung}
-\subsection{Motivation}
 
-Als Anbieter von Cloud-Services hat die Firma Appointrix den Anspruch, möglichst geringe und kurze Ausfallzeiten mit ihren Services zu erreichen. Um eine maximal lange, ausfallfreie Servicelaufzeit zu gewährleisten, ist es notwendig jederzeit den Status einsehen und mögliches Fehlverhalten frühzeitig erkennen zu können. 
-Da für eine dauerhafte Kontrolle eines Services ein oder sogar mehrere Mitarbeiter benötigt werden, welche eine eintönige Kontrollaufgabe übernehmen müssen, ist es sinnvoll möglichst viele Teile der Kontrolle durch Maschinen zu automatisieren. Diese Automatisierung bringt den Vorteil der Kosteneinsparung, da keine Mitarbeiter Teil- oder Vollzeit für diese Aufgabe benötigt werden, sowie eine verkürzte Reaktionszeit, die durch Maschinen einhergeht.
-
-\subsection{Problemstellung}
-
-Automatisierte Anomalie- und Engpasserkennung sind das Problem des automatisierten Erkennens außergewöhnlichen Verhaltens oder nicht ausreichender Ressourcen. Um eine automatisierte Erkennung zu ermöglichen, werden Daten sog. Metriken benötigt, die eine Entscheidung über das vorliegende Verhalten treffen lassen. Metriken müssen erhoben und ausgewertet werden, um eine Aktion aus ihnen schließen zu können, welche die vorliegende Anomalie oder den vorliegenden Engpass beheben kann.\\
-Die erhobenen Metriken müssen einerseits für Menschen lesbar sein, um aktuelle Zustände widerspiegeln und entsprechend darauf reagieren zu können, andererseits müssen sie ebenso für Maschinen auswertbar sein, um die Automatisierung durch diese zu ermöglichen.
-Kubernetes bietet die Möglichkeit, mittels des sog. Kubelet und des cAdvisor Metriken zu erheben, welche den Zustand des Clusters darstellen. 
-
-\subsection{Ziel}
-
-Das Ziel der vorliegenden Arbeit ist der Nachweis der Durchführbarkeit und die Implementierung eines Systems, welches durch die Aggregation von Metriken die automatisierte Anomalie- und Engpasserkennung in einem bestehenden Kubernetes-Cluster realisiert. Durch Benachrichtigen bei Auftreten anormalen Verhaltens, sollen Stakeholder in Kenntnis gesetzt werden und dieses Verhalten durch die Aufbereitung von Cluster-Metriken jederzeit nachvollziehen können.\\
+Als Anbieter von Cloud-Services hat die Firma Appointrix den Anspruch, möglichst geringe und kurze Ausfallzeiten mit ihren Services zu erreichen. Um eine maximal lange, störungsfreie Servicelaufzeit zu erreichen, ist es notwendig jederzeit den Servicestatus einsehen und mögliches Fehlverhalten frühzeitig erkennen zu können. 
+Da für eine dauerhafte Kontrolle eines Services ein oder sogar mehrere Mitarbeiter benötigt werden, welche eine eintönige Kontrollaufgabe übernehmen müssten, ist es sinnvoll möglichst viele Teile der Kontrolle zu automatisieren. Diese Automatisierung bringt einerseits den Vorteil der Kosteneinsparung, da keine Mitarbeiter für diese Aufgabe benötigt werden und andererseits einen Geschwindigkeitsvorteil durch die wesentlich geringere Reaktionszeit, die durch die Geschwindigkeit von Computern gegenüber dem Menschen einhergeht.\\
+Hierbei sollen vor allem Engpässe bei Ressourcen ausfindig gemacht werden, sowie Anomalien, also Fehlverhalten, in einzelnen Komponenten der Infrastruktur gefunden und behoben werden, bestenfalls noch bevor sich größere Auswirkungen auf die restlichen Komponenten ergeben.\\
+Um eine automatisierte Erkennung zu ermöglichen, werden Daten sog. Metriken benötigt, die eine Entscheidung über das vorliegende Verhalten treffen lassen. Metriken müssen erhoben und ausgewertet werden, um eine Aktion aus ihnen schließen zu können, welche die vorliegende Anomalie oder den vorliegenden Engpass beheben kann.\\
+Die erhobenen Metriken müssen einerseits für Menschen lesbar sein, um aktuelle Zustände widerspiegeln und entsprechend darauf reagieren zu können, andererseits ebenso für Computer auswertbar sein, um die Automatisierung durch diese zu ermöglichen.
+Kubernetes bietet die Möglichkeit, mittels des sog. Kubelet und des cAdvisor Metriken zu erheben, welche den Zustand des Clusters darstellen. \\
+Neben automatisierten Aktionen auf das Cluster, ist es auch sinnvoll entsprechende Stakeholder über das Fehlverhalten in Kenntnis zu setzen und diese zu benachrichtigen, um ihnen die Möglichkeit zu geben dem Verhalten auf den Grund zu gehen.\\
+Diese Arbeit setzt sich das Ziel die Durchführbarkeit der automatisierten Anomalie- und Engpasserkennung nachzuweisen und die erste Implementierung innerhalb eines schon bestehenden Kubernetes-Clusters. 
 Im Rahmen dieser Arbeit werden die passenden Komponenten gewählt, die zur Umsetzung der Anforderungen benötigt werden, die Infrastruktur geplant, erstellt und die korrekte Funktion evaluiert.\\
-Des Weiteren wird die Relevanz verschiedener erhobener Metriken in Bezug auf ihre Verwendbarkeit beim automatisierten Detektieren von Anomalien und Engpässen dargestellt und geklärt.
+Des Weiteren wird die Relevanz verschiedener erhobener Metriken in Bezug auf ihre Verwendbarkeit beim automatisierten Detektieren von Anomalien und Engpässen dargestellt und geklärt.\\
+Es werden die weit verbreiteten Tools Prometheus und Grafana verwendet und durch Eigenentwicklungen ergänzt und so eine Infrastruktur geschaffen, welche die Anforderungen erfüllen kann.
 
-\subsection{Ausgang}
-
-In dieser Arbeit wird eine Möglichkeit ermittelt, um eine automatisierte Anomalie- und Engpasserkennung in ein bestehendes, extern gehostetes Kubernetes-Cluster zu integrieren. Hierfür werden Tools verwendet die teilweise hohe Verbreitung auf dem Markt gefunden haben, sowie auch Eigenentwicklungen. Zu Beginn steht keine der Komponenten, ausgenommen dem Kubernetes-Cluster, fest und sollen im Laufe der Arbeit ermittelt, sowie ein Lösungsansatz mithilfe der Komponentenauswahl gefunden werden.
+\pagebreak
 
 \subsection{Struktur}
 
@@ -70,8 +64,8 @@ Die nachfolgende Arbeit ist wie folgt strukturiert:\\
 \item [Kapitel 6] befasst sich mit den Automatisierten Aktionen, die aus den ausgewerteten Metriken geschlossen werden können
 \item [Kapitel 7] zeigt, wie aufgestellte Regeln und Komponenten evaluiert werden
 \item [Kapitel 8] diskutiert die Ergebnisse dieser Arbeit
-\item [Kapitel 9] enthält das Fazit
-\item [Kapitel 10] gibt einen Ausblick in die Zukunft des Projekts über mögliche Weiterentwicklungen
+\item [Kapitel 9] enthält das Fazit, sowie einen Ausblick in die Zukunft des Projekts
+
 \end{description}
 
 \section{Grundlagen}
@@ -141,10 +135,7 @@ cAdvisor(Container Advisor) ist ein Daemon, der Ressourcen-Informationen aus Con
 \subsection{Komponenten und Architektur}
 
 \section{Diskussion}
-
-\section{Fazit}
-
-\section{Ausblick}
+\section{Fazit und Ausblick}
 
 \newpage
 \bibliography{Literatur}
