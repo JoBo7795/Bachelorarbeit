@@ -6,6 +6,7 @@
 \usepackage{amsmath}
 \usepackage{hyperref}
 \usepackage{tikz}
+\usepackage{svg}
 \usetikzlibrary{automata,positioning}
 \usepackage{pdfpages}
 
@@ -71,28 +72,40 @@ Die nachfolgende Arbeit ist wie folgt strukturiert:\\
 \section{Grundlagen}
 \subsection{Kubernetes}
 
-Kubernetes ist eine Open-Source Software und API zur Orchestrierung und Deployment von containerisierten Anwendungen. Seit seiner Einführung 2014 hat Kubernetes ein starkes Wachstum erlebt und ist zum Quasistandard bei der Entwicklung von Cloud-Native Applikationen geworden. Kubernetes ist eine mittlerweile bewährte Infrastruktur und bietet Software die nötig ist um zuverlässige und skalierbare verteile Systeme zu entwickeln. \cite{Burns.2019}
-
-\subsubsection{Grundlegender Aufbau}
 
 
+Kubernetes, kurz "k8s", ist eine Open-Source Software und API zur Orchestrierung und Deployment von containerisierten Anwendungen. Seit seiner Einführung 2014 hat Kubernetes ein starkes Wachstum erlebt und ist zum Quasistandard bei der Entwicklung von Cloud-Native Applikationen geworden.
+
+<hier Statement zu Relevanz von Kubernetes finden und einbauen>
+
+Kubernetes ist eine mittlerweile bewährte Infrastruktur und bietet Software die nötig ist um zuverlässige und skalierbare verteile Systeme zu entwickeln. \cite{Burns.2019}\\
+Der Zweck eines Kubernetes-Clusters besteht darin viele, einzelne Computer als eine einzige Einheit zusammenarbeiten zu lassen.
+Ein Cluster besteht aus zwei verschiedenen Arten von Komponenten, die zusammenarbeiten:
+dem Node und dem Master.
+Der Master stellt den Verwalter im Cluster dar. Er koordiniert alle Vorgänge, trifft also Entscheidungen die von globaler Bedeutung für das gesamte Cluster sind. Beispielsweise startet er Komponenten oder schaltet sie ab, ist aber auch für Tasks wie die Zeitplanung zuständig. Er wird über die Kubernetes-API angesprochen und steht in direkter Verbindung mit den Nodes.\cite{.20200530T15:19:3404:00} \cite{.20200316T05:14:35+01:00}
+Nodes wiederum stellen die Arbeiter dar, weshalb sie auch "worker" genannt werden. Deren Aufgaben bestehen darin Pods[siehe Relevante Komponenten] aufrecht zu erhalten und die Laufzeitumgebung bereitzustellen. Nodes halten auch die Container-Runtime bereit, welche dafür zuständig ist Containerisierte Anwendungen auszuführen und so das verteilen einer Anwendung auf beliebige Hardware möglich macht.
+
+\begin{figure}[htbp]
+  \centering
+  \input{KubernetesBasic.pdf_tex}
+  \caption{einfache Darstellung eines Kubernetes-Cluster}
+\end{figure}
 
 \subsubsection{Relevante Komponenten}
 
-Kubernetes bietet eine Vielzahl von Komponenten für unterschiedlichste Aufgaben. Die für dieses Projekt relevanten Komponenten werden hier erklärt:
+Kubernetes bietet eine Vielzahl von Komponenten für unterschiedliche Aufgaben. Die für dieses Projekt Relevanten werden hier erklärt:
 
 \begin{description}
 
-
-
+\item [kubectl]:
 \item [kubelet]:
 \item [Deployment]:
+\item [Pod]:
 \item [Service]:
 \item [cAdvisor]:\\
 Da Container von sich aus keine Informationen zu ihrem Ressourcenstatus nach außen preisgeben oder exportieren, bedarf es eines Hilfsmittels, das genau dies macht.
 cAdvisor(Container Advisor) ist ein Daemon, der Ressourcen-Informationen aus Containern sammelt, verarbeitet und exportiert.\cite{.20200704T23:29:24.000Z}
-\item []:
-\item []:
+
 
 \end{description}
 
@@ -130,6 +143,7 @@ cAdvisor(Container Advisor) ist ein Daemon, der Ressourcen-Informationen aus Con
 \subsubsection{Grenzwerte}
 
 \section{Evaluation}
+\subsection{Messaufbau}
 \subsection{Regeln}
 \subsection{Grenzwerte}
 \subsection{Komponenten und Architektur}
