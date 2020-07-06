@@ -72,11 +72,10 @@ Die nachfolgende Arbeit ist wie folgt strukturiert:\\
 \section{Grundlagen}
 \subsection{Kubernetes}
 
+Kubernetes, kurz "k8s", ist eine Open-Source Software und API zur Orchestrierung und Deployment von containerisierten Anwendungen. Seit seiner Einführung 2014 hat Kubernetes ein starkes Wachstum erlebt und ist zum Quasistandard bei der Entwicklung von Cloud-Native Applikationen geworden.\\
 
+In einer Umfrage fand die Cloud-Native Computing Foundation (CNCF) heraus, dass über 58 Prozent der Befragten Kubernetes verwendet und 40 Prozent der befragten Firmen, was über 5000 ergab, Kubernetes in der Produktion benutzen.[Umfrage CNCF ergänzen]\\
 
-Kubernetes, kurz "k8s", ist eine Open-Source Software und API zur Orchestrierung und Deployment von containerisierten Anwendungen. Seit seiner Einführung 2014 hat Kubernetes ein starkes Wachstum erlebt und ist zum Quasistandard bei der Entwicklung von Cloud-Native Applikationen geworden.
-
-<hier Statement zu Relevanz von Kubernetes finden und einbauen>
 
 Kubernetes ist eine mittlerweile bewährte Infrastruktur und bietet Software die nötig ist um zuverlässige und skalierbare verteile Systeme zu entwickeln. \cite{Burns.2019}\\
 Der Zweck eines Kubernetes-Clusters besteht darin viele, einzelne Computer als eine einzige Einheit zusammenarbeiten zu lassen.
@@ -97,11 +96,17 @@ Kubernetes bietet eine Vielzahl von Komponenten für unterschiedliche Aufgaben. 
 
 \begin{description}
 
-\item [kubectl]:
-\item [kubelet]:
-\item [Deployment]:
-\item [Pod]:
-\item [Service]:
+\item [kubectl]:\\
+kubectl ist eine Kontrollanwendung für Kubernetes. Es ist eine direkte Schnittstelle zwischen User und dem Kubernetes API-Server und kann mittels Konsolenbefehlen bedient werden.
+\item [kubelet]: \\
+Der kubelet ist der primäre 'node-agent'. Er ist dafür zuständig die Nodes beim Kubernetes API-Server zu registrieren. Des Weiteren verwaltet er Pods anhand einer Podspezifikation(PodSpec) und sorgt dafür, dass die Pods im Rahmen der Spezifikation "gesund" laufen.\\
+Über den kubelet können diverse Metriken gesammelt werden, die über den Status des Nodes oder der darin laufenden Pods und Container Auskunft geben.
+\item [Pod]:\\
+Ein Pod ist eine 'execution unit' und repräsentiert einen Prozess, der in einem Cluster läuft. Ein Pod kapselt einen oder mehrere Anwendungs-Container, ein eigener Speicherbereich, eine eigene IP-Adresse sowie dessen Konfigurationsoptionen.
+Die meistverwendete Container-Runtime ist,wie auch in diesem Projekt, Docker, es gibt aber auch Unterstützung für Weitere wie beispielsweise Rocket.
+\item [Service]:\\
+Nach der offiziellen Kubernetes-Dokumentation sind Services Eine "abstrakte Möglichkeit, eine Anwendung, die auf einer Reihe von Pods läuft, als Netzwerkdienst bereitzustellen".
+Kubernetes Pods können dynamisch in ihrer Anzahl skalieren und so auch ihre IP-Adresse wechseln. Daher ist es sinnvoll die Pods über einen Service anzusprechen, der mit einem DNS ähnlichen System funktioniert und so ein Deployment über einen lesbaren Namen ansprechbar macht.  
 \item [cAdvisor]:\\
 Da Container von sich aus keine Informationen zu ihrem Ressourcenstatus nach außen preisgeben oder exportieren, bedarf es eines Hilfsmittels, das genau dies macht.
 cAdvisor(Container Advisor) ist ein Daemon, der Ressourcen-Informationen aus Containern sammelt, verarbeitet und exportiert.\cite{.20200704T23:29:24.000Z}
@@ -109,7 +114,8 @@ cAdvisor(Container Advisor) ist ein Daemon, der Ressourcen-Informationen aus Con
 
 \end{description}
 
-\subsection{Cloud-Native}
+%\subsection{Cloud-Native} 
+\subsection{Go}
 \subsection{Metriken}
 \subsection{Prometheus}
 \subsubsection{Scraping}
