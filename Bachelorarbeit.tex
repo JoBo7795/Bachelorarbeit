@@ -69,6 +69,8 @@ Die nachfolgende Arbeit ist wie folgt strukturiert:\\
 
 \end{description}
 
+\pagebreak
+
 \section{Grundlagen}
 \subsection{Kubernetes}
 
@@ -118,9 +120,46 @@ cAdvisor(Container Advisor) ist ein Daemon, der Ressourcen-Informationen aus Con
 \subsection{Go}
 \subsection{Metriken}
 \subsection{Prometheus}
+
+Prometheus ist ein Open-Source Monitoring-Toolkit. Es wurde ursprünglich von SoundCloud entwickelt, ist aber mittlerweile ein Open-Source Projekt, das der Cloud Native
+Computing Foundation (CNCF) beigetreten ist. Die primären Funktionen des Toolkits
+sind das Aufzeichnen von Zeitreihen-Metriken und das Alarmieren bei Überschreitungen
+von Grenzwerten der Metriken. Des weiteren bietet Prometheus:\\
+
+\begin{itemize}
+\item Ein WebUI zum Visualisieren der aufgezeichneten Daten
+\item Eine eigene Abfragesprache(PromQL) für aufgezeichneten Metriken Regeln, Visualisierungen oder ähnliches erstellen zu können
+\item Einen Alertmanager um Alerts entgegen zu nehmen und weiter verwalten zu können
+\item Eine 'Target-Discovery' um selbstständig sinnvolle und parametrisierbare Ziele zu entdecken
+
+\end{itemize}
+
+Prometheus bietet eine Vielzahl an Komponenten, die das Überwachen von Systemen und Alarmieren unterstützen. Die grundlegende Komponente ist hierbei der zentrale Prometheus Server. Dieser ist dafür zuständig Metriken zu sammeln, im Folgenden scrapen genannt, und zentral zu speichern, sofern es gewünscht ist.
+
 \subsubsection{Scraping}
+
+Das Scraping in Prometheus funktioniert folgendermaßen:
+Ein Scraping-Target, beispielsweise ein Kubernetes-Node, besitzt einen sog. Exporter, der Metriken aus dem System ausließt und diese an einem HTTP-Endpunkt '<IP-Adresse/DNS-Name>/metrics' bereitstellt. Der Prometheus-Server findet entweder per automatischem Target-Disovery Mechanismus das Target oder wird per Konfiguration darauf eingestellt.
+Der Exporter auf dem Target hat im Normalfall einen Aktualisierungszeitraum ebenso wie der Prometheus-Server, sodass die Metriken automatisch aktualisiert werden und eine Zeitreihenmetrik erzeugt wird.
+
 \subsubsection{Abfragen}
+
+Das Abfragen von von Metriken wird mittels der prometheuseigenen, an SQL angelehnten Query-Language PromQL durchgeführt. PromQL-Requests werden an den Prometheus-Server gestellt, der die Requests prüft, verarbeitet und entsprechende Werte als Antwort zurückgibt. Die Abfragen können sehr einfach sein, indem beispielsweise nur der Name einer Metrik angegeben wird und so der entsprechende Wert zurückgeliefert wird. Requests können aber auch, ähnlich SQL, miteinander kombiniert werden um voneinander abhängige Werte abzufragen oder Werte über unterschiedliche Zeiträume zu erhalten.\\
+
+Folgend ein beispielhafter Request, der <hier Funktion einfügen>:\\
+<hier Request einfügen>\\
+
+In diesem Projekt werden PromQL-Abfragen vor allem für zwei verschiedene Zwecke verwendet:
+\begin{itemize}
+\item zum erstellen von Regeln, bei deren Erfüllung der Prometheus-Server einen Alert verschickt (siehe nächstes Kapitel Alerting)
+\item zum Visualisieren der Metriken in der Prometheus Web-UI oder in Grafana-Boards
+\end{itemize}
+
 \subsubsection{Alerting}
+
+Das Alerting in Prometheus funktioniert mittels festgelegten Regeln. Diese werden in der PromQL-Sprache auf dem Prometheus-Server definiert und gespeichert. Sobald eine Regel erfüllt ist sendet der Server einen Alert an den Alertmanager, der diesen dann weiter verarbeiten kann.\\
+Eine Alert-Regel besteht im Grunde aus zwei Teilen. Der erste Teil ist die PromQL-Bedingung, die erfüllt sein muss. Sobald diese erfüllt ist erhält der Alert den Status 'pending'. In diesem Status wird der Alert noch nicht versendet, sondern wartet auf das Erfüllen eines vorgegebenen Zeitwertes. Erst nach erfüllen des Wertes wird der Alert an den Manager versendet.\\
+Der Alertmanager hat mehrere Möglichkeiten mit dem Alert umzugehen. Eine der Möglichkeiten ist das Weiterleiten an definierbare Ziele, beispielsweise an bestimmte E-Mail Adressen, Chat-Programme wie Slack oder auch an Webhooks bzw. HTTP-Endpunkte.
 
 \section{Stand der Technik}
 
