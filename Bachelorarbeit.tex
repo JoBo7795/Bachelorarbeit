@@ -9,6 +9,7 @@
 \usepackage{svg}
 \usetikzlibrary{automata,positioning}
 \usepackage{pdfpages}
+\usepackage{listings}
 
 \bibliographystyle{unsrt}
 
@@ -117,8 +118,24 @@ cAdvisor(Container Advisor) ist ein Daemon, der Ressourcen-Informationen aus Con
 \end{description}
 
 %\subsection{Cloud-Native} 
-\subsection{Go}
+%\subsection{Microservice-Architektur}
 \subsection{Metriken}
+
+Eine Metrik ist eine Funktion, die einen Zustand oder eine Eigenschaft als Maßzahl
+abbildet. Metriken in der Informatik lassen sich im Grunde in 3 Bereiche einteilen:
+\begin{itemize}
+\item Service-Metriken, welche die Performance eines Service bemessen, zum Beispiel die
+Unterbrechungsfreie Laufzeit.
+\item Prozess-Metriken, die für die Quantifizierung des Entwicklungsprozesses einer Software verwendet werden
+\item Technologie-Metriken, welche die zugrunde liegende Technologie quantifizieren, zum
+Beispiel die Speicherauslastung
+\end{itemize}
+
+Wenn Metriken über einen Zeitraum beobachtet werden und nach Messzeit strukturiert werden, werden sie Zeitreihen-Metriken genannt.\\
+In dieser Arbeit werden Service-Metriken erstellt und verwendet, welche die Performance der in einem Kubernetes-Cluster laufenden Services beziffert.
+
+<hier Quelle finden !>
+
 \subsection{Prometheus}
 
 Prometheus ist ein Open-Source Monitoring-Toolkit. Es wurde ursprünglich von SoundCloud entwickelt, ist aber mittlerweile ein Open-Source Projekt, das der Cloud Native
@@ -146,8 +163,11 @@ Der Exporter auf dem Target hat im Normalfall einen Aktualisierungszeitraum eben
 
 Das Abfragen von von Metriken wird mittels der prometheuseigenen, an SQL angelehnten Query-Language PromQL durchgeführt. PromQL-Requests werden an den Prometheus-Server gestellt, der die Requests prüft, verarbeitet und entsprechende Werte als Antwort zurückgibt. Die Abfragen können sehr einfach sein, indem beispielsweise nur der Name einer Metrik angegeben wird und so der entsprechende Wert zurückgeliefert wird. Requests können aber auch, ähnlich SQL, miteinander kombiniert werden um voneinander abhängige Werte abzufragen oder Werte über unterschiedliche Zeiträume zu erhalten.\\
 
-Folgend ein beispielhafter Request, der <hier Funktion einfügen>:\\
-<hier Request einfügen>\\
+Ein beispielhafter Request:
+Dieser Request der den Mittelwert der HTTP-Codes 401 des Kong API-Gateways über die letzten 5 Minuten bildet:
+\begin{lstlisting}
+rate(kong_http_status{code='401'}[5m])
+\end{lstlisting}
 
 In diesem Projekt werden PromQL-Abfragen vor allem für zwei verschiedene Zwecke verwendet:
 \begin{itemize}
@@ -176,6 +196,7 @@ Der Alertmanager hat mehrere Möglichkeiten mit dem Alert umzugehen. Eine der M�
 \subsection{Graphische Aufbereitung}
 
 \section{Automatisierte Aktionen}
+\subsection{Wahl der Sprache}
 \subsection{Aktionen}
 \subsubsection{Skalieren}
 \subsubsection{Anomalie-Detection}

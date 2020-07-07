@@ -4,4 +4,5 @@ Hier entsteht eine Bachelorarbeit
 
 ## Offene Fragen
 
-- Gliederung und Themen in dieser Art in Ordnung ?
+- Cloud-Native und Microservice(-Architektur) als Grundlage erklären ?
+- Grundlagen in Ordnung, fehlt etwas oder ist etwas zu viel ? 
