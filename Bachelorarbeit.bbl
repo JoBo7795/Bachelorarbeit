@@ -1,0 +1,20 @@
+\begin{thebibliography}{1}
+
+\bibitem{Burns.2019}
+Brendan Burns, Joe Beda, and Kelsey Hightower.
+\newblock {\em Kubernetes: Up and running : dive into the future of
+  infrastructure}.
+\newblock {O'Reilly Media, Incorporated}, Sebastopol, CA, second edition
+  edition, 2019.
+
+\bibitem{.20200530T15:19:3404:00}
+Kubernetes komponenten, 30.05.2020.
+
+\bibitem{.20200316T05:14:35+01:00}
+Using minikube to create a cluster, 16.03.2020.
+
+\bibitem{.20200704T23:29:24.000Z}
+{Github-User: dashpole}.
+\newblock google/cadvisor, 05.07.2020.
+
+\end{thebibliography}

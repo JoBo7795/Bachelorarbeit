@@ -1,0 +1,83 @@
+%% Creator: Inkscape 1.0 (4035a4fb49, 2020-05-01), www.inkscape.org
+%% PDF/EPS/PS + LaTeX output extension by Johan Engelen, 2010
+%% Accompanies image file 'PrometheusAlertmanager.pdf' (pdf, eps, ps)
+%%
+%% To include the image in your LaTeX document, write
+%%   \input{<filename>.pdf_tex}
+%%  instead of
+%%   \includegraphics{<filename>.pdf}
+%% To scale the image, write
+%%   \def\svgwidth{<desired width>}
+%%   \input{<filename>.pdf_tex}
+%%  instead of
+%%   \includegraphics[width=<desired width>]{<filename>.pdf}
+%%
+%% Images with a different path to the parent latex file can
+%% be accessed with the `import' package (which may need to be
+%% installed) using
+%%   \usepackage{import}
+%% in the preamble, and then including the image with
+%%   \import{<path to file>}{<filename>.pdf_tex}
+%% Alternatively, one can specify
+%%   \graphicspath{{<path to file>/}}
+%% 
+%% For more information, please see info/svg-inkscape on CTAN:
+%%   http://tug.ctan.org/tex-archive/info/svg-inkscape
+%%
+\begingroup%
+  \makeatletter%
+  \providecommand\color[2][]{%
+    \errmessage{(Inkscape) Color is used for the text in Inkscape, but the package 'color.sty' is not loaded}%
+    \renewcommand\color[2][]{}%
+  }%
+  \providecommand\transparent[1]{%
+    \errmessage{(Inkscape) Transparency is used (non-zero) for the text in Inkscape, but the package 'transparent.sty' is not loaded}%
+    \renewcommand\transparent[1]{}%
+  }%
+  \providecommand\rotatebox[2]{#2}%
+  \newcommand*\fsize{\dimexpr\f@size pt\relax}%
+  \newcommand*\lineheight[1]{\fontsize{\fsize}{#1\fsize}\selectfont}%
+  \ifx\svgwidth\undefined%
+    \setlength{\unitlength}{618.90527344bp}%
+    \ifx\svgscale\undefined%
+      \relax%
+    \else%
+      \setlength{\unitlength}{\unitlength * \real{\svgscale}}%
+    \fi%
+  \else%
+    \setlength{\unitlength}{\svgwidth}%
+  \fi%
+  \global\let\svgwidth\undefined%
+  \global\let\svgscale\undefined%
+  \makeatother%
+  \begin{picture}(1,0.39037552)%
+    \lineheight{1}%
+    \setlength\tabcolsep{0pt}%
+    \put(0,0){\includegraphics[width=\unitlength,page=1]{PrometheusAlertmanager.pdf}}%
+    \put(0.36354513,0.2401102){\color[rgb]{0,0,0}\makebox(0,0)[t]{\lineheight{1.25}\smash{\begin{tabular}[t]{c}Prometheus-Server\end{tabular}}}}%
+    \put(0,0){\includegraphics[width=\unitlength,page=2]{PrometheusAlertmanager.pdf}}%
+    \put(0.07270903,0.21587386){\color[rgb]{0,0,0}\makebox(0,0)[t]{\lineheight{1.25}\smash{\begin{tabular}[t]{c}Metrics-Source\end{tabular}}}}%
+    \put(0,0){\includegraphics[width=\unitlength,page=3]{PrometheusAlertmanager.pdf}}%
+    \put(0.21812708,0.26313472){\makebox(0,0)[t]{\lineheight{1.25}\smash{\begin{tabular}[t]{c}Read Metrics\end{tabular}}}}%
+    \put(0,0){\includegraphics[width=\unitlength,page=4]{PrometheusAlertmanager.pdf}}%
+    \put(0.36354513,0.01713585){\makebox(0,0)[t]{\lineheight{1.25}\smash{\begin{tabular}[t]{c}Check if rule\end{tabular}}}}%
+    \put(0.36354513,0.00017041){\makebox(0,0)[t]{\lineheight{1.25}\smash{\begin{tabular}[t]{c} is fulfilled\end{tabular}}}}%
+    \put(0,0){\includegraphics[width=\unitlength,page=5]{PrometheusAlertmanager.pdf}}%
+    \put(0.65438124,0.2401102){\color[rgb]{0,0,0}\makebox(0,0)[t]{\lineheight{1.25}\smash{\begin{tabular}[t]{c}Alertmanager\end{tabular}}}}%
+    \put(0,0){\includegraphics[width=\unitlength,page=6]{PrometheusAlertmanager.pdf}}%
+    \put(0.36354513,0.17103662){\makebox(0,0)[t]{\lineheight{1.25}\smash{\begin{tabular}[t]{c}If rule fulfilled\end{tabular}}}}%
+    \put(0.36354513,0.15407118){\makebox(0,0)[t]{\lineheight{1.25}\smash{\begin{tabular}[t]{c} for set off time\end{tabular}}}}%
+    \put(0.36354513,0.13710575){\makebox(0,0)[t]{\lineheight{1.25}\smash{\begin{tabular}[t]{c} trigger Alert\end{tabular}}}}%
+    \put(0,0){\includegraphics[width=\unitlength,page=7]{PrometheusAlertmanager.pdf}}%
+    \put(0.50896319,0.26434654){\color[rgb]{0,0,0}\makebox(0,0)[t]{\lineheight{1.25}\smash{\begin{tabular}[t]{c}Alert\end{tabular}}}}%
+    \put(0,0){\includegraphics[width=\unitlength,page=8]{PrometheusAlertmanager.pdf}}%
+    \put(0.77556295,0.26313472){\makebox(0,0)[t]{\lineheight{1.25}\smash{\begin{tabular}[t]{c}Distribute\end{tabular}}}}%
+    \put(0,0){\includegraphics[width=\unitlength,page=9]{PrometheusAlertmanager.pdf}}%
+    \put(0.96945369,0.30070106){\color[rgb]{0,0,0}\makebox(0,0)[t]{\lineheight{1.25}\smash{\begin{tabular}[t]{c}Slack\end{tabular}}}}%
+    \put(0,0){\includegraphics[width=\unitlength,page=10]{PrometheusAlertmanager.pdf}}%
+    \put(0.96945369,0.2401102){\color[rgb]{0,0,0}\makebox(0,0)[t]{\lineheight{1.25}\smash{\begin{tabular}[t]{c}E-Mail\end{tabular}}}}%
+    \put(0,0){\includegraphics[width=\unitlength,page=11]{PrometheusAlertmanager.pdf}}%
+    \put(0.96945369,0.19890842){\makebox(0,0)[t]{\lineheight{1.25}\smash{\begin{tabular}[t]{c}Custom-\end{tabular}}}}%
+    \put(0.96945369,0.18194298){\makebox(0,0)[t]{\lineheight{1.25}\smash{\begin{tabular}[t]{c}Webhook\end{tabular}}}}%
+  \end{picture}%
+\endgroup%
