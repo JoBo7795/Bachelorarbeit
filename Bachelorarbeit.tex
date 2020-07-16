@@ -210,9 +210,14 @@ Der Alertmanager hat mehrere Möglichkeiten mit dem Alert umzugehen. Eine der M�
 
 \section{Stand der Technik}
 
-\subsection{Metrics}
+\subsection{Metriken}
 
 \subsubsection{'USE'-Methode}
+
+Das Monitoring der Systemressourcen wird nach der 'USE'-Methode durchgeführt. Diese Methode wurde von Brendan Gregg mit Schwerpunkt auf das Monitoring von Systemressourcen entwickelt, weshalb sie sich für dieses Projekt eignet.
+Ziel der Methode ist es die Utilization, der Zeitdurchschnitt der Arbeit, die eine Ressource beschäftigt erledigt, die Saturation, die "Zusatzarbeit" die eine Ressource verrichten muss, im Moment aber nicht leisten kann sowie die Error-Rate, die Häufigkeit in der Fehler auftreten von Systemkomponenten wie CPU, RAM und Netzwerkbandbreite abzubilden.
+
+<Quelle Brendan Gregg einfügen>
 
 \subsection{Aktionen}
 
@@ -294,18 +299,35 @@ Mithilfe der Alerts ist es möglich anhand von Regeln Alarme zu versenden, die �
 
 \end{description}
 
-\subsection{'USE'-Methode}
+\subsection{Datenquellen}
 
-Das Monitoring der Systemressourcen wird nach der 'USE'-Methode durchgeführt. Diese Methode wurde von Brendan Gregg mit Schwerpunkt auf das Monitoring von Systemressourcen entwickelt, weshalb sie sich für dieses Projekt eignet.
-Ziel ist es hierbei die Utilization(Nutzung), Saturation(Sättigung) und Error-Rate(Fehlerrate) von Systemkomponenten wie CPU, RAM und Netzwerkbandbreite zu abzubilden.
+Als Datenquelle dienen potenziell alle Ziele, die von Prometheus mittels der Target-Discovery innerhalb des Kubernetes-Cluster gefunden werden und Daten bereitstellen.\\
+Von besonderem Interesse für dieses Projekt sind hierbei alle system- und hardwarenahen Targets, wie der kubelet (siehe Kapitel Grundlagen) und cAdvisor in Pods und Containern.
 
 \subsubsection{Metriken}
+
+Die Metriken, mit denen die USE-Methode umgesetzt wird, werden aus den Systemmetriken, die durch Prometheus gesammelt werden, zusammengesetzt. 
+Die Metriken Utilization und Saturation werden für CPU, RAM und Netzwerkauslastung folgendermaßen berechnet:
+
+\begin{description}
+\item[CPU]:\\
+Utilization:\\
+Die CPU Utilization berechnet sich aus der Summe der Millisekunden, welche die CPU beschäftigt war, geteilt durch eine ganze Sekunde. So erhält man die Utilization pro Sekunde, welche über aufsummiert und der Mittelwert über den beobachteten Zeitraum gebildet wird, um so die durchschnittliche Utilization zu erhalten.
+Saturation:\\
+Die CPU Saturation kann anhand des Ressourcenlimits berechnet werden. In UNIX basierten Betriebssystemen gibt es die Metrik 'load-average', welche die Anzahl der laufenden sowie wartenden Prozesse enthält. Sofern man diese durch die Anzahl der zur Verfügung stehenden CPU-Kerne teilt, erhält man eine Kennzahl für die Saturation. Diese aufsummiert und über die Zeit gemittelt, ergibt die durchschnittliche Saturation.
+Ein weiterer Weg die Saturation zu berechnen ist das aufsummieren der Zeit in der ein Prozess 'throtteld' läuft. Dies funktioniert dann, wenn ein Prozess ein Ressourcenlimit besitzt, übersteigt er dieses wird der Prozess gedrosselt.
+\item[RAM]:\\
+Utilization:\\
+
+Saturation:\\
+\item[Netzwerk-Bandbreite]:\\
+Utilization:\\
+Saturation:\\
+\end{description}
 
 
 
 \subsubsection{Visualisierung}
-\subsection{Datenquellen}
-
 
 \section{Auswerten der Metriken}
 \subsection{Klassifizierung}
