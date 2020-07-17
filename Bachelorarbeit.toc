@@ -12,36 +12,34 @@
 \contentsline {subsubsection}{\numberline {2.4.2}Abfragen}{9}{subsubsection.2.4.2}%
 \contentsline {subsubsection}{\numberline {2.4.3}Alerting}{9}{subsubsection.2.4.3}%
 \contentsline {section}{\numberline {3}Stand der Technik}{10}{section.3}%
-\contentsline {subsection}{\numberline {3.1}Metriken}{10}{subsection.3.1}%
-\contentsline {subsubsection}{\numberline {3.1.1}'USE'-Methode}{10}{subsubsection.3.1.1}%
-\contentsline {subsection}{\numberline {3.2}Aktionen}{10}{subsection.3.2}%
-\contentsline {subsubsection}{\numberline {3.2.1}Anomaly Detection}{10}{subsubsection.3.2.1}%
-\contentsline {subsubsection}{\numberline {3.2.2}Cluster-Skalierung}{11}{subsubsection.3.2.2}%
-\contentsline {section}{\numberline {4}Datenaggregation}{12}{section.4}%
-\contentsline {subsection}{\numberline {4.1}Toolauswahl}{13}{subsection.4.1}%
-\contentsline {subsection}{\numberline {4.2}Datenquellen}{14}{subsection.4.2}%
-\contentsline {subsubsection}{\numberline {4.2.1}Metriken}{14}{subsubsection.4.2.1}%
-\contentsline {subsubsection}{\numberline {4.2.2}Visualisierung}{16}{subsubsection.4.2.2}%
-\contentsline {section}{\numberline {5}Auswerten der Metriken}{16}{section.5}%
-\contentsline {subsection}{\numberline {5.1}Klassifizierung}{16}{subsection.5.1}%
-\contentsline {subsection}{\numberline {5.2}Logische Auswertung}{16}{subsection.5.2}%
-\contentsline {subsection}{\numberline {5.3}Graphische Aufbereitung}{16}{subsection.5.3}%
-\contentsline {section}{\numberline {6}Automatisierte Aktionen}{16}{section.6}%
-\contentsline {subsection}{\numberline {6.1}Wahl der Sprache}{16}{subsection.6.1}%
-\contentsline {subsection}{\numberline {6.2}Aktionen}{16}{subsection.6.2}%
-\contentsline {subsubsection}{\numberline {6.2.1}Skalieren}{16}{subsubsection.6.2.1}%
-\contentsline {subsubsection}{\numberline {6.2.2}Anomalie-Detection}{16}{subsubsection.6.2.2}%
-\contentsline {subsection}{\numberline {6.3}Komponenten und Architektur}{16}{subsection.6.3}%
-\contentsline {subsubsection}{\numberline {6.3.1}Prometheus}{16}{subsubsection.6.3.1}%
-\contentsline {subsubsection}{\numberline {6.3.2}Alertmanager}{16}{subsubsection.6.3.2}%
-\contentsline {subsubsection}{\numberline {6.3.3}Alert-Action-Manager}{16}{subsubsection.6.3.3}%
-\contentsline {subsection}{\numberline {6.4}Regeln}{16}{subsection.6.4}%
-\contentsline {subsubsection}{\numberline {6.4.1}Metriken}{16}{subsubsection.6.4.1}%
-\contentsline {subsubsection}{\numberline {6.4.2}Grenzwerte}{16}{subsubsection.6.4.2}%
-\contentsline {section}{\numberline {7}Evaluation}{16}{section.7}%
-\contentsline {subsection}{\numberline {7.1}Messaufbau}{16}{subsection.7.1}%
-\contentsline {subsection}{\numberline {7.2}Regeln}{16}{subsection.7.2}%
-\contentsline {subsection}{\numberline {7.3}Grenzwerte}{16}{subsection.7.3}%
-\contentsline {subsection}{\numberline {7.4}Komponenten und Architektur}{16}{subsection.7.4}%
-\contentsline {section}{\numberline {8}Diskussion}{16}{section.8}%
-\contentsline {section}{\numberline {9}Fazit und Ausblick}{16}{section.9}%
+\contentsline {subsection}{\numberline {3.1}Anomaly Detection}{10}{subsection.3.1}%
+\contentsline {subsection}{\numberline {3.2}Cluster-Skalierung}{11}{subsection.3.2}%
+\contentsline {section}{\numberline {4}Datenaggregation}{14}{section.4}%
+\contentsline {subsection}{\numberline {4.1}Toolauswahl}{14}{subsection.4.1}%
+\contentsline {subsection}{\numberline {4.2}Grafana}{14}{subsection.4.2}%
+\contentsline {subsection}{\numberline {4.3}Datenquellen}{15}{subsection.4.3}%
+\contentsline {subsubsection}{\numberline {4.3.1}'USE'-Methode}{15}{subsubsection.4.3.1}%
+\contentsline {subsubsection}{\numberline {4.3.2}Metriken}{15}{subsubsection.4.3.2}%
+\contentsline {section}{\numberline {5}Auswerten der Metriken}{17}{section.5}%
+\contentsline {subsection}{\numberline {5.1}Klassifizierung}{17}{subsection.5.1}%
+\contentsline {subsection}{\numberline {5.2}Logische Auswertung}{17}{subsection.5.2}%
+\contentsline {subsection}{\numberline {5.3}Graphische Aufbereitung}{17}{subsection.5.3}%
+\contentsline {section}{\numberline {6}Automatisierte Aktionen}{17}{section.6}%
+\contentsline {subsection}{\numberline {6.1}Wahl der Sprache}{17}{subsection.6.1}%
+\contentsline {subsection}{\numberline {6.2}Aktionen}{17}{subsection.6.2}%
+\contentsline {subsubsection}{\numberline {6.2.1}Skalieren}{17}{subsubsection.6.2.1}%
+\contentsline {subsubsection}{\numberline {6.2.2}Anomalie-Detection}{17}{subsubsection.6.2.2}%
+\contentsline {subsection}{\numberline {6.3}Komponenten und Architektur}{17}{subsection.6.3}%
+\contentsline {subsubsection}{\numberline {6.3.1}Prometheus}{17}{subsubsection.6.3.1}%
+\contentsline {subsubsection}{\numberline {6.3.2}Alertmanager}{17}{subsubsection.6.3.2}%
+\contentsline {subsubsection}{\numberline {6.3.3}Alert-Action-Manager}{17}{subsubsection.6.3.3}%
+\contentsline {subsection}{\numberline {6.4}Regeln}{17}{subsection.6.4}%
+\contentsline {subsubsection}{\numberline {6.4.1}Metriken}{17}{subsubsection.6.4.1}%
+\contentsline {subsubsection}{\numberline {6.4.2}Grenzwerte}{17}{subsubsection.6.4.2}%
+\contentsline {section}{\numberline {7}Evaluation}{17}{section.7}%
+\contentsline {subsection}{\numberline {7.1}Messaufbau}{17}{subsection.7.1}%
+\contentsline {subsection}{\numberline {7.2}Regeln}{17}{subsection.7.2}%
+\contentsline {subsection}{\numberline {7.3}Grenzwerte}{17}{subsection.7.3}%
+\contentsline {subsection}{\numberline {7.4}Komponenten und Architektur}{17}{subsection.7.4}%
+\contentsline {section}{\numberline {8}Diskussion}{17}{section.8}%
+\contentsline {section}{\numberline {9}Fazit und Ausblick}{17}{section.9}%
