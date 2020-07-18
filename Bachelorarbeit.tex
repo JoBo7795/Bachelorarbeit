@@ -253,16 +253,6 @@ Die Grafik stellt die Safe-Zone als grünen Kasten, die Over- bzw. Under-Utiliza
 
 Die Skalierung in diesem Projekt orientiert sich an dem Verfahren, welches im Paper 'ACCRS: autonomic based cloud computing resource scaling' eingesetzt wird. Die Idee der Zustände Safe-Zone, Under-Utilization sowie Over-Utilization und deren Erkennung mittels statischer Regeln werden adaptiert und auf das Kubernetes-Konzept der Deployment-Skalierung übertragen, die Thresholds werden allerdings abgewandelt. 
 
-%Rule based Cluster Skalierung https://academic.oup.com/comjnl/article/%62/2/174/4993728#130553622 --> erster evtl. brauchbarer Ansatz
-
-%Unser Ansatz ist deutlich Ressourcenschonender -> 
-
-%Warum unser Ansatz ohne ML? Leichtgewichtiger, einfach erweiterbar,für Unternehmen die keine %Expertise in Machine Learning besitzen und mein Ansatz ist in Zukunft auf ML erweiterbar.
-%Argument für unsere Version des horizontalen Scalings: Kubernetes Scaling(KBA) nur mit %Cluster-internen Metriken möglich, Kong wäre bspw. nicht möglich. Weiterer Grund, Thresholds %können so angesetzt werden, dass durch frühes skalieren der Deployments die Skalierungszeit %überbrückt werden kann.
-
-
-
-%Neue Idee => Ziel der Beschreibung nicht 1 zu 1 Skalierung und ADS nachweisen, sondern %generell Machbarkeit und Nützlichkeit von Aktionen auf das Cluster, sprich Aktionen auf das %Cluster am Beispiel von Skalierung und ADS
 
 \pagebreak
 \section{Datenaggregation}
@@ -336,8 +326,23 @@ Sofern keine Information zum Limit zur Verfügung stehen, können die verworfene
 \end{description}
 
 \section{Auswerten der Metriken}
+
+Das Auswerten der Metriken erfolgt für das Monitoring durch das Umsetzen der USE-Methode, beschrieben in Kapitel vier, statt.
+
 \subsection{Klassifizierung}
+
+Die Metriken werden in Node-Level sowie Pod- und Containerlevel Metriken klassifiziert.\\
+Nodelevelmetriken repräsentieren den Zustand eines ganzen Nodes, das bedeutet, dass die Metriken die Summe aller Pods, Container, Services, etc. des Nodes darstellen.\\
+Podlevelmetriken hingegen repräsentieren den Status eines einzelnen Pods sowie des Containers bzw. den Containern die sich in diesem Pod befinden.\\
+
 \subsection{Logische Auswertung}
+
+Die logische Auswertung der Metriken findet an zwei Stellen in diesem Projekt Anwendung. Einmal zum Erstellen von Alerting-Regeln auf dem Prometheus-Server und einmal zur grafischen Darstellung der Metriken in der Grafana-Oberfläche. In beiden Fällen wird zur Auswertung die PromQL-Sprache verwendet.
+Zur logischen Auswertung werden die von Prometheus aggregierten Daten verwendet. Für das Monitoring werden die Schritte der USE-Methode Utilization, Saturation und Error-Rate jeweils für CPU, RAM sowie Netzwerk umgesetzt(siehe Kapitel vier,Metriken). Diese Metriken werden jeweils über einen Zeitraum von fünf Minuten beobachtet und ausgewertet und deren Mittelwert gebildet. Dies hat zur Folge, dass Ausreißer in der Last nicht schwer ins Gewicht fallen und so starke Schwankungen verhindert werden, was zur Verbesserung der Beobachtbarkeit beiträgt.\\
+Die Auswertung der Daten zum automatische Alerting greift nicht direkt auf eine Methode wie USE zurück, orientiert sich aber an ihr. Hierfür werden die Metriken der Methode zu CPU, RAM und Netzwerk kombiniert und an Grenzwerte geknüpft um so gewünschte Grenzen abzufragen und die Regeln erfüllbar bzw. nicht erfüllbar machen zu können. Ebenso wie beim Monitoring werden auch hier die Metriken über einen Zeitraum von fünf Minuten beobachtet.\\
+
+Nachdem die Metriken ausgewertet sind können sie nun graphisch aufbereitet werden. <Frage, sind solche Übergänge gut/hilfreich ?>
+
 \subsection{Graphische Aufbereitung}
 
 \section{Automatisierte Aktionen}
