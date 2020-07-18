@@ -345,6 +345,10 @@ Nachdem die Metriken ausgewertet sind können sie nun graphisch aufbereitet werd
 
 \subsection{Graphische Aufbereitung}
 
+Zur Visualisierung der Metriken stehen in der Grafana-Oberfläche verschiedene Möglichkeiten zur Verfügung. Da es das Ziel ist möglichst auf einen Blick, den Systemressourcenzustand des ganzen Clusters sehen zu können, wird ein Dashboard mit allen USE-Metriken erstellt. Die Metriken können als Graph, Zähler, Balkendiagramm oder Heat-Map dargestellt werden.\\
+Da schnell erkennbar sein soll, an welcher Stelle ungewöhnliche oder kritische Werte auftreten, werden die Zähler als Visualisierungsmethode für alle Metriken gewählt. Hierbei steht pro Metrik ein eigener Zähler zur Verfügung, womit sich der Zustand jeder Ressource einzeln einsehen lässt.\\
+Für die Counter werden grüne Bereiche für unkritische Auslastung und rote Bereiche für kritische Auslastung mit einen Grenzwert von 75\% eingerichtet, um kritische Zustände hervorzuheben.
+\pagebreak
 \section{Automatisierte Aktionen}
 \subsection{Wahl der Sprache}
 \subsection{Aktionen}
