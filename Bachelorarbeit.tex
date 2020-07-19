@@ -348,9 +348,62 @@ Nachdem die Metriken ausgewertet sind können sie nun graphisch aufbereitet werd
 Zur Visualisierung der Metriken stehen in der Grafana-Oberfläche verschiedene Möglichkeiten zur Verfügung. Da es das Ziel ist möglichst auf einen Blick, den Systemressourcenzustand des ganzen Clusters sehen zu können, wird ein Dashboard mit allen USE-Metriken erstellt. Die Metriken können als Graph, Zähler, Balkendiagramm oder Heat-Map dargestellt werden.\\
 Da schnell erkennbar sein soll, an welcher Stelle ungewöhnliche oder kritische Werte auftreten, werden die Zähler als Visualisierungsmethode für alle Metriken gewählt. Hierbei steht pro Metrik ein eigener Zähler zur Verfügung, womit sich der Zustand jeder Ressource einzeln einsehen lässt.\\
 Für die Counter werden grüne Bereiche für unkritische Auslastung und rote Bereiche für kritische Auslastung mit einen Grenzwert von 75\% eingerichtet, um kritische Zustände hervorzuheben.
+
 \pagebreak
 \section{Automatisierte Aktionen}
+
+Das Kernthema dieser Arbeit sind die automatisierten Aktionen auf das Cluster, welche mithilfe einer Architektur bestehend aus den Komponenten und Tools Prometheus und dessen Alertmanager (siehe Grundlagenkapitel) und der Eigenentwicklung, genannt 'Alert-Action-Manager', welcher Alerts empfängt und auf diese mit einer passenden automatisierten Aktion reagiert.
+
 \subsection{Wahl der Sprache}
+
+Die Wahl der Programmiersprache für die 'Alert-Action-Manager'- sowie die Evaluations-Komponente fiel auf die von Google entwickelte Open-Source Sprache Go(-lang).\\
+Google beschreibt die Sprache selbst 'Go is a compiled, concurrent, garbage-collected, statically typed language developed at Google. It is an open source project: Google imports the public repository rather than the other way around.'
+Go findet vor allem in der Web-Entwicklung eine zunehmend starke Verbreitung, im Ranking der Website tiobe.com beispielsweise, steht Go, Stand 19.07.2020, auf Platz 12 der meist verwendeten Programmiersprachen <Quelle für Verbreitung und Wachstum einfügen>, wodurch es eine große und hilfreiche Community, viele Erfahrungen in einschlägigen Foren sowie eine stete Weiterentwicklung bietet.\\
+Vorteile der Sprache die auch in diesem Projekt hilfreich waren und so zur Entscheidung dieser Sprachwahl beigetragen haben, sind folgende:
+
+\begin{description}
+\item[Kompilierung]:\\
+
+Go ist im Gegensatz zu Sprachen wie Java und JavaScript eine kompilierte Sprache. Dadurch bietet Go einen Performancevorteil, den kompilierte Sprachen gegenüber interpretierten typischerweise haben. Des Weiteren wirkt sich die Kompilation positiv auf die Fehlerrate aus, da 'compile time errors' von vornherein durch das Kompilieren detektiert werden.\\
+
+\item[Typsicherheit]:\\
+
+Die Sprache ist statisch typisiert, was bedeutet, dass Typen zur Kompilierzeit überprüft werden und so Fehler durch falsche Typen vermieden werden. 
+
+\item[Speichermanagement]:\\
+
+Go hat eine integrierte Garbage-Collection, was das Speichermanagement vereinfacht und Fehler in dessen Zusammenhang verhindert. Trotzdem bietet die Sprache die Möglichkeit mit Pointern zu arbeiten.
+
+
+\item[Zahlreiche Packages, einfache Integration]:\\
+
+Go bietet die Möglichkeit Libraries, in Go Packages genannt, mittels ihres Pfads in ein Projekt zu integrieren. Die Standard JSON-Bibliothek wird beispielweise mittels des Statements 
+
+\begin{lstlisting}
+import "encoding/json"
+\end{lstlisting}
+
+eingebunden. Mittels des Package-Names können dann Elemente aus dem Package verwendet werden.
+
+
+\begin{lstlisting}
+var dec = json.NewDecoder(reader)
+\end{lstlisting}
+
+Ein großer Vorteil ist, dass das selbe Prinzip ebenso bei externen Packages, beispielweise von Github, funktioniert.\\
+Mit dem mitgelieferten Package-Downloader 'go get' kann ein Package heruntergeladen und installiert werden und ist so direkt einsatzbereit. Dadurch stehen eine Vielzahl an Packages auf Github und anderen Plattformen bereit, die ohne großen Aufwand verwendet werden können.
+
+\item[C-Integration(CGO)]:\\
+
+Mit CGO bietet die Sprache eine Integration der kompletten Sprache C bereit. Dies erlaubt es  C-Libraries zu importieren und zu verwenden oder C-Funktionen innerhalb eines Go-Programms zu benutzen. Dies ist beispielsweise praktisch, wenn trotz der automatischen Speicherverwaltung Speicher manuell allokiert werden soll. So kann mittels CGO die C-Funktion 'malloc()' zum reservieren des Speichers verwendet werden.
+
+Go bietet zahlreiche weiter nützliche Features, für weitere Informationen dazu wird die offizielle Dokumentation und FAQ empfohlen:
+\begin{lstlisting}
+https://golang.org/doc/faq#What_is_the_purpose_of_the_project
+\end{lstlisting} 
+
+\end{description}
+
 \subsection{Aktionen}
 \subsubsection{Skalieren}
 \subsubsection{Anomalie-Detection}

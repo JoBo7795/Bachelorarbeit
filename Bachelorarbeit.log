@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.21 (MiKTeX 20.6.29) (preloaded format=pdflatex 2020.7.2)  18 JUL 2020 20:11
+This is pdfTeX, Version 3.14159265-2.6-1.40.21 (MiKTeX 20.6.29) (preloaded format=pdflatex 2020.7.2)  19 JUL 2020 03:09
 entering extended mode
 **./Bachelorarbeit.tex
 (Bachelorarbeit.tex
@@ -1306,24 +1306,65 @@ Underfull \hbox (badness 10000) in paragraph at lines 340--343
 
  []
 
-[17] [18] [19] (Bachelorarbeit.bbl) [20]
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 377.
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 377.
+[17] [18]
+Overfull \hbox (0.5539pt too wide) in paragraph at lines 359--363
+\T1/cmr/m/n/12 Die Wahl der Pro-gram-mier-spra-che für die 'Alert-Action-Manage
+r'- so-wie die Evaluations-
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 365--366
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 367--368
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 369--370
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 373--374
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 378--379
+
+ []
+
+[19]
+Underfull \hbox (badness 10000) in paragraph at lines 396--397
+
+ []
+
+
+Overfull \hbox (11.19247pt too wide) in paragraph at lines 402--403
+[][][][][][][][][][][][][][] 
+ []
+
+[20] [21] (Bachelorarbeit.bbl) [22]
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 430.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 430.
  (Bachelorarbeit.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 377.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 377.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 430.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 430.
 Package rerunfilecheck Info: File `Bachelorarbeit.out' has not changed.
 (rerunfilecheck)             Checksum: D41D8CD98F00B204E9800998ECF8427E;0.
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 377.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 430.
  ) 
 Here is how much of TeX's memory you used:
- 23511 strings out of 480790
- 459801 string characters out of 2893987
- 844752 words of memory out of 3000000
+ 23519 strings out of 480790
+ 459896 string characters out of 2893987
+ 844751 words of memory out of 3000000
  39004 multiletter control sequences out of 15000+200000
  541385 words of font info for 44 fonts, out of 3000000 for 9000
  1141 hyphenation exceptions out of 8191
- 64i,15n,81p,10111b,985s stack positions out of 5000i,500n,10000p,200000b,50000s
+ 64i,15n,81p,10111b,1050s stack positions out of 5000i,500n,10000p,200000b,50000s
  <C:\Users\Johannes\AppData\Local\MiKTeX\2.9\fonts/pk/ljfour/jknappen/ec/dpi6
 00\ecti1200.pk> <C:\Users\Johannes\AppData\Local\MiKTeX\2.9\fonts/pk/ljfour/jkn
 appen/ec/dpi600\ecbx1200.pk> <C:\Users\Johannes\AppData\Local\MiKTeX\2.9\fonts/
@@ -1336,9 +1377,9 @@ ohannes\AppData\Local\MiKTeX\2.9\fonts/pk/ljfour/jknappen/ec/dpi600\ecsx1200.pk
 public/amsfonts/cm/cmmi12.pfb><C:/Users/Johannes/AppData/Local/Programs/MiKTeX 
 2.9/fonts/type1/public/amsfonts/cm/cmr12.pfb><C:/Users/Johannes/AppData/Local/P
 rograms/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmsy10.pfb>
-Output written on Bachelorarbeit.pdf (20 pages, 306065 bytes).
+Output written on Bachelorarbeit.pdf (22 pages, 312221 bytes).
 PDF statistics:
- 743 PDF objects out of 1000 (max. 8388607)
- 76 named destinations out of 1000 (max. 500000)
+ 761 PDF objects out of 1000 (max. 8388607)
+ 84 named destinations out of 1000 (max. 500000)
  485 words of extra memory for PDF output out of 10000 (max. 10000000)
 
