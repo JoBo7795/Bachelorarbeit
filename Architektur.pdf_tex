@@ -1,0 +1,81 @@
+%% Creator: Inkscape 1.0 (4035a4fb49, 2020-05-01), www.inkscape.org
+%% PDF/EPS/PS + LaTeX output extension by Johan Engelen, 2010
+%% Accompanies image file 'Architektur.pdf' (pdf, eps, ps)
+%%
+%% To include the image in your LaTeX document, write
+%%   \input{<filename>.pdf_tex}
+%%  instead of
+%%   \includegraphics{<filename>.pdf}
+%% To scale the image, write
+%%   \def\svgwidth{<desired width>}
+%%   \input{<filename>.pdf_tex}
+%%  instead of
+%%   \includegraphics[width=<desired width>]{<filename>.pdf}
+%%
+%% Images with a different path to the parent latex file can
+%% be accessed with the `import' package (which may need to be
+%% installed) using
+%%   \usepackage{import}
+%% in the preamble, and then including the image with
+%%   \import{<path to file>}{<filename>.pdf_tex}
+%% Alternatively, one can specify
+%%   \graphicspath{{<path to file>/}}
+%% 
+%% For more information, please see info/svg-inkscape on CTAN:
+%%   http://tug.ctan.org/tex-archive/info/svg-inkscape
+%%
+\begingroup%
+  \makeatletter%
+  \providecommand\color[2][]{%
+    \errmessage{(Inkscape) Color is used for the text in Inkscape, but the package 'color.sty' is not loaded}%
+    \renewcommand\color[2][]{}%
+  }%
+  \providecommand\transparent[1]{%
+    \errmessage{(Inkscape) Transparency is used (non-zero) for the text in Inkscape, but the package 'transparent.sty' is not loaded}%
+    \renewcommand\transparent[1]{}%
+  }%
+  \providecommand\rotatebox[2]{#2}%
+  \newcommand*\fsize{\dimexpr\f@size pt\relax}%
+  \newcommand*\lineheight[1]{\fontsize{\fsize}{#1\fsize}\selectfont}%
+  \ifx\svgwidth\undefined%
+    \setlength{\unitlength}{758.25bp}%
+    \ifx\svgscale\undefined%
+      \relax%
+    \else%
+      \setlength{\unitlength}{\unitlength * \real{\svgscale}}%
+    \fi%
+  \else%
+    \setlength{\unitlength}{\svgwidth}%
+  \fi%
+  \global\let\svgwidth\undefined%
+  \global\let\svgscale\undefined%
+  \makeatother%
+  \begin{picture}(1,0.59347181)%
+    \lineheight{1}%
+    \setlength\tabcolsep{0pt}%
+    \put(0,0){\includegraphics[width=\unitlength,page=1]{Architektur.pdf}}%
+    \put(0.07912957,0.12413452){\makebox(0,0)[t]{\lineheight{1.25}\smash{\begin{tabular}[t]{c}Kubernetes-Cluster\end{tabular}}}}%
+    \put(0,0){\includegraphics[width=\unitlength,page=2]{Architektur.pdf}}%
+    \put(0.35608309,0.12413452){\makebox(0,0)[t]{\lineheight{1.25}\smash{\begin{tabular}[t]{c}Prometheus-Server\end{tabular}}}}%
+    \put(0,0){\includegraphics[width=\unitlength,page=3]{Architektur.pdf}}%
+    \put(0.36102868,0.57912957){\makebox(0,0)[t]{\lineheight{1.25}\smash{\begin{tabular}[t]{c}Grafana\end{tabular}}}}%
+    \put(0,0){\includegraphics[width=\unitlength,page=4]{Architektur.pdf}}%
+    \put(0.58358061,0.13105836){\makebox(0,0)[t]{\lineheight{1.25}\smash{\begin{tabular}[t]{c}Prometheus-\end{tabular}}}}%
+    \put(0.58358061,0.11721068){\makebox(0,0)[t]{\lineheight{1.25}\smash{\begin{tabular}[t]{c}Alertmanager\end{tabular}}}}%
+    \put(0,0){\includegraphics[width=\unitlength,page=5]{Architektur.pdf}}%
+    \put(0.90009891,0.43076162){\makebox(0,0)[t]{\lineheight{1.25}\smash{\begin{tabular}[t]{c}Slack-Channel\end{tabular}}}}%
+    \put(0,0){\includegraphics[width=\unitlength,page=6]{Architektur.pdf}}%
+    \put(0.89515331,0.21315529){\makebox(0,0)[t]{\lineheight{1.25}\smash{\begin{tabular}[t]{c}Alert-Action-Manager\end{tabular}}}}%
+    \put(0,0){\includegraphics[width=\unitlength,page=7]{Architektur.pdf}}%
+    \put(0.21760633,0.28239367){\makebox(0,0)[t]{\lineheight{1.25}\smash{\begin{tabular}[t]{c}liest Metriken\end{tabular}}}}%
+    \put(0,0){\includegraphics[width=\unitlength,page=8]{Architektur.pdf}}%
+    \put(0.47477745,0.28931751){\makebox(0,0)[t]{\lineheight{1.25}\smash{\begin{tabular}[t]{c}versendet\end{tabular}}}}%
+    \put(0.47477745,0.27546983){\makebox(0,0)[t]{\lineheight{1.25}\smash{\begin{tabular}[t]{c}Alerts\end{tabular}}}}%
+    \put(0,0){\includegraphics[width=\unitlength,page=9]{Architektur.pdf}}%
+    \put(0.69238378,0.29228487){\makebox(0,0)[t]{\lineheight{1.25}\smash{\begin{tabular}[t]{c}verteilt Alerts an Ziele\end{tabular}}}}%
+    \put(0,0){\includegraphics[width=\unitlength,page=10]{Architektur.pdf}}%
+    \put(0.47477745,0.00544016){\makebox(0,0)[t]{\lineheight{1.25}\smash{\begin{tabular}[t]{c}führt Aktion auf Kubernetes-Cluster aus\end{tabular}}}}%
+    \put(0,0){\includegraphics[width=\unitlength,page=11]{Architektur.pdf}}%
+    \put(0.40553907,0.41097923){\makebox(0,0)[t]{\lineheight{1.25}\smash{\begin{tabular}[t]{c}liest Metriken\end{tabular}}}}%
+  \end{picture}%
+\endgroup%

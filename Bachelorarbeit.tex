@@ -198,20 +198,22 @@ In diesem Projekt werden PromQL-Abfragen vor allem für zwei verschiedene Zwecke
 Das Alerting in Prometheus funktioniert mittels festgelegten Regeln. Diese werden in der PromQL-Sprache auf dem Prometheus-Server definiert und gespeichert. Sobald eine Regel erfüllt ist sendet der Server einen Alert an den Alertmanager, der diesen dann weiter verarbeiten kann.\\
 Eine Alert-Regel besteht im Grunde aus zwei Teilen. Der erste Teil ist die PromQL-Bedingung, die erfüllt sein muss. Sobald diese erfüllt ist erhält der Alert den Status 'pending'. In diesem Status wird der Alert noch nicht versendet, sondern wartet auf das Erfüllen eines vorgegebenen Zeitwertes. Erst nach erfüllen des Wertes wird der Alert an den Manager versendet.\\
 
+Der Alertmanager hat mehrere Möglichkeiten mit Alerts umzugehen. Eine der Möglichkeiten ist das Weiterleiten an definierbare Ziele, beispielsweise an bestimmte E-Mail Adressen, Chat-Programme wie Slack oder auch an Webhooks bzw. HTTP-Endpunkte. Außerdem stellt der Alertmanager eingetroffene Alerts auf dem eigenen Web-UI dar. Hier kann eingesehen werden welchen Status ein Alert zum aktuellen Zeitpunkt hat, 'pending' oder 'active', außerdem können Alerts stillgelegt werden, welche dann nicht mehr durch den Manager weiterverarbeitet werden.\\
+
 \begin{figure}[htbp]
   \centering
   \scalebox{.8}{\input{PrometheusAlertUML.pdf_tex}}
   \caption{Alertmanager Aufbau (eigene Zeichnung)}
 \end{figure}
 
-Der Alertmanager hat mehrere Möglichkeiten mit dem Alert umzugehen. Eine der Möglichkeiten ist das Weiterleiten an definierbare Ziele, beispielsweise an bestimmte E-Mail Adressen, Chat-Programme wie Slack oder auch an Webhooks bzw. HTTP-Endpunkte.
+In Abbildung 2 ist der sequenzielle Ablauf eines Alamierungsvorgangs dargestellt. Nachdem Metriken vom Server von einer Metrikquelle gelesen wurden und eine Alertingregel erfüllen, wird der Zeitraum, in welcher die Regeln erfüllt ist gemessen, der Alert wird mit dem Status 'pending' an den Alertmanager gesendet. Besteht der Zustand des Alerts für die konfigurierte Offset-Zeit, wird der Alert in den Status 'active' versetzt und an alle im Alertmanager konfigurierten Ziele versendet.
 
 \pagebreak
 
 \section{Stand der Technik}
 
 \subsection{Anomaly Detection}
-In ihrem Paper 'Anomaly Detection and Diagnosis for Container-based Microservices with Performance Monitoring' beschreiben Qingfeng Du et. al eine Möglichkeit mithilfe der Performance und Hardware-Metriken von Container basierten Microservices und Machine Learning Techniken  Anomalien zu erkennen und so Service Level Agreement valuations(SLAV) zu reduzieren bzw. zu verhindern. Das Anomaly Detection System, folgend ADS abgekürzt, besteht aus drei verschiedenen Modulen. Diese Module sind das Monitoring-Modul, das dafür zuständig ist Performance Daten aus dem Zielsystem auszulesen, das Data-Processing Modul das die ausgelesenen Daten auf Anomalien zu prüfen sowie zuletzt das 'Fault-Injection' Modul, das Fehlerfälle im System erzeugt und so einen Datensatz erhält, der dafür genutzt wird das Machine-Learning Model anzulernen und zu validieren.\\
+In ihrem Paper 'Anomaly Detection and Diagnosis for Container-based Microservices with Performance Monitoring' beschreiben Qingfeng Du et al. eine Möglichkeit mithilfe der Performance und Hardware-Metriken von Container basierten Microservices und Machine Learning Techniken  Anomalien zu erkennen und so Service Level Agreement valuations(SLAV) zu reduzieren bzw. zu verhindern. Das Anomaly Detection System, folgend ADS abgekürzt, besteht aus drei verschiedenen Modulen. Diese Module sind das Monitoring-Modul, das dafür zuständig ist Performance Daten aus dem Zielsystem auszulesen, das Data-Processing Modul das die ausgelesenen Daten auf Anomalien zu prüfen sowie zuletzt das 'Fault-Injection' Modul, das Fehlerfälle im System erzeugt und so einen Datensatz erhält, der dafür genutzt wird das Machine-Learning Model anzulernen und zu validieren.\\
 Die verschiedenen beschriebenen Arten der Anomalien, die das System abdeckt sind 'CPU-Hog's, Memory Leaks oder der Package-Loss von Containern. Die beiden Hauptaufgaben des Systems sind daher, die Klassifizierung, ob in einem Microservice eine Anomalie vorliegt und falls dies der Fall ist zu lokalisieren, wo diese stattfindet.\\
 Dieses Paper bezieht sich ausschließlich auf die Detektion der Anomaly, nicht aber auf das Beheben dieser.
 
@@ -352,7 +354,7 @@ Für die Counter werden grüne Bereiche für unkritische Auslastung und rote Ber
 \pagebreak
 \section{Automatisierte Aktionen}
 
-Das Kernthema dieser Arbeit sind die automatisierten Aktionen auf das Cluster, welche mithilfe einer Architektur bestehend aus den Komponenten und Tools Prometheus und dessen Alertmanager (siehe Grundlagenkapitel) und der Eigenentwicklung, genannt 'Alert-Action-Manager', welcher Alerts empfängt und auf diese mit einer passenden automatisierten Aktion reagiert.
+Das Kernthema dieser Arbeit ist die Entwicklung einer Architektur, die das Ausführen automatisierter Aktionen auf ein Kubernetes-Cluster ermöglicht. Mithilfe der Komponenten und Tools, Prometheus und dessen Alert-Verwaltungstool 'Alertmanager' (siehe Grundlagenkapitel) sowie einer Eigenentwicklung, genannt 'Alert-Action-Manager', welcher Alerts empfängt und auf diese mit einer passenden automatisierten Aktion reagiert, wird dieses Vorhaben in diesem Kapitel umgesetzt. Mittels automatischer Skalierung und Anomalie-Detection wird die Funktion der Architektur und Komponenten nachgewiesen.
 
 \subsection{Wahl der Sprache}
 
@@ -406,11 +408,20 @@ https://golang.org/doc/faq#What_is_the_purpose_of_the_project
 
 \subsection{Aktionen}
 
-Die automatisierten Aktionen teilen sich in das Skalieren von Deployments und in das Erkennen anormaler Zustände in Pods, Containern und Deployments auf.
+Die beiden Aktionen Skalierung von Deployments und Anomalie-Detection basieren auf statischen Regeln, sie werden beide von dem, in diesem Projekt entwickelten 'Alert-Action-Manager' ausgeführt.
 
-\subsubsection{Skalieren}
+\subsubsection{Skalierung}
+Platzhalter
 \subsubsection{Anomalie-Detection}
+Platzhalter
 \subsection{Komponenten und Architektur}
+Platzhalter
+\begin{figure}[htbp]
+  \centering
+  \scalebox{.6}{\input{Architektur.pdf_tex}}
+  \caption{Aufbau der Architektur (eigene Zeichnung)}
+\end{figure}
+
 \subsubsection{Prometheus}
 \subsubsection{Alertmanager}
 \subsubsection{Alert-Action-Manager}
