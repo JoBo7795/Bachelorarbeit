@@ -482,9 +482,35 @@ Dieser Ansatz bedingt, dass Konfigurationen nicht mehr direkt in Prometheus selb
 
 
 \subsubsection{Alertmanager}
-Platzhalter
+
+Der Prometheus-Alertmanager, der in der Architektur als 'Verteiler' von Alerts dient, ermöglicht die grundsätzliche Kommunikation zwischen Prometheus und externen Tools. Die Möglichkeit mittels des Nachrichtensystems neben vorkonfigurierten Drittanbietertools wie Slack auch eigene sog. Webhooks zu adressieren, erlaubt die Möglichkeit einen eigenen HTTP-Endpunkt als Nachrichtenziel zu verwenden. Da sich für einen Alert mehrere Ziele festlegen lassen, kann so zu jeder automatischen Aktion auch eine Warnung an den für Alerts konfigurierten Slack-Channel gesendet werden. So kann in zukünftigen Alerts auch zwischen rein informativem Alert, der nur an Slack gesendet wird und einem Alert der eine Aktion zur Folge hat unterschieden werden und diese entsprechend konfiguriert.\\
+
+Der Alertmanager wird zusammen mit Prometheus über den 'Helm' Paket-Manager installiert und auch über dessen Helm-Charts konfiguriert.
+
 \subsubsection{Alert-Action-Manager}
-Platzhalter
+
+Der Alert-Action-Manager (hier abgekürzt: AAM) ist eine Entwicklung für diese Architektur. Dieser stellt den Part dar, der Aktionen aus empfangenen Alerts ableitet und diese dann auf das Kubernetes-Cluster ausführt.\\
+Er bietet die folgenden Funktionen:
+
+\begin{description}
+
+\item[HTTP-Endpunkte:]
+Für den AAM wird ein eigener Kubernetes-Service bereitgestellt, der als DNS-Service fungiert.
+Um Alerts zu empfangen wird ein HTTP-POST Endpunkt bereitgestellt. Der Prometheus-Alertmanager wird so konfiguriert, dass er Alerts an den Kubernetes-Service des AAM sendet. Die Requests werden im JSON-Format empfangen, welches auch das Standardformat ist, in dem die Alerts versendet werden.
+Weitere Endpunkte sind der 'health' Pfad, über den sich überprüfen lässt, ob der AAM erreichbar ist und der 'podstatus' Pfad, über den sich der Podstatus des AAM und allen Pods in dessen Namespace, in dem sich alle Komponenten der Architektur befinden, einsehen und der korrekte Zugriff des Service auf das 'kubectl' überprüfen lässt.
+\item[Alert-Analyse:]
+Alerts die über den HTTP-POST Endpunkt empfangen wurden, werden vom AAM analysiert und eingeordnet. Aus dem POST-Request wird zuerst das Label geparst, was die Einordnung des Alerts ermöglicht. Dieses wird mit den bekannten Labels verglichen, falls es nicht bekannt ist, wird der Alert verworfen, sofern es bekannt ist wird die Funktion des passenden Labels ausgeführt. Der erste Schritt einer Funktion ist das Analysieren des zugehörigen Deployments, also der Pod oder das Deployment auf welches eine Aktion ausgeführt werden soll. Hierzu wird der Name eines Pods verwendet oder vorher der Deployment-Name aus dem Namen des Pods geparst.
+Nach erfolgreicher Analyse wird die passende Aktion ausgeführt.
+\item[Ausführen von Aktionen:]
+Das Ausführen von Aktionen wird mittels 'kubectl' durchgeführt. Die erforderlichen Daten die zum Durchführen einer kubectl-Aktion gebraucht werden, wurden vor dem Ausführen durch die Analyse ermittelt und nun in die Aktion eingebaut. Eine Aktion wird passend zum Label gewählt und sieht zum schlussendlich folgendermaßen aus:
+\begin{lstlisting}
+kubectl <Aktion><Ziel>
+\end{lstlisting}
+\item[Zusatzfunktionen:]
+Es werden zum Ausführen einiger Aktionen zusätzliche Funktionen benötigt. Zum Skalieren der Replicas eines Deployments (beschrieben im folgenden Unterkapitel), ist die Anzahl der Replicas zum Zeitpunkt des Ausführens der Aktion erforderlich. Hierfür besitzt der AAM eine Funktion, welche die Replikaanzahl zu einem Deployment analysieren kann.
+
+\end{description}
+
 \subsection{Aktionen}
 
 Die beiden Aktionen, Skalierung von Deployments und Anomalie-Detection, basieren auf statischen Regeln, sie werden beide von dem in diesem Projekt entwickelten 'Alert-Action-Manager' ausgeführt.
