@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.21 (MiKTeX 20.6.29) (preloaded format=pdflatex 2020.7.2)  19 JUL 2020 19:01
+This is pdfTeX, Version 3.14159265-2.6-1.40.21 (MiKTeX 20.6.29) (preloaded format=pdflatex 2020.7.2)  20 JUL 2020 14:28
 entering extended mode
 **./Bachelorarbeit.tex
 (Bachelorarbeit.tex
@@ -1353,68 +1353,78 @@ Overfull \hbox (11.19247pt too wide) in paragraph at lines 404--405
 [][][][][][][][][][][][][][] 
  []
 
+[20]
+Underfull \hbox (badness 10000) in paragraph at lines 412--413
+
+ []
+
 (Architektur.pdf_tex
-<Architektur.pdf, id=291, page=1, 761.09344pt x 451.6875pt>
+<Architektur.pdf, id=301, page=1, 761.09344pt x 451.6875pt>
 File: Architektur.pdf Graphic file (type pdf)
 <use Architektur.pdf, page 1>
 Package pdftex.def Info: Architektur.pdf , page1 used on input line 56.
 (pdftex.def)             Requested size: 761.09343pt x 451.70016pt.
-<Architektur.pdf, id=292, page=2, 761.09344pt x 451.6875pt>
+<Architektur.pdf, id=302, page=2, 761.09344pt x 451.6875pt>
 File: Architektur.pdf Graphic file (type pdf)
 <use Architektur.pdf, page 2>
 Package pdftex.def Info: Architektur.pdf , page2 used on input line 58.
 (pdftex.def)             Requested size: 761.09343pt x 451.70016pt.
-<Architektur.pdf, id=293, page=3, 761.09344pt x 451.6875pt>
+<Architektur.pdf, id=303, page=3, 761.09344pt x 451.6875pt>
 File: Architektur.pdf Graphic file (type pdf)
 <use Architektur.pdf, page 3>
 Package pdftex.def Info: Architektur.pdf , page3 used on input line 60.
 (pdftex.def)             Requested size: 761.09343pt x 451.70016pt.
-<Architektur.pdf, id=294, page=4, 761.09344pt x 451.6875pt>
+<Architektur.pdf, id=304, page=4, 761.09344pt x 451.6875pt>
 File: Architektur.pdf Graphic file (type pdf)
 <use Architektur.pdf, page 4>
 Package pdftex.def Info: Architektur.pdf , page4 used on input line 62.
 (pdftex.def)             Requested size: 761.09343pt x 451.70016pt.
-<Architektur.pdf, id=295, page=5, 761.09344pt x 451.6875pt>
+<Architektur.pdf, id=305, page=5, 761.09344pt x 451.6875pt>
 File: Architektur.pdf Graphic file (type pdf)
 <use Architektur.pdf, page 5>
 Package pdftex.def Info: Architektur.pdf , page5 used on input line 65.
 (pdftex.def)             Requested size: 761.09343pt x 451.70016pt.
-<Architektur.pdf, id=296, page=6, 761.09344pt x 451.6875pt>
+<Architektur.pdf, id=306, page=6, 761.09344pt x 451.6875pt>
 File: Architektur.pdf Graphic file (type pdf)
 <use Architektur.pdf, page 6>
 Package pdftex.def Info: Architektur.pdf , page6 used on input line 67.
 (pdftex.def)             Requested size: 761.09343pt x 451.70016pt.
-<Architektur.pdf, id=297, page=7, 761.09344pt x 451.6875pt>
+<Architektur.pdf, id=307, page=7, 761.09344pt x 451.6875pt>
 File: Architektur.pdf Graphic file (type pdf)
 <use Architektur.pdf, page 7>
 Package pdftex.def Info: Architektur.pdf , page7 used on input line 69.
 (pdftex.def)             Requested size: 761.09343pt x 451.70016pt.
-<Architektur.pdf, id=298, page=8, 761.09344pt x 451.6875pt>
+<Architektur.pdf, id=308, page=8, 761.09344pt x 451.6875pt>
 File: Architektur.pdf Graphic file (type pdf)
 <use Architektur.pdf, page 8>
 Package pdftex.def Info: Architektur.pdf , page8 used on input line 71.
 (pdftex.def)             Requested size: 761.09343pt x 451.70016pt.
-<Architektur.pdf, id=299, page=9, 761.09344pt x 451.6875pt>
+<Architektur.pdf, id=309, page=9, 761.09344pt x 451.6875pt>
 File: Architektur.pdf Graphic file (type pdf)
 <use Architektur.pdf, page 9>
 Package pdftex.def Info: Architektur.pdf , page9 used on input line 74.
 (pdftex.def)             Requested size: 761.09343pt x 451.70016pt.
-<Architektur.pdf, id=300, page=10, 761.09344pt x 451.6875pt>
+<Architektur.pdf, id=310, page=10, 761.09344pt x 451.6875pt>
 File: Architektur.pdf Graphic file (type pdf)
 <use Architektur.pdf, page 10>
 Package pdftex.def Info: Architektur.pdf , page10 used on input line 76.
 (pdftex.def)             Requested size: 761.09343pt x 451.70016pt.
-<Architektur.pdf, id=301, page=11, 761.09344pt x 451.6875pt>
+<Architektur.pdf, id=311, page=11, 761.09344pt x 451.6875pt>
 File: Architektur.pdf Graphic file (type pdf)
 <use Architektur.pdf, page 11>
 Package pdftex.def Info: Architektur.pdf , page11 used on input line 78.
 (pdftex.def)             Requested size: 761.09343pt x 451.70016pt.
 )
-Overfull \hbox (8.52974pt too wide) in paragraph at lines 421--422
+Overfull \hbox (8.52974pt too wide) in paragraph at lines 416--417
  [][] 
  []
 
-[20] [21 <./Architektur.pdf> <./Architektur.pdf
+
+Underfull \hbox (badness 10000) in paragraph at lines 420--422
+
+ []
+
+[21 <./Architektur.pdf> <./Architektur.pdf
 
 pdfTeX warning: pdflatex (file ./Architektur.pdf): PDF inclusion: multiple pdfs
  with page group included in a single page
@@ -1454,24 +1464,34 @@ pdfTeX warning: pdflatex (file ./Architektur.pdf): PDF inclusion: multiple pdfs
 
 pdfTeX warning: pdflatex (file ./Architektur.pdf): PDF inclusion: multiple pdfs
  with page group included in a single page
->] [22] (Bachelorarbeit.bbl) [23]
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 444.
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 444.
+>]
+Overfull \hbox (13.77986pt too wide) in paragraph at lines 430--431
+[]\T1/cmr/m/n/12 Der Prometheus-Alertmanager emp-fängt Alerts di-rekt durch
+ []
+
+[22]
+Underfull \hbox (badness 10000) in paragraph at lines 476--477
+
+ []
+
+[23] [24] (Bachelorarbeit.bbl) [25]
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 514.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 514.
  (Bachelorarbeit.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 444.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 444.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 514.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 514.
 Package rerunfilecheck Info: File `Bachelorarbeit.out' has not changed.
 (rerunfilecheck)             Checksum: D41D8CD98F00B204E9800998ECF8427E;0.
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 444.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 514.
  ) 
 Here is how much of TeX's memory you used:
- 23561 strings out of 480790
- 461145 string characters out of 2893987
+ 23563 strings out of 480790
+ 461164 string characters out of 2893987
  845752 words of memory out of 3000000
  39041 multiletter control sequences out of 15000+200000
  541385 words of font info for 44 fonts, out of 3000000 for 9000
  1141 hyphenation exceptions out of 8191
- 64i,16n,81p,10111b,1050s stack positions out of 5000i,500n,10000p,200000b,50000s
+ 64i,15n,81p,10111b,1050s stack positions out of 5000i,500n,10000p,200000b,50000s
  <C:\Users\Johannes\AppData\Local\MiKTeX\2.9\fonts/pk/ljfour/jknappen/ec/dpi6
 00\ecti1200.pk> <C:\Users\Johannes\AppData\Local\MiKTeX\2.9\fonts/pk/ljfour/jkn
 appen/ec/dpi600\ecbx1200.pk> <C:\Users\Johannes\AppData\Local\MiKTeX\2.9\fonts/
@@ -1484,9 +1504,9 @@ ohannes\AppData\Local\MiKTeX\2.9\fonts/pk/ljfour/jknappen/ec/dpi600\ecsx1200.pk
 public/amsfonts/cm/cmmi12.pfb><C:/Users/Johannes/AppData/Local/Programs/MiKTeX 
 2.9/fonts/type1/public/amsfonts/cm/cmr12.pfb><C:/Users/Johannes/AppData/Local/P
 rograms/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmsy10.pfb>
-Output written on Bachelorarbeit.pdf (23 pages, 368112 bytes).
+Output written on Bachelorarbeit.pdf (25 pages, 375349 bytes).
 PDF statistics:
- 791 PDF objects out of 1000 (max. 8388607)
- 86 named destinations out of 1000 (max. 500000)
+ 801 PDF objects out of 1000 (max. 8388607)
+ 88 named destinations out of 1000 (max. 500000)
  540 words of extra memory for PDF output out of 10000 (max. 10000000)
 

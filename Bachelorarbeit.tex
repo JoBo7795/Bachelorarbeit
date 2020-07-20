@@ -406,26 +406,96 @@ https://golang.org/doc/faq#What_is_the_purpose_of_the_project
 
 \end{description}
 
-\subsection{Aktionen}
-
-Die beiden Aktionen Skalierung von Deployments und Anomalie-Detection basieren auf statischen Regeln, sie werden beide von dem, in diesem Projekt entwickelten 'Alert-Action-Manager' ausgeführt.
-
-\subsubsection{Skalierung}
-Platzhalter
-\subsubsection{Anomalie-Detection}
-Platzhalter
+\pagebreak
 \subsection{Komponenten und Architektur}
-Platzhalter
+
+Das System, welches die automatisierten Aktionen möglich macht, besteht aus mehreren, voneinander abhängigen Komponenten. Das Konzept nutzt das Alerting-Feature von Prometheus und setzt mithilfe dessen automatisierte Aktionen um.\\
+
 \begin{figure}[htbp]
   \centering
   \scalebox{.6}{\input{Architektur.pdf_tex}}
   \caption{Aufbau der Architektur (eigene Zeichnung)}
 \end{figure}
 
+Die Architektur, welche in diesem Projekt entwickelt wurde, besteht aus sechs Komponenten, vier davon, Grafana, Prometheus Server und Alertmanager sowie der Alert-Action-Manager, wurden im Laufe des Projekts erstellt sowie konfiguriert bzw. entwickelt, zwei davon, das Kubernetes-Cluster, auf dem dieses Projekt basiert, sowie Slack, bestanden schon vorher und wurden in das Projekt miteinbezogen. Die vier für Komponenten Grafana, Prometheus Server und Alertmanager sowie der Alert-Action-Manager laufen selbst als Deployment im Kubernetes-Cluster.\\
+Die Architektur nach Bestandteilen erklärt:\\
+\begin{description}
+\item[Kubernetes-Cluster:]
+Das Kubernetes-Cluster, auf dem Webservices sowie andere Backendsoftware läuft, ist das Ziel des Monitorings sowie der automatisierten Aktionen. Kubernetes stellt Metriken von sich aus bereit, welche ausgelesen und verarbeitet werden. Die Architektur läuft losgelöst vom restlichen Cluster und dessen Software, sodass durch dieses Projekt keine zusätzliche Anpassung oder Konfiguration von bestehender Software benötigt wird.
+\item[Prometheus-Server:]
+Der Prometheus-Server bildet das Herzstück der Architektur. Er aggregiert die durch das Kubernetes-Cluster bereitgestellten Metriken und wendet Regeln, wie das Alerting, auf diese an. Außerdem macht er diese Metriken, entweder durch das eigene Web-UI oder durch weitere Tools, mittels der Abfragesprache PromQL wieder abrufbar.
+\item[Grafana:]
+Grafana ist das in dieser Architektur eingesetzte Visualisierungstool, mit dem Administrator und andere Benutzer den Zustand des Clusters graphisch aufbereitet einsehen können. Das Tool bietet gegenüber der nativen Prometheus Web-UI deutlich bessere Darstellungsmöglichkeiten (siehe hierzu Kapitel Auswertung der Metriken/Graphische Aufbereitung). Grafana ruft Metriken direkt vom Prometheus-Server ab und unterstützt auch dessen Query-Language PromQL.
+\item[Prometheus-Alertmanager:]
+Der Prometheus-Alertmanager empfängt Alerts direkt durch den Prometheus-Server. Seine Aufgabe ist es empfangene Alerts an seine Ziele 'Alert-Action-Manager' sowie 'Slack' und darauf eingerichteten Alert-Channel weiterzuverteilen.
+\item[Alert-Action-Manager:]
+Der 'Alert-Action-Manager' empfängt Nachrichten durch den Prometheus-Alertmanager. Dieses Tool ist eine komplette Eigenentwicklung und dafür zuständig, dass auf empfange Alerts mit entsprechenden Aktionen auf das Kubernetes-Cluster reagiert wird.
+\item[Slack:]
+Slack ist die Benachrichtigungsplattform für Administratoren und interessierte Benutzer. Hier wurde ein eigener Channel für den Zweck der Benachrichtigung beim Auftreten von Alerts eingerichtet.
+
+\end{description}
+
+Der Ablauf des Konzepts ist eine Kette von Aktionen, bei der ein Schritt den nächsten auslöst. Die Kette der Schritte, welche zum Auslösen und Ausführen einer Aktion durchlaufen wird, ist hier beschrieben:
+
+\begin{description}
+
+\item[Schritt 1:]
+
+Im ersten Schritt aggregiert der Prometheus-Server aus dem Kubernetes-Cluster Systemressourcen bezogene Metriken von Pods und Containern. 
+
+\item[Schritt 2:]
+
+In Schritt zwei prüft der Prometheus-Server anhand konfigurierter Alerting-Regeln, ob ein Alert ausgelöst werden soll. Falls dies der Fall ist, versendet der Server einen Alert an den Prometheus-Alertmanager, zuerst mit dem Status 'pending', nach Ablauf der Offset-Zeit mit dem Status 'active' (siehe Kapitel Grundlagen/Alerting).
+
+\item[Schritt 3:]
+
+Der Alertmanager versendet, sobald ein Alert den Status 'active' erhält, an alle konfigurierten Ziele eine Alert-Nachricht. Diese sind ein Channel des Chatprogramms 'Slack', der alleine für Alert-Nachrichten zur Verfügung steht und den Zweck besitzt Administratoren und andere Interessierte zu informieren, sowie das in diesem Projekt entwickelte Tool 'Alert-Action-Manager', welches den Zweck besitzt anhand eintreffender Alert-Nachrichten Aktionen auf das Kubernetes-Cluster auszuführen.
+
+\item[Schritt 4:]
+
+Beim Eintreffen von Alerts prüft der 'Alert-Action-Manager' die eingehenden Nachrichten auf: 
+
+\begin{description}
+
+\item[1.] auf ihr Label, um den Grund sowie die daraus resultierende Aktion eines Alerts schließen zu können. Zum Beispiel wird auf das Label 'PodLowResource' mit der Upscaling-Aktion reagiert.
+\item[2.] auf ihr Deployment, von welcher Ressource der Alert kommt und wohin die resultierende Aktion ausgeführt werden soll. Je nach Aktion kann der Alert-Action-Manager diese entweder auf das ganze Deployment oder auf einzelne Pods ausführen.
+\item[3.] auf benötigte weitere Daten. Im Falle einer Aktion können weitere Daten benötigt werden, wie beispielsweise im Falle eines Scalings, der 'Replica-Count', also die Anzahl der bereits vorhandenen Pods eines Deployments im Cluster. Solche Informationen können einerseits entweder in einen Alert geschrieben, oder in einer Aktion durch den Manager ermittelt werden.
+
+\end{description}
+
+\item[Schritt 5:]
+
+Nachdem eine Nachricht durch den Alert-Action-Manager geprüft wurde, wird eine entsprechende Aktion auf das Kubernetes-Cluster ausgeführt. Dies geschieht mittels des Kubernetes Kontrolltools 'kubectl'.\\
+Nach dem Ausführen von Schritt fünf ist der Vorgang abgeschlossen.
+\end{description}
+
+Auf wichtige Komponenten wird hier nochmal gesondert eingegangen.
+
 \subsubsection{Prometheus}
+
+Wie bereits beschrieben, bildet Prometheus die zentrale Komponente in diesem Projekt und dessen Architektur. Auf dem Prometheus-Server werden alle Regeln definiert und konfiguriert, die für das Alerting benötigt werden und damit Aktionen auslösen können. Außerdem können auf dem Server die Zeiten konfiguriert werden, in deren Abständen der Server Metriken scraped, Regeln prüft und Alerts sendet. Diese Zeiten bestimmen maßgeblich in welcher Geschwindigkeit die Aktionen ausgeführt werden.\\
+
+Zusätzlich zum zentralen Server besitzt Prometheus auch Komponenten, die direkt im Kubernetes-Cluster auf den Nodes laufen und dafür sorgen, dass von Kubernetes mittels kubelet und cAdvisor (siehe Kapitel Grundlagen/Kubernetes) veröffentlichte Metriken für den Server bereitgestellt werden. Diese Aufgabe übernehmen die Exporter, welche im Cluster installiert und konfiguriert sind.
+
+Der Prometheus-Server, wie auch der Alertmanager, stellen ein eigenes Deployment dar und laufen als Pod im Kubernetes-Cluster. Sie werden in der für Kubernetes optimierten Variante über den Kubernetes Paket-Manager 'Helm' installiert und konfiguriert. Dies hat den Vorteil, dass für die grundsätzliche Konfiguration im Kubernetes-Cluster deutlich weniger Ressourcen und Zeit in Anspruch genommen werden müssen und die Vollständigkeit und Fehlerwahrscheinlichkeit verbessert werden, da benötigte Exporter direkt mit installiert und automatisch konfiguriert werden.\\
+Dieser Ansatz bedingt, dass Konfigurationen nicht mehr direkt in Prometheus selbst, sondern über den Paket-Manager konfiguriert werden, was eine gewisse Kenntnis der Funktion  sogenannter 'Helm-Charts' voraussetzt.
+
+
 \subsubsection{Alertmanager}
+Platzhalter
 \subsubsection{Alert-Action-Manager}
-\subsection{Regeln}
+Platzhalter
+\subsection{Aktionen}
+
+Die beiden Aktionen, Skalierung von Deployments und Anomalie-Detection, basieren auf statischen Regeln, sie werden beide von dem in diesem Projekt entwickelten 'Alert-Action-Manager' ausgeführt.
+
+\subsubsection{Skalierung}
+Platzhalter
+\subsubsection{Anomalie-Detection}
+Platzhalter
+
+
+\subsubsection{Regeln}
 \subsubsection{Metriken}
 \subsubsection{Grenzwerte}
 
