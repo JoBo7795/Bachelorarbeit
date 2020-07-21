@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.21 (MiKTeX 20.6.29) (preloaded format=pdflatex 2020.7.2)  21 JUL 2020 19:26
+This is pdfTeX, Version 3.14159265-2.6-1.40.21 (MiKTeX 20.6.29) (preloaded format=pdflatex 2020.7.2)  21 JUL 2020 20:05
 entering extended mode
 **./Bachelorarbeit.tex
 (Bachelorarbeit.tex
@@ -1498,23 +1498,28 @@ Overfull \hbox (27.86064pt too wide) in paragraph at lines 531--532
  []
 
 [25]
-Overfull \hbox (115.73624pt too wide) in paragraph at lines 551--552
-[][][][][][][][][][][][][][][][][][][][][] 
+Overfull \hbox (17.05948pt too wide) in paragraph at lines 551--552
+[][][][][][][][][][][][][][][][][] 
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 564--565
+
  []
 
 [26] [27] (Bachelorarbeit.bbl) [28]
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 574.
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 574.
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 588.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 588.
  (Bachelorarbeit.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 574.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 574.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 588.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 588.
 Package rerunfilecheck Info: File `Bachelorarbeit.out' has not changed.
 (rerunfilecheck)             Checksum: D41D8CD98F00B204E9800998ECF8427E;0.
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 574.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 588.
  ) 
 Here is how much of TeX's memory you used:
- 23573 strings out of 480790
- 461276 string characters out of 2893987
+ 23575 strings out of 480790
+ 461303 string characters out of 2893987
  845752 words of memory out of 3000000
  39043 multiletter control sequences out of 15000+200000
  541385 words of font info for 44 fonts, out of 3000000 for 9000
@@ -1532,9 +1537,9 @@ ohannes\AppData\Local\MiKTeX\2.9\fonts/pk/ljfour/jknappen/ec/dpi600\ecsx1200.pk
 public/amsfonts/cm/cmmi12.pfb><C:/Users/Johannes/AppData/Local/Programs/MiKTeX 
 2.9/fonts/type1/public/amsfonts/cm/cmr12.pfb><C:/Users/Johannes/AppData/Local/P
 rograms/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmsy10.pfb>
-Output written on Bachelorarbeit.pdf (28 pages, 385255 bytes).
+Output written on Bachelorarbeit.pdf (28 pages, 386968 bytes).
 PDF statistics:
- 828 PDF objects out of 1000 (max. 8388607)
- 96 named destinations out of 1000 (max. 500000)
+ 832 PDF objects out of 1000 (max. 8388607)
+ 98 named destinations out of 1000 (max. 500000)
  548 words of extra memory for PDF output out of 10000 (max. 10000000)
 

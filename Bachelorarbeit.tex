@@ -537,27 +537,49 @@ eine niedrige Ressourcenlast in einem Deployment detektiert wird. Die geprüften
 
 \end{description}
 
-Nach Auslösen des Alerts und Aktivieren der Aktion im' Alert-Action-Manager' setzt dieser die Aktion folgendermaßen um:
+Nach Auslösen einer der Alerts und Aktivieren der Aktion im' Alert-Action-Manager' setzt dieser die Aktion folgendermaßen um:
 
 Für diese Aktion wird einerseits der Name des Deployments benötigt sowie die Anzahl der Pod-Replikation die zum Ausführungszeitpunkt der Regel existieren.\\
 Der Name betroffener Pods wird mit einem Alert mitgeschickt, durch entfernen des Pod-Tags kann daraus der Name des Deployments ermittelt werden.\\
 Die Anzahl der Replikationen wird durch eine dafür bereitgestellte Methode aus dem Cluster ermittelt und zurückgeliefert.
-Sobald die benötigten Informationen vorhanden sind, wird aus Ihnen die passende kubectl-Aktion erstellt.
-Dieser sieht für diese Regel schlussendlich folgendermaßen aus:
+Sobald die benötigten Informationen vorhanden sind, wird aus Ihnen die passende kubectl-Aktion erstellt.\\
+Dieser sieht für diese Regel schlussendlich folgendermaßen aus:\\
 Die Variable 'deployment\_name' enthält den analysierten Deploymentname, die Variable actualCount enthält die Anzahl der aktuellen Deployments.
 Für das Hochskalieren wird wie im Beispiel gezeigt die Replicaanzahl +1 verwendet zum Herunterskalieren die Replicaanzahl -1.
 
 \begin{lstlisting}
-kubectl scale deployment deployment_name --replicas= strconv.Itoa(actualCount+1)
+kubectl scale deployment deployment_name --replicas= actualCount+1
 \end{lstlisting}
 
 \subsubsection{Anomalie-Detection}
-Platzhalter
 
+Die Anomalie-Detection Aktion funktioniert, ähnlich wie die Skalierungsaktion, mit Hilfe von Thresholds. Diese wird dann ausgeführt, wenn hohe Ressourcenlast scheinbar unbegründet, das bedeutet ohne hohe Nutzerinteraktion von außen, auftritt.
+Diese Aktion wird durch eine Regel realisiert:
+
+\begin{description}
+\item[PodAnomalyBehaviour]
+Die Thresholds werden so gesetzt, dass entweder die RAM-Auslastung, die CPU-Auslastung oder beide, einen Wert von 75\% Last oder mehr aufweisen müssen, bei einer Netzwerkbandbreitenlast von unter einem Megabit. Dieser Zustand muss 10 Sekunden bestehen, um diese Regel auszulösen.
+\end{description}
+
+Nach Auslösen des 'PodAnomalyBehaviour' Alerts wird die zugehörige Aktion folgendermaßen ausgeführt:\\
+
+Für die Aktion wird der zugehörige Deploymentname des anormalen Pods benötigt, dieser wird aus dem im Alert mitgesendeten Podnamen analysiert. Sobald der Name des Deployments bekannt ist wird die zugehörige kubectl-Aktion ausgeführt. Diese nennt sich 'rollout restart' und sorgt dafür, dass ein Deployment unterbrechungsfrei neu gestartet wird. Dies bedeutet, dass zuerst ein neues Deployment gestartet wird und sobald dieses arbeitsbereit ist, wird das alte Deployment heruntergefahren. Die resultierende Aktion sieht folgendermaßen aus:\\
+Die Variable 'deployment\_name' enthält den analysierten Deploymentname.
+\begin{lstlisting}
+kubectl rollout restart deployment deployment\_name
+\end{lstlisting}
 
 \subsubsection{Regeln}
+
+
+
 \subsubsection{Metriken}
+
+
+
 \subsubsection{Grenzwerte}
+
+
 
 \section{Evaluation}
 \subsection{Messaufbau}
