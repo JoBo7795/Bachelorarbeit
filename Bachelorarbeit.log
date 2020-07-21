@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.21 (MiKTeX 20.6.29) (preloaded format=pdflatex 2020.7.2)  20 JUL 2020 16:43
+This is pdfTeX, Version 3.14159265-2.6-1.40.21 (MiKTeX 20.6.29) (preloaded format=pdflatex 2020.7.2)  21 JUL 2020 19:26
 entering extended mode
 **./Bachelorarbeit.tex
 (Bachelorarbeit.tex
@@ -999,37 +999,37 @@ Underfull \hbox (badness 10000) in paragraph at lines 74--75
  []
 
 (KubernetesBasic.pdf_tex
-<KubernetesBasic.pdf, id=119, page=1, 512.28891pt x 267.62485pt>
+<KubernetesBasic.pdf, id=121, page=1, 512.28891pt x 267.62485pt>
 File: KubernetesBasic.pdf Graphic file (type pdf)
 <use KubernetesBasic.pdf, page 1>
 Package pdftex.def Info: KubernetesBasic.pdf , page1 used on input line 56.
 (pdftex.def)             Requested size: 512.2889pt x 267.6405pt.
-<KubernetesBasic.pdf, id=120, page=2, 512.28891pt x 267.62485pt>
+<KubernetesBasic.pdf, id=122, page=2, 512.28891pt x 267.62485pt>
 File: KubernetesBasic.pdf Graphic file (type pdf)
 <use KubernetesBasic.pdf, page 2>
 Package pdftex.def Info: KubernetesBasic.pdf , page2 used on input line 58.
 (pdftex.def)             Requested size: 512.2889pt x 267.6405pt.
-<KubernetesBasic.pdf, id=121, page=3, 512.28891pt x 267.62485pt>
+<KubernetesBasic.pdf, id=123, page=3, 512.28891pt x 267.62485pt>
 File: KubernetesBasic.pdf Graphic file (type pdf)
 <use KubernetesBasic.pdf, page 3>
 Package pdftex.def Info: KubernetesBasic.pdf , page3 used on input line 60.
 (pdftex.def)             Requested size: 512.2889pt x 267.6405pt.
-<KubernetesBasic.pdf, id=122, page=4, 512.28891pt x 267.62485pt>
+<KubernetesBasic.pdf, id=124, page=4, 512.28891pt x 267.62485pt>
 File: KubernetesBasic.pdf Graphic file (type pdf)
 <use KubernetesBasic.pdf, page 4>
 Package pdftex.def Info: KubernetesBasic.pdf , page4 used on input line 62.
 (pdftex.def)             Requested size: 512.2889pt x 267.6405pt.
-<KubernetesBasic.pdf, id=123, page=5, 512.28891pt x 267.62485pt>
+<KubernetesBasic.pdf, id=125, page=5, 512.28891pt x 267.62485pt>
 File: KubernetesBasic.pdf Graphic file (type pdf)
 <use KubernetesBasic.pdf, page 5>
 Package pdftex.def Info: KubernetesBasic.pdf , page5 used on input line 64.
 (pdftex.def)             Requested size: 512.2889pt x 267.6405pt.
-<KubernetesBasic.pdf, id=124, page=6, 512.28891pt x 267.62485pt>
+<KubernetesBasic.pdf, id=126, page=6, 512.28891pt x 267.62485pt>
 File: KubernetesBasic.pdf Graphic file (type pdf)
 <use KubernetesBasic.pdf, page 6>
 Package pdftex.def Info: KubernetesBasic.pdf , page6 used on input line 66.
 (pdftex.def)             Requested size: 512.2889pt x 267.6405pt.
-<KubernetesBasic.pdf, id=125, page=7, 512.28891pt x 267.62485pt>
+<KubernetesBasic.pdf, id=127, page=7, 512.28891pt x 267.62485pt>
 File: KubernetesBasic.pdf Graphic file (type pdf)
 <use KubernetesBasic.pdf, page 7>
 Package pdftex.def Info: KubernetesBasic.pdf , page7 used on input line 68.
@@ -1117,88 +1117,88 @@ Underfull \hbox (badness 10000) in paragraph at lines 201--202
  []
 
 (PrometheusAlertUML.pdf_tex
-<PrometheusAlertUML.pdf, id=168, page=1, 598.48593pt x 213.04594pt>
+<PrometheusAlertUML.pdf, id=170, page=1, 598.48593pt x 213.04594pt>
 File: PrometheusAlertUML.pdf Graphic file (type pdf)
 <use PrometheusAlertUML.pdf, page 1>
 Package pdftex.def Info: PrometheusAlertUML.pdf , page1 used on input line 56.
 (pdftex.def)             Requested size: 598.48593pt x 213.06166pt.
-<PrometheusAlertUML.pdf, id=169, page=2, 598.48593pt x 213.04594pt>
+<PrometheusAlertUML.pdf, id=171, page=2, 598.48593pt x 213.04594pt>
 File: PrometheusAlertUML.pdf Graphic file (type pdf)
 <use PrometheusAlertUML.pdf, page 2>
 Package pdftex.def Info: PrometheusAlertUML.pdf , page2 used on input line 58.
 (pdftex.def)             Requested size: 598.48593pt x 213.06166pt.
-<PrometheusAlertUML.pdf, id=170, page=3, 598.48593pt x 213.04594pt>
+<PrometheusAlertUML.pdf, id=172, page=3, 598.48593pt x 213.04594pt>
 File: PrometheusAlertUML.pdf Graphic file (type pdf)
 <use PrometheusAlertUML.pdf, page 3>
 Package pdftex.def Info: PrometheusAlertUML.pdf , page3 used on input line 60.
 (pdftex.def)             Requested size: 598.48593pt x 213.06166pt.
-<PrometheusAlertUML.pdf, id=171, page=4, 598.48593pt x 213.04594pt>
+<PrometheusAlertUML.pdf, id=173, page=4, 598.48593pt x 213.04594pt>
 File: PrometheusAlertUML.pdf Graphic file (type pdf)
 <use PrometheusAlertUML.pdf, page 4>
 Package pdftex.def Info: PrometheusAlertUML.pdf , page4 used on input line 62.
 (pdftex.def)             Requested size: 598.48593pt x 213.06166pt.
-<PrometheusAlertUML.pdf, id=172, page=5, 598.48593pt x 213.04594pt>
+<PrometheusAlertUML.pdf, id=174, page=5, 598.48593pt x 213.04594pt>
 File: PrometheusAlertUML.pdf Graphic file (type pdf)
 <use PrometheusAlertUML.pdf, page 5>
 Package pdftex.def Info: PrometheusAlertUML.pdf , page5 used on input line 64.
 (pdftex.def)             Requested size: 598.48593pt x 213.06166pt.
-<PrometheusAlertUML.pdf, id=173, page=6, 598.48593pt x 213.04594pt>
+<PrometheusAlertUML.pdf, id=175, page=6, 598.48593pt x 213.04594pt>
 File: PrometheusAlertUML.pdf Graphic file (type pdf)
 <use PrometheusAlertUML.pdf, page 6>
 Package pdftex.def Info: PrometheusAlertUML.pdf , page6 used on input line 66.
 (pdftex.def)             Requested size: 598.48593pt x 213.06166pt.
-<PrometheusAlertUML.pdf, id=174, page=7, 598.48593pt x 213.04594pt>
+<PrometheusAlertUML.pdf, id=176, page=7, 598.48593pt x 213.04594pt>
 File: PrometheusAlertUML.pdf Graphic file (type pdf)
 <use PrometheusAlertUML.pdf, page 7>
 Package pdftex.def Info: PrometheusAlertUML.pdf , page7 used on input line 68.
 (pdftex.def)             Requested size: 598.48593pt x 213.06166pt.
-<PrometheusAlertUML.pdf, id=175, page=8, 598.48593pt x 213.04594pt>
+<PrometheusAlertUML.pdf, id=177, page=8, 598.48593pt x 213.04594pt>
 File: PrometheusAlertUML.pdf Graphic file (type pdf)
 <use PrometheusAlertUML.pdf, page 8>
 Package pdftex.def Info: PrometheusAlertUML.pdf , page8 used on input line 70.
 (pdftex.def)             Requested size: 598.48593pt x 213.06166pt.
-<PrometheusAlertUML.pdf, id=176, page=9, 598.48593pt x 213.04594pt>
+<PrometheusAlertUML.pdf, id=178, page=9, 598.48593pt x 213.04594pt>
 File: PrometheusAlertUML.pdf Graphic file (type pdf)
 <use PrometheusAlertUML.pdf, page 9>
 Package pdftex.def Info: PrometheusAlertUML.pdf , page9 used on input line 72.
 (pdftex.def)             Requested size: 598.48593pt x 213.06166pt.
-<PrometheusAlertUML.pdf, id=177, page=10, 598.48593pt x 213.04594pt>
+<PrometheusAlertUML.pdf, id=179, page=10, 598.48593pt x 213.04594pt>
 File: PrometheusAlertUML.pdf Graphic file (type pdf)
 <use PrometheusAlertUML.pdf, page 10>
 Package pdftex.def Info: PrometheusAlertUML.pdf , page10 used on input line 74.
 
 (pdftex.def)             Requested size: 598.48593pt x 213.06166pt.
-<PrometheusAlertUML.pdf, id=178, page=11, 598.48593pt x 213.04594pt>
+<PrometheusAlertUML.pdf, id=180, page=11, 598.48593pt x 213.04594pt>
 File: PrometheusAlertUML.pdf Graphic file (type pdf)
 <use PrometheusAlertUML.pdf, page 11>
 Package pdftex.def Info: PrometheusAlertUML.pdf , page11 used on input line 76.
 
 (pdftex.def)             Requested size: 598.48593pt x 213.06166pt.
-<PrometheusAlertUML.pdf, id=179, page=12, 598.48593pt x 213.04594pt>
+<PrometheusAlertUML.pdf, id=181, page=12, 598.48593pt x 213.04594pt>
 File: PrometheusAlertUML.pdf Graphic file (type pdf)
 <use PrometheusAlertUML.pdf, page 12>
 Package pdftex.def Info: PrometheusAlertUML.pdf , page12 used on input line 78.
 
 (pdftex.def)             Requested size: 598.48593pt x 213.06166pt.
-<PrometheusAlertUML.pdf, id=180, page=13, 598.48593pt x 213.04594pt>
+<PrometheusAlertUML.pdf, id=182, page=13, 598.48593pt x 213.04594pt>
 File: PrometheusAlertUML.pdf Graphic file (type pdf)
 <use PrometheusAlertUML.pdf, page 13>
 Package pdftex.def Info: PrometheusAlertUML.pdf , page13 used on input line 80.
 
 (pdftex.def)             Requested size: 598.48593pt x 213.06166pt.
-<PrometheusAlertUML.pdf, id=181, page=14, 598.48593pt x 213.04594pt>
+<PrometheusAlertUML.pdf, id=183, page=14, 598.48593pt x 213.04594pt>
 File: PrometheusAlertUML.pdf Graphic file (type pdf)
 <use PrometheusAlertUML.pdf, page 14>
 Package pdftex.def Info: PrometheusAlertUML.pdf , page14 used on input line 82.
 
 (pdftex.def)             Requested size: 598.48593pt x 213.06166pt.
-<PrometheusAlertUML.pdf, id=182, page=15, 598.48593pt x 213.04594pt>
+<PrometheusAlertUML.pdf, id=184, page=15, 598.48593pt x 213.04594pt>
 File: PrometheusAlertUML.pdf Graphic file (type pdf)
 <use PrometheusAlertUML.pdf, page 15>
 Package pdftex.def Info: PrometheusAlertUML.pdf , page15 used on input line 84.
 
 (pdftex.def)             Requested size: 598.48593pt x 213.06166pt.
-<PrometheusAlertUML.pdf, id=183, page=16, 598.48593pt x 213.04594pt>
+<PrometheusAlertUML.pdf, id=185, page=16, 598.48593pt x 213.04594pt>
 File: PrometheusAlertUML.pdf Graphic file (type pdf)
 <use PrometheusAlertUML.pdf, page 16>
 Package pdftex.def Info: PrometheusAlertUML.pdf , page16 used on input line 86.
@@ -1281,7 +1281,7 @@ s ein-ge-hen-de Workloads
  []
 
 [12]
-<img/SDTScaling.png, id=254, 293.59688pt x 204.765pt>
+<img/SDTScaling.png, id=256, 293.59688pt x 204.765pt>
 File: img/SDTScaling.png Graphic file (type png)
 <use img/SDTScaling.png>
 Package pdftex.def Info: img/SDTScaling.png  used on input line 250.
@@ -1359,57 +1359,57 @@ Underfull \hbox (badness 10000) in paragraph at lines 412--413
  []
 
 (Architektur.pdf_tex
-<Architektur.pdf, id=301, page=1, 761.09344pt x 451.6875pt>
+<Architektur.pdf, id=303, page=1, 761.09344pt x 451.6875pt>
 File: Architektur.pdf Graphic file (type pdf)
 <use Architektur.pdf, page 1>
 Package pdftex.def Info: Architektur.pdf , page1 used on input line 56.
 (pdftex.def)             Requested size: 761.09343pt x 451.70016pt.
-<Architektur.pdf, id=302, page=2, 761.09344pt x 451.6875pt>
+<Architektur.pdf, id=304, page=2, 761.09344pt x 451.6875pt>
 File: Architektur.pdf Graphic file (type pdf)
 <use Architektur.pdf, page 2>
 Package pdftex.def Info: Architektur.pdf , page2 used on input line 58.
 (pdftex.def)             Requested size: 761.09343pt x 451.70016pt.
-<Architektur.pdf, id=303, page=3, 761.09344pt x 451.6875pt>
+<Architektur.pdf, id=305, page=3, 761.09344pt x 451.6875pt>
 File: Architektur.pdf Graphic file (type pdf)
 <use Architektur.pdf, page 3>
 Package pdftex.def Info: Architektur.pdf , page3 used on input line 60.
 (pdftex.def)             Requested size: 761.09343pt x 451.70016pt.
-<Architektur.pdf, id=304, page=4, 761.09344pt x 451.6875pt>
+<Architektur.pdf, id=306, page=4, 761.09344pt x 451.6875pt>
 File: Architektur.pdf Graphic file (type pdf)
 <use Architektur.pdf, page 4>
 Package pdftex.def Info: Architektur.pdf , page4 used on input line 62.
 (pdftex.def)             Requested size: 761.09343pt x 451.70016pt.
-<Architektur.pdf, id=305, page=5, 761.09344pt x 451.6875pt>
+<Architektur.pdf, id=307, page=5, 761.09344pt x 451.6875pt>
 File: Architektur.pdf Graphic file (type pdf)
 <use Architektur.pdf, page 5>
 Package pdftex.def Info: Architektur.pdf , page5 used on input line 65.
 (pdftex.def)             Requested size: 761.09343pt x 451.70016pt.
-<Architektur.pdf, id=306, page=6, 761.09344pt x 451.6875pt>
+<Architektur.pdf, id=308, page=6, 761.09344pt x 451.6875pt>
 File: Architektur.pdf Graphic file (type pdf)
 <use Architektur.pdf, page 6>
 Package pdftex.def Info: Architektur.pdf , page6 used on input line 67.
 (pdftex.def)             Requested size: 761.09343pt x 451.70016pt.
-<Architektur.pdf, id=307, page=7, 761.09344pt x 451.6875pt>
+<Architektur.pdf, id=309, page=7, 761.09344pt x 451.6875pt>
 File: Architektur.pdf Graphic file (type pdf)
 <use Architektur.pdf, page 7>
 Package pdftex.def Info: Architektur.pdf , page7 used on input line 69.
 (pdftex.def)             Requested size: 761.09343pt x 451.70016pt.
-<Architektur.pdf, id=308, page=8, 761.09344pt x 451.6875pt>
+<Architektur.pdf, id=310, page=8, 761.09344pt x 451.6875pt>
 File: Architektur.pdf Graphic file (type pdf)
 <use Architektur.pdf, page 8>
 Package pdftex.def Info: Architektur.pdf , page8 used on input line 71.
 (pdftex.def)             Requested size: 761.09343pt x 451.70016pt.
-<Architektur.pdf, id=309, page=9, 761.09344pt x 451.6875pt>
+<Architektur.pdf, id=311, page=9, 761.09344pt x 451.6875pt>
 File: Architektur.pdf Graphic file (type pdf)
 <use Architektur.pdf, page 9>
 Package pdftex.def Info: Architektur.pdf , page9 used on input line 74.
 (pdftex.def)             Requested size: 761.09343pt x 451.70016pt.
-<Architektur.pdf, id=310, page=10, 761.09344pt x 451.6875pt>
+<Architektur.pdf, id=312, page=10, 761.09344pt x 451.6875pt>
 File: Architektur.pdf Graphic file (type pdf)
 <use Architektur.pdf, page 10>
 Package pdftex.def Info: Architektur.pdf , page10 used on input line 76.
 (pdftex.def)             Requested size: 761.09343pt x 451.70016pt.
-<Architektur.pdf, id=311, page=11, 761.09344pt x 451.6875pt>
+<Architektur.pdf, id=313, page=11, 761.09344pt x 451.6875pt>
 File: Architektur.pdf Graphic file (type pdf)
 <use Architektur.pdf, page 11>
 Package pdftex.def Info: Architektur.pdf , page11 used on input line 78.
@@ -1479,21 +1479,44 @@ Underfull \hbox (badness 10000) in paragraph at lines 486--487
 
  []
 
-[24] [25] [26] (Bachelorarbeit.bbl) [27]
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 540.
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 540.
+[24]
+Overfull \hbox (0.55528pt too wide) in paragraph at lines 520--522
+\T1/cmr/m/n/12 Die Ak-tio-nen, wel-che durch den Alert-Action-Manager au-to-ma-
+ti-siert auf das Kubernetes-
+ []
+
+
+Overfull \hbox (41.85074pt too wide) in paragraph at lines 531--532
+\T1/cmr/m/n/12 Ver-bin-dung mit ei-ner ho-hen Nut-zer-last, al-so ei-ner aus-re
+i-chend ho-hen Netzwerkbandbreiten-
+ []
+
+
+Overfull \hbox (27.86064pt too wide) in paragraph at lines 531--532
+\T1/cmr/m/n/12 Se-kun-de lie-gen. Die-se Last muss für 10 Se-kun-den be-ste-hen
+ um die die 'PodLowResource'-
+ []
+
+[25]
+Overfull \hbox (115.73624pt too wide) in paragraph at lines 551--552
+[][][][][][][][][][][][][][][][][][][][][] 
+ []
+
+[26] [27] (Bachelorarbeit.bbl) [28]
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 574.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 574.
  (Bachelorarbeit.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 540.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 540.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 574.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 574.
 Package rerunfilecheck Info: File `Bachelorarbeit.out' has not changed.
 (rerunfilecheck)             Checksum: D41D8CD98F00B204E9800998ECF8427E;0.
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 540.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 574.
  ) 
 Here is how much of TeX's memory you used:
- 23567 strings out of 480790
- 461205 string characters out of 2893987
+ 23573 strings out of 480790
+ 461276 string characters out of 2893987
  845752 words of memory out of 3000000
- 39041 multiletter control sequences out of 15000+200000
+ 39043 multiletter control sequences out of 15000+200000
  541385 words of font info for 44 fonts, out of 3000000 for 9000
  1141 hyphenation exceptions out of 8191
  64i,15n,81p,10111b,1050s stack positions out of 5000i,500n,10000p,200000b,50000s
@@ -1509,9 +1532,9 @@ ohannes\AppData\Local\MiKTeX\2.9\fonts/pk/ljfour/jknappen/ec/dpi600\ecsx1200.pk
 public/amsfonts/cm/cmmi12.pfb><C:/Users/Johannes/AppData/Local/Programs/MiKTeX 
 2.9/fonts/type1/public/amsfonts/cm/cmr12.pfb><C:/Users/Johannes/AppData/Local/P
 rograms/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmsy10.pfb>
-Output written on Bachelorarbeit.pdf (27 pages, 380565 bytes).
+Output written on Bachelorarbeit.pdf (28 pages, 385255 bytes).
 PDF statistics:
- 814 PDF objects out of 1000 (max. 8388607)
- 92 named destinations out of 1000 (max. 500000)
- 540 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 828 PDF objects out of 1000 (max. 8388607)
+ 96 named destinations out of 1000 (max. 500000)
+ 548 words of extra memory for PDF output out of 10000 (max. 10000000)
 

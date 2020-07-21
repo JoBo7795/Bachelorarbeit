@@ -511,12 +511,46 @@ Es werden zum Ausführen einiger Aktionen zusätzliche Funktionen benötigt. Zum
 
 \end{description}
 
+\subsubsection{Erweiterung}
+
+Sofern zusätzliche Aktionen in der Infrastruktur benötigt werden, ist die Erweiterung mit relativ geringem Aufwand möglich. Es muss einerseits eine neue Regel bzw. neue Regeln mit neuem Label in Prometheus definiert werden sowie die zugehörige Aktion im AAM.
+
 \subsection{Aktionen}
 
-Die beiden Aktionen, Skalierung von Deployments und Anomalie-Detection, basieren auf statischen Regeln, sie werden beide von dem in diesem Projekt entwickelten 'Alert-Action-Manager' ausgeführt.
+Die Aktionen, welche durch den Alert-Action-Manager automatisiert auf das Kubernetes-Cluster ausgeführt werden, sind in diesem Abschnitt erklärt. Das Ausführen dieser Aktionen wird anhand von Regeln mit statischen Grenzwerten sog. Thresholds entschieden.
+Die beiden Aktionen, welche in diesem Projekt eingesetzt werden sind die Skalierung der Pod-Replikationen eines Deployments und die Anomalie-Detection innerhalb eines Pods bzw. Containers.
 
 \subsubsection{Skalierung}
-Platzhalter
+
+Die Aktion der Skalierung ermöglicht das Hochskalieren, also das Erweitern eines Deployments um eine höhere Anzahl an Replikationen (Replicas) seiner Pods, sowie die Gegenaktion, das Herunterskalieren eines Deployments.\\
+Diese Aktion wird durch zwei Regeln realisiert:
+
+\begin{description}
+\item[PodLowResource]
+
+Diese Regel wird ausgelöst, sobald in einem Pod eine hohe Last der Ressourcen CPU-Utilization oder RAM-Utilization festgestellt wird und dies in Verbindung mit einer hohen Nutzerlast, also einer ausreichend hohen Netzwerkbandbreiten-Utilization steht. Die Thresholds für CPU- und RAM-Utilization liegen bei 75\%, die Auslastung der Netzwerkbandbreite muss bei mindestens einem Megabit pro Sekunde liegen. Diese Last muss für 10 Sekunden bestehen um die die 'PodLowResource'-Regel und damit den Alert zu aktivieren.
+
+\item[PodHighResource]
+
+'PodHighResource' ist die Gegenaktion zu 'PodLowResource' und wird dann ausgelöst, wenn 
+eine niedrige Ressourcenlast in einem Deployment detektiert wird. Die geprüften Metriken sind die CPU-Utilization sowie die RAM-Utilization. Diese müssen über einen Zeitraum von 10 Sekunden einen Wert von 25\% Auslastung oder niedriger aufweisen um diese Regel zu erfüllen.
+
+\end{description}
+
+Nach Auslösen des Alerts und Aktivieren der Aktion im' Alert-Action-Manager' setzt dieser die Aktion folgendermaßen um:
+
+Für diese Aktion wird einerseits der Name des Deployments benötigt sowie die Anzahl der Pod-Replikation die zum Ausführungszeitpunkt der Regel existieren.\\
+Der Name betroffener Pods wird mit einem Alert mitgeschickt, durch entfernen des Pod-Tags kann daraus der Name des Deployments ermittelt werden.\\
+Die Anzahl der Replikationen wird durch eine dafür bereitgestellte Methode aus dem Cluster ermittelt und zurückgeliefert.
+Sobald die benötigten Informationen vorhanden sind, wird aus Ihnen die passende kubectl-Aktion erstellt.
+Dieser sieht für diese Regel schlussendlich folgendermaßen aus:
+Die Variable 'deployment\_name' enthält den analysierten Deploymentname, die Variable actualCount enthält die Anzahl der aktuellen Deployments.
+Für das Hochskalieren wird wie im Beispiel gezeigt die Replicaanzahl +1 verwendet zum Herunterskalieren die Replicaanzahl -1.
+
+\begin{lstlisting}
+kubectl scale deployment deployment_name --replicas= strconv.Itoa(actualCount+1)
+\end{lstlisting}
+
 \subsubsection{Anomalie-Detection}
 Platzhalter
 
