@@ -179,10 +179,10 @@ Der Exporter auf dem Target hat im Normalfall einen Aktualisierungszeitraum eben
 
 \subsubsection{Abfragen}
 
-Das Abfragen von von Metriken wird mittels der prometheuseigenen, an SQL angelehnten Query-Language PromQL durchgeführt. PromQL-Requests werden an den Prometheus-Server gestellt, der die Requests prüft, verarbeitet und entsprechende Werte als Antwort zurückgibt. Die Abfragen können sehr einfach sein, indem beispielsweise nur der Name einer Metrik angegeben wird und so der entsprechende Wert zurückgeliefert wird. Requests können aber auch, ähnlich SQL, miteinander kombiniert werden um voneinander abhängige Werte abzufragen oder Werte über unterschiedliche Zeiträume zu erhalten.\\
+Das Abfragen von Metriken wird mittels der prometheuseigenen, an SQL angelehnten Query-Language PromQL durchgeführt. PromQL-Requests werden an den Prometheus-Server gestellt, der die Requests prüft, verarbeitet und entsprechende Werte als Antwort zurückgibt. Die Abfragen können sehr einfach sein, indem beispielsweise nur der Name einer Metrik angegeben wird und so der entsprechende Wert zurückgeliefert wird. Requests können aber auch, ähnlich zu SQL, miteinander kombiniert werden um voneinander abhängige Werte abzufragen oder Werte über unterschiedliche Zeiträume zu erhalten.\\
 
 Ein beispielhafter Request:
-Dieser Request der den Mittelwert der HTTP-Codes 401 des Kong API-Gateways über die letzten 5 Minuten bildet:
+Dieser Request bildet den Mittelwert der HTTP-Codes 401 über die letzten 5 Minuten ab:
 \begin{lstlisting}
 rate(http_status{code='401'}[5m])
 \end{lstlisting}
@@ -196,7 +196,7 @@ In diesem Projekt werden PromQL-Abfragen vor allem für zwei verschiedene Zwecke
 \subsubsection{Alerting}
 
 Das Alerting in Prometheus funktioniert mittels festgelegten Regeln. Diese werden in der PromQL-Sprache auf dem Prometheus-Server definiert und gespeichert. Sobald eine Regel erfüllt ist sendet der Server einen Alert an den Alertmanager, der diesen dann weiter verarbeiten kann.\\
-Eine Alert-Regel besteht im Grunde aus zwei Teilen. Der erste Teil ist die PromQL-Bedingung, die erfüllt sein muss. Sobald diese erfüllt ist erhält der Alert den Status 'pending'. In diesem Status wird der Alert noch nicht versendet, sondern wartet auf das Erfüllen eines vorgegebenen Zeitwertes. Erst nach erfüllen des Wertes wird der Alert an den Manager versendet.\\
+Der Alert-Vorgang besteht im Grunde aus zwei Teilen. Der erste Teil ist die PromQL-Bedingung, die erfüllt sein muss. Sobald diese erfüllt ist erhält der Alert den Status 'pending'. In diesem Status wird der Alert noch nicht versendet, sondern wartet auf das Erfüllen eines vorgegebenen Zeitwertes. Erst nach erfüllen des Wertes wird der Alert an den Manager versendet.\\
 
 Der Alertmanager hat mehrere Möglichkeiten mit Alerts umzugehen. Eine der Möglichkeiten ist das Weiterleiten an definierbare Ziele, beispielsweise an bestimmte E-Mail Adressen, Chat-Programme wie Slack oder auch an Webhooks bzw. HTTP-Endpunkte. Außerdem stellt der Alertmanager eingetroffene Alerts auf dem eigenen Web-UI dar. Hier kann eingesehen werden welchen Status ein Alert zum aktuellen Zeitpunkt hat, 'pending' oder 'active', außerdem können Alerts stillgelegt werden, welche dann nicht mehr durch den Manager weiterverarbeitet werden.\\
 
@@ -566,12 +566,34 @@ Nach Auslösen des 'PodAnomalyBehaviour' Alerts wird die zugehörige Aktion folg
 Für die Aktion wird der zugehörige Deploymentname des anormalen Pods benötigt, dieser wird aus dem im Alert mitgesendeten Podnamen analysiert. Sobald der Name des Deployments bekannt ist wird die zugehörige kubectl-Aktion ausgeführt. Diese nennt sich 'rollout restart' und sorgt dafür, dass ein Deployment unterbrechungsfrei neu gestartet wird. Dies bedeutet, dass zuerst ein neues Deployment gestartet wird und sobald dieses arbeitsbereit ist, wird das alte Deployment heruntergefahren. Die resultierende Aktion sieht folgendermaßen aus:\\
 Die Variable 'deployment\_name' enthält den analysierten Deploymentname.
 \begin{lstlisting}
-kubectl rollout restart deployment deployment\_name
+kubectl rollout restart deployment deployment_name
 \end{lstlisting}
 
 \subsubsection{Regeln}
 
+Die Regeln, die zum Aktivieren der Alerts verwendet werden, bestehen aus einem Label, einem Ausdruck, der Metriken abgleicht und einem Erfüllungszeitrahmen.
+Der Ausdruck ist, wie die Queries zur Visualisierung auch, in der PromQL-Sprache geschrieben. Ein Ausdruck muss immer als Vergleich geschrieben werden und somit einen BOOL-Wert repräsentieren können, also erfüllt(true) oder nicht erfüllt(false).
+Jeder Ausdruck besitzt einen Zeitrahmen über den er erfüllt sein muss um einen Alert auszulösen, womit vorzeitiges oder zu häufiges Alarmieren eingeschränkt oder verhindert werden kann.
+Um mehrere Bedingungen in einem Ausdruck zu verknüpfen kann auf logische Operatoren zurückgegriffen werden, diese sind AND, OR und UNLESS(Komplement).
+Zum Inkludieren oder Exkludieren einzelner Metrikquellen, können mittels der Anwendung von regulären Ausdrücken auf die Namen der Quellen Filter für diese erstellt werden.
 
+
+\begin{lstlisting}[basicstyle=\footnotesize]
+      - alert: PodHighResource
+        expr: (sum(rate(container_cpu_usage_seconds_total{namespace="default"}[5m]))
+         by (pod) <= 0.25 and (sum(container_memory_working_set_bytes) by (pod) / 				                                                        sum(label_join(kube_pod_container_resource_limits_memory_bytes,
+          "container_name", "", "container")) by (pod)) <= 0.25 )
+        for: 10s        
+        labels:
+          severity: alert
+        annotations:
+          description: 'PodHighResource !'
+          summary: 'Instance {{ $labels.pod }} has high resources
+                    and will be scaled down'                  
+
+\end{lstlisting}
+
+In diesem Beispiel ist die Regel zum Alert 'PodHighResource' beschrieben, diese ist im sog. YAML-Format spezifiziert. Unter dem Punkt - alert findet sich der Name bzw. das Label des Alerts. Unter dem darunterliegenden Punkt 'expr' findet sich die Regel, die zum Auslösen des Alerts erfüllt sein muss. Unter dem Eintrag 'for' ist der Prüfungszeitraum für welchen die Regeln erfüllt werden muss spezifizert. Unter dem letzten Punkt sind noch optionale Anmerkungen angegeben, die in diesem Fall zur besseren Lesbarkeit dienen.
 
 \subsubsection{Metriken}
 

@@ -35,12 +35,12 @@
 \contentsline {subsubsection}{\numberline {6.3.1}Skalierung}{25}{subsubsection.6.3.1}%
 \contentsline {subsubsection}{\numberline {6.3.2}Anomalie-Detection}{26}{subsubsection.6.3.2}%
 \contentsline {subsubsection}{\numberline {6.3.3}Regeln}{27}{subsubsection.6.3.3}%
-\contentsline {subsubsection}{\numberline {6.3.4}Metriken}{27}{subsubsection.6.3.4}%
-\contentsline {subsubsection}{\numberline {6.3.5}Grenzwerte}{27}{subsubsection.6.3.5}%
-\contentsline {section}{\numberline {7}Evaluation}{27}{section.7}%
-\contentsline {subsection}{\numberline {7.1}Messaufbau}{27}{subsection.7.1}%
-\contentsline {subsection}{\numberline {7.2}Regeln}{27}{subsection.7.2}%
-\contentsline {subsection}{\numberline {7.3}Grenzwerte}{27}{subsection.7.3}%
-\contentsline {subsection}{\numberline {7.4}Komponenten und Architektur}{27}{subsection.7.4}%
-\contentsline {section}{\numberline {8}Diskussion}{27}{section.8}%
-\contentsline {section}{\numberline {9}Fazit und Ausblick}{27}{section.9}%
+\contentsline {subsubsection}{\numberline {6.3.4}Metriken}{28}{subsubsection.6.3.4}%
+\contentsline {subsubsection}{\numberline {6.3.5}Grenzwerte}{28}{subsubsection.6.3.5}%
+\contentsline {section}{\numberline {7}Evaluation}{28}{section.7}%
+\contentsline {subsection}{\numberline {7.1}Messaufbau}{28}{subsection.7.1}%
+\contentsline {subsection}{\numberline {7.2}Regeln}{28}{subsection.7.2}%
+\contentsline {subsection}{\numberline {7.3}Grenzwerte}{28}{subsection.7.3}%
+\contentsline {subsection}{\numberline {7.4}Komponenten und Architektur}{28}{subsection.7.4}%
+\contentsline {section}{\numberline {8}Diskussion}{28}{section.8}%
+\contentsline {section}{\numberline {9}Fazit und Ausblick}{28}{section.9}%
