@@ -281,14 +281,18 @@ Mithilfe der Alerts ist es möglich anhand von Regeln Alarme zu versenden, die �
 
 \end{description}
 
+\begin{figure}[htbp]
+  \centering
+  \scalebox{.8}{\input{DatenaggregationFlow.pdf_tex}}  
+\end{figure}
+
 \subsection{Grafana}
 
 Grafana ist das Tool, welches zur Visualisierung verwendet wird. Das Open-Source Tool bietet Möglichkeiten Metriken in Form von Graphen, Zählern, Histogrammen und vielem mehr über Zeiträume zu visualisieren. Des Weiteren können ganze 'Dashboards' erstellt werden, die den Überblick über das ganze Cluster auf einmal erlauben.\\
 Aufgrund der bereits vorhandenen Prometheusintegration ist eine Verwendung bei bereits bestehendem Prometheus-Server einfach und innerhalb kurzer Zeit umzusetzen.
 Der Prometheus-Server, von welchem Grafana Metriken erhalten soll muss als Datenquelle mittels seiner Adresse konfiguriert werden, danach stehen alle Metriken, welche Prometheus kennt auch in Grafana zur Verfügung.\\
-Um Metriken zu visualisieren, wird die aus Prometheus bereits bekannte Abfragesprache PromQL verwendet, was den Vorteil bietet, Abfragen die für Prometheus funktionieren, funktionieren ebenso in der Grafana Oberfläche zum erstellen von Visualisierungen.\\
+Um Metriken zu visualisieren, wird die aus Prometheus bereits bekannte Abfragesprache PromQL verwendet, was den Vorteil bietet, Abfragen die für Prometheus funktionieren, funktionieren ebenso in der Grafana Oberfläche zum Erstellen von Visualisierungen.\\
 Da Grafana eines der gängistens Tools ist und teilweise als Quasi-Standard zur Visualisierung von Metriken behandelt wird, findet eine kontinuierliche Weiterentwicklung statt und eine große Community bietet Unterstützung und Erfahrungen.\\<hier Quelle Logz.io einfügen>
-Die Erweiterbarkeit ist ebenfalls gegeben, neben Visualisierungen für Metriken, bestehen Möglichkeiten Logs, Statistiken und vieles mehr zu Visualisieren und in Dashboards zu integrieren.
 
 \subsection{Datenquellen}
 
@@ -311,6 +315,36 @@ Die Metriken Utilization und Saturation werden für CPU, RAM und Netzwerkauslast
 \item[CPU]:\\
 Utilization:\\
 Die CPU Utilization berechnet sich aus der Summe der Millisekunden, welche die CPU beschäftigt war, geteilt durch eine ganze Sekunde. So erhält man die Utilization pro Sekunde, welche über aufsummiert und der Mittelwert über den beobachteten Zeitraum gebildet wird, um so die durchschnittliche Utilization zu erhalten.\\
+
+Summe der Zeit in Millisekunden, welche die CPU beschäftigt war:\\
+
+Jmax entspricht 1000 Millisekunden
+
+\begin{Huge}
+
+\(U =  \frac{1}{J_{max}}{\sum\limits_{j=1}^{J_{max}} u_{j}} \)
+
+\end{Huge}
+
+Der gleitende Mittelwert der aufsummierten Zeit U über den Beobachteten Zeitraum von 5 Minuten:\\
+Imax entspricht 300 Sekunden
+
+\begin{Huge}
+\(
+\displaystyle{\frac{1}{N}{\sum\limits_{i=1}^{I_{max}} U_{(t-i)}} }
+\) 
+\end{Huge}\\
+Der gesamte Wert eines Utilization Fensters lässt sich dann über die zusammengesetzte Formel berechnen:\\
+
+Imax = 300; Jmax = 1000
+
+\begin{Huge}
+\(
+\displaystyle{
+{\frac{1}{J_{max}*N}\sum\limits_{i=1}^{I_{max}} \sum\limits_{j=1}^{J_{max}} u_{{(t-i)j}}}
+  }\)
+\end{Huge}\\
+
 Saturation:\\
 Die CPU Saturation kann anhand des Ressourcenlimits berechnet werden. In UNIX basierten Betriebssystemen gibt es die Metrik 'load-average', welche die Anzahl der laufenden sowie wartenden Prozesse enthält. Sofern man diese durch die Anzahl der zur Verfügung stehenden CPU-Kerne teilt, erhält man eine Kennzahl für die Saturation. Diese aufsummiert und über die Zeit gemittelt, ergibt die durchschnittliche Saturation.\\
 Ein weiterer Weg die Saturation zu berechnen ist das aufsummieren der Zeit in der ein Prozess 'throtteld' läuft. Dies funktioniert dann, wenn ein Prozess ein Ressourcenlimit besitzt, übersteigt er dieses wird der Prozess gedrosselt.\\
@@ -336,11 +370,25 @@ Das Auswerten der Metriken erfolgt für das Monitoring durch das Umsetzen der US
 Die Metriken werden in Node-Level sowie Pod- und Containerlevel Metriken klassifiziert.\\
 Nodelevelmetriken repräsentieren den Zustand eines ganzen Nodes, das bedeutet, dass die Metriken die Summe aller Pods, Container, Services, etc. des Nodes darstellen.\\
 Podlevelmetriken hingegen repräsentieren den Status eines einzelnen Pods sowie des Containers bzw. den Containern die sich in diesem Pod befinden.\\
+Die Containerlevelmetriken werden visualisiert um Zustände einzelner Pods und Container einsehen zu können, finden aber vor allem auch bei der Automatisierung von Aktionen ihren Nutzen. Für diese Metriken werden Regeln erstellt, die zur automatisierten Anwendung von Aktionen auf einen Pod oder Container dienen.\\
+Nodelevelmetriken werden in diesem Projekt vor allem zum Überwachen des Zustandes des gesamten Nodes verwendet und dienen dazu kritische Zustände eines ganzen Nodes zu erkennen. Daher werden diese visualiert, finden aber bei der Automatisierung und dem Alerting keine weitere Verwendung.
 
 \subsection{Logische Auswertung}
 
 Die logische Auswertung der Metriken findet an zwei Stellen in diesem Projekt Anwendung. Einmal zum Erstellen von Alerting-Regeln auf dem Prometheus-Server und einmal zur grafischen Darstellung der Metriken in der Grafana-Oberfläche. In beiden Fällen wird zur Auswertung die PromQL-Sprache verwendet.
-Zur logischen Auswertung werden die von Prometheus aggregierten Daten verwendet. Für das Monitoring werden die Schritte der USE-Methode Utilization, Saturation und Error-Rate jeweils für CPU, RAM sowie Netzwerk umgesetzt(siehe Kapitel vier,Metriken). Diese Metriken werden jeweils über einen Zeitraum von fünf Minuten beobachtet und ausgewertet und deren Mittelwert gebildet. Dies hat zur Folge, dass Ausreißer in der Last nicht schwer ins Gewicht fallen und so starke Schwankungen verhindert werden, was zur Verbesserung der Beobachtbarkeit beiträgt.\\
+Zur logischen Auswertung werden die von Prometheus aggregierten Daten verwendet. Für das Monitoring werden die Schritte der USE-Methode Utilization, Saturation und Error-Rate jeweils für CPU, RAM sowie Netzwerk umgesetzt(siehe Kapitel vier,Metriken). Diese Metriken werden mittels eines 'Moving Average'-Filters mit einer Fensterbreite von fünf Minuten gefiltert und ausgewertet. Dies hat zur Folge, dass Ausreißer in der Last nicht schwer ins Gewicht fallen und so starke Schwankungen verhindert werden, was zur Verbesserung der Beobachtbarkeit beiträgt.\\
+Der eingesetzte 'Moving-Average'-Filter sieht folgendermaßen aus:\\
+
+\begin{Huge}
+\(
+\displaystyle{m^{(n)}_{MA}(t) = \frac{1}{n}{\sum\limits_{i=0}^{{n-1}} x_{(t-i)}} }
+\)\\
+
+\end{Huge}
+
+Der Zeitraum von fünf Minuten wurde so gewählt, da bei einem längerem Zeitraum, von beispielsweise 10 Minuten, die beobachtete Menge an Metriken größer wird und so die Reaktionszeiten auf Leistungsschwankungen durch langsamer ansteigende Mittelwerte länger werden.
+Der umgekehrte Fall tritt ein, wenn ein zu kurzer Zeitraum gewählt wird, hierdurch werden Mittelwertschwankungen möglicherweise überbewertet und können so Ausreißer eine zu große Bedeutung einnehmen.
+Der gewählte Wert von fünf Minuten basiert auf Eigenerfahrungen, die diesen Wert als gutes Mittel herausgefunden haben.
 Die Auswertung der Daten zum automatische Alerting greift nicht direkt auf eine Methode wie USE zurück, orientiert sich aber an ihr. Hierfür werden die Metriken der Methode zu CPU, RAM und Netzwerk kombiniert und an Grenzwerte geknüpft um so gewünschte Grenzen abzufragen und die Regeln erfüllbar bzw. nicht erfüllbar machen zu können. Ebenso wie beim Monitoring werden auch hier die Metriken über einen Zeitraum von fünf Minuten beobachtet.\\
 
 Nachdem die Metriken ausgewertet sind können sie nun graphisch aufbereitet werden. <Frage, sind solche Übergänge gut/hilfreich ?>
@@ -354,7 +402,7 @@ Für die Counter werden grüne Bereiche für unkritische Auslastung und rote Ber
 \pagebreak
 \section{Automatisierte Aktionen}
 
-Das Kernthema dieser Arbeit ist die Entwicklung einer Architektur, die das Ausführen automatisierter Aktionen auf ein Kubernetes-Cluster ermöglicht. Mithilfe der Komponenten und Tools, Prometheus und dessen Alert-Verwaltungstool 'Alertmanager' (siehe Grundlagenkapitel) sowie einer Eigenentwicklung, genannt 'Alert-Action-Manager', welcher Alerts empfängt und auf diese mit einer passenden automatisierten Aktion reagiert, wird dieses Vorhaben in diesem Kapitel umgesetzt. Mittels automatischer Skalierung und Anomalie-Detection wird die Funktion der Architektur und Komponenten nachgewiesen.
+Das Kernthema dieser Arbeit ist die Entwicklung eines Systems, welches das Ausführen automatisierter Aktionen auf ein Kubernetes-Cluster ermöglicht. Mithilfe der Komponenten und Tools, Prometheus und dessen Alert-Verwaltungstool 'Alertmanager' (siehe Grundlagenkapitel) sowie einer Eigenentwicklung, genannt 'Alert-Action-Manager', welcher Alerts empfängt und auf diese mit einer passenden automatisierten Aktion reagiert, wird dieses Vorhaben in diesem Kapitel umgesetzt. Mittels automatischer Skalierung und Anomalie-Detection wird die Funktion der Architektur und Komponenten nachgewiesen.
 
 \subsection{Wahl der Sprache}
 
@@ -407,7 +455,7 @@ https://golang.org/doc/faq#What_is_the_purpose_of_the_project
 \end{description}
 
 \pagebreak
-\subsection{Komponenten und Architektur}
+\subsection{Architektur des Systems}
 
 Das System, welches die automatisierten Aktionen möglich macht, besteht aus mehreren, voneinander abhängigen Komponenten. Das Konzept nutzt das Alerting-Feature von Prometheus und setzt mithilfe dessen automatisierte Aktionen um.\\
 
