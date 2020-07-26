@@ -589,23 +589,20 @@ Jeder Ausdruck besitzt einen Zeitrahmen über den er erfüllt sein muss um einen
 Um mehrere Bedingungen in einem Ausdruck zu verknüpfen kann auf logische Operatoren zurückgegriffen werden, diese sind AND, OR und UNLESS(Komplement).
 Zum Inkludieren oder Exkludieren einzelner Metrikquellen, können mittels der Anwendung von regulären Ausdrücken auf die Namen der Quellen Filter für diese erstellt werden.
 
+Die grobe Struktur eines Alerts sieht folgerndermaßen aus:\\
 
 \begin{lstlisting}[basicstyle=\footnotesize]
-      - alert: PodHighResource
-        expr: (sum(rate(container_cpu_usage_seconds_total{namespace="default"}[5m]))
-         by (pod) <= 0.25 and (sum(container_memory_working_set_bytes) by (pod) / 				                                                        sum(label_join(kube_pod_container_resource_limits_memory_bytes,
-          "container_name", "", "container")) by (pod)) <= 0.25 )
-        for: 10s        
-        labels:
-          severity: alert
-        annotations:
-          description: 'PodHighResource !'
-          summary: 'Instance {{ $labels.pod }} has high resources
-                    and will be scaled down'                  
-
+     Label:		"Musterlabel"
+     Regel:		a > b
+     Offsetzeit:	5 Minuten
+     Anmerkungen:	In Musterlabel ist a kleiner b
 \end{lstlisting}
 
-In diesem Beispiel ist die Regel zum Alert 'PodHighResource' beschrieben, diese ist im sog. YAML-Format spezifiziert. Unter dem Punkt - alert findet sich der Name bzw. das Label des Alerts. Unter dem darunterliegenden Punkt 'expr' findet sich die Regel, die zum Auslösen des Alerts erfüllt sein muss. Unter dem Eintrag 'for' ist der Prüfungszeitraum für welchen die Regeln erfüllt werden muss spezifizert. Unter dem letzten Punkt sind noch optionale Anmerkungen angegeben, die in diesem Fall zur besseren Lesbarkeit dienen.
+Ein Alert muss identifiziert werden können, hierfür wird das Label verwendet, das den Namen eindeutig repräsentiert.\\
+Alerts sollen nur dann ausgelöst werden, wenn ein entsprechender Zustand erfüllt ist. Um diesen Zustand zu spezifizieren wird die Vergleichsregel zum bemessen gebraucht.\\
+Um kurzzeitige Ausreißer im Zustand nicht überzubewerten, muss dieser eine gewisse Dauer vorliegen. Diese Dauer, auch Offsetzeit genannt, wird zusätzlich zur Regel spezifiziert.\\
+Je nach Alert oder auszuführender Aktion werden Zusatzinformationen benötigt. Diese können als Anmerkung beigefügt werden. Unter anderem kann hier beschrieben werden, wie eine Alert-Nachricht als Chatnachricht aussehen soll.\\
+
 Der Ablauf des Konzepts ist eine Kette von Aktionen, bei der ein Schritt den nächsten auslöst. Die Kette der Schritte, welche zum Auslösen und Ausführen einer Aktion durchlaufen wird, ist hier beschrieben:\\
 
 \begin{figure}[htbp]

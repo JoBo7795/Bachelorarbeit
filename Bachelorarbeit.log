@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.21 (MiKTeX 20.6.29) (preloaded format=pdflatex 2020.7.2)  26 JUL 2020 16:11
+This is pdfTeX, Version 3.14159265-2.6-1.40.21 (MiKTeX 20.6.29) (preloaded format=pdflatex 2020.7.2)  26 JUL 2020 18:08
 entering extended mode
 **./Bachelorarbeit.tex
 (Bachelorarbeit.tex
@@ -1628,72 +1628,68 @@ Underfull \hbox (badness 10000) in paragraph at lines 576--577
  []
 
 [27]
-Overfull \hbox (55.74985pt too wide) in paragraph at lines 595--596
-[][][][][][][][][][][][][][][][][][][][] 
- []
-
-
-Overfull \hbox (559.63065pt too wide) in paragraph at lines 596--597
-[][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][]
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 608--610
+Underfull \hbox (badness 10000) in paragraph at lines 592--593
 
  []
 
-<AAMStateChart.png, id=402, 846.16125pt x 1230.5975pt>
+
+Underfull \hbox (badness 10000) in paragraph at lines 601--605
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 606--607
+
+ []
+
+<AAMStateChart.png, id=402, 1077.02374pt x 1230.5975pt>
 File: AAMStateChart.png Graphic file (type png)
 <use AAMStateChart.png>
-Package pdftex.def Info: AAMStateChart.png  used on input line 612.
-(pdftex.def)             Requested size: 846.1592pt x 1230.59451pt.
+Package pdftex.def Info: AAMStateChart.png  used on input line 609.
+(pdftex.def)             Requested size: 1077.02112pt x 1230.59451pt.
 
-Overfull \hbox (44.81203pt too wide) in paragraph at lines 612--613
+Overfull \hbox (44.82445pt too wide) in paragraph at lines 609--610
 [][] 
  []
 
-
-LaTeX Warning: Float too large for page by 81.40166pt on input line 613.
-
 [28] [29 <./AAMStateChart.png>] [30] (Bachelorarbeit.bbl) [31]
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 635.
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 635.
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 632.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 632.
 
 (Bachelorarbeit.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 635.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 635.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 632.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 632.
 Package rerunfilecheck Info: File `Bachelorarbeit.out' has not changed.
 (rerunfilecheck)             Checksum: D41D8CD98F00B204E9800998ECF8427E;0.
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 635.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 632.
  ) 
 Here is how much of TeX's memory you used:
- 23655 strings out of 480790
- 463537 string characters out of 2893987
- 846752 words of memory out of 3000000
- 39099 multiletter control sequences out of 15000+200000
- 546669 words of font info for 59 fonts, out of 3000000 for 9000
+ 23646 strings out of 480790
+ 463415 string characters out of 2893987
+ 842752 words of memory out of 3000000
+ 39098 multiletter control sequences out of 15000+200000
+ 546334 words of font info for 58 fonts, out of 3000000 for 9000
  1141 hyphenation exceptions out of 8191
- 64i,15n,81p,10111b,1079s stack positions out of 5000i,500n,10000p,200000b,50000s
+ 64i,15n,81p,10111b,1050s stack positions out of 5000i,500n,10000p,200000b,50000s
  <C:\Users\Johannes\AppData\Local\MiKTeX\2.9\fonts/pk/ljfour/jknappen/ec/dpi6
 00\ecti1200.pk> <C:\Users\Johannes\AppData\Local\MiKTeX\2.9\fonts/pk/ljfour/jkn
 appen/ec/dpi600\ecrm1000.pk> <C:\Users\Johannes\AppData\Local\MiKTeX\2.9\fonts/
-pk/ljfour/jknappen/ec/dpi600\tcrm1000.pk> <C:\Users\Johannes\AppData\Local\MiKT
-eX\2.9\fonts/pk/ljfour/jknappen/ec/dpi600\ecbx1200.pk> <C:\Users\Johannes\AppDa
-ta\Local\MiKTeX\2.9\fonts/pk/ljfour/jknappen/ec/dpi600\tcrm1200.pk> <C:\Users\J
-ohannes\AppData\Local\MiKTeX\2.9\fonts/pk/ljfour/jknappen/ec/dpi600\ecsx1440.pk
+pk/ljfour/jknappen/ec/dpi600\ecbx1200.pk> <C:\Users\Johannes\AppData\Local\MiKT
+eX\2.9\fonts/pk/ljfour/jknappen/ec/dpi600\tcrm1200.pk> <C:\Users\Johannes\AppDa
+ta\Local\MiKTeX\2.9\fonts/pk/ljfour/jknappen/ec/dpi600\ecsx1440.pk> <C:\Users\J
+ohannes\AppData\Local\MiKTeX\2.9\fonts/pk/ljfour/jknappen/ec/dpi600\ecrm1200.pk
 > <C:\Users\Johannes\AppData\Local\MiKTeX\2.9\fonts/pk/ljfour/jknappen/ec/dpi60
-0\ecrm1200.pk> <C:\Users\Johannes\AppData\Local\MiKTeX\2.9\fonts/pk/ljfour/jkna
-ppen/ec/dpi600\ecsx1200.pk> <C:\Users\Johannes\AppData\Local\MiKTeX\2.9\fonts/p
-k/ljfour/jknappen/ec/dpi600\ecsx1728.pk><C:/Users/Johannes/AppData/Local/Progra
-ms/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmex10.pfb><C:/Users/Johannes/AppD
-ata/Local/Programs/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmmi12.pfb><C:/Use
-rs/Johannes/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cm
-r12.pfb><C:/Users/Johannes/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/public
-/amsfonts/cm/cmr17.pfb><C:/Users/Johannes/AppData/Local/Programs/MiKTeX 2.9/fon
-ts/type1/public/amsfonts/cm/cmsy10.pfb>
-Output written on Bachelorarbeit.pdf (31 pages, 493609 bytes).
+0\ecsx1200.pk> <C:\Users\Johannes\AppData\Local\MiKTeX\2.9\fonts/pk/ljfour/jkna
+ppen/ec/dpi600\ecsx1728.pk><C:/Users/Johannes/AppData/Local/Programs/MiKTeX 2.9
+/fonts/type1/public/amsfonts/cm/cmex10.pfb><C:/Users/Johannes/AppData/Local/Pro
+grams/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmmi12.pfb><C:/Users/Johannes/A
+ppData/Local/Programs/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr12.pfb><C:/U
+sers/Johannes/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/
+cmr17.pfb><C:/Users/Johannes/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/publ
+ic/amsfonts/cm/cmsy10.pfb>
+Output written on Bachelorarbeit.pdf (31 pages, 535828 bytes).
 PDF statistics:
- 967 PDF objects out of 1000 (max. 8388607)
- 113 named destinations out of 1000 (max. 500000)
+ 929 PDF objects out of 1000 (max. 8388607)
+ 106 named destinations out of 1000 (max. 500000)
  603 words of extra memory for PDF output out of 10000 (max. 10000000)
 
