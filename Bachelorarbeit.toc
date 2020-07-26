@@ -27,14 +27,14 @@
 \contentsline {section}{\numberline {6}Automatisierte Aktionen}{21}{section.6}%
 \contentsline {subsection}{\numberline {6.1}Wahl der Sprache}{21}{subsection.6.1}%
 \contentsline {subsection}{\numberline {6.2}Architektur des Systems}{23}{subsection.6.2}%
-\contentsline {subsubsection}{\numberline {6.2.1}Prometheus}{25}{subsubsection.6.2.1}%
-\contentsline {subsubsection}{\numberline {6.2.2}Alertmanager}{26}{subsubsection.6.2.2}%
-\contentsline {subsubsection}{\numberline {6.2.3}Alert-Action-Manager}{26}{subsubsection.6.2.3}%
-\contentsline {subsubsection}{\numberline {6.2.4}Erweiterung}{27}{subsubsection.6.2.4}%
-\contentsline {subsection}{\numberline {6.3}Aktionen}{27}{subsection.6.3}%
-\contentsline {subsubsection}{\numberline {6.3.1}Skalierung}{27}{subsubsection.6.3.1}%
-\contentsline {subsubsection}{\numberline {6.3.2}Anomalie-Detection}{28}{subsubsection.6.3.2}%
-\contentsline {subsubsection}{\numberline {6.3.3}Regeln}{29}{subsubsection.6.3.3}%
+\contentsline {subsubsection}{\numberline {6.2.1}Prometheus}{24}{subsubsection.6.2.1}%
+\contentsline {subsubsection}{\numberline {6.2.2}Alertmanager}{25}{subsubsection.6.2.2}%
+\contentsline {subsubsection}{\numberline {6.2.3}Alert-Action-Manager}{25}{subsubsection.6.2.3}%
+\contentsline {subsubsection}{\numberline {6.2.4}Erweiterung}{26}{subsubsection.6.2.4}%
+\contentsline {subsection}{\numberline {6.3}Aktionen}{26}{subsection.6.3}%
+\contentsline {subsubsection}{\numberline {6.3.1}Skalierung}{26}{subsubsection.6.3.1}%
+\contentsline {subsubsection}{\numberline {6.3.2}Anomalie-Detection}{27}{subsubsection.6.3.2}%
+\contentsline {subsubsection}{\numberline {6.3.3}Regeln}{28}{subsubsection.6.3.3}%
 \contentsline {subsubsection}{\numberline {6.3.4}Metriken}{30}{subsubsection.6.3.4}%
 \contentsline {subsubsection}{\numberline {6.3.5}Grenzwerte}{30}{subsubsection.6.3.5}%
 \contentsline {section}{\numberline {7}Evaluation}{30}{section.7}%

@@ -1,0 +1,131 @@
+%% Creator: Inkscape 1.0 (4035a4fb49, 2020-05-01), www.inkscape.org
+%% PDF/EPS/PS + LaTeX output extension by Johan Engelen, 2010
+%% Accompanies image file 'AAMStateChart.pdf' (pdf, eps, ps)
+%%
+%% To include the image in your LaTeX document, write
+%%   \input{<filename>.pdf_tex}
+%%  instead of
+%%   \includegraphics{<filename>.pdf}
+%% To scale the image, write
+%%   \def\svgwidth{<desired width>}
+%%   \input{<filename>.pdf_tex}
+%%  instead of
+%%   \includegraphics[width=<desired width>]{<filename>.pdf}
+%%
+%% Images with a different path to the parent latex file can
+%% be accessed with the `import' package (which may need to be
+%% installed) using
+%%   \usepackage{import}
+%% in the preamble, and then including the image with
+%%   \import{<path to file>}{<filename>.pdf_tex}
+%% Alternatively, one can specify
+%%   \graphicspath{{<path to file>/}}
+%% 
+%% For more information, please see info/svg-inkscape on CTAN:
+%%   http://tug.ctan.org/tex-archive/info/svg-inkscape
+%%
+\begingroup%
+  \makeatletter%
+  \providecommand\color[2][]{%
+    \errmessage{(Inkscape) Color is used for the text in Inkscape, but the package 'color.sty' is not loaded}%
+    \renewcommand\color[2][]{}%
+  }%
+  \providecommand\transparent[1]{%
+    \errmessage{(Inkscape) Transparency is used (non-zero) for the text in Inkscape, but the package 'transparent.sty' is not loaded}%
+    \renewcommand\transparent[1]{}%
+  }%
+  \providecommand\rotatebox[2]{#2}%
+  \newcommand*\fsize{\dimexpr\f@size pt\relax}%
+  \newcommand*\lineheight[1]{\fontsize{\fsize}{#1\fsize}\selectfont}%
+  \ifx\svgwidth\undefined%
+    \setlength{\unitlength}{825.64453125bp}%
+    \ifx\svgscale\undefined%
+      \relax%
+    \else%
+      \setlength{\unitlength}{\unitlength * \real{\svgscale}}%
+    \fi%
+  \else%
+    \setlength{\unitlength}{\svgwidth}%
+  \fi%
+  \global\let\svgwidth\undefined%
+  \global\let\svgscale\undefined%
+  \makeatother%
+  \begin{picture}(1,1.11004187)%
+    \lineheight{1}%
+    \setlength\tabcolsep{0pt}%
+    \put(0,0){\includegraphics[width=\unitlength,page=1]{AAMStateChart.pdf}}%
+    \put(0.16846746,1.01557022){\makebox(0,0)[t]{\lineheight{1.25}\smash{\begin{tabular}[t]{c}Aggregieren\end{tabular}}}}%
+    \put(0.16846746,1.00285288){\makebox(0,0)[t]{\lineheight{1.25}\smash{\begin{tabular}[t]{c}von Metriken\end{tabular}}}}%
+    \put(0,0){\includegraphics[width=\unitlength,page=2]{AAMStateChart.pdf}}%
+    \put(0.16846746,0.90020581){\makebox(0,0)[t]{\lineheight{1.25}\smash{\begin{tabular}[t]{c}Prüfen von Regeln\end{tabular}}}}%
+    \put(0,0){\includegraphics[width=\unitlength,page=3]{AAMStateChart.pdf}}%
+    \put(0.16846746,0.79120006){\makebox(0,0)[t]{\lineheight{1.25}\smash{\begin{tabular}[t]{c}Alert erstellen\end{tabular}}}}%
+    \put(0,0){\includegraphics[width=\unitlength,page=4]{AAMStateChart.pdf}}%
+    \put(0.16846746,0.68219431){\makebox(0,0)[t]{\lineheight{1.25}\smash{\begin{tabular}[t]{c}Alertstatus 'pending'\end{tabular}}}}%
+    \put(0,0){\includegraphics[width=\unitlength,page=5]{AAMStateChart.pdf}}%
+    \put(0.03675218,0.95198354){\makebox(0,0)[t]{\lineheight{1.25}\smash{\begin{tabular}[t]{c}Regel trifft\end{tabular}}}}%
+    \put(0.03675218,0.9392662){\makebox(0,0)[t]{\lineheight{1.25}\smash{\begin{tabular}[t]{c} nicht zu\end{tabular}}}}%
+    \put(0,0){\includegraphics[width=\unitlength,page=6]{AAMStateChart.pdf}}%
+    \put(0.14484955,0.8520616){\makebox(0,0)[t]{\lineheight{1.25}\smash{\begin{tabular}[t]{c}Regel\end{tabular}}}}%
+    \put(0.14484955,0.83934426){\makebox(0,0)[t]{\lineheight{1.25}\smash{\begin{tabular}[t]{c} trifft zu\end{tabular}}}}%
+    \put(0,0){\includegraphics[width=\unitlength,page=7]{AAMStateChart.pdf}}%
+    \put(0.16846746,0.57318856){\makebox(0,0)[t]{\lineheight{1.25}\smash{\begin{tabular}[t]{c}Prüfen der Offsetzeit\end{tabular}}}}%
+    \put(0,0){\includegraphics[width=\unitlength,page=8]{AAMStateChart.pdf}}%
+    \put(0.16846746,0.46418281){\makebox(0,0)[t]{\lineheight{1.25}\smash{\begin{tabular}[t]{c}Alertstatus 'active'\end{tabular}}}}%
+    \put(0,0){\includegraphics[width=\unitlength,page=9]{AAMStateChart.pdf}}%
+    \put(0.13667412,0.74305585){\makebox(0,0)[t]{\lineheight{1.25}\smash{\begin{tabular}[t]{c}Starte\end{tabular}}}}%
+    \put(0.13667412,0.73033851){\makebox(0,0)[t]{\lineheight{1.25}\smash{\begin{tabular}[t]{c} Offsetzeit\end{tabular}}}}%
+    \put(0,0){\includegraphics[width=\unitlength,page=10]{AAMStateChart.pdf}}%
+    \put(0.13667412,0.51868569){\makebox(0,0)[t]{\lineheight{1.25}\smash{\begin{tabular}[t]{c}Zeit erfüllt\end{tabular}}}}%
+    \put(0,0){\includegraphics[width=\unitlength,page=11]{AAMStateChart.pdf}}%
+    \put(0.03675218,0.61860762){\makebox(0,0)[t]{\lineheight{1.25}\smash{\begin{tabular}[t]{c}Zeit nicht erfüllt\end{tabular}}}}%
+    \put(0,0){\includegraphics[width=\unitlength,page=12]{AAMStateChart.pdf}}%
+    \put(0.25930559,0.28886523){\makebox(0,0)[t]{\lineheight{1.25}\smash{\begin{tabular}[t]{c}Prüfen der\end{tabular}}}}%
+    \put(0.25930559,0.2761479){\makebox(0,0)[t]{\lineheight{1.25}\smash{\begin{tabular}[t]{c} Nachrichten\end{tabular}}}}%
+    \put(0,0){\includegraphics[width=\unitlength,page=13]{AAMStateChart.pdf}}%
+    \put(0.25930559,0.10718899){\makebox(0,0)[t]{\lineheight{1.25}\smash{\begin{tabular}[t]{c}Ausführen von\end{tabular}}}}%
+    \put(0.25930559,0.09447165){\makebox(0,0)[t]{\lineheight{1.25}\smash{\begin{tabular}[t]{c} Aktionen\end{tabular}}}}%
+    \put(0,0){\includegraphics[width=\unitlength,page=14]{AAMStateChart.pdf}}%
+    \put(0.16846746,0.39151231){\makebox(0,0)[t]{\lineheight{1.25}\smash{\begin{tabular}[t]{c}versenden von Alerts\end{tabular}}}}%
+    \put(0,0){\includegraphics[width=\unitlength,page=15]{AAMStateChart.pdf}}%
+    \put(0.08217124,0.28250656){\makebox(0,0)[t]{\lineheight{1.25}\smash{\begin{tabular}[t]{c}Chat-Target\end{tabular}}}}%
+    \put(0,0){\includegraphics[width=\unitlength,page=16]{AAMStateChart.pdf}}%
+    \put(0.20934462,0.16169186){\makebox(0,0)[t]{\lineheight{1.25}\smash{\begin{tabular}[t]{c}wählen passender\end{tabular}}}}%
+    \put(0.20934462,0.14897452){\makebox(0,0)[t]{\lineheight{1.25}\smash{\begin{tabular}[t]{c} Aktion\end{tabular}}}}%
+    \put(0,0){\includegraphics[width=\unitlength,page=17]{AAMStateChart.pdf}}%
+    \put(0.34741857,1.04736357){\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}Schritt 1\end{tabular}}}}%
+    \put(0.34741857,1.02192889){\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}Im ersten Schritt aggregiert der Prometheus-Server\end{tabular}}}}%
+    \put(0.34741857,1.00921155){\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}aus dem Kubernetes-Cluster Systemressourcen bezogene Metriken\end{tabular}}}}%
+    \put(0.34741857,0.99649422){\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}von Pods und Containern.\end{tabular}}}}%
+    \put(0,0){\includegraphics[width=\unitlength,page=18]{AAMStateChart.pdf}}%
+    \put(0.34741857,0.8229934){\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}Schritt 2\end{tabular}}}}%
+    \put(0.34741857,0.79755873){\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}In Schritt zwei prüft der Prometheus-Server anhand konfigurierter Alerting-Regeln, ob ein Alert ausgelöst werden soll.\end{tabular}}}}%
+    \put(0.34741857,0.78484139){\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}Falls dies der Fall ist,\end{tabular}}}}%
+    \put(0.34741857,0.77212405){\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}versendet der Server einen Alert an den Prometheus-Alertmanager, zuerst mit dem Status 'pending',\end{tabular}}}}%
+    \put(0.34741857,0.75940671){\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}nach Ablauf der Offset-Zeit mit dem Status 'active' (siehe Kapitel Grundlagen/Alerting).\end{tabular}}}}%
+    \put(0,0){\includegraphics[width=\unitlength,page=19]{AAMStateChart.pdf}}%
+    \put(0.34741857,0.54502874){\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}Schritt 3\end{tabular}}}}%
+    \put(0.34741857,0.51959407){\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}Der Alertmanager versendet, sobald ein Alert den Status 'active' erhält,\end{tabular}}}}%
+    \put(0.34741857,0.50687673){\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}an alle konfigurierten Ziele eine Alert-Nachricht.\end{tabular}}}}%
+    \put(0.34741857,0.49415939){\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}Diese sind ein Channel des Chatprogramms 'Slack',\end{tabular}}}}%
+    \put(0.34741857,0.48144206){\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}der alleine für Alert-Nachrichten zur Verfügung steht und den Zweck besitzt Administratoren und andere Interessierte zu informieren,\end{tabular}}}}%
+    \put(0.34741857,0.46872472){\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}sowie das in diesem Projekt entwickelte Tool 'Alert-Action-Manager',\end{tabular}}}}%
+    \put(0.34741857,0.45600738){\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}welches den Zweck besitzt anhand eintreffender Alert-Nachrichten Aktionen auf das Kubernetes-Cluster auszuführen.\end{tabular}}}}%
+    \put(0,0){\includegraphics[width=\unitlength,page=20]{AAMStateChart.pdf}}%
+    \put(0.34741857,0.37425307){\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}Schritt 4:\end{tabular}}}}%
+    \put(0.34741857,0.33610106){\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}Beim Eintreffen von Alerts prüft der 'Alert-Action-Manager' die eingehenden Nachrichten auf:\end{tabular}}}}%
+    \put(0.34741857,0.31066638){\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}1. auf ihr Label, um den Grund sowie die daraus resultierende Aktion eines Alerts schließen zu können.\end{tabular}}}}%
+    \put(0.34741857,0.29794905){\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}Zum Beispiel wird auf das Label 'PodLowResource' mit der Upscaling-Aktion reagiert.\end{tabular}}}}%
+    \put(0.34741857,0.28523171){\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}2. auf ihr Deployment, von welcher Ressource der Alert kommt und wohin die resultierende Aktion ausgeführt werden soll.\end{tabular}}}}%
+    \put(0.34741857,0.27251437){\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}Je nach Aktion kann der Alert-Action-Manager diese entweder auf das ganze Deployment oder auf einzelne Pods ausführen.\end{tabular}}}}%
+    \put(0.34741857,0.25979703){\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}3. auf benötigte weitere Daten. Im Falle einer Aktion können weitere Daten benötigt werden, wie beispielsweise im Falle eines Scalings,\end{tabular}}}}%
+    \put(0.34741857,0.2470797){\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}der 'Replica-Count', also die Anzahl der bereits vorhandenen Pods eines Deployments im Cluster.\end{tabular}}}}%
+    \put(0.34741857,0.23436236){\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}Solche Informationen können einerseits entweder in einen Alert geschrieben, oder in einer Aktion durch den Manager ermittelt werden.\end{tabular}}}}%
+    \put(0,0){\includegraphics[width=\unitlength,page=21]{AAMStateChart.pdf}}%
+    \put(0.34741857,0.15714995){\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}Schritt 5:\end{tabular}}}}%
+    \put(0.34741857,0.13171528){\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}Nachdem eine Nachricht durch den Alert-Action-Manager geprüft wurde,\end{tabular}}}}%
+    \put(0.34741857,0.11899794){\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}wird eine entsprechende Aktion auf das Kubernetes-Cluster ausgeführt.\end{tabular}}}}%
+    \put(0.34741857,0.1062806){\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}Dies geschieht mittels des Kubernetes Kontrolltools 'kubectl'.\end{tabular}}}}%
+    \put(0.34741857,0.08084593){\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}Nach dem Ausführen von Schritt fünf ist der Vorgang abgeschlossen.\end{tabular}}}}%
+  \end{picture}%
+\endgroup%

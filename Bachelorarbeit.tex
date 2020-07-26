@@ -483,40 +483,6 @@ Slack ist die Benachrichtigungsplattform für Administratoren und interessierte 
 
 \end{description}
 
-Der Ablauf des Konzepts ist eine Kette von Aktionen, bei der ein Schritt den nächsten auslöst. Die Kette der Schritte, welche zum Auslösen und Ausführen einer Aktion durchlaufen wird, ist hier beschrieben:
-
-\begin{description}
-
-\item[Schritt 1:]
-
-Im ersten Schritt aggregiert der Prometheus-Server aus dem Kubernetes-Cluster Systemressourcen bezogene Metriken von Pods und Containern. 
-
-\item[Schritt 2:]
-
-In Schritt zwei prüft der Prometheus-Server anhand konfigurierter Alerting-Regeln, ob ein Alert ausgelöst werden soll. Falls dies der Fall ist, versendet der Server einen Alert an den Prometheus-Alertmanager, zuerst mit dem Status 'pending', nach Ablauf der Offset-Zeit mit dem Status 'active' (siehe Kapitel Grundlagen/Alerting).
-
-\item[Schritt 3:]
-
-Der Alertmanager versendet, sobald ein Alert den Status 'active' erhält, an alle konfigurierten Ziele eine Alert-Nachricht. Diese sind ein Channel des Chatprogramms 'Slack', der alleine für Alert-Nachrichten zur Verfügung steht und den Zweck besitzt Administratoren und andere Interessierte zu informieren, sowie das in diesem Projekt entwickelte Tool 'Alert-Action-Manager', welches den Zweck besitzt anhand eintreffender Alert-Nachrichten Aktionen auf das Kubernetes-Cluster auszuführen.
-
-\item[Schritt 4:]
-
-Beim Eintreffen von Alerts prüft der 'Alert-Action-Manager' die eingehenden Nachrichten auf: 
-
-\begin{description}
-
-\item[1.] auf ihr Label, um den Grund sowie die daraus resultierende Aktion eines Alerts schließen zu können. Zum Beispiel wird auf das Label 'PodLowResource' mit der Upscaling-Aktion reagiert.
-\item[2.] auf ihr Deployment, von welcher Ressource der Alert kommt und wohin die resultierende Aktion ausgeführt werden soll. Je nach Aktion kann der Alert-Action-Manager diese entweder auf das ganze Deployment oder auf einzelne Pods ausführen.
-\item[3.] auf benötigte weitere Daten. Im Falle einer Aktion können weitere Daten benötigt werden, wie beispielsweise im Falle eines Scalings, der 'Replica-Count', also die Anzahl der bereits vorhandenen Pods eines Deployments im Cluster. Solche Informationen können einerseits entweder in einen Alert geschrieben, oder in einer Aktion durch den Manager ermittelt werden.
-
-\end{description}
-
-\item[Schritt 5:]
-
-Nachdem eine Nachricht durch den Alert-Action-Manager geprüft wurde, wird eine entsprechende Aktion auf das Kubernetes-Cluster ausgeführt. Dies geschieht mittels des Kubernetes Kontrolltools 'kubectl'.\\
-Nach dem Ausführen von Schritt fünf ist der Vorgang abgeschlossen.
-\end{description}
-
 Auf wichtige Komponenten wird hier nochmal gesondert eingegangen.
 
 \subsubsection{Prometheus}
@@ -532,8 +498,6 @@ Dieser Ansatz bedingt, dass Konfigurationen nicht mehr direkt in Prometheus selb
 \subsubsection{Alertmanager}
 
 Der Prometheus-Alertmanager, der in der Architektur als 'Verteiler' von Alerts dient, ermöglicht die grundsätzliche Kommunikation zwischen Prometheus und externen Tools. Die Möglichkeit mittels des Nachrichtensystems neben vorkonfigurierten Drittanbietertools wie Slack auch eigene sog. Webhooks zu adressieren, erlaubt die Möglichkeit einen eigenen HTTP-Endpunkt als Nachrichtenziel zu verwenden. Da sich für einen Alert mehrere Ziele festlegen lassen, kann so zu jeder automatischen Aktion auch eine Warnung an den für Alerts konfigurierten Slack-Channel gesendet werden. So kann in zukünftigen Alerts auch zwischen rein informativem Alert, der nur an Slack gesendet wird und einem Alert der eine Aktion zur Folge hat unterschieden werden und diese entsprechend konfiguriert.\\
-
-Der Alertmanager wird zusammen mit Prometheus über den 'Helm' Paket-Manager installiert und auch über dessen Helm-Charts konfiguriert.
 
 \subsubsection{Alert-Action-Manager}
 
@@ -642,6 +606,11 @@ Zum Inkludieren oder Exkludieren einzelner Metrikquellen, können mittels der An
 \end{lstlisting}
 
 In diesem Beispiel ist die Regel zum Alert 'PodHighResource' beschrieben, diese ist im sog. YAML-Format spezifiziert. Unter dem Punkt - alert findet sich der Name bzw. das Label des Alerts. Unter dem darunterliegenden Punkt 'expr' findet sich die Regel, die zum Auslösen des Alerts erfüllt sein muss. Unter dem Eintrag 'for' ist der Prüfungszeitraum für welchen die Regeln erfüllt werden muss spezifizert. Unter dem letzten Punkt sind noch optionale Anmerkungen angegeben, die in diesem Fall zur besseren Lesbarkeit dienen.
+Der Ablauf des Konzepts ist eine Kette von Aktionen, bei der ein Schritt den nächsten auslöst. Die Kette der Schritte, welche zum Auslösen und Ausführen einer Aktion durchlaufen wird, ist hier beschrieben:\\
+
+\begin{figure}[htbp]
+  \includegraphics[scale=1,width=1.1\textwidth]{AAMStateChart.png}
+\end{figure}
 
 \subsubsection{Metriken}
 
