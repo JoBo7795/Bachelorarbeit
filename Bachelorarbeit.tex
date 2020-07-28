@@ -116,6 +116,10 @@ Nach der offiziellen Kubernetes-Dokumentation sind Services Eine "abstrakte Mög
 Kubernetes Pods können dynamisch in ihrer Anzahl skalieren und so auch ihre IP-Adresse wechseln. Daher ist es sinnvoll die Pods über einen Service anzusprechen, der mit einem DNS ähnlichen System funktioniert und so ein Deployment über einen lesbaren Namen ansprechbar macht. 
 \item [kubectl]:\\
 kubectl ist eine Kontrollanwendung für Kubernetes. Es ist eine direkte Schnittstelle zwischen User und dem Kubernetes API-Server und kann mittels Konsolenbefehlen bedient werden. Das Tool stellt eine einfache Möglichkeit zur Bedienung des Kubernetes-Clusters dar. \\
+Ein kubectl-Befehl beseht aus der Aktion und dessen Ziel und sieht folgendermaßen aus:
+\begin{lstlisting}
+kubectl <Aktion><Ziel>
+\end{lstlisting}
 
 \end{description}
 
@@ -171,7 +175,6 @@ von Grenzwerten der Metriken. Des weiteren bietet Prometheus:\\
 Prometheus bietet eine Vielzahl an Komponenten, die das Überwachen von Systemen und Alarmieren unterstützen. Die grundlegende Komponente ist hierbei der zentrale Prometheus Server. Dieser ist dafür zuständig Metriken zu sammeln, im Folgenden scrapen genannt, und zentral zu speichern, sofern es gewünscht ist.
 
 \subsubsection{Scraping}
-
 
 Der Begriff Scraping bezeichnet das Sammeln von Metriken durch den Prometheus-Server. In Prometheus funktioniert dies folgendermaßen:
 Ein Scraping-Target, beispielsweise ein Kubernetes-Node, besitzt einen sog. Exporter, der Metriken aus dem System ausließt und diese an einem HTTP-Endpunkt '<IP-Adresse/DNS-Name>/metrics' bereitstellt. Der Prometheus-Server findet entweder per automatischem Target-Disovery Mechanismus das Target oder wird per Konfiguration darauf eingestellt.
@@ -302,9 +305,30 @@ Von besonderem Interesse für dieses Projekt sind hierbei alle system- und hardw
 \subsubsection{'USE'-Methode}
 
 Das Monitoring der Systemressourcen wird nach der 'USE'-Methode durchgeführt. Diese Methode wurde von Brendan Gregg, einem Netflix-Ingenieur im Bereich Cloud-Performance, mit Schwerpunkt auf das Monitoring von Systemressourcen entwickelt, weshalb sie sich für dieses Projekt eignet.
-Ziel der Methode ist es die Utilization, der Zeitdurchschnitt der Arbeit, die eine Ressource beschäftigt erledigt, die Saturation, die "Zusatzarbeit" die eine Ressource verrichten muss, im Moment aber nicht leisten kann sowie die Error-Rate, die Häufigkeit in der Fehler auftreten von Systemkomponenten wie CPU, RAM und Netzwerkbandbreite abzubilden.
+Ziel der Methode ist es die Utilization, der Zeitdurchschnitt der Arbeit, die eine Ressource beschäftigt erledigt, die Saturation, die 'Zusatzarbeit' die eine Ressource verrichten muss, im Moment aber nicht leisten kann sowie die Error-Rate, die Häufigkeit in der Fehler auftreten von Systemkomponenten abzubilden.\\
+Systemressource, die es sich lohnt zu überwachen, sind unter anderem:\\
+
+\begin{itemize}
+\item CPUs: sockets, cores, hardware threads (virtual CPUs)
+\item RAM: capacity
+\item Netzwerkinterfaces
+\item Speicher(Festplatte,SSD): I/O, Kapazität
+\item Controller: storage, network cards
+\end{itemize}
+
+Laut Gregg ist die Methode für Geräte besonders sinnvoll und effektiv, die bei erhöhter Utilization oder Saturation einen Performanceeinbruch erleiden.\\
+
+Gregg will mit dieser Methode eine Möglichkeit bieten serverseitige Performanceprobleme schnell zu erkennen, deren Ursache zu finden um diese dann eliminieren zu können. Sein Ziel ist es mit dieser Methode eine einfache und unkomplizierte aber trotzdem schnelle und komplette Methode zu liefern. Laut Gregg hat sich diese Methode schon in vielen Bereichen mehrfach bewährt in verschiedenen Unternehmen, als Lehrmittel in Schulklassen oder vor Allem aktuell im Cloud-Computing Bereich.\\
+
+\begin{figure}[htbp]
+\includegraphics[scale=.7]{img/usemethod_flow.png}
+\caption{Darstellung der Vorgehensweise bei Anwendung der USE-Methode}
+\end{figure}
+
+Die Reihenfolge des Vorgehens wird in diesem Diagram dargestellt. Um die Geschwindigkeit zu optimieren sollten Errors als erstes überprüft werden, da sie typischerweise schneller und einfacher zu interpretieren sind. Die Utilization oder Saturation können in beliebiger Reihenfolge beobachtet werden.
 
 <Quelle Brendan Gregg einfügen>
+\pagebreak
 
 \subsubsection{Metriken}
 
@@ -404,55 +428,7 @@ Für die Counter werden grüne Bereiche für unkritische Auslastung und rote Ber
 
 Das Kernthema dieser Arbeit ist die Entwicklung eines Systems, welches das Ausführen automatisierter Aktionen auf ein Kubernetes-Cluster ermöglicht. Mithilfe der Komponenten und Tools, Prometheus und dessen Alert-Verwaltungstool 'Alertmanager' (siehe Grundlagenkapitel) sowie einer Eigenentwicklung, genannt 'Alert-Action-Manager', welcher Alerts empfängt und auf diese mit einer passenden automatisierten Aktion reagiert, wird dieses Vorhaben in diesem Kapitel umgesetzt. Mittels automatischer Skalierung und Anomalie-Detection wird die Funktion der Architektur und Komponenten nachgewiesen.
 
-\subsection{Wahl der Sprache}
 
-Die Wahl der Programmiersprache für die 'Alert-Action-Manager'- sowie die Evaluations-Komponente fiel auf die von Google entwickelte Open-Source Sprache Go(-lang).\\
-Google beschreibt die Sprache selbst 'Go is a compiled, concurrent, garbage-collected, statically typed language developed at Google. It is an open source project: Google imports the public repository rather than the other way around.'
-Go findet vor allem in der Web-Entwicklung eine zunehmend starke Verbreitung, im Ranking der Website tiobe.com beispielsweise, steht Go, Stand 19.07.2020, auf Platz 12 der meist verwendeten Programmiersprachen <Quelle für Verbreitung und Wachstum einfügen>, wodurch es eine große und hilfreiche Community, viele Erfahrungen in einschlägigen Foren sowie eine stete Weiterentwicklung bietet.\\
-Vorteile der Sprache die auch in diesem Projekt hilfreich waren und so zur Entscheidung dieser Sprachwahl beigetragen haben, sind folgende:
-
-\begin{description}
-\item[Kompilierung]:\\
-
-Go ist im Gegensatz zu Sprachen wie Java und JavaScript eine kompilierte Sprache. Dadurch bietet Go einen Performancevorteil, den kompilierte Sprachen gegenüber interpretierten typischerweise haben. Des Weiteren wirkt sich die Kompilation positiv auf die Fehlerrate aus, da 'compile time errors' von vornherein durch das Kompilieren detektiert werden.\\
-
-\item[Typsicherheit]:\\
-
-Die Sprache ist statisch typisiert, was bedeutet, dass Typen zur Kompilierzeit überprüft werden und so Fehler durch falsche Typen vermieden werden. 
-
-\item[Speichermanagement]:\\
-
-Go hat eine integrierte Garbage-Collection, was das Speichermanagement vereinfacht und Fehler in dessen Zusammenhang verhindert. Trotzdem bietet die Sprache die Möglichkeit mit Pointern zu arbeiten.
-
-
-\item[Zahlreiche Packages, einfache Integration]:\\
-
-Go bietet die Möglichkeit Libraries, in Go Packages genannt, mittels ihres Pfads in ein Projekt zu integrieren. Die Standard JSON-Bibliothek wird beispielweise mittels des Statements 
-
-\begin{lstlisting}
-import "encoding/json"
-\end{lstlisting}
-
-eingebunden. Mittels des Package-Names können dann Elemente aus dem Package verwendet werden.
-
-
-\begin{lstlisting}
-var dec = json.NewDecoder(reader)
-\end{lstlisting}
-
-Ein großer Vorteil ist, dass das selbe Prinzip ebenso bei externen Packages, beispielweise von Github, funktioniert.\\
-Mit dem mitgelieferten Package-Downloader 'go get' kann ein Package heruntergeladen und installiert werden und ist so direkt einsatzbereit. Dadurch stehen eine Vielzahl an Packages auf Github und anderen Plattformen bereit, die ohne großen Aufwand verwendet werden können.
-
-\item[C-Integration(CGO)]:\\
-
-Mit CGO bietet die Sprache eine Integration der kompletten Sprache C bereit. Dies erlaubt es  C-Libraries zu importieren und zu verwenden oder C-Funktionen innerhalb eines Go-Programms zu benutzen. Dies ist beispielsweise praktisch, wenn trotz der automatischen Speicherverwaltung Speicher manuell allokiert werden soll. So kann mittels CGO die C-Funktion 'malloc()' zum reservieren des Speichers verwendet werden.
-
-Go bietet zahlreiche weiter nützliche Features, für weitere Informationen dazu wird die offizielle Dokumentation und FAQ empfohlen:
-\begin{lstlisting}
-https://golang.org/doc/faq#What_is_the_purpose_of_the_project
-\end{lstlisting} 
-
-\end{description}
 
 \pagebreak
 \subsection{Architektur des Systems}
@@ -499,10 +475,107 @@ Dieser Ansatz bedingt, dass Konfigurationen nicht mehr direkt in Prometheus selb
 
 Der Prometheus-Alertmanager, der in der Architektur als 'Verteiler' von Alerts dient, ermöglicht die grundsätzliche Kommunikation zwischen Prometheus und externen Tools. Die Möglichkeit mittels des Nachrichtensystems neben vorkonfigurierten Drittanbietertools wie Slack auch eigene sog. Webhooks zu adressieren, erlaubt die Möglichkeit einen eigenen HTTP-Endpunkt als Nachrichtenziel zu verwenden. Da sich für einen Alert mehrere Ziele festlegen lassen, kann so zu jeder automatischen Aktion auch eine Warnung an den für Alerts konfigurierten Slack-Channel gesendet werden. So kann in zukünftigen Alerts auch zwischen rein informativem Alert, der nur an Slack gesendet wird und einem Alert der eine Aktion zur Folge hat unterschieden werden und diese entsprechend konfiguriert.\\
 
-\subsubsection{Alert-Action-Manager}
+\subsubsection{Regeln}
 
-Der Alert-Action-Manager (hier abgekürzt: AAM) ist eine Entwicklung für diese Architektur. Dieser stellt den Part dar, der Aktionen aus empfangenen Alerts ableitet und diese dann auf das Kubernetes-Cluster ausführt.\\
-Er bietet die folgenden Funktionen:
+Die Regeln, die zum Aktivieren der Alerts verwendet werden, bestehen aus einem Label, einem Ausdruck, der Metriken abgleicht und einem Erfüllungszeitrahmen.
+Der Ausdruck ist, wie die Queries zur Visualisierung auch, in der PromQL-Sprache geschrieben. Ein Ausdruck muss immer als Vergleich geschrieben werden und somit einen BOOL-Wert repräsentieren können, also erfüllt(true) oder nicht erfüllt(false).
+Jeder Ausdruck besitzt einen Zeitrahmen über den er erfüllt sein muss um einen Alert auszulösen, womit vorzeitiges oder zu häufiges Alarmieren eingeschränkt oder verhindert werden kann.
+Um mehrere Bedingungen in einem Ausdruck zu verknüpfen kann auf logische Operatoren zurückgegriffen werden, diese sind AND, OR und UNLESS(Komplement).
+Zum Inkludieren oder Exkludieren einzelner Metrikquellen, können mittels der Anwendung von regulären Ausdrücken auf die Namen der Quellen Filter für diese erstellt werden.
+
+Die grobe Struktur eines Alerts sieht folgerndermaßen aus:\\
+
+\begin{lstlisting}[basicstyle=\footnotesize]
+     Label:		"Musterlabel"
+     Regel:		a > b
+     Offsetzeit:	5 Minuten
+     Anmerkungen:	In Musterlabel ist a kleiner b
+\end{lstlisting}
+
+Ein Alert muss identifiziert werden können, hierfür wird das Label verwendet, das den Namen eindeutig repräsentiert.\\
+Alerts sollen nur dann ausgelöst werden, wenn ein entsprechender Zustand erfüllt ist. Um diesen Zustand zu spezifizieren wird die Vergleichsregel zum bemessen gebraucht.\\
+Um kurzzeitige Ausreißer im Zustand nicht überzubewerten, muss dieser eine gewisse Dauer vorliegen. Diese Dauer, auch Offsetzeit genannt, wird zusätzlich zur Regel spezifiziert.\\
+Je nach Alert oder auszuführender Aktion werden Zusatzinformationen benötigt. Diese können als Anmerkung beigefügt werden. Unter anderem kann hier beschrieben werden, wie eine Alert-Nachricht als Chatnachricht aussehen soll.\\
+
+Der Ablauf des Konzepts ist eine Kette von Aktionen, bei der ein Schritt den nächsten auslöst. Die Kette der Schritte, welche zum Auslösen und Ausführen einer Aktion durchlaufen wird, ist hier beschrieben:\\
+
+\begin{figure}[htbp]
+  \includegraphics[scale=1,width=1.1\textwidth]{AAMStateChart.png}
+\end{figure}
+
+\pagebreak
+
+\section{Alert-Action-Manager}
+
+Der Alert-Action-Manager (hier abgekürzt: AAM) ist eine Entwicklung für die Architektur dieses Projekts. Dieser stellt den Part dar, der Aktionen aus empfangenen Alerts ableitet und diese dann auf das Kubernetes-Cluster ausführt.\\
+
+\subsubsection{Aufgabe}
+
+Da Alerts mit einer kritischen Situation im Kubernetes-Cluster einhergehen, auf die so schnell wie möglich reagiert werden muss, wird ein automatisiertes Hilfsmittel zur schnellstmöglichen Reaktion benötigt. Dieses Hilfsmittel stellt der Alert-Action-Manager dar. Seine Aufgabe ist es zu bestimmen, welche Aktion aus einem ausgelösten Alert folgen muss um die kritische Situation zu entschärfen.\\
+
+\subsubsection{Anforderungen}
+
+An den AAM sind mehrere Anforderungen geknüpft, die er erfüllen muss, um seine Aufgabe adäquat umsetzen zu können.
+
+\begin{itemize}
+\item von Prometheus versendete Alerts müssen empfangen werden können
+\item der Manager muss mit dem gegebenen Format JSON umgehen können
+\item ein fest konfigurierbarer HTTP-Endpunkt wird benötigt
+\item der Manager muss  aus den gegebenen Informationen eines Alerts Aktionen schließen können
+\item um Aktionen auf das Cluster ausführen zu können, muss der Manager eine Schnittstelle zu Kubernetes besitzen
+\end{itemize}
+
+\subsection{Wahl der Sprache}
+
+Die Wahl der Programmiersprache für die 'Alert-Action-Manager'- sowie die Evaluations-Komponente fiel auf die von Google entwickelte Open-Source Sprache Go(-lang).\\
+Google beschreibt die Sprache selbst 'Go is a compiled, concurrent, garbage-collected, statically typed language developed at Google. It is an open source project: Google imports the public repository rather than the other way around.'
+Go findet vor allem in der Web-Entwicklung eine zunehmend starke Verbreitung, im Ranking der Website tiobe.com beispielsweise, steht Go, Stand 19.07.2020, auf Platz 12 der meist verwendeten Programmiersprachen <Quelle für Verbreitung und Wachstum einfügen>, wodurch es eine große und hilfreiche Community, viele Erfahrungen in einschlägigen Foren sowie eine stete Weiterentwicklung bietet.\\
+Vorteile der Sprache die auch in diesem Projekt hilfreich waren und so zur Entscheidung dieser Sprachwahl beigetragen haben, sind folgende:
+
+\begin{description}
+\item[Kompilierung]:\\
+
+Go ist im Gegensatz zu Sprachen JavaScript oder PHP eine kompilierte Sprache. Dadurch bietet Go einen Performancevorteil, den kompilierte Sprachen gegenüber interpretierten typischerweise haben. Des Weiteren wirkt sich die Kompilation positiv auf die Fehlerrate aus, da 'compile time errors' von vornherein durch das Kompilieren detektiert werden.\\
+
+\item[Typsicherheit]:\\
+
+Die Sprache ist statisch typisiert, was bedeutet, dass Typen zur Kompilierzeit überprüft werden und so Fehler durch falsche Typen vermieden werden. 
+
+\item[Speichermanagement]:\\
+
+Go hat eine integrierte Garbage-Collection, was das Speichermanagement vereinfacht und Fehler in dessen Zusammenhang verhindert. Trotzdem bietet die Sprache die Möglichkeit mit Pointern zu arbeiten.
+
+
+\item[Zahlreiche Packages, einfache Integration]:\\
+
+Go bietet die Möglichkeit Libraries, in Go Packages genannt, mittels ihres Pfads in ein Projekt zu integrieren. Die Standard JSON-Bibliothek wird beispielweise mittels des Statements 
+
+\begin{lstlisting}
+import "encoding/json"
+\end{lstlisting}
+
+eingebunden. Mittels des Package-Names können dann Elemente aus dem Package verwendet werden.
+
+
+\begin{lstlisting}
+var dec = json.NewDecoder(reader)
+\end{lstlisting}
+
+Ein großer Vorteil ist, dass das selbe Prinzip ebenso bei externen Packages, beispielweise von Github, funktioniert.\\
+Mit dem mitgelieferten Package-Downloader 'go get' kann ein Package heruntergeladen und installiert werden und ist so direkt einsatzbereit. Dadurch stehen eine Vielzahl an Packages auf Github und anderen Plattformen bereit, die ohne großen Aufwand verwendet werden können.
+
+\item[C-Integration(CGO)]:\\
+
+Mit CGO bietet die Sprache eine Integration der kompletten Sprache C bereit. Dies erlaubt es  C-Libraries zu importieren und zu verwenden oder C-Funktionen innerhalb eines Go-Programms zu benutzen. Dies ist beispielsweise praktisch, wenn trotz der automatischen Speicherverwaltung Speicher manuell allokiert werden soll. So kann mittels CGO die C-Funktion 'malloc()' zum reservieren des Speichers verwendet werden.
+
+Go bietet zahlreiche weiter nützliche Features, für weitere Informationen dazu wird die offizielle Dokumentation und FAQ empfohlen:\\
+\url{https://golang.org/doc/faq#What_is_the_purpose_of_the_project}
+
+\end{description}
+
+\subsection{Funktionen}
+
+Um die beschriebenen Anforderungen umzusetzen, besitzt der AAM diese grundlegenden Funktionen:\\
 
 \begin{description}
 
@@ -514,10 +587,7 @@ Weitere Endpunkte sind der 'health' Pfad, über den sich überprüfen lässt, ob
 Alerts die über den HTTP-POST Endpunkt empfangen wurden, werden vom AAM analysiert und eingeordnet. Aus dem POST-Request wird zuerst das Label geparst, was die Einordnung des Alerts ermöglicht. Dieses wird mit den bekannten Labels verglichen, falls es nicht bekannt ist, wird der Alert verworfen, sofern es bekannt ist wird die Funktion des passenden Labels ausgeführt. Der erste Schritt einer Funktion ist das Analysieren des zugehörigen Deployments, also der Pod oder das Deployment auf welches eine Aktion ausgeführt werden soll. Hierzu wird der Name eines Pods verwendet oder vorher der Deployment-Name aus dem Namen des Pods geparst.
 Nach erfolgreicher Analyse wird die passende Aktion ausgeführt.
 \item[Ausführen von Aktionen:]
-Das Ausführen von Aktionen wird mittels 'kubectl' durchgeführt. Die erforderlichen Daten die zum Durchführen einer kubectl-Aktion gebraucht werden, wurden vor dem Ausführen durch die Analyse ermittelt und nun in die Aktion eingebaut. Eine Aktion wird passend zum Label gewählt und sieht zum schlussendlich folgendermaßen aus:
-\begin{lstlisting}
-kubectl <Aktion><Ziel>
-\end{lstlisting}
+Das Ausführen von Aktionen wird mittels 'kubectl' durchgeführt. Die erforderlichen Daten die zum Durchführen einer kubectl-Aktion gebraucht werden, wurden vor dem Ausführen durch die Analyse ermittelt und nun in die Aktion eingebaut.
 \item[Zusatzfunktionen:]
 Es werden zum Ausführen einiger Aktionen zusätzliche Funktionen benötigt. Zum Skalieren der Replicas eines Deployments (beschrieben im folgenden Unterkapitel), ist die Anzahl der Replicas zum Zeitpunkt des Ausführens der Aktion erforderlich. Hierfür besitzt der AAM eine Funktion, welche die Replikaanzahl zu einem Deployment analysieren kann.
 
@@ -581,33 +651,7 @@ Die Variable 'deployment\_name' enthält den analysierten Deploymentname.
 kubectl rollout restart deployment deployment_name
 \end{lstlisting}
 
-\subsubsection{Regeln}
 
-Die Regeln, die zum Aktivieren der Alerts verwendet werden, bestehen aus einem Label, einem Ausdruck, der Metriken abgleicht und einem Erfüllungszeitrahmen.
-Der Ausdruck ist, wie die Queries zur Visualisierung auch, in der PromQL-Sprache geschrieben. Ein Ausdruck muss immer als Vergleich geschrieben werden und somit einen BOOL-Wert repräsentieren können, also erfüllt(true) oder nicht erfüllt(false).
-Jeder Ausdruck besitzt einen Zeitrahmen über den er erfüllt sein muss um einen Alert auszulösen, womit vorzeitiges oder zu häufiges Alarmieren eingeschränkt oder verhindert werden kann.
-Um mehrere Bedingungen in einem Ausdruck zu verknüpfen kann auf logische Operatoren zurückgegriffen werden, diese sind AND, OR und UNLESS(Komplement).
-Zum Inkludieren oder Exkludieren einzelner Metrikquellen, können mittels der Anwendung von regulären Ausdrücken auf die Namen der Quellen Filter für diese erstellt werden.
-
-Die grobe Struktur eines Alerts sieht folgerndermaßen aus:\\
-
-\begin{lstlisting}[basicstyle=\footnotesize]
-     Label:		"Musterlabel"
-     Regel:		a > b
-     Offsetzeit:	5 Minuten
-     Anmerkungen:	In Musterlabel ist a kleiner b
-\end{lstlisting}
-
-Ein Alert muss identifiziert werden können, hierfür wird das Label verwendet, das den Namen eindeutig repräsentiert.\\
-Alerts sollen nur dann ausgelöst werden, wenn ein entsprechender Zustand erfüllt ist. Um diesen Zustand zu spezifizieren wird die Vergleichsregel zum bemessen gebraucht.\\
-Um kurzzeitige Ausreißer im Zustand nicht überzubewerten, muss dieser eine gewisse Dauer vorliegen. Diese Dauer, auch Offsetzeit genannt, wird zusätzlich zur Regel spezifiziert.\\
-Je nach Alert oder auszuführender Aktion werden Zusatzinformationen benötigt. Diese können als Anmerkung beigefügt werden. Unter anderem kann hier beschrieben werden, wie eine Alert-Nachricht als Chatnachricht aussehen soll.\\
-
-Der Ablauf des Konzepts ist eine Kette von Aktionen, bei der ein Schritt den nächsten auslöst. Die Kette der Schritte, welche zum Auslösen und Ausführen einer Aktion durchlaufen wird, ist hier beschrieben:\\
-
-\begin{figure}[htbp]
-  \includegraphics[scale=1,width=1.1\textwidth]{AAMStateChart.png}
-\end{figure}
 
 \subsubsection{Metriken}
 
