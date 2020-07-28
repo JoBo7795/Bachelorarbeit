@@ -622,7 +622,7 @@ Diese Regel wird ausgelöst, sobald in einem Pod eine hohe Last der Ressourcen C
 \item[PodHighResource]
 
 'PodHighResource' ist die Gegenaktion zu 'PodLowResource' und wird dann ausgelöst, wenn 
-eine niedrige Ressourcenlast in einem Deployment detektiert wird. Die geprüften Metriken sind die CPU-Utilization sowie die RAM-Utilization. Diese müssen über einen Zeitraum von 10 Sekunden einen Wert von 25\% Auslastung oder niedriger aufweisen um diese Regel zu erfüllen.
+eine niedrige Ressourcenlast in einem Deployment detektiert wird. Die geprüften Metriken sind die CPU-Utilization sowie die RAM-Utilization. Diese müssen über ein Zeitfenster von 10 Sekunden einen Wert von 25\% Auslastung oder niedriger aufweisen um diese Regel zu erfüllen.
 
 \end{description}
 
@@ -652,7 +652,7 @@ Die Thresholds werden so gesetzt, dass entweder die RAM-Auslastung, die CPU-Ausl
 
 Nach Auslösen des 'PodAnomalyBehaviour' Alerts wird die zugehörige Aktion folgendermaßen ausgeführt:\\
 
-Für die Aktion wird der zugehörige Deploymentname des anormalen Pods benötigt, dieser wird aus dem im Alert mitgesendeten Podnamen analysiert. Sobald der Name des Deployments bekannt ist wird die zugehörige kubectl-Aktion ausgeführt. Diese nennt sich 'rollout restart' und sorgt dafür, dass ein Deployment unterbrechungsfrei neu gestartet wird. Dies bedeutet, dass zuerst ein neues Deployment gestartet wird und sobald dieses arbeitsbereit ist, wird das alte Deployment heruntergefahren. Die resultierende Aktion sieht folgendermaßen aus:\\
+Für die Aktion wird der zugehörige Deploymentname des anormalen Pods benötigt, dieser wird aus dem im Alert mitgesendeten Podnamen analysiert. Sobald der Name des Deployments bekannt ist wird die zugehörige kubectl-Aktion ausgeführt. Diese nennt sich 'rollout restart' und sorgt dafür, dass ein Deployment unterbrechungsfrei neu gestartet wird, was den Vorteil bietet für den Rest des Clusters sowie auch für Nutzer nicht bemerkbar zu sein. Dies bedeutet, dass zuerst ein neues Deployment gestartet wird und sobald dieses arbeitsbereit ist, wird das alte Deployment heruntergefahren. Die resultierende Aktion sieht folgendermaßen aus:\\
 Die Variable 'deployment\_name' enthält den analysierten Deploymentname.
 \begin{lstlisting}
 kubectl rollout restart deployment deployment_name
