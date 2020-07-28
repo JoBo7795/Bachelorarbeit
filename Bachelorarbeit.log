@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.21 (MiKTeX 20.6.29) (preloaded format=pdflatex 2020.7.2)  28 JUL 2020 02:57
+This is pdfTeX, Version 3.14159265-2.6-1.40.21 (MiKTeX 20.6.29) (preloaded format=pdflatex 2020.7.2)  28 JUL 2020 16:49
 entering extended mode
 **./Bachelorarbeit.tex
 (Bachelorarbeit.tex
@@ -1377,144 +1377,146 @@ multiple pdfs with page group included in a single page
 pdfTeX warning: pdflatex (file ./DatenaggregationFlow (3).pdf): PDF inclusion: 
 multiple pdfs with page group included in a single page
 >]
-Overfull \hbox (17.08606pt too wide) in paragraph at lines 307--310
+Overfull \hbox (17.08606pt too wide) in paragraph at lines 308--311
 \T1/cmr/m/n/12 Me-tho-de wur-de von Bren-dan Gregg, ei-nem Netflix-Ingenieur im
  Be-reich Cloud-Performance,
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 307--310
+Underfull \hbox (badness 10000) in paragraph at lines 308--311
 
  []
 
 [16]
-Underfull \hbox (badness 10000) in paragraph at lines 319--320
+Underfull \hbox (badness 10000) in paragraph at lines 320--321
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 321--322
+Underfull \hbox (badness 10000) in paragraph at lines 322--323
 
  []
 
 <img/usemethod_flow.png, id=323, 525.6pt x 580.788pt>
 File: img/usemethod_flow.png Graphic file (type png)
 <use img/usemethod_flow.png>
-Package pdftex.def Info: img/usemethod_flow.png  used on input line 324.
+Package pdftex.def Info: img/usemethod_flow.png  used on input line 325.
 (pdftex.def)             Requested size: 367.91748pt x 406.54881pt.
-[17 <./img/usemethod_flow.png>] [18]
-Underfull \hbox (badness 10000) in paragraph at lines 339--342
+[17] [18 <./img/usemethod_flow.png>]
+Underfull \hbox (badness 10000) in paragraph at lines 340--343
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 343--344
+Underfull \hbox (badness 10000) in paragraph at lines 344--345
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 357--362
+Underfull \hbox (badness 10000) in paragraph at lines 358--363
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 366--371
+Underfull \hbox (badness 10000) in paragraph at lines 367--372
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 372--375
+Underfull \hbox (badness 10000) in paragraph at lines 373--376
 
  []
 
 [19]
-Underfull \hbox (badness 10000) in paragraph at lines 375--380
+Underfull \hbox (badness 10000) in paragraph at lines 376--381
 
  []
 
 [20]
-Underfull \hbox (badness 10000) in paragraph at lines 402--405
+Underfull \hbox (badness 10000) in paragraph at lines 403--406
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 407--410
+Underfull \hbox (badness 10000) in paragraph at lines 408--411
 
  []
 
+[21]
+<img/PercantageTransparent.png, id=352, 383.18156pt x 259.7203pt>
+File: img/PercantageTransparent.png Graphic file (type png)
+<use img/PercantageTransparent.png>
+Package pdftex.def Info: img/PercantageTransparent.png  used on input line 430.
 
-Underfull \hbox (badness 10000) in paragraph at lines 413--417
-
- []
-
-[21] [22] [23]
-Underfull \hbox (badness 10000) in paragraph at lines 436--437
+(pdftex.def)             Requested size: 306.54565pt x 207.77652pt.
+ [22 <./img/PercantageTransparent.png>] [23]
+Underfull \hbox (badness 10000) in paragraph at lines 443--444
 
  []
 
 (Architektur.pdf_tex
-<Architektur.pdf, id=360, page=1, 761.09344pt x 451.6875pt>
+<Architektur.pdf, id=362, page=1, 761.09344pt x 451.6875pt>
 File: Architektur.pdf Graphic file (type pdf)
 <use Architektur.pdf, page 1>
 Package pdftex.def Info: Architektur.pdf , page1 used on input line 56.
 (pdftex.def)             Requested size: 761.09343pt x 451.70016pt.
-<Architektur.pdf, id=361, page=2, 761.09344pt x 451.6875pt>
+<Architektur.pdf, id=363, page=2, 761.09344pt x 451.6875pt>
 File: Architektur.pdf Graphic file (type pdf)
 <use Architektur.pdf, page 2>
 Package pdftex.def Info: Architektur.pdf , page2 used on input line 58.
 (pdftex.def)             Requested size: 761.09343pt x 451.70016pt.
-<Architektur.pdf, id=362, page=3, 761.09344pt x 451.6875pt>
+<Architektur.pdf, id=364, page=3, 761.09344pt x 451.6875pt>
 File: Architektur.pdf Graphic file (type pdf)
 <use Architektur.pdf, page 3>
 Package pdftex.def Info: Architektur.pdf , page3 used on input line 60.
 (pdftex.def)             Requested size: 761.09343pt x 451.70016pt.
-<Architektur.pdf, id=363, page=4, 761.09344pt x 451.6875pt>
+<Architektur.pdf, id=365, page=4, 761.09344pt x 451.6875pt>
 File: Architektur.pdf Graphic file (type pdf)
 <use Architektur.pdf, page 4>
 Package pdftex.def Info: Architektur.pdf , page4 used on input line 62.
 (pdftex.def)             Requested size: 761.09343pt x 451.70016pt.
-<Architektur.pdf, id=364, page=5, 761.09344pt x 451.6875pt>
+<Architektur.pdf, id=366, page=5, 761.09344pt x 451.6875pt>
 File: Architektur.pdf Graphic file (type pdf)
 <use Architektur.pdf, page 5>
 Package pdftex.def Info: Architektur.pdf , page5 used on input line 65.
 (pdftex.def)             Requested size: 761.09343pt x 451.70016pt.
-<Architektur.pdf, id=365, page=6, 761.09344pt x 451.6875pt>
+<Architektur.pdf, id=367, page=6, 761.09344pt x 451.6875pt>
 File: Architektur.pdf Graphic file (type pdf)
 <use Architektur.pdf, page 6>
 Package pdftex.def Info: Architektur.pdf , page6 used on input line 67.
 (pdftex.def)             Requested size: 761.09343pt x 451.70016pt.
-<Architektur.pdf, id=366, page=7, 761.09344pt x 451.6875pt>
+<Architektur.pdf, id=368, page=7, 761.09344pt x 451.6875pt>
 File: Architektur.pdf Graphic file (type pdf)
 <use Architektur.pdf, page 7>
 Package pdftex.def Info: Architektur.pdf , page7 used on input line 69.
 (pdftex.def)             Requested size: 761.09343pt x 451.70016pt.
-<Architektur.pdf, id=367, page=8, 761.09344pt x 451.6875pt>
+<Architektur.pdf, id=369, page=8, 761.09344pt x 451.6875pt>
 File: Architektur.pdf Graphic file (type pdf)
 <use Architektur.pdf, page 8>
 Package pdftex.def Info: Architektur.pdf , page8 used on input line 71.
 (pdftex.def)             Requested size: 761.09343pt x 451.70016pt.
-<Architektur.pdf, id=368, page=9, 761.09344pt x 451.6875pt>
+<Architektur.pdf, id=370, page=9, 761.09344pt x 451.6875pt>
 File: Architektur.pdf Graphic file (type pdf)
 <use Architektur.pdf, page 9>
 Package pdftex.def Info: Architektur.pdf , page9 used on input line 74.
 (pdftex.def)             Requested size: 761.09343pt x 451.70016pt.
-<Architektur.pdf, id=369, page=10, 761.09344pt x 451.6875pt>
+<Architektur.pdf, id=371, page=10, 761.09344pt x 451.6875pt>
 File: Architektur.pdf Graphic file (type pdf)
 <use Architektur.pdf, page 10>
 Package pdftex.def Info: Architektur.pdf , page10 used on input line 76.
 (pdftex.def)             Requested size: 761.09343pt x 451.70016pt.
-<Architektur.pdf, id=370, page=11, 761.09344pt x 451.6875pt>
+<Architektur.pdf, id=372, page=11, 761.09344pt x 451.6875pt>
 File: Architektur.pdf Graphic file (type pdf)
 <use Architektur.pdf, page 11>
 Package pdftex.def Info: Architektur.pdf , page11 used on input line 78.
 (pdftex.def)             Requested size: 761.09343pt x 451.70016pt.
 )
-Overfull \hbox (8.52974pt too wide) in paragraph at lines 440--441
+Overfull \hbox (8.52974pt too wide) in paragraph at lines 447--448
  [][] 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 444--446
+Underfull \hbox (badness 10000) in paragraph at lines 451--453
 
  []
 
@@ -1559,145 +1561,145 @@ pdfTeX warning: pdflatex (file ./Architektur.pdf): PDF inclusion: multiple pdfs
 pdfTeX warning: pdflatex (file ./Architektur.pdf): PDF inclusion: multiple pdfs
  with page group included in a single page
 >]
-Overfull \hbox (13.77986pt too wide) in paragraph at lines 454--455
+Overfull \hbox (13.77986pt too wide) in paragraph at lines 461--462
 []\T1/cmr/m/n/12 Der Prometheus-Alertmanager emp-fängt Alerts di-rekt durch
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 466--467
+Underfull \hbox (badness 10000) in paragraph at lines 473--474
 
  []
 
 [25]
-Underfull \hbox (badness 10000) in paragraph at lines 476--477
+Underfull \hbox (badness 10000) in paragraph at lines 483--484
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 486--487
+Underfull \hbox (badness 10000) in paragraph at lines 493--494
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 495--499
+Underfull \hbox (badness 10000) in paragraph at lines 502--506
 
  []
 
 [26]
-Underfull \hbox (badness 10000) in paragraph at lines 500--501
+Underfull \hbox (badness 10000) in paragraph at lines 507--508
 
  []
 
-<AAMStateChart.png, id=405, 1077.02374pt x 1230.5975pt>
+<AAMStateChart.png, id=407, 1077.02374pt x 1230.5975pt>
 File: AAMStateChart.png Graphic file (type png)
 <use AAMStateChart.png>
-Package pdftex.def Info: AAMStateChart.png  used on input line 503.
+Package pdftex.def Info: AAMStateChart.png  used on input line 510.
 (pdftex.def)             Requested size: 1077.02112pt x 1230.59451pt.
 
-Overfull \hbox (44.82445pt too wide) in paragraph at lines 503--504
+Overfull \hbox (44.82445pt too wide) in paragraph at lines 510--511
 [][] 
  []
 
 [27] [28 <./AAMStateChart.png>]
-Underfull \hbox (badness 10000) in paragraph at lines 510--511
+Underfull \hbox (badness 10000) in paragraph at lines 517--518
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 514--515
+Underfull \hbox (badness 10000) in paragraph at lines 521--522
 
  []
 
 
-Overfull \hbox (0.5539pt too wide) in paragraph at lines 530--534
+Overfull \hbox (0.5539pt too wide) in paragraph at lines 537--541
 \T1/cmr/m/n/12 Die Wahl der Pro-gram-mier-spra-che für die 'Alert-Action-Manage
 r'- so-wie die Evaluations-
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 536--537
+Underfull \hbox (badness 10000) in paragraph at lines 543--544
 
  []
 
 [29]
-Underfull \hbox (badness 10000) in paragraph at lines 538--539
+Underfull \hbox (badness 10000) in paragraph at lines 545--546
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 540--541
+Underfull \hbox (badness 10000) in paragraph at lines 547--548
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 544--545
+Underfull \hbox (badness 10000) in paragraph at lines 551--552
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 549--550
+Underfull \hbox (badness 10000) in paragraph at lines 556--557
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 567--568
+Underfull \hbox (badness 10000) in paragraph at lines 574--575
 
  []
 
 [30]
 LaTeX Font Info:    Trying to load font information for T1+cmtt on input line 5
-72.
+79.
 
 ("C:\Users\Johannes\AppData\Local\Programs\MiKTeX 2.9\tex/latex/base\t1cmtt.fd"
 File: t1cmtt.fd 2019/12/16 v2.5j Standard LaTeX font definitions
 )
-Underfull \hbox (badness 10000) in paragraph at lines 578--579
+Underfull \hbox (badness 10000) in paragraph at lines 585--586
 
  []
 
 [31]
-Overfull \hbox (0.55528pt too wide) in paragraph at lines 602--604
+Overfull \hbox (0.55528pt too wide) in paragraph at lines 609--611
 \T1/cmr/m/n/12 Die Ak-tio-nen, wel-che durch den Alert-Action-Manager au-to-ma-
 ti-siert auf das Kubernetes-
  []
 
 
-Overfull \hbox (41.85074pt too wide) in paragraph at lines 613--614
+Overfull \hbox (41.85074pt too wide) in paragraph at lines 620--621
 \T1/cmr/m/n/12 Ver-bin-dung mit ei-ner ho-hen Nut-zer-last, al-so ei-ner aus-re
 i-chend ho-hen Netzwerkbandbreiten-
  []
 
 
-Overfull \hbox (27.86064pt too wide) in paragraph at lines 613--614
+Overfull \hbox (27.86064pt too wide) in paragraph at lines 620--621
 \T1/cmr/m/n/12 Se-kun-de lie-gen. Die-se Last muss für 10 Se-kun-den be-ste-hen
  um die die 'PodLowResource'-
  []
 
 [32]
-Overfull \hbox (17.05948pt too wide) in paragraph at lines 633--634
+Overfull \hbox (17.05948pt too wide) in paragraph at lines 640--641
 [][][][][][][][][][][][][][][][][] 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 646--647
+Underfull \hbox (badness 10000) in paragraph at lines 653--654
 
  []
 
 [33] [34] (Bachelorarbeit.bbl) [35]
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 676.
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 676.
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 683.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 683.
  (Bachelorarbeit.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 676.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 676.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 683.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 683.
 Package rerunfilecheck Info: File `Bachelorarbeit.out' has not changed.
 (rerunfilecheck)             Checksum: D41D8CD98F00B204E9800998ECF8427E;0.
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 676.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 683.
  ) 
 Here is how much of TeX's memory you used:
- 23680 strings out of 480790
- 464277 string characters out of 2893987
- 842751 words of memory out of 3000000
- 39121 multiletter control sequences out of 15000+200000
+ 23686 strings out of 480790
+ 464466 string characters out of 2893987
+ 842752 words of memory out of 3000000
+ 39126 multiletter control sequences out of 15000+200000
  546647 words of font info for 59 fonts, out of 3000000 for 9000
  1141 hyphenation exceptions out of 8191
  64i,15n,81p,10111b,1050s stack positions out of 5000i,500n,10000p,200000b,50000s
@@ -1718,9 +1720,9 @@ rs/Johannes/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cm
 r12.pfb><C:/Users/Johannes/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/public
 /amsfonts/cm/cmr17.pfb><C:/Users/Johannes/AppData/Local/Programs/MiKTeX 2.9/fon
 ts/type1/public/amsfonts/cm/cmsy10.pfb>
-Output written on Bachelorarbeit.pdf (35 pages, 629079 bytes).
+Output written on Bachelorarbeit.pdf (35 pages, 642093 bytes).
 PDF statistics:
- 995 PDF objects out of 1000 (max. 8388607)
+ 996 PDF objects out of 1000 (max. 8388607)
  112 named destinations out of 1000 (max. 500000)
- 632 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 637 words of extra memory for PDF output out of 10000 (max. 10000000)
 
