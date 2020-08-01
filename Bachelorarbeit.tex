@@ -516,11 +516,11 @@ Der Ablauf des Konzepts ist eine Kette von Aktionen, bei der ein Schritt den nä
 
 Der Alert-Action-Manager (hier abgekürzt: AAM) ist eine Entwicklung für die Architektur dieses Projekts. Dieser stellt den Part dar, der Aktionen aus empfangenen Alerts ableitet und diese dann auf das Kubernetes-Cluster ausführt.\\
 
-\subsubsection{Aufgabe}
+\subsection{Aufgabe}
 
 Da Alerts mit einer kritischen Situation im Kubernetes-Cluster einhergehen, auf die so schnell wie möglich reagiert werden muss, wird ein automatisiertes Hilfsmittel zur schnellstmöglichen Reaktion benötigt. Dieses Hilfsmittel stellt der Alert-Action-Manager dar. Seine Aufgabe ist es zu bestimmen, welche Aktion aus einem ausgelösten Alert folgen muss um die kritische Situation zu entschärfen.\\
 
-\subsubsection{Anforderungen}
+\subsection{Anforderungen}
 
 An den AAM sind mehrere Anforderungen geknüpft, die er erfüllen muss, um seine Aufgabe adäquat umsetzen zu können.
 
@@ -652,26 +652,36 @@ Die Thresholds werden so gesetzt, dass entweder die RAM-Auslastung, die CPU-Ausl
 
 Nach Auslösen des 'PodAnomalyBehaviour' Alerts wird die zugehörige Aktion folgendermaßen ausgeführt:\\
 
-Für die Aktion wird der zugehörige Deploymentname des anormalen Pods benötigt, dieser wird aus dem im Alert mitgesendeten Podnamen analysiert. Sobald der Name des Deployments bekannt ist wird die zugehörige kubectl-Aktion ausgeführt. Diese nennt sich 'rollout restart' und sorgt dafür, dass ein Deployment unterbrechungsfrei neu gestartet wird, was den Vorteil bietet für den Rest des Clusters sowie auch für Nutzer nicht bemerkbar zu sein. Dies bedeutet, dass zuerst ein neues Deployment gestartet wird und sobald dieses arbeitsbereit ist, wird das alte Deployment heruntergefahren. Die resultierende Aktion sieht folgendermaßen aus:\\
+Für die Aktion wird der zugehörige Deploymentname des anormalen Pods benötigt, dieser wird aus dem im Alert mitgesendeten Podnamen analysiert. Sobald der Name des Deployments bekannt ist wird die zugehörige kubectl-Aktion ausgeführt. Diese nennt sich 'rolling restart' und sorgt dafür, dass ein Deployment unterbrechungsfrei neu gestartet wird, was den Vorteil bietet für den Rest des Clusters sowie auch für Nutzer nicht bemerkbar zu sein. Dies bedeutet, dass zuerst ein neues Deployment gestartet wird und sobald dieses arbeitsbereit ist, wird das alte Deployment heruntergefahren. Die resultierende Aktion sieht folgendermaßen aus:\\
 Die Variable 'deployment\_name' enthält den analysierten Deploymentname.
 \begin{lstlisting}
 kubectl rollout restart deployment deployment_name
 \end{lstlisting}
 
-
-
-\subsubsection{Metriken}
-
-
-
-\subsubsection{Grenzwerte}
+\subsection{Grenzwerte}
 
 
 
 \section{Evaluation}
+
+
+
 \subsection{Messaufbau}
-\subsection{Regeln}
-\subsection{Grenzwerte}
+\subsection{Regeln und Grenzwerte}
+
+\begin{figure}[htbp]
+  \includegraphics[scale=1,width=.5\textwidth]{img/CPUAnomalie/RollingRestart.PNG}
+  \includegraphics[scale=1,width=.5\textwidth,height=.14\textheight]{img/CPUAnomalie/Saturation.PNG}
+  \includegraphics[scale=1,width=.5\textwidth]{img/CPUAnomalie/Utilization.PNG}
+\end{figure}
+
+\begin{figure}[htbp]
+  \includegraphics[scale=1,width=.6\textwidth]{img/CPUSkalierung/ReplicaCount.PNG}
+  \includegraphics[scale=1,width=.6\textwidth,height=.124\textheight]{img/CPUSkalierung/NetzwerkUtilization.PNG}
+  \includegraphics[scale=1,width=.6\textwidth]{img/CPUSkalierung/CPUUtilization.PNG}
+\end{figure}
+ 
+\pagebreak
 \subsection{Komponenten und Architektur}
 
 \section{Diskussion}
