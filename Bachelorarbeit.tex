@@ -1,4 +1,4 @@
-\documentclass[a4paper,12pt]{scrartcl}
+\documentclass[a4paper,10pt]{scrartcl}
  
 \usepackage[utf8]{inputenc} 
 \usepackage[ngerman]{babel}
@@ -661,26 +661,145 @@ kubectl rollout restart deployment deployment_name
 \subsection{Grenzwerte}
 
 
-
+\pagebreak
 \section{Evaluation}
 
-
+Zur Evaluierung der korrekten Funktion des System, deren Komponenten und Architektur wurde ein eigener Testaufbau entwickelt. Der Testaufbau löst kritische Zustände aus und testet somit den Ablauf des Systems und die kritischen Grenzwerte.
 
 \subsection{Messaufbau}
+
+Für den Messaufbau wurde ein eigener Kubernetes-Service entwickelt, welcher als Pod in das Cluster ausgeliefert wurde. Der Testservice simuliert anormale oder ressourcenintensive Verhaltensweisen und besitzt Funktionen um die CPU-Last zu maximieren, einen Endpunkt um die Netzwerkkapazität zu maximieren sowie die Funktion den Arbeitsspeicherbedarf des Service an die kritische Grenze zu bringen.
+Mit diesem Aufbau sollen sowohl die Grenzwerte der Regeln, als auch die Funktion der Komponenten und Architektur als Ganzes und die Anomaliedetection sowie die Ressourcenskalierung getestet werden.
+
+\subsection{Testszenarien}
+
+Es existieren für die Situationen Anomalie und Hochskalieren jeweils drei Szenarien, für das Herunterskalieren eines, womit es sieben zu testende Szenarien gibt.
+Diese sind:
+
+
+\begin{description}
+\item[Anomalie]:
+\begin{itemize}
+\item Hohe CPU-Last, niedrige RAM-Last, niedrige Netzwerklast
+\item Niedrige CPU-Last, hohe RAM-Last, niedrige Netzwerklast
+\item Hohe CPU- und RAM-Last, niedrige Netzwerklast
+\end{itemize}
+\item[Hochskalieren]:
+\begin{itemize}
+\item Hohe CPU-Last, niedrige RAM-Last, hohe Netzwerklast
+\item Niedrige CPU-Last, hohe RAM-Last, hohe Netzwerklast
+\item Hohe CPU- und RAM-Last, hohe Netzwerklast
+\end{itemize}
+\item[Herunterskalieren]:
+\begin{itemize}
+\item Niedrige CPU-Last, niedrige RAM-Last, beliebige Netzwerklast
+\end{itemize}
+\end{description}
+
+Jedes dieser Szenarien wird in einem eigenen Test evaluiert.
+
+\pagebreak
 \subsection{Regeln und Grenzwerte}
 
-\begin{figure}[htbp]
-  \includegraphics[scale=1,width=.5\textwidth]{img/CPUAnomalie/RollingRestart.PNG}
-  \includegraphics[scale=1,width=.5\textwidth,height=.14\textheight]{img/CPUAnomalie/Saturation.PNG}
-  \includegraphics[scale=1,width=.5\textwidth]{img/CPUAnomalie/Utilization.PNG}
-\end{figure}
+\subsubsection{Anomalie}
 
-\begin{figure}[htbp]
-  \includegraphics[scale=1,width=.6\textwidth]{img/CPUSkalierung/ReplicaCount.PNG}
-  \includegraphics[scale=1,width=.6\textwidth,height=.124\textheight]{img/CPUSkalierung/NetzwerkUtilization.PNG}
-  \includegraphics[scale=1,width=.6\textwidth]{img/CPUSkalierung/CPUUtilization.PNG}
-\end{figure}
- 
+\begin{description}
+\item[Hohe CPU-Last, niedrige RAM-Last, niedrige Netzwerklast]:\\
+
+\begin{minipage}{\linewidth}
+            \includegraphics[width=.5\textwidth]{img/CPUAnomalie/RollingRestart.PNG}
+            \includegraphics[scale=1,width=.5\textwidth,height=.14\textheight]{img/CPUAnomalie/Saturation.PNG}
+  			\includegraphics[scale=1,width=.5\textwidth]{img/CPUAnomalie/Utilization.PNG}
+            \captionof{figure}{Transfer from R1 to R2 whenK1=1}
+\end{minipage}
+
+\pagebreak
+
+\item[Niedrige CPU-Last, hohe RAM-Last, niedrige Netzwerklast]:\\
+
+\begin{minipage}{\linewidth}
+            \includegraphics[width=.5\textwidth]{img/RAMAnomalie/RollingRestart.PNG}
+            \includegraphics[scale=1,width=.5\textwidth,height=.14\textheight]{img/RAMAnomalie/RAMSaturation.PNG}
+  			\includegraphics[scale=1,width=.5\textwidth]{img/RAMAnomalie/RAMUtilization.PNG}
+  			\includegraphics[scale=1,width=.5\textwidth]{img/RAMAnomalie/CPUUtilization.PNG}
+  			\includegraphics[scale=1,width=.5\textwidth]{img/RAMAnomalie/Netzwerk.PNG}
+            \captionof{figure}{Transfer from R1 to R2 whenK1=1}
+\end{minipage}
+
+\pagebreak
+
+\item[Hohe CPU- und RAM-Last, niedrige Netzwerklast]:\\
+
+\begin{minipage}{\linewidth}
+            \includegraphics[width=.5\textwidth]{img/RAMCPUAnomalie/RollingRestart.PNG}
+            \includegraphics[scale=1,width=.5\textwidth,height=.14\textheight]{img/RAMCPUAnomalie/CPUSaturation.PNG}
+            \includegraphics[scale=1,width=.5\textwidth,height=.14\textheight]{img/RAMCPUAnomalie/RAMSaturation.PNG}
+  			\includegraphics[scale=1,width=.5\textwidth]{img/RAMCPUAnomalie/CPUUtilization.PNG}
+  			\includegraphics[scale=1,width=.5\textwidth]{img/RAMCPUAnomalie/RAMUtilization.PNG}
+  			\includegraphics[scale=1,width=.5\textwidth]{img/RAMCPUAnomalie/Netzwerk.PNG}
+            \captionof{figure}{Transfer from R1 to R2 whenK1=1}
+\end{minipage}
+
+\end{description}
+
+\pagebreak
+
+\subsubsection{Hochskalieren}
+
+\begin{description}
+
+\item[Hohe CPU-Last, niedrige RAM-Last, hohe Netzwerklast]:\\
+
+\begin{minipage}{\linewidth}
+            \includegraphics[width=.5\textwidth]{img/CPUSkalierung/ReplicaCount.PNG}
+            \includegraphics[scale=1,width=.5\textwidth,height=.14\textheight]{img/CPUSkalierung/NetzwerkUtilization.PNG}
+  			\includegraphics[scale=1,width=.5\textwidth]{img/CPUSkalierung/CPUUtilization.PNG}
+            \captionof{figure}{Transfer from R1 to R2 whenK1=1}
+\end{minipage}
+
+\pagebreak
+
+\item[Niedrige CPU-Last, hohe RAM-Last, niedrige Netzwerklast]:\\
+\begin{minipage}{\linewidth}
+            \includegraphics[width=.5\textwidth]{img/RAMSkalierung/Replica-Count.PNG}
+            \includegraphics[scale=1,width=.5\textwidth,height=.14\textheight]{img/RAMSkalierung/Netzwerk.PNG}
+  			\includegraphics[scale=1,width=.5\textwidth]{img/RAMSkalierung/RAMSaturation.PNG}
+  			\includegraphics[scale=1,width=.5\textwidth]{img/RAMSkalierung/RAMUtilization.PNG}
+            \captionof{figure}{Transfer from R1 to R2 whenK1=1}
+\end{minipage}
+
+\pagebreak
+
+\item[Hohe CPU- und RAM-Last, hohe Netzwerklast]:\\
+\begin{minipage}{\linewidth}
+            \includegraphics[width=.5\textwidth]{img/RAMCPUSkalierung/Replica-Count-Cut.PNG}
+            \includegraphics[scale=1,width=.5\textwidth,height=.14\textheight]{img/RAMCPUSkalierung/RAMSaturation.PNG}
+  			\includegraphics[scale=1,width=.5\textwidth]{img/RAMCPUSkalierung/CPUUtilization.PNG}
+            \captionof{figure}{Transfer from R1 to R2 whenK1=1}
+\end{minipage}
+
+\end{description}
+
+\pagebreak
+
+\subsubsection{Herunterskalieren}
+
+\begin{description}
+
+\item[Niedrige CPU-Last, niedrige RAM-Last, beliebige Netzwerklast]:\\
+
+\begin{minipage}{\linewidth}
+            \includegraphics[width=.5\textwidth]{img/Herunterskalieren/Replica-Count.PNG}
+            \includegraphics[scale=1,width=.5\textwidth,height=.14\textheight]{img/Herunterskalieren/CPUSaturation.PNG}
+  			\includegraphics[scale=1,width=.5\textwidth]{img/Herunterskalieren/CPUUtilization.PNG}
+  			\includegraphics[scale=1,width=.5\textwidth]{img/Herunterskalieren/RAMSaturation.PNG}
+  			\includegraphics[scale=1,width=.5\textwidth]{img/Herunterskalieren/RAMUtilization.PNG}
+            \captionof{figure}{Transfer from R1 to R2 whenK1=1}
+\end{minipage}
+
+\end{description}
+
+
 \pagebreak
 \subsection{Komponenten und Architektur}
 
