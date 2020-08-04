@@ -750,7 +750,7 @@ Die Verläufe der Grafen bestätigen, dass die Anomalie korrekt erkannt wurde. B
 Äquivalent zur CPU-Anomalie wird der Zustand eines Pods als anormal angesehen, wenn ein RAM-Last von mindestens 75\% über den Zeitraum von mindestens einer Minute besteht, die nicht durch eine hohe Netzwerklast begründet wird. Wenn dieser Zustand  der RAM-Anomalie erfüllt ist, soll ein 'Rolling-Restart' durchgeführt werden, um die Situation zu entschärfen.\\
 Der Graf der RAM-Saturation steigt zwei mal an. Zum Zeitpunkt 02:21:00 auf 75\% und zum Zeitpunkt 02:21:45 bis auf einen Wert von 1,5 an und bricht zwischen den Zeitpunkten 02:22:00 und 02:22:30 ab. Danach ist ein neuer Graf zu erkennen.
 Der Verlauf des RAM-Utilization-Grafs steigt bis 800 MByte und verläuft stetig. Ab dem Zeitpunkt 02:22:00 ist, wie bei der Saturation, der Start eines neuen Grafen zu erkennen.
-Der Graf der Netzwerk-Utilization zeigt einen niedrigen Verlauf bei 20 einem Maximum von 8 Bytes pro Sekunden\\
+Der Graf der Netzwerk-Utilization zeigt einen niedrigen Verlauf bei einem Maximum von 8 Bytes pro Sekunde.\\
 Ab dem Zeitpunkt 02:22:30 ist ein Anstieg um eins bei dem Grafen des 'Rolling-Restart'-Counter zu sehen.\\
 Die Grafen bestätigen die korrekte Funktion der Anomalieerkennung. Am Graf der RAM-Saturation ist zu erkennen, dass zum Zeitpunkt 02:21:00 der kritische Wert von 75\% RAM-Auslastung erreicht ist. Eine Minute später zum Zeitpunkt 02:22:00 erscheint der neue Pod des Deployments als neuer Graf im Bild, 30 Sekunden später endet der Graf des 'alten' Pods. Der Netzwerklast-Graf belegt, dass keine hohe Last von außen auf dem Pod anlag, wodurch ein anormaler Fall vorliegt und der 'Rolling-Restart' die korrekte Methode ist.
 Der 'Rolling-Restart'-Counter wurde um eins nach oben gezählt was nachweist, dass der Rolling-Restart durchgeführt wurde. 
@@ -760,7 +760,6 @@ Der 'Rolling-Restart'-Counter wurde um eins nach oben gezählt was nachweist, da
 
 \begin{minipage}{\linewidth}
             \includegraphics[width=.5\textwidth]{img/RAMCPUAnomalie/RollingRestart.PNG}
-            \includegraphics[scale=1,width=.5\textwidth,height=.14\textheight]{img/RAMCPUAnomalie/CPUSaturation.PNG}
             \includegraphics[scale=1,width=.5\textwidth,height=.14\textheight]{img/RAMCPUAnomalie/RAMSaturation.PNG}
   			\includegraphics[scale=1,width=.5\textwidth]{img/RAMCPUAnomalie/CPUUtilization.PNG}
   			\includegraphics[scale=1,width=.5\textwidth]{img/RAMCPUAnomalie/RAMUtilization.PNG}
@@ -769,7 +768,12 @@ Der 'Rolling-Restart'-Counter wurde um eins nach oben gezählt was nachweist, da
 \end{minipage}
 
 Bei einer zeitgleichen Grenzüberschreitung der RAM- und CPU-Utilization und -Saturation von mindestens 75\% liegt ebenfalls ein anormaler Zustand vor. Der Zustand muss eine Minute anhalten und darf auch ebenfalls nur einmal als Anomalie erkannt werden. Der 'Rolling-Restart' wird durchgeführt, um die Situation zu entschärfen.\\
-
+Der Graf der CPU-Utilization zeigt von dem Zeitpunkt 18:33:00 bis 18:34:00 einen Wert von über 75\% auf, ab dem Zeitpunkt 18:34:45 ist ein neuer Graf zu erkennen.\\
+Der Graf der RAM-Utilization zeigt einen Anstieg auf 800 MByte zum Zeitpunkt 18:32:45. Zur Zeit 18:34:00 erscheint ein neuer, zweiter Graf mit 0\% Last.
+Der RAM-Saturation Graf zeigt zum Zeitpunkt 18:32:45 einen Anstieg auf 80\% Last. Zum Zeitpunkt 18:33:45 endet der Graf, zum Zeitpunkt 18:34:00 erscheint ein neuer, zweiter Graf.
+Ab dem Zeitpunkt 18:34:00 ist ein Anstieg um eins bei dem Grafen des 'Rolling-Restart'-Counter zu sehen.\\
+Der Graf der Netzwerk-Utilization zeigt einen niedrigen Verlauf bei einem Maximum von ~22 Bytes pro Sekunde.\\
+Die Grafen belegen die korrekte Funktion und Wirkung der Anomalie-Detection bei hoher RAM- und CPU-Last. Sowohl RAM als auch die CPU haben über den Zeitraum von 18:32:45 ~ 18:33:00 bis 18:34:00 einen Lastwert von über 75\% gehabt. Nach einer Minute wurde ein neuer, zweiter Pod bereitgestellt, was durch den zweiten Grafen zu erkennen ist. Aufgrund der niedrigen Netzlast von 20 Bytes pro Sekunde lag eine anormale Situation vor, weswegen ein 'Rolling-Restart' durchzuführen ist. Der 'Rolling-Restart-Counter' Graf bestätigt durch das Hochzählen zum Zeitpunkt 18:34:00 die Durchführen dessen. Trotz des Überschreitens zweier Lastwerte wurde wie gewollt nur einmal ein 'Rolling-Restart' durchgeführt.
 
 \end{description}
 

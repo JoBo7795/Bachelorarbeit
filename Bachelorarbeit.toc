@@ -44,7 +44,7 @@
 \contentsline {subsection}{\numberline {8.2}Testszenarien}{33}{subsection.8.2}%
 \contentsline {subsection}{\numberline {8.3}Messungen}{34}{subsection.8.3}%
 \contentsline {subsubsection}{\numberline {8.3.1}Anomalie}{34}{subsubsection.8.3.1}%
-\contentsline {subsubsection}{\numberline {8.3.2}Hochskalieren}{38}{subsubsection.8.3.2}%
-\contentsline {subsubsection}{\numberline {8.3.3}Herunterskalieren}{41}{subsubsection.8.3.3}%
-\contentsline {section}{\numberline {9}Diskussion}{42}{section.9}%
-\contentsline {section}{\numberline {10}Fazit und Ausblick}{42}{section.10}%
+\contentsline {subsubsection}{\numberline {8.3.2}Hochskalieren}{39}{subsubsection.8.3.2}%
+\contentsline {subsubsection}{\numberline {8.3.3}Herunterskalieren}{42}{subsubsection.8.3.3}%
+\contentsline {section}{\numberline {9}Diskussion}{43}{section.9}%
+\contentsline {section}{\numberline {10}Fazit und Ausblick}{43}{section.10}%
