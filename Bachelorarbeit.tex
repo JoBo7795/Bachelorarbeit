@@ -10,6 +10,7 @@
 \usetikzlibrary{automata,positioning}
 \usepackage{pdfpages}
 \usepackage{listings}
+\usepackage{abstract}
 
 \bibliographystyle{unsrt}
 
@@ -33,9 +34,26 @@
 
 \begin{document}
 
+
+\begin{abstract}
+
+Das Ziel der Bachelorarbeit war es ein System zu entwickeln, welches den Zustand eines Kubernetes-Clusters überwacht und bei Auftreten kritischer Situationen automatisiert Aktionen auf dieses anwendet, um die Situation zu entschärfen.
+Die kritischen Situationen, auf die sich in dieser Arbeit fokussiert wurde, sind anormale Zustände einzelner Container sowie Ressourcenknappheit oder -überhang.
+Zum Überwachen wurde das Monitoringsystem Prometheus verwendet und mit einem, in dieser Arbeit entwickelten, Tool verknüpft, das automatisiert Aktionen auf das Cluster anwenden kann. Hierdurch wurde ein System geschaffen, das sowohl automatisierte Aktionen auf das Cluster ermöglicht als auch das Überwachen durch den Menschen mithilfe von Visualisierungen.
+In der Evaluation zeigte sich, dass das System anormale Zustände in Containern erkennen und darauf reagieren kann sowie das Cluster hoch- oder herunterskalieren, sofern eine Ressourcenknappheit bzw. ein Überhang besteht.
+
+\end{abstract}
+\pagebreak
+
+\pagenumbering{roman}
+
 \tableofcontents
 
 \pagebreak
+
+\clearpage
+
+\pagenumbering{arabic}
 
 \section{Einleitung}
 
