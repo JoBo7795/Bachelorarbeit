@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.21 (MiKTeX 20.6.29) (preloaded format=pdflatex 2020.7.2)  4 AUG 2020 15:26
+This is pdfTeX, Version 3.14159265-2.6-1.40.21 (MiKTeX 20.6.29) (preloaded format=pdflatex 2020.7.2)  4 AUG 2020 17:26
 entering extended mode
 **./Bachelorarbeit.tex
 (Bachelorarbeit.tex
@@ -1805,54 +1805,54 @@ Underfull \hbox (badness 10000) in paragraph at lines 759--760
 
  []
 
-<img/RAMCPUAnomalie/RollingRestart.PNG, id=495, 594.72188pt x 156.585pt>
+<img/RAMCPUAnomalie/RollingRestart.PNG, id=495, 592.46344pt x 194.22563pt>
 File: img/RAMCPUAnomalie/RollingRestart.PNG Graphic file (type png)
 <use img/RAMCPUAnomalie/RollingRestart.PNG>
 Package pdftex.def Info: img/RAMCPUAnomalie/RollingRestart.PNG  used on input l
 ine 762.
-(pdftex.def)             Requested size: 174.2212pt x 45.86961pt.
-<img/RAMCPUAnomalie/CPUSaturation.PNG, id=496, 602.25pt x 159.59625pt>
+(pdftex.def)             Requested size: 174.2212pt x 57.11526pt.
+<img/RAMCPUAnomalie/CPUSaturation.PNG, id=496, 599.99156pt x 197.98969pt>
 File: img/RAMCPUAnomalie/CPUSaturation.PNG Graphic file (type png)
 <use img/RAMCPUAnomalie/CPUSaturation.PNG>
 Package pdftex.def Info: img/RAMCPUAnomalie/CPUSaturation.PNG  used on input li
 ne 763.
-(pdftex.def)             Requested size: 602.24852pt x 159.59584pt.
-<img/RAMCPUAnomalie/RAMSaturation.PNG, id=497, 593.21625pt x 156.585pt>
+(pdftex.def)             Requested size: 599.9901pt x 197.9892pt.
+<img/RAMCPUAnomalie/RAMSaturation.PNG, id=497, 573.64313pt x 191.21437pt>
 File: img/RAMCPUAnomalie/RAMSaturation.PNG Graphic file (type png)
 <use img/RAMCPUAnomalie/RAMSaturation.PNG>
 Package pdftex.def Info: img/RAMCPUAnomalie/RAMSaturation.PNG  used on input li
 ne 764.
-(pdftex.def)             Requested size: 593.2148pt x 156.58461pt.
-<img/RAMCPUAnomalie/CPUUtilization.PNG, id=498, 591.71063pt x 158.84344pt>
+(pdftex.def)             Requested size: 573.64172pt x 191.2139pt.
+<img/RAMCPUAnomalie/CPUUtilization.PNG, id=498, 575.90157pt x 192.72pt>
 File: img/RAMCPUAnomalie/CPUUtilization.PNG Graphic file (type png)
 <use img/RAMCPUAnomalie/CPUUtilization.PNG>
 Package pdftex.def Info: img/RAMCPUAnomalie/CPUUtilization.PNG  used on input l
 ine 765.
-(pdftex.def)             Requested size: 591.70918pt x 158.84305pt.
-<img/RAMCPUAnomalie/RAMUtilization.PNG, id=499, 599.23875pt x 152.06813pt>
+(pdftex.def)             Requested size: 575.90016pt x 192.71951pt.
+<img/RAMCPUAnomalie/RAMUtilization.PNG, id=499, 584.1825pt x 194.22563pt>
 File: img/RAMCPUAnomalie/RAMUtilization.PNG Graphic file (type png)
 <use img/RAMCPUAnomalie/RAMUtilization.PNG>
 Package pdftex.def Info: img/RAMCPUAnomalie/RAMUtilization.PNG  used on input l
 ine 766.
-(pdftex.def)             Requested size: 599.23729pt x 152.06775pt.
-<img/RAMCPUAnomalie/Netzwerk.PNG, id=500, 594.72188pt x 183.68625pt>
+(pdftex.def)             Requested size: 584.18106pt x 194.22514pt.
+<img/RAMCPUAnomalie/Netzwerk.PNG, id=500, 598.48593pt x 219.82124pt>
 File: img/RAMCPUAnomalie/Netzwerk.PNG Graphic file (type png)
 <use img/RAMCPUAnomalie/Netzwerk.PNG>
 Package pdftex.def Info: img/RAMCPUAnomalie/Netzwerk.PNG  used on input line 76
 7.
-(pdftex.def)             Requested size: 594.72043pt x 183.68578pt.
+(pdftex.def)             Requested size: 598.48447pt x 219.8207pt.
 
-Overfull \hbox (2.21657pt too wide) in paragraph at lines 762--768
+Overfull \hbox (2.22243pt too wide) in paragraph at lines 762--768
 [][] []
  []
 
 
-Overfull \hbox (2.21713pt too wide) in paragraph at lines 762--768
+Overfull \hbox (2.22224pt too wide) in paragraph at lines 762--768
 [] []
  []
 
 
-Overfull \hbox (2.20927pt too wide) in paragraph at lines 762--768
+Overfull \hbox (2.21532pt too wide) in paragraph at lines 762--768
 [] [] 
  []
 
@@ -2038,7 +2038,7 @@ KTeX 2.9/fonts/type1/public/amsfonts/cm/cmr10.pfb><C:/Users/Johannes/AppData/Lo
 cal/Programs/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr17.pfb><C:/Users/Joha
 nnes/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmsy10.pf
 b>
-Output written on Bachelorarbeit.pdf (46 pages, 1392153 bytes).
+Output written on Bachelorarbeit.pdf (46 pages, 1466974 bytes).
 PDF statistics:
  1182 PDF objects out of 1200 (max. 8388607)
  130 named destinations out of 1000 (max. 500000)
