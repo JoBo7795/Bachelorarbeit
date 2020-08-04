@@ -42,10 +42,9 @@
 \contentsline {section}{\numberline {8}Evaluation}{35}{section.8}%
 \contentsline {subsection}{\numberline {8.1}Messaufbau}{35}{subsection.8.1}%
 \contentsline {subsection}{\numberline {8.2}Testszenarien}{35}{subsection.8.2}%
-\contentsline {subsection}{\numberline {8.3}Regeln und Grenzwerte}{36}{subsection.8.3}%
+\contentsline {subsection}{\numberline {8.3}Messungen}{36}{subsection.8.3}%
 \contentsline {subsubsection}{\numberline {8.3.1}Anomalie}{36}{subsubsection.8.3.1}%
-\contentsline {subsubsection}{\numberline {8.3.2}Hochskalieren}{39}{subsubsection.8.3.2}%
-\contentsline {subsubsection}{\numberline {8.3.3}Herunterskalieren}{42}{subsubsection.8.3.3}%
-\contentsline {subsection}{\numberline {8.4}Komponenten und Architektur}{43}{subsection.8.4}%
-\contentsline {section}{\numberline {9}Diskussion}{43}{section.9}%
-\contentsline {section}{\numberline {10}Fazit und Ausblick}{43}{section.10}%
+\contentsline {subsubsection}{\numberline {8.3.2}Hochskalieren}{40}{subsubsection.8.3.2}%
+\contentsline {subsubsection}{\numberline {8.3.3}Herunterskalieren}{43}{subsubsection.8.3.3}%
+\contentsline {section}{\numberline {9}Diskussion}{44}{section.9}%
+\contentsline {section}{\numberline {10}Fazit und Ausblick}{44}{section.10}%

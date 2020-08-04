@@ -477,7 +477,6 @@ Zusätzlich zum zentralen Server besitzt Prometheus auch Komponenten, die direkt
 Der Prometheus-Server, wie auch der Alertmanager, stellen ein eigenes Deployment dar und laufen als Pod im Kubernetes-Cluster. Sie werden in der für Kubernetes optimierten Variante über den Kubernetes Paket-Manager 'Helm' installiert und konfiguriert. Dies hat den Vorteil, dass für die grundsätzliche Konfiguration im Kubernetes-Cluster deutlich weniger Ressourcen und Zeit in Anspruch genommen werden müssen und die Vollständigkeit und Fehlerwahrscheinlichkeit verbessert werden, da benötigte Exporter direkt mit installiert und automatisch konfiguriert werden.\\
 Dieser Ansatz bedingt, dass Konfigurationen nicht mehr direkt in Prometheus selbst, sondern über den Paket-Manager konfiguriert werden, was eine gewisse Kenntnis der Funktion  sogenannter 'Helm-Charts' voraussetzt.
 
-
 \subsubsection{Alertmanager}
 
 Der Prometheus-Alertmanager, der in der Architektur als 'Verteiler' von Alerts dient, ermöglicht die grundsätzliche Kommunikation zwischen Prometheus und externen Tools. Die Möglichkeit mittels des Nachrichtensystems neben vorkonfigurierten Drittanbietertools wie Slack auch eigene sog. Webhooks zu adressieren, erlaubt die Möglichkeit einen eigenen HTTP-Endpunkt als Nachrichtenziel zu verwenden. Da sich für einen Alert mehrere Ziele festlegen lassen, kann so zu jeder automatischen Aktion auch eine Warnung an den für Alerts konfigurierten Slack-Channel gesendet werden. So kann in zukünftigen Alerts auch zwischen rein informativem Alert, der nur an Slack gesendet wird und einem Alert der eine Aktion zur Folge hat unterschieden werden und diese entsprechend konfiguriert.\\
@@ -676,7 +675,6 @@ Mit diesem Aufbau sollen sowohl die Grenzwerte der Regeln, als auch die Funktion
 Es existieren für die Situationen Anomalie und Hochskalieren jeweils drei Szenarien, für das Herunterskalieren eines, womit es sieben zu testende Szenarien gibt.
 Diese sind:
 
-
 \begin{description}
 \item[Anomalie]:
 \begin{itemize}
@@ -699,7 +697,7 @@ Diese sind:
 Jedes dieser Szenarien wird in einem eigenen Test evaluiert.
 
 \pagebreak
-\subsection{Regeln und Grenzwerte}
+\subsection{Messungen}
 
 \subsubsection{Anomalie}
 
@@ -707,11 +705,17 @@ Jedes dieser Szenarien wird in einem eigenen Test evaluiert.
 \item[Hohe CPU-Last, niedrige RAM-Last, niedrige Netzwerklast]:\\
 
 \begin{minipage}{\linewidth}
-            \includegraphics[width=.5\textwidth]{img/CPUAnomalie/RollingRestart.PNG}
-            \includegraphics[scale=1,width=.5\textwidth,height=.14\textheight]{img/CPUAnomalie/Saturation.PNG}
-  			\includegraphics[scale=1,width=.5\textwidth]{img/CPUAnomalie/Utilization.PNG}
-            \captionof{figure}{Transfer from R1 to R2 whenK1=1}
+            \includegraphics[width=.8\textwidth]{img/CPUAnomalie/RollingRestart.PNG}
+            \includegraphics[width=.5\textwidth]{img/CPUAnomalie/Netzwerk.PNG}
+            \includegraphics[scale=1,width=.8\textwidth,height=.14\textheight]{img/CPUAnomalie/Saturation.PNG}
+  			\includegraphics[scale=1,width=.8\textwidth]{img/CPUAnomalie/Utilization.PNG}
+            \captionof{figure}{} 
 \end{minipage}
+
+Der Zustand eines Pods, bei dem eine hohe CPU-Last von mindestens 75\% besteht, die nicht durch eine Last von außen, das heißt durch eine hohe Netzwerklast, begründet werden kann, ist der Zustand der CPU-Anomalie. Wenn dieser Zustand erreicht ist, soll das System einen 'Rolling-Restart' ausführen und somit das anormale Verhalten entschärfen.\\
+Die Graphen zeigen eine stark ansteigende CPU-Last zu beginn der Messungen. Der CPU Utilization-Graf steigt bis auf eine Last von 80\% an. Diese Höhe hält der Graf eine rund Minute lang, von 23:42:30 bis 23:43:30~45, danach sinkt der Stand des Grafen kontinuierlich ab. Die CPU-Saturation zeigt einen sehr ähnlichen Verlauf mit einem Maximalwert von 1.75 über eine Minute. Der Graf der Netzwerk-Utilization zeigt einen niedrigen Verlauf bei 20 einem Maximum von 20 Bytes pro Sekunden\\
+Der Graf des 'Rolling-Restart'-Counter steigt zum Zeitpunkt 23:43:30~45 um eins an.\\
+Die Verläufe der Grafen bestätigen, dass die Anomalie korrekt erkannt wurde. Bei einer CPU-Utilization von 80\%, anhaltend über eine Minute und einer niedrigen Netzwerklast von 20 Bytes pro Sekunde, wurde der 'Rolling-Restart' durchgeführt, was anhand des ansteigenden 'Rolling-Restart'-Counters nachgewiesen wurde. Die CPU-Saturation und Utilization fielen daraufhin erwartungsgemäß ab.
 
 \pagebreak
 
@@ -719,13 +723,19 @@ Jedes dieser Szenarien wird in einem eigenen Test evaluiert.
 
 \begin{minipage}{\linewidth}
             \includegraphics[width=.5\textwidth]{img/RAMAnomalie/RollingRestart.PNG}
+            \includegraphics[width=.5\textwidth]{img/RAMAnomalie/Netzwerk.PNG}
             \includegraphics[scale=1,width=.5\textwidth,height=.14\textheight]{img/RAMAnomalie/RAMSaturation.PNG}
-  			\includegraphics[scale=1,width=.5\textwidth]{img/RAMAnomalie/RAMUtilization.PNG}
-  			\includegraphics[scale=1,width=.5\textwidth]{img/RAMAnomalie/CPUUtilization.PNG}
-  			\includegraphics[scale=1,width=.5\textwidth]{img/RAMAnomalie/Netzwerk.PNG}
+  			\includegraphics[scale=1,width=.5\textwidth]{img/RAMAnomalie/RAMUtilization.PNG} 
             \captionof{figure}{Transfer from R1 to R2 whenK1=1}
 \end{minipage}
 
+Äquivalent zur CPU-Anomalie wird der Zustand eines Pods als anormal angesehen, wenn ein RAM-Last von mindestens 75\% über den Zeitraum von mindestens einer Minute besteht, die nicht durch eine hohe Netzwerklast begründet wird. Wenn dieser Zustand  der RAM-Anomalie erfüllt ist, soll ein 'Rolling-Restart' durchgeführt werden, um die Situation zu entschärfen.\\
+Der Graf der RAM-Saturation steigt zwei mal an. Zum Zeitpunkt 02:21:00 auf 75\% und zum Zeitpunkt 02:21:45 bis auf einen Wert von 1,5 an und bricht zwischen den Zeitpunkten 02:22:00 und 02:22:30 ab. Danach ist ein neuer Graf zu erkennen.
+Der Verlauf des RAM-Utilization-Grafs steigt bis 800 MByte und verläuft stetig. Ab dem Zeitpunkt 02:22:00 ist, wie bei der Saturation, der Start eines neuen Grafen zu erkennen.
+Der Graf der Netzwerk-Utilization zeigt einen niedrigen Verlauf bei 20 einem Maximum von 8 Bytes pro Sekunden\\
+Ab dem Zeitpunkt 02:22:30 ist ein Anstieg um eins bei dem Grafen des 'Rolling-Restart'-Counter zu sehen.\\
+Die Grafen bestätigen die korrekte Funktion der Anomalieerkennung. Am Graf der RAM-Saturation ist zu erkennen, dass zum Zeitpunkt 02:21:00 der kritische Wert von 75\% RAM-Auslastung erreicht ist. Eine Minute später zum Zeitpunkt 02:22:00 erscheint der neue Pod des Deployments als neuer Graf im Bild, 30 Sekunden später endet der Graf des 'alten' Pods. Der Netzwerklast-Graf belegt, dass keine hohe Last von außen auf dem Pod anlag, wodurch ein anormaler Fall vorliegt und der 'Rolling-Restart' die korrekte Methode ist.
+Der 'Rolling-Restart'-Counter wurde um eins nach oben gezählt was nachweist, dass der Rolling-Restart durchgeführt wurde. 
 \pagebreak
 
 \item[Hohe CPU- und RAM-Last, niedrige Netzwerklast]:\\
@@ -801,7 +811,7 @@ Jedes dieser Szenarien wird in einem eigenen Test evaluiert.
 
 
 \pagebreak
-\subsection{Komponenten und Architektur}
+%\subsection{Komponenten und Architektur}
 
 \section{Diskussion}
 \section{Fazit und Ausblick}
