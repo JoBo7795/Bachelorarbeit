@@ -807,7 +807,7 @@ Die Grafen belegen die korrekte Funktion der Skalierung eines Deployments bei ho
             \captionof{figure}{Transfer from R1 to R2 whenK1=1}
 \end{minipage}
 
-Ein Deployment, dass eine hohe RAM-Last von mindestens 75\% bei einer zeitgleich hohen Netzwerklast von mindestens 1 Megabit, über den Zeitraum mindestens einer Minute, aufweist, benötigt zusätzliche Ressourcen. Diese Ressourcen sollen, wie bei der Skalierung bei hoher CPU-Last auch, durch das Bereitstellen neuer Pods geliefert werden.\\
+Ein Deployment, dass eine hohe RAM-Last von mindestens 75\% bei einer zeitgleich hohen Netzwerklast von mindestens einem Megabit, über den Zeitraum mindestens einer Minute, aufweist, benötigt zusätzliche Ressourcen. Diese Ressourcen sollen, wie bei der Skalierung bei hoher CPU-Last auch, durch das Bereitstellen neuer Pods geliefert werden.\\
 Auf dem Grafen der RAM-Saturation ist ab dem Zeitpunkt 22:09:00 eine RAM-Saturation von 80\% zu sehen, ab 22:10:45, fällt diese Last wieder ab, unter den Grenzwert auf 60\%. Der Graf der Netzwerklast, liegt fast durchgehend bei einem Wert von 3.9 Megabit, mit einem Einbrauch auf einen Wert auf 3,3 Megabit. Der 'Replica-Counter'-Graf liegt bis zum Zeitpunkt 22:10.45 bei konstant bei einem Wert von drei, danach steigt er auf den Wert vier an.\\
 Die Grafen bestätigen die korrekte Funktion der Skalierung bei hoher RAM-Last. 
 Der RAM-Saturation Graf hat über den Zeitraum von über eine Minute einen grenzüberschreitenden Wert von 80\%, während zur selben Zeit die Netzwerklast einen Wert von mindestens 3,3 Megabit und somit einen ausreichend hohen Wert zum Begründen der Last von außen besitzt. In diesem Zustand soll die Skalierung ausgelöst werden, was durch Ansteigen des 'Replica-Counter'-Grafen nachgewiesen wird. Der Wert des Grafen steigt zum Zeitpunkt 22:10:45 von den ursprünglichen drei auf vier, während zum selben Zeitpunkt die RAM-Last des Deployments von 80\% auf ~60\% absinkt, was die Funktion der Skalierung bestätigt.
@@ -824,7 +824,10 @@ Der RAM-Saturation Graf hat über den Zeitraum von über eine Minute einen grenz
             \captionof{figure}{Transfer from R1 to R2 whenK1=1}
 \end{minipage}
 
-
+Für den Fall, dass CPU- sowie RAM-Last den Grenzwert von 75\% für mindestens eine Minute lang überschreiten, während eine Netzwerklast von mindestens einem Megabit pro Sekunde für das Deployment anliegt, sollen ebenso die Ressourcen des Deployments um einen Pod hochskaliert werden.\\
+Die gemessenen Grafen der CPU-Utilization und RAM-Saturation überschreiten beide zum Zeitpunkt 23:56:15 den Grenzwert von 75\% und enden bei einer Last von 80\%. Diese Last hält in beiden Grafen bis zum Zeitpunkt 23:58:00 und sinken danach unter den Grenzwert ab.
+Der Graf Netzwerk-Utilization schwankt stark zwischen Werten von drei bis zu neun Megabit pro Sekunde. Der Wert des 'Replica-Counter' sinkt anfangs ab, zum Zeitpunkt 23:56:15 hat er den von eins. Zum Zeitpunkt 23:58:00 steigt er wieder auf den Wert von zwei an.\\
+Die gemessenen Grafen bestätigen, dass die Skalierung auch korrekt funktioniert, wenn gleichzeitig beide Grenzwerte, RAM- sowie CPU-Last, überschritten werden. Beide Werte liegen auf 80\%, für mindestens eine Minute mit einer Netzwerk-Utilization von über einem Megabit, an, bevor die Skalierung durchgeführt wird. Trotz des Überschreitens zweier Werte gleichzeitig, wird nur eine Skalierung durchgeführt. Die Wirkung der Skalierung zeigt sich darin, dass zum Zeitpunkt zu dem der neue Pod für das Deployment bereitgestellt wurde, die Last beider Werte unter den Grenzwert sinken. Die Durchführung der Skalierung wird durch das Ansteigen des 'Replica-Counter'-Grafen um eins dargestellt.
 
 \end{description}
 
