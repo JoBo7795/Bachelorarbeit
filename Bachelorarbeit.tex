@@ -846,6 +846,11 @@ Die gemessenen Grafen bestätigen, dass die Skalierung auch korrekt funktioniert
             \captionof{figure}{Transfer from R1 to R2 whenK1=1}
 \end{minipage}
 
+Im Fall niedriger Ressourcenlast eines Deployments von 25\% CPU-Utilization und RAM-Saturation oder geringer über die Dauer von mindestens einer Minute, soll die Podanzahl des betreffenden Deployments um eins verringert werden.\\
+Der Graf der CPU-Utilization zeigt einen absinkenden Verlauf bis zum Zeitpunkt 21:37:00, wo sie ganz auf Null absinkt. Der Graf der RAM-Saturation zeigt einen leicht schwankenden Verlauf, zum Zeitpunkt 21:37:30 liegt der Wert bei 2,5\% Last, sinkt bei 21:38:00 auf einen Wert von 1,7\% ab, wonach er zum Zeitpunkt 21:39:00 wieder auf den Wert von 2,5\% ansteigt.
+Der 'Replica-Count'-Graf hat bis zum Zeitpunkt 21:37:30 den Wert eins, steigt dann bei 21:38:00 auf den Wert zwei an und sinkt dann bei 21:39:00 wieder auf eins ab.\\
+Der Verlauf der Grafen bestätigt die korrekte Funktion des Herunterskalierens. Die Werte der CPU- sowie RAM-Last liegen beide unter dem Grenzwert von 25\%. Am Grafen des 'Replica-Counter' ist zu sehen, dass das Deployment 'künstlich' von außen zum Zeitpunkt 21:37:30 auf einen Wert von zwei Pods hochskaliert wurde. Diese Anzahl wurde für eine Minute gehalten und danach zum Zeitpunkt 21:39:00 wieder auf den Wert von einem Pod herunterskaliert.
+
 \end{description}
 
 
