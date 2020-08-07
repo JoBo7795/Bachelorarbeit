@@ -792,6 +792,9 @@ Die Grafen belegen die korrekte Funktion und Wirkung der Anomalie-Detection bei 
             \captionof{figure}{Transfer from R1 to R2 whenK1=1}
 \end{minipage}
 
+Der Zustand eines Deployments, bei dem eine hohe CPU-Last von mindestens 75\% für den Zeitraum von mindestens einer Minute anliegt, die durch eine  hohe Netzwerklast von mindestens einem Megabit von außen begründet werden kann, ist der Zustand in dem Ressourcen, das heißt die Replikationen der Pods des Deployments hochskaliert werden sollen und somit mehr Ressourcen bereitgestellt werden.\\
+Auf dem dargestellten Grafen der CPU-Utilization ist zu sehen, dass der Grenzwert von 75\% zum Zeitpunkt 23:42:45 überschritten wird. Zum Zeitpunkt 23:44:15 sinkt der Graf wieder unter den Grenzwert, auf 50\%.Der Graf der des 'Replica-Count' zeigt bis zum Zeitpunkt 23:44:00 eine Anzahl von drei an, steigt dann zum Zeitpunkt 23:44:15 auf vier an. Der Graf der Netzwerk zeigt eine durchgehend hohe Last von mindestens rund sechs Megabit.\\
+Die Grafen belegen die korrekte Funktion der Skalierung eines Deployments bei hoher CPU-Last. Der CPU-Utilization-Graf zeigt über eine Minute, von Zeitpunkt 23:42:45 bis 23:44:15 eine Utilization von 75\% an, während der Netzwerk-Utilization-Graf eine durchgehende Last über einem Megabit zeigt. Hierdurch wird die Skalierung ausgelöst, was durch den steigenden Wert des 'Replica-Count'-Graf zum Zeitpunkt 23:44:15 gezeigt wird. Diese Skalierung bewirkt, dass die CPU-Utilization zur selben Zeit auf einen Wert von 50\% absinkt.
 \pagebreak
 
 \item[Niedrige CPU-Last, hohe RAM-Last, niedrige Netzwerklast]:\\
@@ -813,6 +816,8 @@ Die Grafen belegen die korrekte Funktion und Wirkung der Anomalie-Detection bei 
   			\includegraphics[scale=1,width=.5\textwidth]{img/RAMCPUSkalierung/Netzwerk.PNG}
             \captionof{figure}{Transfer from R1 to R2 whenK1=1}
 \end{minipage}
+
+
 
 \end{description}
 
