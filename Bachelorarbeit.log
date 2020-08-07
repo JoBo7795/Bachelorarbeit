@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.21 (MiKTeX 20.6.29) (preloaded format=pdflatex 2020.7.2)  5 AUG 2020 00:34
+This is pdfTeX, Version 3.14159265-2.6-1.40.21 (MiKTeX 20.6.29) (preloaded format=pdflatex 2020.7.2)  7 AUG 2020 02:02
 entering extended mode
 **./Bachelorarbeit.tex
 (Bachelorarbeit.tex
@@ -1852,156 +1852,137 @@ Underfull \hbox (badness 10000) in paragraph at lines 786--787
 
  []
 
-<img/CPUSkalierung/ReplicaCount.PNG, id=514, 789.70032pt x 230.36063pt>
+<img/CPUSkalierung/ReplicaCount.PNG, id=514, 591.71063pt x 192.72pt>
 File: img/CPUSkalierung/ReplicaCount.PNG Graphic file (type png)
 <use img/CPUSkalierung/ReplicaCount.PNG>
 Package pdftex.def Info: img/CPUSkalierung/ReplicaCount.PNG  used on input line
  789.
-(pdftex.def)             Requested size: 174.2212pt x 50.82008pt.
-<img/CPUSkalierung/NetzwerkUtilization.PNG, id=515, 786.68906pt x 260.47313pt>
-File: img/CPUSkalierung/NetzwerkUtilization.PNG Graphic file (type png)
-<use img/CPUSkalierung/NetzwerkUtilization.PNG>
-Package pdftex.def Info: img/CPUSkalierung/NetzwerkUtilization.PNG  used on inp
-ut line 790.
-(pdftex.def)             Requested size: 786.68713pt x 260.47249pt.
-<img/CPUSkalierung/CPUUtilization.PNG, id=516, 870.25125pt x 253.69781pt>
-File: img/CPUSkalierung/CPUUtilization.PNG Graphic file (type png)
-<use img/CPUSkalierung/CPUUtilization.PNG>
-Package pdftex.def Info: img/CPUSkalierung/CPUUtilization.PNG  used on input li
-ne 791.
-(pdftex.def)             Requested size: 870.24913pt x 253.69719pt.
+(pdftex.def)             Requested size: 174.2212pt x 56.74309pt.
+<img/CPUSkalierung/Netzwerk.PNG, id=515, 594.72188pt x 204.01219pt>
+File: img/CPUSkalierung/Netzwerk.PNG Graphic file (type png)
+<use img/CPUSkalierung/Netzwerk.PNG>
+Package pdftex.def Info: img/CPUSkalierung/Netzwerk.PNG  used on input line 790
+.
+(pdftex.def)             Requested size: 594.72043pt x 204.01169pt.
+<img/CPUSkalierung/CPUSaturation.PNG, id=516, 589.4522pt x 197.98969pt>
+File: img/CPUSkalierung/CPUSaturation.PNG Graphic file (type png)
+<use img/CPUSkalierung/CPUSaturation.PNG>
+Package pdftex.def Info: img/CPUSkalierung/CPUSaturation.PNG  used on input lin
+e 791.
+(pdftex.def)             Requested size: 589.45076pt x 197.9892pt.
 
-Overfull \hbox (2.22496pt too wide) in paragraph at lines 789--792
+Overfull \hbox (2.2168pt too wide) in paragraph at lines 789--792
 [][] []
  []
 
-[39 <./img/CPUSkalierung/ReplicaCount.PNG> <./img/CPUSkalierung/NetzwerkUtiliza
-tion.PNG> <./img/CPUSkalierung/CPUUtilization.PNG>]
-<img/RAMSkalierung/Replica-Count.PNG, id=525, 595.47469pt x 161.10187pt>
+[39 <./img/CPUSkalierung/ReplicaCount.PNG> <./img/CPUSkalierung/Netzwerk.PNG> <
+./img/CPUSkalierung/CPUSaturation.PNG>]
+<img/RAMSkalierung/Replica-Count.PNG, id=525, 593.21625pt x 197.23688pt>
 File: img/RAMSkalierung/Replica-Count.PNG Graphic file (type png)
 <use img/RAMSkalierung/Replica-Count.PNG>
 Package pdftex.def Info: img/RAMSkalierung/Replica-Count.PNG  used on input lin
 e 799.
-(pdftex.def)             Requested size: 174.2212pt x 47.13377pt.
-<img/RAMSkalierung/Netzwerk.PNG, id=526, 599.23875pt x 177.66376pt>
+(pdftex.def)             Requested size: 174.2212pt x 57.92554pt.
+<img/RAMSkalierung/Netzwerk.PNG, id=526, 592.46344pt x 219.06844pt>
 File: img/RAMSkalierung/Netzwerk.PNG Graphic file (type png)
 <use img/RAMSkalierung/Netzwerk.PNG>
 Package pdftex.def Info: img/RAMSkalierung/Netzwerk.PNG  used on input line 800
 .
-(pdftex.def)             Requested size: 599.23729pt x 177.66331pt.
-<img/RAMSkalierung/RAMSaturation.PNG, id=527, 594.72188pt x 158.84344pt>
+(pdftex.def)             Requested size: 592.46199pt x 219.06789pt.
+<img/RAMSkalierung/RAMSaturation.PNG, id=527, 593.21625pt x 176.91093pt>
 File: img/RAMSkalierung/RAMSaturation.PNG Graphic file (type png)
 <use img/RAMSkalierung/RAMSaturation.PNG>
 Package pdftex.def Info: img/RAMSkalierung/RAMSaturation.PNG  used on input lin
 e 801.
-(pdftex.def)             Requested size: 594.72043pt x 158.84305pt.
-<img/RAMSkalierung/RAMUtilization.PNG, id=528, 596.2275pt x 158.84344pt>
-File: img/RAMSkalierung/RAMUtilization.PNG Graphic file (type png)
-<use img/RAMSkalierung/RAMUtilization.PNG>
-Package pdftex.def Info: img/RAMSkalierung/RAMUtilization.PNG  used on input li
-ne 802.
-(pdftex.def)             Requested size: 596.22604pt x 158.84305pt.
+(pdftex.def)             Requested size: 593.2148pt x 176.91049pt.
 
-Overfull \hbox (2.21414pt too wide) in paragraph at lines 799--803
+Overfull \hbox (2.2242pt too wide) in paragraph at lines 799--802
 [][] []
  []
 
-
-Overfull \hbox (2.2163pt too wide) in paragraph at lines 799--803
-[] [] 
- []
-
 [40 <./img/RAMSkalierung/Replica-Count.PNG> <./img/RAMSkalierung/Netzwerk.PNG> 
-<./img/RAMSkalierung/RAMSaturation.PNG> <./img/RAMSkalierung/RAMUtilization.PNG
->]
-<img/RAMCPUSkalierung/Replica-Count-Cut.PNG, id=539, 592.46344pt x 194.22563pt>
-
-File: img/RAMCPUSkalierung/Replica-Count-Cut.PNG Graphic file (type png)
-<use img/RAMCPUSkalierung/Replica-Count-Cut.PNG>
-Package pdftex.def Info: img/RAMCPUSkalierung/Replica-Count-Cut.PNG  used on in
-put line 810.
-(pdftex.def)             Requested size: 174.2212pt x 57.11526pt.
-<img/RAMCPUSkalierung/RAMSaturation.PNG, id=540, 589.4522pt x 193.47281pt>
+<./img/RAMSkalierung/RAMSaturation.PNG>]
+<img/RAMCPUSkalierung/ReplicaCount.PNG, id=537, 599.23875pt x 196.48407pt>
+File: img/RAMCPUSkalierung/ReplicaCount.PNG Graphic file (type png)
+<use img/RAMCPUSkalierung/ReplicaCount.PNG>
+Package pdftex.def Info: img/RAMCPUSkalierung/ReplicaCount.PNG  used on input l
+ine 810.
+(pdftex.def)             Requested size: 174.2212pt x 57.12282pt.
+<img/RAMCPUSkalierung/RAMSaturation.PNG, id=538, 584.93532pt x 173.14688pt>
 File: img/RAMCPUSkalierung/RAMSaturation.PNG Graphic file (type png)
 <use img/RAMCPUSkalierung/RAMSaturation.PNG>
 Package pdftex.def Info: img/RAMCPUSkalierung/RAMSaturation.PNG  used on input 
 line 811.
-(pdftex.def)             Requested size: 589.45076pt x 193.47234pt.
-<img/RAMCPUSkalierung/CPUUtilization.PNG, id=541, 583.42969pt x 198.7425pt>
+(pdftex.def)             Requested size: 584.93388pt x 173.14645pt.
+<img/RAMCPUSkalierung/CPUUtilization.PNG, id=539, 578.16pt x 191.9672pt>
 File: img/RAMCPUSkalierung/CPUUtilization.PNG Graphic file (type png)
 <use img/RAMCPUSkalierung/CPUUtilization.PNG>
 Package pdftex.def Info: img/RAMCPUSkalierung/CPUUtilization.PNG  used on input
  line 812.
-(pdftex.def)             Requested size: 583.42825pt x 198.742pt.
+(pdftex.def)             Requested size: 578.15858pt x 191.96672pt.
+<img/RAMCPUSkalierung/Netzwerk.PNG, id=540, 588.69937pt x 194.97844pt>
+File: img/RAMCPUSkalierung/Netzwerk.PNG Graphic file (type png)
+<use img/RAMCPUSkalierung/Netzwerk.PNG>
+Package pdftex.def Info: img/RAMCPUSkalierung/Netzwerk.PNG  used on input line 
+813.
+(pdftex.def)             Requested size: 588.69792pt x 194.97795pt.
 
-Overfull \hbox (2.22014pt too wide) in paragraph at lines 810--813
+Overfull \hbox (2.22392pt too wide) in paragraph at lines 810--814
 [][] []
  []
 
-[41 <./img/RAMCPUSkalierung/Replica-Count-Cut.PNG> <./img/RAMCPUSkalierung/RAMS
-aturation.PNG> <./img/RAMCPUSkalierung/CPUUtilization.PNG>]
-Underfull \hbox (badness 10000) in paragraph at lines 824--825
+
+Overfull \hbox (2.21783pt too wide) in paragraph at lines 810--814
+[] [] 
+ []
+
+[41 <./img/RAMCPUSkalierung/ReplicaCount.PNG> <./img/RAMCPUSkalierung/RAMSatura
+tion.PNG> <./img/RAMCPUSkalierung/CPUUtilization.PNG> <./img/RAMCPUSkalierung/N
+etzwerk.PNG>]
+Underfull \hbox (badness 10000) in paragraph at lines 825--826
 
  []
 
-<img/Herunterskalieren/Replica-Count.PNG, id=550, 883.80188pt x 232.61906pt>
-File: img/Herunterskalieren/Replica-Count.PNG Graphic file (type png)
-<use img/Herunterskalieren/Replica-Count.PNG>
-Package pdftex.def Info: img/Herunterskalieren/Replica-Count.PNG  used on input
- line 827.
-(pdftex.def)             Requested size: 174.2212pt x 45.85213pt.
-<img/Herunterskalieren/CPUSaturation.PNG, id=551, 724.95844pt x 194.22563pt>
-File: img/Herunterskalieren/CPUSaturation.PNG Graphic file (type png)
-<use img/Herunterskalieren/CPUSaturation.PNG>
-Package pdftex.def Info: img/Herunterskalieren/CPUSaturation.PNG  used on input
- line 828.
-(pdftex.def)             Requested size: 724.95667pt x 194.22514pt.
-<img/Herunterskalieren/CPUUtilization.PNG, id=552, 727.96968pt x 194.22563pt>
-File: img/Herunterskalieren/CPUUtilization.PNG Graphic file (type png)
-<use img/Herunterskalieren/CPUUtilization.PNG>
-Package pdftex.def Info: img/Herunterskalieren/CPUUtilization.PNG  used on inpu
-t line 829.
-(pdftex.def)             Requested size: 727.96791pt x 194.22514pt.
-<img/Herunterskalieren/RAMSaturation.PNG, id=553, 721.94719pt x 193.47281pt>
+<img/Herunterskalieren/ReplicaCount.PNG, id=550, 593.96906pt x 204.765pt>
+File: img/Herunterskalieren/ReplicaCount.PNG Graphic file (type png)
+<use img/Herunterskalieren/ReplicaCount.PNG>
+Package pdftex.def Info: img/Herunterskalieren/ReplicaCount.PNG  used on input 
+line 828.
+(pdftex.def)             Requested size: 174.2212pt x 60.06145pt.
+<img/Herunterskalieren/RAMSaturation.PNG, id=551, 595.47469pt x 177.66376pt>
 File: img/Herunterskalieren/RAMSaturation.PNG Graphic file (type png)
 <use img/Herunterskalieren/RAMSaturation.PNG>
 Package pdftex.def Info: img/Herunterskalieren/RAMSaturation.PNG  used on input
+ line 829.
+(pdftex.def)             Requested size: 595.47322pt x 177.66331pt.
+<img/Herunterskalieren/CPUSaturation.PNG, id=552, 590.95781pt x 194.97844pt>
+File: img/Herunterskalieren/CPUSaturation.PNG Graphic file (type png)
+<use img/Herunterskalieren/CPUSaturation.PNG>
+Package pdftex.def Info: img/Herunterskalieren/CPUSaturation.PNG  used on input
  line 830.
-(pdftex.def)             Requested size: 721.94542pt x 193.47234pt.
-<img/Herunterskalieren/RAMUtilization.PNG, id=554, 729.47531pt x 191.9672pt>
-File: img/Herunterskalieren/RAMUtilization.PNG Graphic file (type png)
-<use img/Herunterskalieren/RAMUtilization.PNG>
-Package pdftex.def Info: img/Herunterskalieren/RAMUtilization.PNG  used on inpu
-t line 831.
-(pdftex.def)             Requested size: 729.47353pt x 191.96672pt.
+(pdftex.def)             Requested size: 590.95636pt x 194.97795pt.
 
-Overfull \hbox (2.21527pt too wide) in paragraph at lines 827--832
+Overfull \hbox (2.21925pt too wide) in paragraph at lines 828--831
 [][] []
  []
 
-
-Overfull \hbox (2.21391pt too wide) in paragraph at lines 827--832
-[] []
- []
-
-[42 <./img/Herunterskalieren/Replica-Count.PNG> <./img/Herunterskalieren/CPUSat
-uration.PNG> <./img/Herunterskalieren/CPUUtilization.PNG> <./img/Herunterskalie
-ren/RAMSaturation.PNG> <./img/Herunterskalieren/RAMUtilization.PNG>] [43]
+[42 <./img/Herunterskalieren/ReplicaCount.PNG> <./img/Herunterskalieren/RAMSatu
+ration.PNG> <./img/Herunterskalieren/CPUSaturation.PNG>] [43]
 (Bachelorarbeit.bbl) [44]
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 847.
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 847.
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 846.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 846.
  (Bachelorarbeit.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 847.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 847.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 846.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 846.
 Package rerunfilecheck Info: File `Bachelorarbeit.out' has not changed.
 (rerunfilecheck)             Checksum: D41D8CD98F00B204E9800998ECF8427E;0.
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 847.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 846.
  ) 
 Here is how much of TeX's memory you used:
- 23909 strings out of 480790
- 471300 string characters out of 2893987
- 843128 words of memory out of 3000000
- 39313 multiletter control sequences out of 15000+200000
+ 23897 strings out of 480790
+ 470713 string characters out of 2893987
+ 843129 words of memory out of 3000000
+ 39303 multiletter control sequences out of 15000+200000
  545219 words of font info for 51 fonts, out of 3000000 for 9000
  1141 hyphenation exceptions out of 8191
  64i,15n,81p,10111b,1050s stack positions out of 5000i,500n,10000p,200000b,50000s
@@ -2026,9 +2007,9 @@ KTeX 2.9/fonts/type1/public/amsfonts/cm/cmr10.pfb><C:/Users/Johannes/AppData/Lo
 cal/Programs/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr17.pfb><C:/Users/Joha
 nnes/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmsy10.pf
 b>
-Output written on Bachelorarbeit.pdf (47 pages, 1458194 bytes).
+Output written on Bachelorarbeit.pdf (47 pages, 1406396 bytes).
 PDF statistics:
- 1184 PDF objects out of 1200 (max. 8388607)
+ 1180 PDF objects out of 1200 (max. 8388607)
  131 named destinations out of 1000 (max. 500000)
- 785 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 775 words of extra memory for PDF output out of 10000 (max. 10000000)
 
