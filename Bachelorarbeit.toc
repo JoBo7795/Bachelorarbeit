@@ -47,4 +47,8 @@
 \contentsline {subsubsection}{\numberline {8.3.2}Hochskalieren}{39}{subsubsection.8.3.2}%
 \contentsline {subsubsection}{\numberline {8.3.3}Herunterskalieren}{42}{subsubsection.8.3.3}%
 \contentsline {section}{\numberline {9}Diskussion}{43}{section.9}%
-\contentsline {section}{\numberline {10}Fazit und Ausblick}{43}{section.10}%
+\contentsline {subsection}{\numberline {9.1}Rahmen des Projekts}{43}{subsection.9.1}%
+\contentsline {subsection}{\numberline {9.2}Evaluation}{43}{subsection.9.2}%
+\contentsline {subsection}{\numberline {9.3}Probleme}{44}{subsection.9.3}%
+\contentsline {subsection}{\numberline {9.4}Zukunft des Projekts}{44}{subsection.9.4}%
+\contentsline {section}{\numberline {10}Fazit und Ausblick}{46}{section.10}%

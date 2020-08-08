@@ -858,6 +858,59 @@ Der Verlauf der Grafen bestätigt die korrekte Funktion des Herunterskalierens. 
 %\subsection{Komponenten und Architektur}
 
 \section{Diskussion}
+
+Das Durchführen automatisierter Aktionen auf ein Kubernetes-Cluster ist eine Möglichkeit Störungsfälle zu reduzieren und Servicelaufzeiten zu maximieren. Um diese Automatisierung zu ermöglichen ist eine Reihe an Tools, Infrastruktur sowie Konfiguration nötig. In dieser Arbeit wurde eine Möglichkeit erarbeitet diese Automatisierung zu erreichen. Hierfür wurden passende Tools gewählt und entwickelt, mit deren Hilfe sich Daten und Metriken aus einem Kubernetes-Cluster auslesen, darstellen und Aktionen ausführen lassen. Für die gewählten Tools wurde ein System entwickelt, das die korrekte Zusammenarbeit der Tools und Komponenten ermöglicht und koordiniert. Für dieses System wurden Konfiguration sowie ein Regelwerk entworfen und umgesetzt, das Aktionen auf das Cluster definiert und auslöst, die dazu führen, dass auftretende kritische Situationen und Zustände entschärft werden können.\\
+In dieser Arbeit konnte gezeigt und evaluiert werden, dass dieses System mithilfe der ausgewählten, quasistandard Monitoring- und Visualisierungskomponenten des 'Cloud-Native-Computing'-Bereiches, Prometheus und Grafana, umsetzbar ist, diese aber durch weitere Komponenten ergänzt werden müssen. Daher wurde im Rahmen der Arbeit das Tool 'Alert-Action-Manager' entwickelt, dass die fehlenden Funktionen ergänzt, die das Ableiten von Aktionen aus Alerts von Prometheus ermöglicht. \\
+In der folgenden Diskussion wird die Evaluation, der Rahmen des Projekts, aufgetretene Probleme und mögliche Verbesserungen in der Zukunft des Projekts diskutiert.
+
+\subsection{Rahmen des Projekts}
+
+Der Rahmen dieses Projekts beinhaltet die Wahl geeigneter Tools zur Umsetzung an einem bereits bestehenden Kubernetes-Cluster, die Entwicklung der geeigneten Systemarchitektur mithilfe dieser Tools und die Konfiguration, die nötig ist um diese funktionsfähig zumachen.
+Neben denen in diesem Projekt eingesetzten, von der 'Cloud-Native-Computing-Foundation' empfohlenen Tools, Prometheus und Grafana, gibt es noch weitere Tools, mit denen sich dieses Projekt hätte realisieren lassen können, wie beispielsweise die Tool-Sammlung 'ELK'-Stack. Da auf dem Gebiet der Tools Prometheus und Grafana bereits Erfahrungen bei Projektbeginn existierten und diese den Anforderungen gerecht werden konnten, wurde eine weitere Toolauswahl nicht durchgeführt.
+
+\subsection{Evaluation}
+
+In der Evaluation wurde die Funktion des Gesamtsystem getestet und mithilfe von aufgezeichneten Grafen gemessen. Hierbei konnte für alle Testfälle die korrekte Funktion, in angemessener Zeit, nachgewiesen werden.\\
+Die Evaluation ergab indes auch, das Aktionen teilweise mit einer Verzögerung und Messungenauigkeiten von einigen Sekunden ausgeführt werden, sichtbar beispielsweise im Graf des Testfalls 'Hohe CPU- und RAM-Last, hohe Netzwerklast', bei dem die Skalierung erst deutlich nach einer Minute eintritt. Im Rahmen dieses Projekts ist diese Verzögerung vertretbar, für sekundenkritische Aktionen wäre das System dieser Arbeit aber unter Umständen nicht geeignet.\\
+
+
+\subsection{Probleme}
+
+Während der Bearbeitung sind einige Probleme entstanden, die in diesem Projekt behoben werden konnten, für andere Aktionen in Zukunft möglicherweise aber Probleme darstellen könnten und mögliche Grenzen des eingesetzten Systems aufzeigen:\\
+
+\begin{description}
+
+\item[Zu viele versendete Alert-Nachrichten]:\\
+
+Prometheus bzw. der Prometheus-Alertmanager versendet Alert-Nachrichten sobald eine Alertregel erfüllt ist. Bei dem versenden der Alerts kann es dazu kommen, dass diese mehrfach versendet werden. Da das Ausführen der Aktionen im 'Alert-Action-Manager' auf dem Erhalt der Alert-Nachrichten basiert, eine Aktion teils mehrfach für einen Alert ausgeführt. Dieses Problem musste programmatisch abgefangen werden, indem sich eingegangene Nachrichten anhand ihrer Versendezeit gespeichert werden.
+
+\item[Zeittoleranzen]:\\
+
+Wie bei der Evaluation bereits erläutert, können Messungenauigkeiten und Toleranzen dazu führen, dass sich Zeiträume in welchen die Aktionen ausgeführt werden erhöhen. Zusätzlich kommen noch mögliche Verzögerungen durch das Versenden und durch die Ausführung der Aktionen hinzu.
+
+\item[Statische Grenzwerte und Regeln]:\\
+
+Das System basiert auf statisch konfigurierten Regeln mit festen Grenzwerten. Kubernetes-Cluster, die sich in ständiger Entwicklung befinden und deren verfügbare Ressourcen sich verändern, bedürfen einer nachträglichen Konfiguration der Regeln und Grenzwerte. Bei einer großen Anzahl von konfigurierten Regeln kann dies zu hohem Aufwand durch Konfiguration und Tests sowie erhöhter Fehleranfälligkeit führen.
+
+\end{description}
+
+ 
+\subsection{Zukunft des Projekts}
+
+Das in dieser Arbeit bearbeitete Projekt bildet die Grundlage für ein System, das Aktionen aufgrund von Zuständen in einem Cluster ausführen kann. Dieses System kann neben den in diesem Projekt eingesetzten Aktionen Anomaliedetektion und Skalierung um beliebige weitere Aktionen erweitert werden.\\
+Das Weiteren kann es, um den erläuterten Problemen dieses Systems entgegenzuwirken, eine Lösung sein, ein anderes Monitoringsystem mit ähnlichen Eigenschaften und Funktionen, wie das regelbasierte Alerting von Prometheus, auszuprobieren.\\
+Sofern dieses Projekt für ein dynamischeres und größeres System in Zukunft eingesetzt werden soll, kann der Ansatz der statischen Regel durch einen 'Machine-Learning'-basierten Ansatz, wie im Kapitel drei 'Stand der Technik' vorgestellt, ergänzt oder ersetzt werden.
+
+%offene Punkte:
+%- andere Tools konnten aufgrund des Rahmens nicht ausprobiert werden
+%- Probleme die aufgetreten sind
+%- Punkte die nicht perfekt/ideal gelöst sind/ werden können (Alert-Aktion mehrfach %ausgeführt)
+%- Evaluierung diskutieren
+%- Ausbau durch KI wie in Papers erwähnt
+
+
+\pagebreak
+
 \section{Fazit und Ausblick}
 
 \newpage
