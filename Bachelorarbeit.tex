@@ -901,17 +901,11 @@ Das in dieser Arbeit bearbeitete Projekt bildet die Grundlage für ein System, d
 Das Weiteren kann es, um den erläuterten Problemen dieses Systems entgegenzuwirken, eine Lösung sein, ein anderes Monitoringsystem mit ähnlichen Eigenschaften und Funktionen, wie das regelbasierte Alerting von Prometheus, auszuprobieren.\\
 Sofern dieses Projekt für ein dynamischeres und größeres System in Zukunft eingesetzt werden soll, kann der Ansatz der statischen Regel durch einen 'Machine-Learning'-basierten Ansatz, wie im Kapitel drei 'Stand der Technik' vorgestellt, ergänzt oder ersetzt werden.
 
-%offene Punkte:
-%- andere Tools konnten aufgrund des Rahmens nicht ausprobiert werden
-%- Probleme die aufgetreten sind
-%- Punkte die nicht perfekt/ideal gelöst sind/ werden können (Alert-Aktion mehrfach %ausgeführt)
-%- Evaluierung diskutieren
-%- Ausbau durch KI wie in Papers erwähnt
-
-
-\pagebreak
-
 \section{Fazit und Ausblick}
+
+Zusammenfassend kann über dieses Projekt gesagt werden, dass es erfolgreich beendet werden konnte. In dieser Arbeit wurde ein möglicher Weg entwickelt, der regelbasiert automatisierte Aktionen wie die Anomaliedetection oder die Skalierung auf ein Kubernetes-Cluster ausführt. Ebenso wurden auch mögliche Probleme, wie hohe Zeittoleranzen, in diesem Systems erkannt, welche es für einige zeitkritische Anwendungszwecke unbrauchbar machen könnten.\\
+Trotzdem stellt dieser Ansatz vor allem einen sehr leichtgewichtigen und im Gegensatz zu den vorgestellten Machine-Learning basierten Ansätzen einen einfach nachvollziehbaren und deterministischen Ansatz dar.\\
+Dieses Projekt wird in der Zeit nach dieser Arbeit weiter betrieben und Teil einer produktiven Infrastruktur werden. Zu diesem Zeitpunkt geplante Erweiterungen sind weitere Regeln sowie der Einsatz der kuberneteseigenen Skalierungsfunktion 'HPA'.
 
 \newpage
 \bibliography{Literatur}
