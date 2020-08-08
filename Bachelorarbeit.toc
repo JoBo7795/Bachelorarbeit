@@ -31,15 +31,14 @@
 \contentsline {subsubsection}{\numberline {6.1.2}Alertmanager}{26}{subsubsection.6.1.2}%
 \contentsline {subsubsection}{\numberline {6.1.3}Regeln}{26}{subsubsection.6.1.3}%
 \contentsline {section}{\numberline {7}Alert-Action-Manager}{29}{section.7}%
-\contentsline {subsection}{\numberline {7.1}Aufgabe}{29}{subsection.7.1}%
-\contentsline {subsection}{\numberline {7.2}Anforderungen}{29}{subsection.7.2}%
-\contentsline {subsection}{\numberline {7.3}Wahl der Sprache}{29}{subsection.7.3}%
-\contentsline {subsection}{\numberline {7.4}Funktionen}{31}{subsection.7.4}%
-\contentsline {subsubsection}{\numberline {7.4.1}Erweiterung}{32}{subsubsection.7.4.1}%
-\contentsline {subsection}{\numberline {7.5}Aktionen}{32}{subsection.7.5}%
-\contentsline {subsubsection}{\numberline {7.5.1}Skalierung}{32}{subsubsection.7.5.1}%
-\contentsline {subsubsection}{\numberline {7.5.2}Anomalie-Detection}{33}{subsubsection.7.5.2}%
-\contentsline {subsection}{\numberline {7.6}Grenzwerte}{33}{subsection.7.6}%
+\contentsline {subsection}{\numberline {7.1}Anforderungen}{29}{subsection.7.1}%
+\contentsline {subsection}{\numberline {7.2}Wahl der Sprache}{29}{subsection.7.2}%
+\contentsline {subsection}{\numberline {7.3}Funktionen}{31}{subsection.7.3}%
+\contentsline {subsubsection}{\numberline {7.3.1}Erweiterung}{31}{subsubsection.7.3.1}%
+\contentsline {subsection}{\numberline {7.4}Aktionen}{32}{subsection.7.4}%
+\contentsline {subsubsection}{\numberline {7.4.1}Skalierung}{32}{subsubsection.7.4.1}%
+\contentsline {subsubsection}{\numberline {7.4.2}Anomalie-Detection}{33}{subsubsection.7.4.2}%
+\contentsline {subsection}{\numberline {7.5}Grenzwerte}{33}{subsection.7.5}%
 \contentsline {section}{\numberline {8}Evaluation}{34}{section.8}%
 \contentsline {subsection}{\numberline {8.1}Messaufbau}{34}{subsection.8.1}%
 \contentsline {subsection}{\numberline {8.2}Testszenarien}{34}{subsection.8.2}%

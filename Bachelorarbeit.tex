@@ -12,7 +12,8 @@
 \usepackage{listings}
 \usepackage{abstract}
 
-\bibliographystyle{unsrt}
+
+\bibliographystyle{plain}
 
 \hypersetup{
     colorlinks,
@@ -529,18 +530,15 @@ Je nach Alert oder auszuführender Aktion werden Zusatzinformationen benötigt. 
 Der Ablauf des Konzepts ist eine Kette von Aktionen, bei der ein Schritt den nächsten auslöst. Die Kette der Schritte, welche zum Auslösen und Ausführen einer Aktion durchlaufen wird, ist hier beschrieben:\\
 
 \begin{figure}[htbp]
-  \includegraphics[scale=1,width=1.1\textwidth]{AAMStateChart.png}
+\hspace*{-3cm}
+  \includegraphics[scale=.5,width=1.4\textwidth]{AAMStateChart.png}
 \end{figure}
-
 \pagebreak
 
 \section{Alert-Action-Manager}
 
-Der Alert-Action-Manager (hier abgekürzt: AAM) ist eine Entwicklung für die Architektur dieses Projekts. Dieser stellt den Part dar, der Aktionen aus empfangenen Alerts ableitet und diese dann auf das Kubernetes-Cluster ausführt.\\
+Der Alert-Action-Manager (hier abgekürzt: AAM) ist eine eigenst entwickelte Komponente um aus den von Prometheus versendeten Alerts automatisiert konkrete Aktionen zu schließen und auf das Kubernetes-Cluster anzuwenden.\\
 
-\subsection{Aufgabe}
-
-Da Alerts mit einer kritischen Situation im Kubernetes-Cluster einhergehen, auf die so schnell wie möglich reagiert werden muss, wird ein automatisiertes Hilfsmittel zur schnellstmöglichen Reaktion benötigt. Dieses Hilfsmittel stellt der Alert-Action-Manager dar. Seine Aufgabe ist es zu bestimmen, welche Aktion aus einem ausgelösten Alert folgen muss um die kritische Situation zu entschärfen.\\
 
 \subsection{Anforderungen}
 
@@ -557,7 +555,7 @@ An den AAM sind mehrere Anforderungen geknüpft, die er erfüllen muss, um seine
 \subsection{Wahl der Sprache}
 
 Die Wahl der Programmiersprache für die 'Alert-Action-Manager'- sowie die Evaluations-Komponente fiel auf die von Google entwickelte Open-Source Sprache Go(-lang).\\
-Google beschreibt die Sprache selbst 'Go is a compiled, concurrent, garbage-collected, statically typed language developed at Google. It is an open source project: Google imports the public repository rather than the other way around.'
+Google beschreibt die Sprache selbst 'Go is a compiled, concurrent, garbage-collected, statically typed language developed at Google. It is an open source project: Google imports the public repository rather than the other way around.'<Zitatquelle Google einfügen>
 Go findet vor allem in der Web-Entwicklung eine zunehmend starke Verbreitung, im Ranking der Website tiobe.com beispielsweise, steht Go, Stand 19.07.2020, auf Platz 12 der meist verwendeten Programmiersprachen <Quelle für Verbreitung und Wachstum einfügen>, wodurch es eine große und hilfreiche Community, viele Erfahrungen in einschlägigen Foren sowie eine stete Weiterentwicklung bietet.\\
 Vorteile der Sprache die auch in diesem Projekt hilfreich waren und so zur Entscheidung dieser Sprachwahl beigetragen haben, sind folgende:
 
@@ -738,8 +736,8 @@ Die maximale Netzlast ist in den Messungen auf den Grenzwert von einem Megabit f
             \captionof{figure}{} 
 \end{minipage}
 
-Der Zustand eines Pods, bei dem eine hohe CPU-Last von mindestens 75\% besteht, die nicht durch eine Last von außen, das heißt durch eine hohe Netzwerklast, begründet werden kann, ist der Zustand der CPU-Anomalie. Wenn dieser Zustand erreicht ist, soll das System einen 'Rolling-Restart' ausführen und somit das anormale Verhalten entschärfen.\\
-Die Graphen zeigen eine stark ansteigende CPU-Last zu beginn der Messungen. Der CPU Utilization-Graf steigt bis auf eine Last von 80\% an. Diese Höhe hält der Graf eine rund Minute lang, von 23:42:30 bis 23:43:30~45, danach sinkt der Stand des Grafen kontinuierlich ab. Die CPU-Saturation zeigt einen sehr ähnlichen Verlauf mit einem Maximalwert von 1.75 über eine Minute. Der Graf der Netzwerk-Utilization zeigt einen niedrigen Verlauf bei 20 einem Maximum von 20 Bytes pro Sekunden\\
+Der Zustand eines Pods, bei dem eine hohe CPU-Last von mindestens 75\% besteht, die nicht durch eine Last von außen, das heißt durch eine hohe Netzwerklast, begründet werden kann, ist der Zustand der CPU-Anomalie. Wenn dieser Zustand erreicht ist, soll das System einen 'Rolling-Restart' ausführen und somit das anormale Verhalten beenden.\\
+Die Graphen zeigen eine stark ansteigende CPU-Last zu beginn der Messungen. Der CPU Utilization-Graf steigt bis auf eine Last von 80\% an. Diese Höhe hält der Graf eine rund Minute lang, von 23:42:30 bis 23:43:30~45, danach sinkt der Stand des Grafen kontinuierlich ab. Die CPU-Saturation zeigt einen sehr ähnlichen Verlauf mit einem Maximalwert von 175\% Last über eine Minute. Der Graf der Netzwerk-Utilization zeigt einen niedrigen Verlauf bei einem Maximum von 20 Bytes pro Sekunden\\
 Der Graf des 'Rolling-Restart'-Counter steigt zum Zeitpunkt 23:43:30~45 um eins an.\\
 Die Verläufe der Grafen bestätigen, dass die Anomalie korrekt erkannt wurde. Bei einer CPU-Utilization von 80\%, anhaltend über eine Minute und einer niedrigen Netzwerklast von 20 Bytes pro Sekunde, wurde der 'Rolling-Restart' durchgeführt, was anhand des ansteigenden 'Rolling-Restart'-Counters nachgewiesen wurde. Die CPU-Saturation und Utilization fielen daraufhin erwartungsgemäß ab.
 
