@@ -23,32 +23,33 @@
 \contentsline {section}{\numberline {5}Auswerten der Metriken}{20}{section.5}%
 \contentsline {subsection}{\numberline {5.1}Klassifizierung}{20}{subsection.5.1}%
 \contentsline {subsection}{\numberline {5.2}Logische Auswertung}{20}{subsection.5.2}%
+\contentsline {subsubsection}{\numberline {5.2.1}Metric-to-Action Methode}{21}{subsubsection.5.2.1}%
 \contentsline {subsection}{\numberline {5.3}Graphische Aufbereitung}{21}{subsection.5.3}%
-\contentsline {section}{\numberline {6}Automatisierte Aktionen}{22}{section.6}%
-\contentsline {subsection}{\numberline {6.1}Architektur des Systems}{23}{subsection.6.1}%
-\contentsline {subsubsection}{\numberline {6.1.1}Prometheus}{24}{subsubsection.6.1.1}%
-\contentsline {subsubsection}{\numberline {6.1.2}Alertmanager}{25}{subsubsection.6.1.2}%
-\contentsline {subsubsection}{\numberline {6.1.3}Regeln}{25}{subsubsection.6.1.3}%
-\contentsline {section}{\numberline {7}Alert-Action-Manager}{28}{section.7}%
-\contentsline {subsection}{\numberline {7.1}Aufgabe}{28}{subsection.7.1}%
-\contentsline {subsection}{\numberline {7.2}Anforderungen}{28}{subsection.7.2}%
-\contentsline {subsection}{\numberline {7.3}Wahl der Sprache}{28}{subsection.7.3}%
-\contentsline {subsection}{\numberline {7.4}Funktionen}{30}{subsection.7.4}%
-\contentsline {subsubsection}{\numberline {7.4.1}Erweiterung}{31}{subsubsection.7.4.1}%
-\contentsline {subsection}{\numberline {7.5}Aktionen}{31}{subsection.7.5}%
-\contentsline {subsubsection}{\numberline {7.5.1}Skalierung}{31}{subsubsection.7.5.1}%
-\contentsline {subsubsection}{\numberline {7.5.2}Anomalie-Detection}{32}{subsubsection.7.5.2}%
-\contentsline {subsection}{\numberline {7.6}Grenzwerte}{32}{subsection.7.6}%
-\contentsline {section}{\numberline {8}Evaluation}{33}{section.8}%
-\contentsline {subsection}{\numberline {8.1}Messaufbau}{33}{subsection.8.1}%
-\contentsline {subsection}{\numberline {8.2}Testszenarien}{33}{subsection.8.2}%
-\contentsline {subsection}{\numberline {8.3}Messungen}{34}{subsection.8.3}%
-\contentsline {subsubsection}{\numberline {8.3.1}Anomalie}{34}{subsubsection.8.3.1}%
-\contentsline {subsubsection}{\numberline {8.3.2}Hochskalieren}{39}{subsubsection.8.3.2}%
-\contentsline {subsubsection}{\numberline {8.3.3}Herunterskalieren}{42}{subsubsection.8.3.3}%
-\contentsline {section}{\numberline {9}Diskussion}{43}{section.9}%
-\contentsline {subsection}{\numberline {9.1}Rahmen des Projekts}{43}{subsection.9.1}%
-\contentsline {subsection}{\numberline {9.2}Evaluation}{43}{subsection.9.2}%
-\contentsline {subsection}{\numberline {9.3}Probleme}{44}{subsection.9.3}%
-\contentsline {subsection}{\numberline {9.4}Zukunft des Projekts}{44}{subsection.9.4}%
-\contentsline {section}{\numberline {10}Fazit und Ausblick}{45}{section.10}%
+\contentsline {section}{\numberline {6}Automatisierte Aktionen}{23}{section.6}%
+\contentsline {subsection}{\numberline {6.1}Architektur des Systems}{24}{subsection.6.1}%
+\contentsline {subsubsection}{\numberline {6.1.1}Prometheus}{25}{subsubsection.6.1.1}%
+\contentsline {subsubsection}{\numberline {6.1.2}Alertmanager}{26}{subsubsection.6.1.2}%
+\contentsline {subsubsection}{\numberline {6.1.3}Regeln}{26}{subsubsection.6.1.3}%
+\contentsline {section}{\numberline {7}Alert-Action-Manager}{29}{section.7}%
+\contentsline {subsection}{\numberline {7.1}Aufgabe}{29}{subsection.7.1}%
+\contentsline {subsection}{\numberline {7.2}Anforderungen}{29}{subsection.7.2}%
+\contentsline {subsection}{\numberline {7.3}Wahl der Sprache}{29}{subsection.7.3}%
+\contentsline {subsection}{\numberline {7.4}Funktionen}{31}{subsection.7.4}%
+\contentsline {subsubsection}{\numberline {7.4.1}Erweiterung}{32}{subsubsection.7.4.1}%
+\contentsline {subsection}{\numberline {7.5}Aktionen}{32}{subsection.7.5}%
+\contentsline {subsubsection}{\numberline {7.5.1}Skalierung}{32}{subsubsection.7.5.1}%
+\contentsline {subsubsection}{\numberline {7.5.2}Anomalie-Detection}{33}{subsubsection.7.5.2}%
+\contentsline {subsection}{\numberline {7.6}Grenzwerte}{33}{subsection.7.6}%
+\contentsline {section}{\numberline {8}Evaluation}{34}{section.8}%
+\contentsline {subsection}{\numberline {8.1}Messaufbau}{34}{subsection.8.1}%
+\contentsline {subsection}{\numberline {8.2}Testszenarien}{34}{subsection.8.2}%
+\contentsline {subsection}{\numberline {8.3}Messungen}{35}{subsection.8.3}%
+\contentsline {subsubsection}{\numberline {8.3.1}Anomalie}{35}{subsubsection.8.3.1}%
+\contentsline {subsubsection}{\numberline {8.3.2}Hochskalieren}{40}{subsubsection.8.3.2}%
+\contentsline {subsubsection}{\numberline {8.3.3}Herunterskalieren}{43}{subsubsection.8.3.3}%
+\contentsline {section}{\numberline {9}Diskussion}{44}{section.9}%
+\contentsline {subsection}{\numberline {9.1}Rahmen des Projekts}{44}{subsection.9.1}%
+\contentsline {subsection}{\numberline {9.2}Evaluation}{44}{subsection.9.2}%
+\contentsline {subsection}{\numberline {9.3}Probleme}{45}{subsection.9.3}%
+\contentsline {subsection}{\numberline {9.4}Zukunft des Projekts}{45}{subsection.9.4}%
+\contentsline {section}{\numberline {10}Fazit und Ausblick}{46}{section.10}%

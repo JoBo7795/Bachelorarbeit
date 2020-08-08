@@ -361,11 +361,11 @@ Die CPU Utilization berechnet sich aus der Summe der Millisekunden, welche die C
 
 Summe der Zeit in Millisekunden, welche die CPU beschäftigt war:\\
 
-Jmax entspricht 1000 Millisekunden
+t entspricht 1000 Millisekunden
 
 \begin{Huge}
 
-\(U =  \frac{1}{J_{max}}{\sum\limits_{j=1}^{J_{max}} u_{j}} \)
+\(U =  \frac{1}{Sampling-Rate}{\sum\limits_{j=1}^{t} u{[j]}} \)
 
 \end{Huge}
 
@@ -374,7 +374,7 @@ Imax entspricht 300 Sekunden
 
 \begin{Huge}
 \(
-\displaystyle{\frac{1}{N}{\sum\limits_{i=1}^{I_{max}} U_{(t-i)}} }
+\displaystyle{\frac{1}{I_{max}}{\sum\limits_{i=1}^{I_{max}} U_{(t-i)}} }
 \) 
 \end{Huge}\\
 Der gesamte Wert eines Utilization Fensters lässt sich dann über die zusammengesetzte Formel berechnen:\\
@@ -391,17 +391,24 @@ Imax = 300; Jmax = 1000
 Saturation:\\
 Die CPU Saturation kann anhand des Ressourcenlimits berechnet werden. In UNIX basierten Betriebssystemen gibt es die Metrik 'load-average', welche die Anzahl der laufenden sowie wartenden Prozesse enthält. Sofern man diese durch die Anzahl der zur Verfügung stehenden CPU-Kerne teilt, erhält man eine Kennzahl für die Saturation. Diese aufsummiert und über die Zeit gemittelt, ergibt die durchschnittliche Saturation.\\
 Ein weiterer Weg die Saturation zu berechnen ist das aufsummieren der Zeit in der ein Prozess 'throtteld' läuft. Dies funktioniert dann, wenn ein Prozess ein Ressourcenlimit besitzt, übersteigt er dieses wird der Prozess gedrosselt.\\
+Error-Rate:\\
+Die Fehlererkennung wird von handelsüblichen CPUs nicht unterstützt, weswegen in den meisten Fällen keine Fehlererkennung umgesetzt werden kann. Eine mögliche Fehlererkennung würde beispielsweise über ein sogenanntes Lockstep-Verfahren umgesetzt werden, bei dem zwei CPUs jeweils die gleiche Aufgabe erhalten und gegenseitig ihre Ergebnisse vergleichen. Bei Unterschieden im Ergebnis kann daraus ein Fehlerfall ermittelt werden<Zitat US-Patent>.
 \item[RAM]:\\
 Utilization:\\
 Die RAM Utilization berechnet sich aus der Menge des vom System reservierten Speichers, der durch die Menge des gesamten Speichers geteilt wird. Beide stehen in UNIX basierten Betriebssystemen zur Verfügung, sodass die Rechnung zur RAM-Utilization $1 - reservierterSpeicher / gesamterSpeicher$ ist.\\
 Saturation:\\
 Die RAM Saturation kann am besten berechnet werden, wenn Ressourcenlimits existieren. Unter diesen Voraussetzungen kann die Saturation berechnet werden, indem die Summe des aktuell verwendeten Speichers durch das Ressourcenlimits geteilt wird.\\
+Error-Rate:\\
+Zur Ermittlung von Fehlern im Arbeitsspeicher wird sogenanntes 'Error Correcting Code'(ECC)-RAM benötigt. Dieses RAM erkennt Fehler in Speicherzellen des Arbeitsspeichers, die aufsummiert die Fehlerrate des RAMs ergeben. Sofern dieses RAM nicht eingesetzt wird ist eine Fehlerkennung nicht genau möglich. Ein alternatives aber möglicherweise ungenaueres Verfahren wäre das Feststellen von fehlgeschlagenen Speicherreservierungen. Dieses Verfahren zählt jedoch Fehlschläge des virtuellen Speicher und nicht des phyischen, was zu Messungenauigkeiten führen kann.
 \item[Netzwerk-Bandbreite]:\\
 Utilization:\\
 Um die Netzwerk Utilization zu messen werden die Bytes aufsummiert, die versendet sowie empfangen werden.\\
 Saturation:\\
 Die Netzwerk Saturation kann nur dann sinnvoll gemessen werden, wenn das Bandbreitenlimit bekannt ist. Sofern dies der Fall ist kann die Saturation berechnet werden indem die versendeten bzw. empfangenen Bytes durch das Bandbreitenlimit geteilt wird. \\
-Sofern keine Information zum Limit zur Verfügung stehen, können die verworfenen Pakete (dropped Packages) als Indikator dafür dienen, wie hoch die Saturation ist.
+Sofern keine Information zum Limit zur Verfügung stehen, können die verworfenen Pakete (dropped Packages) als Indikator dafür dienen, wie hoch die Saturation ist.\\
+Error-Rate:\\
+Zum ermitteln der Error-Rate des Netzwerks werden Sende- und Empfangs-Fehler aufsummiert , welche die Error-Rate bilden.
+
 \end{description}
 
 \section{Auswerten der Metriken}
@@ -410,10 +417,10 @@ Das Auswerten der Metriken erfolgt für das Monitoring durch das Umsetzen der US
 
 \subsection{Klassifizierung}
 
-Die Metriken werden in Node-Level sowie Pod- und Containerlevel Metriken klassifiziert.\\
+Die Metriken werden in Node-Level sowie Pod-Level Metriken klassifiziert.\\
 Nodelevelmetriken repräsentieren den Zustand eines ganzen Nodes, das bedeutet, dass die Metriken die Summe aller Pods, Container, Services, etc. des Nodes darstellen.\\
-Podlevelmetriken hingegen repräsentieren den Status eines einzelnen Pods sowie des Containers bzw. den Containern die sich in diesem Pod befinden.\\
-Die Containerlevelmetriken werden visualisiert um Zustände einzelner Pods und Container einsehen zu können, finden aber vor allem auch bei der Automatisierung von Aktionen ihren Nutzen. Für diese Metriken werden Regeln erstellt, die zur automatisierten Anwendung von Aktionen auf einen Pod oder Container dienen.\\
+Podlevelmetriken hingegen repräsentieren den Status eines einzelnen Pods.\\
+Die Podlevelmetriken werden visualisiert um Zustände einzelner Pods einsehen zu können, finden aber vor allem auch bei der Automatisierung von Aktionen ihren Nutzen. Für diese Metriken werden Regeln erstellt, die zur automatisierten Anwendung von Aktionen auf einen Pod dienen.\\
 Nodelevelmetriken werden in diesem Projekt vor allem zum Überwachen des Zustandes des gesamten Nodes verwendet und dienen dazu kritische Zustände eines ganzen Nodes zu erkennen. Daher werden diese visualiert, finden aber bei der Automatisierung und dem Alerting keine weitere Verwendung.
 
 \subsection{Logische Auswertung}
@@ -429,12 +436,13 @@ Der eingesetzte 'Moving-Average'-Filter sieht folgendermaßen aus:\\
 
 \end{Huge}
 
-Der Zeitraum von fünf Minuten wurde so gewählt, da bei einem längerem Zeitraum, von beispielsweise 10 Minuten, die beobachtete Menge an Metriken größer wird und so die Reaktionszeiten auf Leistungsschwankungen durch langsamer ansteigende Mittelwerte länger werden.
-Der umgekehrte Fall tritt ein, wenn ein zu kurzer Zeitraum gewählt wird, hierdurch werden Mittelwertschwankungen möglicherweise überbewertet und wodurch Ausreißer eine zu große Bedeutung einnehmen.
-Der gewählte Wert von fünf Minuten basiert auf Eigenerfahrungen, die diesen Wert als gutes Mittel herausgefunden haben.
+Der Zeitraum von fünf Minuten wurde so gewählt, da bei einem längerem Zeitraum, von beispielsweise zehn Minuten, die beobachtete Menge an Metriken größer wird und so die Reaktionszeiten auf Leistungsschwankungen durch langsamer ansteigende Mittelwerte länger werden.
+Der umgekehrte Fall tritt ein, wenn ein zu kurzer Zeitraum gewählt wird, hierdurch werden Mittelwertschwankungen möglicherweise überbewertet wodurch Ausreißer eine zu große Bedeutung einnehmen.
+Der gewählte Wert von fünf Minuten ist ein variabler Wert, der je nach Lastprofil auch angepasst und verändert werden kann.
 
-Für die logische Auswertung der Daten werden neben dem reinen Auslesen von Metriken auch Grenzwerte benötigt. Deshalb wurde hierbei keine Methode wie USE eingesetzt, aber es wurde sich an ihr orientiert.\\
-Zu diesem Zweck ist in diesem Projekt die 'Metric-to-Action'-Methode entwickelt worden, welche die Ansätze der USE-Methode mit Grenzwerten verknüpft.\\
+\subsubsection{Metric-to-Action Methode}
+
+Für die logische Auswertung der Daten werden neben dem reinen Auslesen von Metriken auch Grenzwerte benötigt. Zu diesem Zweck ist in diesem Projekt die 'Metric-to-Action'-Methode entwickelt worden, welche die Ansätze der USE-Methode mit Grenzwerten verknüpft.\\
 Diese Methode verwendet die Utilization-Metriken von USE, in diesem Projekt, zu CPU, RAM und Netzwerklast, welche mit Grenzwerten vereint werden.\\
 Das Ziel ist es über ein beliebiges Zeitfenster Metriken anhand von Grenzwerten zu beobachten, die zusammen einen binären Wert ergeben. Die Methode ist dann sinnvoll, wenn anhand von Metriken regelbasiert entschieden werden soll, wie auf diese reagiert werden kann.
 
@@ -451,8 +459,7 @@ Für die Counter werden grüne Bereiche für unkritische Auslastung und rote Ber
 \pagebreak
 \section{Automatisierte Aktionen}
 
-Das Kernthema dieser Arbeit ist die Entwicklung eines Systems, welches das Ausführen automatisierter Aktionen auf ein Kubernetes-Cluster ermöglicht. Mithilfe der Komponenten und Tools, Prometheus und dessen Alert-Verwaltungstool 'Alertmanager' (siehe Grundlagenkapitel) sowie einer Eigenentwicklung, genannt 'Alert-Action-Manager', welcher Alerts empfängt und auf diese mit einer passenden automatisierten Aktion reagiert, wird dieses Vorhaben in diesem Kapitel umgesetzt. Mittels automatischer Skalierung und Anomalie-Detection wird die Funktion der Architektur und Komponenten nachgewiesen.
-
+Das Kernthema dieser Arbeit ist die Entwicklung eines Systems, welches das Ausführen automatisierter Aktionen auf ein Kubernetes-Cluster ermöglicht. Mithilfe der Komponenten und Tools, Prometheus und dessen Alert-Verwaltungstool 'Alertmanager' (siehe Grundlagenkapitel) sowie einer Eigenentwicklung, genannt 'Alert-Action-Manager', welcher Alerts empfängt und auf diese mit einer passenden automatisierten Aktion reagiert, wird dieses Vorhaben in diesem Kapitel umgesetzt. Mittels automatischer Skalierung und Anomalie-Detection wird die Funktion der Systems und der Komponenten nachgewiesen.
 
 
 \pagebreak
@@ -488,21 +495,19 @@ Auf wichtige Komponenten wird hier nochmal gesondert eingegangen.
 
 \subsubsection{Prometheus}
 
-Wie bereits beschrieben, bildet Prometheus die zentrale Komponente in diesem Projekt und dessen Architektur. Auf dem Prometheus-Server werden alle Regeln definiert und konfiguriert, die für das Alerting benötigt werden und damit Aktionen auslösen können. Außerdem können auf dem Server die Zeiten konfiguriert werden, in deren Abständen der Server Metriken scraped, Regeln prüft und Alerts sendet. Diese Zeiten bestimmen maßgeblich in welcher Geschwindigkeit die Aktionen ausgeführt werden.\\
+Wie bereits beschrieben, bildet Prometheus die zentrale Komponente in diesem Projekt und dessen Architektur. Auf dem Prometheus-Server werden alle Regeln definiert und konfiguriert, die für das Alerting benötigt werden und damit Aktionen auslösen können. Außerdem können auf dem Server die Zeiten konfiguriert werden, in deren Abständen der Server Metriken scraped, Regeln prüft und Alerts sendet. Diese Zeiten bestimmen maßgeblich in welcher Geschwindigkeit die Aktionen ausgeführt werden und können verhindern, dass Alert-Nachrichten zu häufig und in zu kurzen Abständen versendet werden.\\
 
 Zusätzlich zum zentralen Server besitzt Prometheus auch Komponenten, die direkt im Kubernetes-Cluster auf den Nodes laufen und dafür sorgen, dass von Kubernetes mittels kubelet und cAdvisor (siehe Kapitel Grundlagen/Kubernetes) veröffentlichte Metriken für den Server bereitgestellt werden. Diese Aufgabe übernehmen die Exporter, welche im Cluster installiert und konfiguriert sind.
-
-Der Prometheus-Server, wie auch der Alertmanager, stellen ein eigenes Deployment dar und laufen als Pod im Kubernetes-Cluster. Sie werden in der für Kubernetes optimierten Variante über den Kubernetes Paket-Manager 'Helm' installiert und konfiguriert. Dies hat den Vorteil, dass für die grundsätzliche Konfiguration im Kubernetes-Cluster deutlich weniger Ressourcen und Zeit in Anspruch genommen werden müssen und die Vollständigkeit und Fehlerwahrscheinlichkeit verbessert werden, da benötigte Exporter direkt mit installiert und automatisch konfiguriert werden.\\
-Dieser Ansatz bedingt, dass Konfigurationen nicht mehr direkt in Prometheus selbst, sondern über den Paket-Manager konfiguriert werden, was eine gewisse Kenntnis der Funktion  sogenannter 'Helm-Charts' voraussetzt.
+Der Prometheus-Server, wie auch der Alertmanager, stellen ein eigenes Deployment dar und laufen als Pod im Kubernetes-Cluster. 
 
 \subsubsection{Alertmanager}
 
-Der Prometheus-Alertmanager, der in der Architektur als 'Verteiler' von Alerts dient, ermöglicht die grundsätzliche Kommunikation zwischen Prometheus und externen Tools. Die Möglichkeit mittels des Nachrichtensystems neben vorkonfigurierten Drittanbietertools wie Slack auch eigene sog. Webhooks zu adressieren, erlaubt die Möglichkeit einen eigenen HTTP-Endpunkt als Nachrichtenziel zu verwenden. Da sich für einen Alert mehrere Ziele festlegen lassen, kann so zu jeder automatischen Aktion auch eine Warnung an den für Alerts konfigurierten Slack-Channel gesendet werden. So kann in zukünftigen Alerts auch zwischen rein informativem Alert, der nur an Slack gesendet wird und einem Alert der eine Aktion zur Folge hat unterschieden werden und diese entsprechend konfiguriert.\\
+Der Prometheus-Alertmanager, der in der Architektur als Message-Broker von Alerts dient, ermöglicht die grundsätzliche Kommunikation zwischen Prometheus und externen Tools. Die Möglichkeit mittels des Nachrichtensystems neben vorkonfigurierten Drittanbietertools wie Slack auch eigene sog. Webhooks zu adressieren, erlaubt die Möglichkeit einen eigenen HTTP-Endpunkt als Nachrichtenziel zu verwenden. Da sich für einen Alert mehrere Ziele festlegen lassen, kann so zu jeder automatischen Aktion auch eine Warnung an den für Alerts konfigurierten Slack-Channel gesendet werden. So kann in zukünftigen Alerts auch zwischen rein informativem Alert, der nur an Slack gesendet wird und einem Alert der eine Aktion zur Folge hat unterschieden werden und diese entsprechend konfiguriert.\\
 
 \subsubsection{Regeln}
 
 Die Regeln, die zum Aktivieren der Alerts verwendet werden, bestehen aus einem Label, einem Ausdruck, der Metriken abgleicht und einem Erfüllungszeitrahmen.
-Der Ausdruck ist, wie die Queries zur Visualisierung auch, in der PromQL-Sprache geschrieben. Ein Ausdruck muss immer als Vergleich geschrieben werden und somit einen BOOL-Wert repräsentieren können, also erfüllt(true) oder nicht erfüllt(false).
+Der Ausdruck ist, wie die Queries zur Visualisierung auch, in der PromQL-Sprache geschrieben. Ein Ausdruck muss immer als Vergleich geschrieben werden und somit einen boolschen Wert repräsentieren können, also erfüllt(true) oder nicht erfüllt(false).
 Jeder Ausdruck besitzt einen Zeitrahmen über den er erfüllt sein muss um einen Alert auszulösen, womit vorzeitiges oder zu häufiges Alarmieren eingeschränkt oder verhindert werden kann.
 Um mehrere Bedingungen in einem Ausdruck zu verknüpfen kann auf logische Operatoren zurückgegriffen werden, diese sind AND, OR und UNLESS(Komplement).
 Zum Inkludieren oder Exkludieren einzelner Metrikquellen, können mittels der Anwendung von regulären Ausdrücken auf die Namen der Quellen Filter für diese erstellt werden.
@@ -664,7 +669,7 @@ Diese Aktion wird durch eine Regel realisiert:
 
 \begin{description}
 \item[PodAnomalyBehaviour]
-Die Thresholds werden so gesetzt, dass entweder die RAM-Auslastung, die CPU-Auslastung oder beide, einen Wert von 75\% Last oder mehr aufweisen müssen, bei einer Netzwerkbandbreitenlast von unter einem Megabit. Dieser Zustand muss 10 Sekunden bestehen, um diese Regel auszulösen.
+Die Thresholds werden so gesetzt, dass entweder die RAM-Auslastung, die CPU-Auslastung oder beide, einen Wert von 75\% Last oder mehr aufweisen müssen, bei einer Netzwerkbandbreitenlast die mit der Formel maximale Bandbreitenkapazität/(Anzahl der Pods pro Deployment * Netzlastfaktor) für jedes Deployment berechnet wird. Dieser Zustand muss 10 Sekunden bestehen, um diese Regel auszulösen.
 \end{description}
 
 Nach Auslösen des 'PodAnomalyBehaviour' Alerts wird die zugehörige Aktion folgendermaßen ausgeführt:\\
@@ -687,6 +692,7 @@ Zur Evaluierung der korrekten Funktion des System, deren Komponenten und Archite
 
 Für den Messaufbau wurde ein eigener Kubernetes-Service entwickelt, welcher als Pod in das Cluster ausgeliefert wurde. Der Testservice simuliert anormale oder ressourcenintensive Verhaltensweisen und besitzt Funktionen um die CPU-Last zu maximieren, einen Endpunkt um die Netzwerkkapazität zu maximieren sowie die Funktion den Arbeitsspeicherbedarf des Service an die kritische Grenze zu bringen.
 Mit diesem Aufbau sollen sowohl die Grenzwerte der Regeln, als auch die Funktion der Komponenten und Architektur als Ganzes und die Anomaliedetection sowie die Ressourcenskalierung getestet werden.
+Zum Messen werden Grafen für die CPU-Utilization und RAM-Saturation, den 'Replica-Count' sowie den 'Rolling-Restart-Count' für jeden Pod und jedes Deployment des Kubernetes-Clusters in der Grafana-Oberfläche erstellt. Der 'Rolling-Restart-Count' ist hierbei die Anzahl der Podneustarts für ein Deployment, die mittels 'Alert-Action-Manager' ausgeführt wurden. Der 'Replica-Count' die Anzahl der Pods pro Deployment.
 
 \subsection{Testszenarien}
 
@@ -713,6 +719,7 @@ Diese sind:
 \end{description}
 
 Jedes dieser Szenarien wird in einem eigenen Test evaluiert.
+Die maximale Netzlast ist in den Messungen auf den Grenzwert von einem Megabit festgelegt.
 
 \pagebreak
 \subsection{Messungen}
