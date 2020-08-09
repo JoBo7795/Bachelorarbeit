@@ -230,6 +230,55 @@ Der Alertmanager hat mehrere Möglichkeiten mit Alerts umzugehen. Eine der Mögl
 
 In Abbildung 2 ist der sequenzielle Ablauf eines Alamierungsvorgangs dargestellt. Nachdem Metriken vom Server von einer Metrikquelle gelesen wurden und eine Alertingregel erfüllen, wird der Zeitraum, in welcher die Regeln erfüllt ist gemessen, der Alert wird mit dem Status 'pending' an den Alertmanager gesendet. Besteht der Zustand des Alerts für die konfigurierte Offset-Zeit, wird der Alert in den Status 'active' versetzt und an alle im Alertmanager konfigurierten Ziele versendet.
 
+\subsection{Wahl der Sprache}
+
+Die Wahl der Programmiersprache für die 'Alert-Action-Manager'- sowie die Evaluations-Komponente fiel auf die von Google entwickelte Open-Source Sprache Go(-lang).\\
+Google beschreibt die Sprache selbst 'Go is a compiled, concurrent, garbage-collected, statically typed language developed at Google. It is an open source project: Google imports the public repository rather than the other way around.'<Zitatquelle Google einfügen>
+Go findet vor allem in der Web-Entwicklung eine zunehmend starke Verbreitung, im Ranking der Website tiobe.com beispielsweise, steht Go, Stand 19.07.2020, auf Platz 12 der meist verwendeten Programmiersprachen <Quelle für Verbreitung und Wachstum einfügen>, wodurch es eine große und hilfreiche Community, viele Erfahrungen in einschlägigen Foren sowie eine stete Weiterentwicklung bietet.\\
+Vorteile der Sprache die auch in diesem Projekt hilfreich waren und so zur Entscheidung dieser Sprachwahl beigetragen haben, sind folgende:
+
+\begin{description}
+\item[Kompilierung]:\\
+
+Go ist im Gegensatz zu Sprachen JavaScript oder PHP eine kompilierte Sprache. Dadurch bietet Go einen Performancevorteil, den kompilierte Sprachen gegenüber interpretierten typischerweise haben. Des Weiteren wirkt sich die Kompilation positiv auf die Fehlerrate aus, da 'compile time errors' von vornherein durch das Kompilieren detektiert werden.\\
+
+\item[Typsicherheit]:\\
+
+Die Sprache ist statisch typisiert, was bedeutet, dass Typen zur Kompilierzeit überprüft werden und so Fehler durch falsche Typen vermieden werden. 
+
+\item[Speichermanagement]:\\
+
+Go hat eine integrierte Garbage-Collection, was das Speichermanagement vereinfacht und Fehler in dessen Zusammenhang verhindert. Trotzdem bietet die Sprache die Möglichkeit mit Pointern zu arbeiten.
+
+
+\item[Zahlreiche Packages, einfache Integration]:\\
+
+Go bietet die Möglichkeit Libraries, in Go Packages genannt, mittels ihres Pfads in ein Projekt zu integrieren. Die Standard JSON-Bibliothek wird beispielweise mittels des Statements 
+
+\begin{lstlisting}
+import "encoding/json"
+\end{lstlisting}
+
+eingebunden. Mittels des Package-Names können dann Elemente aus dem Package verwendet werden.
+
+
+\begin{lstlisting}
+var dec = json.NewDecoder(reader)
+\end{lstlisting}
+
+Ein großer Vorteil ist, dass das selbe Prinzip ebenso bei externen Packages, beispielweise von Github, funktioniert.\\
+Mit dem mitgelieferten Package-Downloader 'go get' kann ein Package heruntergeladen und installiert werden und ist so direkt einsatzbereit. Dadurch stehen eine Vielzahl an Packages auf Github und anderen Plattformen bereit, die ohne großen Aufwand verwendet werden können.
+
+\item[C-Integration(CGO)]:\\
+
+Mit CGO bietet die Sprache eine Integration der kompletten Sprache C bereit. Dies erlaubt es  C-Libraries zu importieren und zu verwenden oder C-Funktionen innerhalb eines Go-Programms zu benutzen. Dies ist beispielsweise praktisch, wenn trotz der automatischen Speicherverwaltung Speicher manuell allokiert werden soll. So kann mittels CGO die C-Funktion 'malloc()' zum reservieren des Speichers verwendet werden.
+
+Go bietet zahlreiche weiter nützliche Features, für weitere Informationen dazu wird die offizielle Dokumentation und FAQ empfohlen:\\
+\url{https://golang.org/doc/faq#What_is_the_purpose_of_the_project}
+
+\end{description}
+
+
 \pagebreak
 
 \section{Stand der Technik}
@@ -281,40 +330,7 @@ Die Skalierung in diesem Projekt orientiert sich an dem Verfahren, welches im Pa
 \pagebreak
 \section{Datenaggregation}
 
-Die Datenaggregation, also das Erheben und Sammeln von Daten, ist zentraler Bestandteil des Projektes und der erste grundlegende Schritt. Das Ziel der Aggregation ist es Daten sog. Metriken über den Zustand eines Kubernetes-Clusters(siehe Kapitel Grundlagen/Kubernetes) zu erhalten. Kubernetes stellt selbst Metriken zur Verfügung, mittels eines passenden Tools werden diese ausgelesen und so für die weitere Verarbeitung nutzbar gemacht.
-
-\subsection{Toolauswahl} <evtl. hieraus eigenes Kapitel machen,für Prometheus, Grafana,(Loki)>
-
-Das Monitoringtool, welches in diesem Projekt zur Datenaggregation genutzt wird, ist Prometheus. Prometheus wird als Quasi-Standard im Cloud-Native Umfeld und für das Monitoring von Kubernetes verwendet <Hierfür belegende Quelle finden>. Für dieses Projekt bietet es zentrale Features, welche die Umsetzung ermöglichen.
-
-\begin{description}
-
-\item[Automatische Service-Discovery]
-Das Feature der automatische Service-Discovery ist sehr entscheident, da sich die Services im Cluster häufig verändern und neue Services hinzugefügt werden. Mithilfe dieser Funktion werden Services automatisch gefunden, Metriken direkt erhoben und Regeln auf diese angewendet, ohne konfiguriert werden zu müssen.
-\item[Echtzeitmetriken]
-Prometheus zeichnet Metriken in Echtzeit auf. Das ermöglicht es jederzeit den aktuellen Status des Clusters einzusehen und in Echtzeit darauf reagieren zu können.
-\item[Zeitreihen]
-Prometheus zeichnet Metriken als Zeitreihen auf, was das Beobachten, Abfragen und die Definition von Regeln über Zeiträume möglich macht. 
-\item[Regeln]
-Regeln spielen eine zentrale Rolle in diesem Projekt. Mithilfe dieser lassen sich verschiedene Features von Prometheus regulieren, in diesem Projekt werden sie für das Regulieren von Alerts verwendet.
-Regeln werden über Thresholds und optional über Zeiträume von Metriken definiert, sodass bei Überschreiten eines Thresholds für eine bestimmte Zeit eine Regel als erfült gilt.
-\item[Alerting]
-Mithilfe der Alerts ist es möglich anhand von Regeln Alarme zu versenden, die über den Zustand des Clusters informieren. Sie können an Ziele wie E-Mail-Adressen oder Chat-Tools wie Slack oder Telegram gesendet werden, aber auch  an selbst definierte Endpunkte um sie dort zu empfangen oder sie möglicherweise weiterzuverarbeiten.
-
-\end{description}
-
-\begin{figure}[htbp]
-  \centering
-  \scalebox{.8}{\input{DatenaggregationFlow.pdf_tex}}  
-\end{figure}
-
-\subsection{Grafana}
-
-Grafana ist das Tool, welches zur Visualisierung verwendet wird. Das Open-Source Tool bietet Möglichkeiten Metriken in Form von Graphen, Zählern, Histogrammen und vielem mehr über Zeiträume zu visualisieren. Des Weiteren können ganze 'Dashboards' erstellt werden, die den Überblick über das ganze Cluster auf einmal erlauben.\\
-Aufgrund der bereits vorhandenen Prometheusintegration ist eine Verwendung bei bereits bestehendem Prometheus-Server einfach und innerhalb kurzer Zeit umzusetzen.
-Der Prometheus-Server, von welchem Grafana Metriken erhalten soll muss als Datenquelle mittels seiner Adresse konfiguriert werden, danach stehen alle Metriken, welche Prometheus kennt auch in Grafana zur Verfügung.\\
-Um Metriken zu visualisieren, wird die aus Prometheus bereits bekannte Abfragesprache PromQL verwendet, was den Vorteil bietet, Abfragen die für Prometheus funktionieren, funktionieren ebenso in der Grafana Oberfläche zum Erstellen von Visualisierungen.\\
-Da Grafana eines der gängistens Tools ist und teilweise als Quasi-Standard zur Visualisierung von Metriken behandelt wird, findet eine kontinuierliche Weiterentwicklung statt und eine große Community bietet Unterstützung und Erfahrungen.\\<hier Quelle Logz.io einfügen>
+Die Datenaggregation, also das Erheben und Sammeln von Daten, ist zentraler Bestandteil des Projektes und der erste grundlegende Schritt. Das Ziel der Aggregation ist es Daten sog. Metriken über den Zustand eines Kubernetes-Clusters(siehe Kapitel Grundlagen/Kubernetes) zu erhalten. Kubernetes stellt selbst Metriken zur Verfügung. Im Folgenden wird beschrieben wie diese Daten ausgelesen und für die weitere Verwendung aufbereitet werden.
 
 \subsection{Datenquellen}
 
@@ -360,57 +376,203 @@ Die Metriken Utilization und Saturation werden für CPU, RAM und Netzwerkauslast
 Utilization:\\
 Die CPU Utilization berechnet sich aus der Summe der Millisekunden, welche die CPU beschäftigt war, geteilt durch eine ganze Sekunde. So erhält man die Utilization pro Sekunde, welche über aufsummiert und der Mittelwert über den beobachteten Zeitraum gebildet wird, um so die durchschnittliche Utilization zu erhalten.\\
 
-Summe der Zeit in Millisekunden, welche die CPU beschäftigt war:\\
-
-t entspricht 1000 Millisekunden
-
-\begin{Huge}
-
-\(U =  \frac{1}{Sampling-Rate}{\sum\limits_{j=1}^{t} u{[j]}} \)
-
-\end{Huge}
-
 Der gleitende Mittelwert der aufsummierten Zeit U über den Beobachteten Zeitraum von 5 Minuten:\\
 Imax entspricht 300 Sekunden
 
 \begin{Huge}
 \(
-\displaystyle{\frac{1}{I_{max}}{\sum\limits_{i=1}^{I_{max}} U_{(t-i)}} }
+\displaystyle{U_{CPU}(t)=\frac{1}{N}{\sum\limits_{i_{w}=0}^{N-1} l_{cpu}{(t-i_{w})}} }
 \) 
 \end{Huge}\\
 Der gesamte Wert eines Utilization Fensters lässt sich dann über die zusammengesetzte Formel berechnen:\\
 
-Imax = 300; Jmax = 1000
+Saturation:\\
+Die CPU Saturation kann anhand des Ressourcenlimits berechnet werden. In UNIX basierten Betriebssystemen gibt es die Metrik 'load\_average', welche die Anzahl der laufenden sowie wartenden Prozesse enthält. Sofern man diese durch die Anzahl der zur Verfügung stehenden CPU-Kerne 'core\_unit\_count' teilt, erhält man eine Kennzahl für die Saturation. 
 
 \begin{Huge}
 \(
-\displaystyle{
-{\frac{1}{J_{max}*N}\sum\limits_{i=1}^{I_{max}} \sum\limits_{j=1}^{J_{max}} u_{{(t-i)j}}}
-  }\)
+\displaystyle{s_{cpu}= load\_average / core\_unit\_count}
+\)
 \end{Huge}\\
 
-Saturation:\\
-Die CPU Saturation kann anhand des Ressourcenlimits berechnet werden. In UNIX basierten Betriebssystemen gibt es die Metrik 'load-average', welche die Anzahl der laufenden sowie wartenden Prozesse enthält. Sofern man diese durch die Anzahl der zur Verfügung stehenden CPU-Kerne teilt, erhält man eine Kennzahl für die Saturation. Diese aufsummiert und über die Zeit gemittelt, ergibt die durchschnittliche Saturation.\\
-Ein weiterer Weg die Saturation zu berechnen ist das aufsummieren der Zeit in der ein Prozess 'throtteld' läuft. Dies funktioniert dann, wenn ein Prozess ein Ressourcenlimit besitzt, übersteigt er dieses wird der Prozess gedrosselt.\\
+Diese aufsummiert und über die Zeit gemittelt, ergibt die durchschnittliche Saturation.\\
+
+\begin{Huge}
+\(
+\displaystyle{S_{CPU}(t)=\frac{1}{N}{\sum\limits_{i_{w}=0}^{N-1} s_{cpu}{(t-i_{w})}} }
+\)
+\end{Huge}\\
+
+Ein weiterer Weg die Saturation zu berechnen ist das Aufsummieren der Zeit in der ein Prozess 'throtteld' läuft. Dies funktioniert dann, wenn ein Prozess ein Ressourcenlimit besitzt, übersteigt er dieses wird der Prozess gedrosselt.\\
 Error-Rate:\\
 Die Fehlererkennung wird von handelsüblichen CPUs nicht unterstützt, weswegen in den meisten Fällen keine Fehlererkennung umgesetzt werden kann. Eine mögliche Fehlererkennung würde beispielsweise über ein sogenanntes Lockstep-Verfahren umgesetzt werden, bei dem zwei CPUs jeweils die gleiche Aufgabe erhalten und gegenseitig ihre Ergebnisse vergleichen. Bei Unterschieden im Ergebnis kann daraus ein Fehlerfall ermittelt werden<Zitat US-Patent>.
 \item[RAM]:\\
 Utilization:\\
-Die RAM Utilization berechnet sich aus der Menge des vom System reservierten Speichers, der durch die Menge des gesamten Speichers geteilt wird. Beide stehen in UNIX basierten Betriebssystemen zur Verfügung, sodass die Rechnung zur RAM-Utilization $1 - reservierterSpeicher / gesamterSpeicher$ ist.\\
+Die RAM Utilization berechnet sich aus der Menge des vom System reservierten Speichers, der durch die Menge des gesamten Speichers geteilt wird. Beide stehen in UNIX basierten Betriebssystemen zur Verfügung, sodass die Rechnung zur RAM-Utilization lautet:\\
+
+
+\begin{Huge}
+\(
+\displaystyle{l_{ram}=1-RAM_{res}/RAM_{ges}}
+\) 
+\end{Huge}\\
+
+Diese aufsummiert und über die Zeit gemittelt, ergibt die durchschnittliche Utilization.\\
+
+\begin{Huge}
+\(
+\displaystyle{U_{RAM}(t)=\frac{1}{N}{\sum\limits_{i_{w}=0}^{N-1} l_{ram}{(t-i_{w})}} }
+\) 
+\end{Huge}\\
+
+\pagebreak
+
 Saturation:\\
-Die RAM Saturation kann am besten berechnet werden, wenn Ressourcenlimits existieren. Unter diesen Voraussetzungen kann die Saturation berechnet werden, indem die Summe des aktuell verwendeten Speichers durch das Ressourcenlimits geteilt wird.\\
+Die RAM Saturation kann am besten berechnet werden, wenn Ressourcenlimits existieren. Unter diesen Voraussetzungen kann die Saturation berechnet werden, indem die Summe des aktuell verwendeten Speichers durch das Ressourcenlimits geteilt wird. Sofern ein Wert über 100\% erreich wird\\
+
+\begin{Huge}
+\(
+\displaystyle{s_{ram}=RAM_{res}/RAM_{ges}}
+\) 
+\end{Huge}\\
+
+Über diesen wird wiederum der Mittelwert gebildet:\\
+
+\begin{Huge}
+\(
+\displaystyle{S_{RAM}(t)=\frac{1}{N}{\sum\limits_{i_{w}=0}^{N-1} s_{ram}{(t-i_{w})}} }
+\) 
+\end{Huge}\\
+
 Error-Rate:\\
 Zur Ermittlung von Fehlern im Arbeitsspeicher wird sogenanntes 'Error Correcting Code'(ECC)-RAM benötigt. Dieses RAM erkennt Fehler in Speicherzellen des Arbeitsspeichers, die aufsummiert die Fehlerrate des RAMs ergeben. Sofern dieses RAM nicht eingesetzt wird ist eine Fehlerkennung nicht genau möglich. Ein alternatives aber möglicherweise ungenaueres Verfahren wäre das Feststellen von fehlgeschlagenen Speicherreservierungen. Dieses Verfahren zählt jedoch Fehlschläge des virtuellen Speicher und nicht des phyischen, was zu Messungenauigkeiten führen kann.
+Die Berechnung der Fehlerrate wäre wie folgt:\\
+
+\begin{Huge}
+\(
+\displaystyle{E_{RAM}(t)=\frac{1}{N}{\sum\limits_{i_{w}=0}^{N-1} e_{ram}{(t-i_{w})}} }
+\) 
+\end{Huge}\\
+
+\pagebreak
+
 \item[Netzwerk-Bandbreite]:\\
 Utilization:\\
-Um die Netzwerk Utilization zu messen werden die Bytes aufsummiert, die versendet sowie empfangen werden.\\
+Um die Netzwerk Utilization zu messen werden die Bytes aufsummiert, die versendet sowie empfangen werden und daraus der Mittelwert berechnet.\\
+\begin{Huge}
+\(
+\displaystyle{U_{Net}(t)=\frac{1}{N}{\sum\limits_{i_{w}=0}^{N-1} l_{net}{(t-i_{w})}} }
+\) 
+\end{Huge}\\
+
 Saturation:\\
-Die Netzwerk Saturation kann nur dann sinnvoll gemessen werden, wenn das Bandbreitenlimit bekannt ist. Sofern dies der Fall ist kann die Saturation berechnet werden indem die versendeten bzw. empfangenen Bytes durch das Bandbreitenlimit geteilt wird. \\
+Die Netzwerk Saturation kann nur dann sinnvoll gemessen werden, wenn das Bandbreitenlimit bekannt ist. Sofern dies der Fall ist kann die Saturation berechnet werden indem die versendeten bzw. empfangenen Bytes(u\_bytes) durch das Bandbreitenlimit geteilt wird. \\
+
+\begin{Huge}
+\(
+\displaystyle{s_{net}=u\_bytes/bandwidth}
+\) 
+\end{Huge}\\
+
+Über diese wird wiederum der Mittelwert gebildet.
+
+\begin{Huge}
+\(
+\displaystyle{S_{Net}(t)=\frac{1}{N}{\sum\limits_{i_{w}=0}^{N-1} s_{net}{(t-i_{w})}} }
+\) 
+\end{Huge}\\
+
 Sofern keine Information zum Limit zur Verfügung stehen, können die verworfenen Pakete (dropped Packages) als Indikator dafür dienen, wie hoch die Saturation ist.\\
+
+
+
 Error-Rate:\\
 Zum ermitteln der Error-Rate des Netzwerks werden Sende- und Empfangs-Fehler aufsummiert , welche die Error-Rate bilden.
 
+\begin{Huge}
+\(
+\displaystyle{E_{Net}(t)=\frac{1}{N}{\sum\limits_{i_{w}=0}^{N-1} e_{net}{(t-i_{w})}} }
+\) 
+\end{Huge}\\
+
 \end{description}
+\subsection{Tools}
+\subsubsection{Datenaggregation}
+
+Das Monitoringtool, welches in diesem Projekt zur Datenaggregation genutzt wird, ist Prometheus. Aufgrund seines Status als Quasi-Standard im Cloud-Native Umfeld und für das Monitoring von Kubernetes wird Prometheus in diesem Projekt verwendet, da es neben hohen Kompatibilität zu anderen Systemen auch eine sehr gute Dokumentation aufweist. Für dieses Projekt bietet es zentrale Features, welche die Umsetzung ermöglichen.
+
+Wichtige Features von Prometheus zur Datenaggregation sind:
+\begin{description}
+
+\item[Automatische Service-Discovery]
+Das Feature der automatische Service-Discovery ist sehr entscheidend, da sich die Services im Cluster häufig verändern und neue Services hinzugefügt werden. Mithilfe dieser Funktion werden Services automatisch gefunden, Metriken direkt erhoben und Regeln auf diese angewendet, ohne konfiguriert werden zu müssen.
+\item[Echtzeitmetriken]
+Prometheus zeichnet Metriken in Echtzeit auf. Das ermöglicht es jederzeit den aktuellen Status des Clusters einzusehen und in Echtzeit darauf reagieren zu können.
+\item[Zeitreihen]
+Prometheus zeichnet Metriken als Zeitreihen auf, was das Beobachten, Abfragen und die Definition von Regeln über Zeiträume möglich macht. 
+
+\end{description}
+
+
+Neben den Features zur Datenaggregation bietet Prometheus auch noch weitere für dieses Projekt wichtige Features :
+\begin{description}
+\item[Regeln]
+Regeln spielen eine zentrale Rolle in diesem Projekt. Mithilfe dieser lassen sich verschiedene Features von Prometheus regulieren, in diesem Projekt werden sie für das Regulieren von Alerts verwendet.
+Regeln werden über Thresholds und optional über Zeiträume von Metriken definiert, sodass bei Überschreiten eines Thresholds für eine bestimmte Zeit eine Regel als erfült gilt.
+\item[Alerting]
+Mithilfe der Alerts ist es möglich anhand von Regeln Alarme zu versenden, die über den Zustand des Clusters informieren. Sie können an Ziele wie E-Mail-Adressen oder Chat-Tools wie Slack oder Telegram gesendet werden, aber auch  an selbst definierte Endpunkte um sie dort zu empfangen oder sie möglicherweise weiterzuverarbeiten.
+
+\end{description}
+
+\subsubsection{Ablauf der Aggregation}
+
+Die Aggregation der Metriken läuft nach festen Schema ab, welches für die Aufzeichnung aller Metriken gilt.
+Die Metriken werden von Prometheus aggregiert und aufgezeichnet. Dies wird auf allen Zielen, welche durch die automatische Service-Discovery gefunden wurden durchgeführt.\\
+\begin{minipage}{\linewidth}
+  \includegraphics[scale=.3]{img/Datenaggregation/LupeNew.png} 
+\end{minipage} 
+
+Die Metriken werden über einen definierten Zeitraum gesammelt, sodass daraus Zeitreihen-Metriken entstehen. Aus diesen Zeitreihenmetriken kann ein Graf abgeleitet werden.\\
+\begin{minipage}{\linewidth}
+  \includegraphics[scale=.3]{img/Datenaggregation/GrafAggregationNew.png}
+\end{minipage} 
+
+Wenn man diese Zeitreihenmetriken in ein Koordinatensystem überträgt, wäre die X-Achse eines Grafen der Zeitwert zwischen Null und maximalem aufgezeichnetem Zeitwert und die Y-Achse die höhe des Metrikwertes. \\
+\begin{minipage}{\linewidth}
+  \includegraphics[scale=.3]{img/Datenaggregation/GrafZeitNew.png} 
+\end{minipage} 
+
+
+Anhand der Höhe des Y-Wertes des Grafen lassen sich Regeln definieren und somit ein Grenzwert für Metriken erstellen.\\
+\begin{minipage}{\linewidth}
+  \includegraphics[scale=.3]{img/Datenaggregation/GrafYWertNew.png} 
+\end{minipage}
+
+Über den Zeitwert (X-Achse) wird eine Dauer definiert, die der Zustand der Grenzwertüberschreitung bestehen darf.\\
+\begin{minipage}{\linewidth}
+  \includegraphics[scale=.3]{img/Datenaggregation/GrafAlarmNew.png} 
+\end{minipage}
+
+Wenn der Grenzwert über die definierte Zeitdauer überschritten wurde wird ein Alarm ausgelöst.\\
+\begin{minipage}{\linewidth}
+  \includegraphics[scale=.3]{img/Datenaggregation/AlarmNew.png}  
+\end{minipage} 
+
+
+Im nachfolgenden Graf wird der Ablauf der Aggregation aufeinander aufbauend visualisiert:
+
+\begin{minipage}{\linewidth}
+  \centering
+  \scalebox{.8}{\input{DatenaggregationFlow.pdf_tex}}  
+\end{minipage}
+
+\subsubsection{Visualisierung}
+
+Grafana ist das Tool, welches zur Visualisierung verwendet wird. Das Open-Source Tool bietet Möglichkeiten Metriken in Form von Graphen, Zählern, Histogrammen und vielem mehr über Zeiträume zu visualisieren. Des Weiteren können ganze 'Dashboards' erstellt werden, die den Überblick über das ganze Cluster auf einmal erlauben.\\
+Aufgrund der bereits vorhandenen Prometheusintegration ist eine Verwendung bei bereits bestehendem Prometheus-Server einfach und innerhalb kurzer Zeit umzusetzen.
+Der Prometheus-Server, von welchem Grafana Metriken erhalten soll muss als Datenquelle mittels seiner Adresse konfiguriert werden, danach stehen alle Metriken, welche Prometheus kennt auch in Grafana zur Verfügung.\\
+Um Metriken zu visualisieren, wird die aus Prometheus bereits bekannte Abfragesprache PromQL verwendet, was den Vorteil bietet, Abfragen die für Prometheus funktionieren, funktionieren ebenso in der Grafana Oberfläche zum Erstellen von Visualisierungen.\\
+Da Grafana eines der gängistens Tools ist und teilweise als Quasi-Standard zur Visualisierung von Metriken behandelt wird, findet eine kontinuierliche Weiterentwicklung statt und eine große Community bietet Unterstützung und Erfahrungen.\\<hier Quelle Logz.io einfügen>
 
 \section{Auswerten der Metriken}
 
@@ -434,7 +596,6 @@ Der eingesetzte 'Moving-Average'-Filter sieht folgendermaßen aus:\\
 \(
 \displaystyle{m^{(n)}_{MA}(t) = \frac{1}{n}{\sum\limits_{i=0}^{{n-1}} x_{(t-i)}} }
 \)\\
-
 \end{Huge}
 
 Der Zeitraum von fünf Minuten wurde so gewählt, da bei einem längerem Zeitraum, von beispielsweise zehn Minuten, die beobachtete Menge an Metriken größer wird und so die Reaktionszeiten auf Leistungsschwankungen durch langsamer ansteigende Mittelwerte länger werden.
@@ -551,54 +712,6 @@ An den AAM sind mehrere Anforderungen geknüpft, die er erfüllen muss, um seine
 \item der Manager muss  aus den gegebenen Informationen eines Alerts Aktionen schließen können
 \item um Aktionen auf das Cluster ausführen zu können, muss der Manager eine Schnittstelle zu Kubernetes besitzen
 \end{itemize}
-
-\subsection{Wahl der Sprache}
-
-Die Wahl der Programmiersprache für die 'Alert-Action-Manager'- sowie die Evaluations-Komponente fiel auf die von Google entwickelte Open-Source Sprache Go(-lang).\\
-Google beschreibt die Sprache selbst 'Go is a compiled, concurrent, garbage-collected, statically typed language developed at Google. It is an open source project: Google imports the public repository rather than the other way around.'<Zitatquelle Google einfügen>
-Go findet vor allem in der Web-Entwicklung eine zunehmend starke Verbreitung, im Ranking der Website tiobe.com beispielsweise, steht Go, Stand 19.07.2020, auf Platz 12 der meist verwendeten Programmiersprachen <Quelle für Verbreitung und Wachstum einfügen>, wodurch es eine große und hilfreiche Community, viele Erfahrungen in einschlägigen Foren sowie eine stete Weiterentwicklung bietet.\\
-Vorteile der Sprache die auch in diesem Projekt hilfreich waren und so zur Entscheidung dieser Sprachwahl beigetragen haben, sind folgende:
-
-\begin{description}
-\item[Kompilierung]:\\
-
-Go ist im Gegensatz zu Sprachen JavaScript oder PHP eine kompilierte Sprache. Dadurch bietet Go einen Performancevorteil, den kompilierte Sprachen gegenüber interpretierten typischerweise haben. Des Weiteren wirkt sich die Kompilation positiv auf die Fehlerrate aus, da 'compile time errors' von vornherein durch das Kompilieren detektiert werden.\\
-
-\item[Typsicherheit]:\\
-
-Die Sprache ist statisch typisiert, was bedeutet, dass Typen zur Kompilierzeit überprüft werden und so Fehler durch falsche Typen vermieden werden. 
-
-\item[Speichermanagement]:\\
-
-Go hat eine integrierte Garbage-Collection, was das Speichermanagement vereinfacht und Fehler in dessen Zusammenhang verhindert. Trotzdem bietet die Sprache die Möglichkeit mit Pointern zu arbeiten.
-
-
-\item[Zahlreiche Packages, einfache Integration]:\\
-
-Go bietet die Möglichkeit Libraries, in Go Packages genannt, mittels ihres Pfads in ein Projekt zu integrieren. Die Standard JSON-Bibliothek wird beispielweise mittels des Statements 
-
-\begin{lstlisting}
-import "encoding/json"
-\end{lstlisting}
-
-eingebunden. Mittels des Package-Names können dann Elemente aus dem Package verwendet werden.
-
-
-\begin{lstlisting}
-var dec = json.NewDecoder(reader)
-\end{lstlisting}
-
-Ein großer Vorteil ist, dass das selbe Prinzip ebenso bei externen Packages, beispielweise von Github, funktioniert.\\
-Mit dem mitgelieferten Package-Downloader 'go get' kann ein Package heruntergeladen und installiert werden und ist so direkt einsatzbereit. Dadurch stehen eine Vielzahl an Packages auf Github und anderen Plattformen bereit, die ohne großen Aufwand verwendet werden können.
-
-\item[C-Integration(CGO)]:\\
-
-Mit CGO bietet die Sprache eine Integration der kompletten Sprache C bereit. Dies erlaubt es  C-Libraries zu importieren und zu verwenden oder C-Funktionen innerhalb eines Go-Programms zu benutzen. Dies ist beispielsweise praktisch, wenn trotz der automatischen Speicherverwaltung Speicher manuell allokiert werden soll. So kann mittels CGO die C-Funktion 'malloc()' zum reservieren des Speichers verwendet werden.
-
-Go bietet zahlreiche weiter nützliche Features, für weitere Informationen dazu wird die offizielle Dokumentation und FAQ empfohlen:\\
-\url{https://golang.org/doc/faq#What_is_the_purpose_of_the_project}
-
-\end{description}
 
 \subsection{Funktionen}
 
@@ -859,9 +972,7 @@ Der Verlauf der Grafen bestätigt die korrekte Funktion des Herunterskalierens. 
 
 \end{description}
 
-
 \pagebreak
-%\subsection{Komponenten und Architektur}
 
 \section{Diskussion}
 
