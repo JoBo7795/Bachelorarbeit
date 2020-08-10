@@ -5,44 +5,50 @@ Reallocating 'name_of_file' (item size: 1) to 6 items.
 The style file: unsrt.bst
 Reallocating 'name_of_file' (item size: 1) to 10 items.
 Database file #1: Literatur.bib
-You've used 4 entries,
+Warning--I didn't find a database entry for ".20200530T15:19:3404:00"
+Warning--I didn't find a database entry for ".20200316T05:14:35+01:00"
+Warning--empty author in .
+Warning--empty journal in .
+Warning--empty year in .
+You've used 13 entries,
             1791 wiz_defined-function locations,
-            466 strings with 3998 characters,
-and the built_in function-call counts, 513 in all, are:
-= -- 36
-> -- 17
+            499 strings with 5314 characters,
+and the built_in function-call counts, 1534 in all, are:
+= -- 100
+> -- 55
 < -- 0
-+ -- 8
-- -- 4
-* -- 16
-:= -- 71
-add.period$ -- 7
-call.type$ -- 4
-change.case$ -- 4
++ -- 26
+- -- 13
+* -- 55
+:= -- 189
+add.period$ -- 19
+call.type$ -- 13
+change.case$ -- 13
 chr.to.int$ -- 0
-cite$ -- 4
-duplicate$ -- 25
-empty$ -- 74
-format.name$ -- 4
-if$ -- 123
+cite$ -- 16
+duplicate$ -- 76
+empty$ -- 229
+format.name$ -- 13
+if$ -- 371
 int.to.chr$ -- 0
-int.to.str$ -- 4
-missing$ -- 2
-newline$ -- 18
-num.names$ -- 2
-pop$ -- 28
+int.to.str$ -- 13
+missing$ -- 4
+newline$ -- 48
+num.names$ -- 4
+pop$ -- 91
 preamble$ -- 1
 purify$ -- 0
 quote$ -- 0
-skip$ -- 16
+skip$ -- 57
 stack$ -- 0
 substring$ -- 0
-swap$ -- 4
+swap$ -- 12
 text.length$ -- 0
 text.prefix$ -- 0
 top$ -- 0
 type$ -- 0
-warning$ -- 0
-while$ -- 2
-width$ -- 5
-write$ -- 34
+warning$ -- 3
+while$ -- 4
+width$ -- 15
+write$ -- 94
+(There were 5 warnings)

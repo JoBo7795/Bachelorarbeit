@@ -1,4 +1,12 @@
-\begin{thebibliography}{1}
+\begin{thebibliography}{10}
+
+\bibitem{.20200810T16:14:45.000Z}
+Ca-studie: It-ausfall kostet im durchschnitt 400.000 euro - channelpartner.de,
+  10.08.2020.
+
+\bibitem{.2018}
+Cncf survey: Use of cloud native technologies in production has grown over
+  200{\%} - cloud native computing foundation, 2018.
 
 \bibitem{Burns.2019}
 Brendan Burns, Joe Beda, and Kelsey Hightower.
@@ -7,14 +15,41 @@ Brendan Burns, Joe Beda, and Kelsey Hightower.
 \newblock {O'Reilly Media, Incorporated}, Sebastopol, CA, second edition
   edition, 2019.
 
-\bibitem{.20200530T15:19:3404:00}
-Kubernetes komponenten, 30.05.2020.
+\bibitem{.30.05.2020b}
+Pod overview, 30.05.2020.
 
-\bibitem{.20200316T05:14:35+01:00}
-Using minikube to create a cluster, 16.03.2020.
-
-\bibitem{.20200704T23:29:24.000Z}
+\bibitem{GithubUser:dashpole.05.07.2020}
 {Github-User: dashpole}.
 \newblock google/cadvisor, 05.07.2020.
+
+\bibitem{.19.07.2020d}
+https://www.researchgate.net/profile/claus{\_}pahl/publication/333235851{\_}a{\_}controller{\_}architecture{\_}for{\_}anomaly{\_}detection{\_}root{\_}cause{\_}analysis{\_}and{\_}self-adaptation{\_}for{\_}cluster{\_}architectures/links/5ce391b3a6fdccc9ddc1550f/a-controller-architecture-for-anomaly-detection-root-cause-analysis-and-self-adaptation-for-cluster-architectures.pdf,
+  19.07.2020.
+
+\bibitem{Tien.2019}
+Chin-Wei Tien, Tse-Yung Huang, Chia-Wei Tien, Ting-Chun Huang, and Sy-Yen Kuo.
+\newblock Kubanomaly: Anomaly detection for the docker orchestration platform
+  with neural network approaches.
+\newblock {\em Engineering Reports}, 1(5), 2019.
+
+\bibitem{.04.07.2020}
+index | tiobe - the software quality company, 04.07.2020.
+
+\bibitem{.09.07.2020}
+Anomaly detection and diagnosis for container-based microservices with
+  performance monitoring, 09.07.2020.
+
+\bibitem{AlSharif.2016}
+Ziad~A. Al-Sharif, Yaser Jararweh, Ahmad Al-Dahoud, and Luay~M. Alawneh.
+\newblock Accrs: autonomic based cloud computing resource scaling, 2016.
+
+\bibitem{.20200810T18:06:18.000Z}
+The use method, 10.08.2020.
+
+\bibitem{.27.07.2020}
+The use method, 27.07.2020.
+
+\bibitem{.}
+1498414278918734274-06233702.
 
 \end{thebibliography}
