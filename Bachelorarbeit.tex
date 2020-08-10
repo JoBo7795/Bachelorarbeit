@@ -11,6 +11,7 @@
 \usepackage{pdfpages}
 \usepackage{listings}
 \usepackage{abstract}
+\usepackage{wrapfig}
 
 
 \bibliographystyle{unsrt}
@@ -679,11 +680,49 @@ Je nach Alert oder auszuführender Aktion werden Zusatzinformationen benötigt. 
 
 Der Ablauf des Konzepts ist eine Kette von Aktionen, bei der ein Schritt den nächsten auslöst. Die Kette der Schritte, welche zum Auslösen und Ausführen einer Aktion durchlaufen wird, ist hier beschrieben:\\
 
-\begin{figure}[htbp]
-\hspace*{-3cm}
-  \includegraphics[scale=.5,width=1.4\textwidth]{AAMStateChart.png}
-\end{figure}
 \pagebreak
+
+\begin{wrapfigure}{r}{0.5\textwidth}
+
+\begin{center}
+
+  \includegraphics[width=0.45\textwidth]{img/AAMtextless.PNG}
+\end{center}
+
+\end{wrapfigure}
+
+
+\textbf{Schritt 1:}\\
+Im ersten Schritt aggregiert der Prometheus-Server
+aus dem Kubernetes-Cluster Systemressourcen bezogene Metriken
+von Pods und Containern.\\
+
+\textbf{Schritt 2:}\\
+In Schritt zwei prüft der Prometheus-Server anhand konfigurierter Alerting-Regeln,
+ob ein Alert ausgelöst werden soll. Falls dies der Fall ist,
+versendet der Server einen Alert an den Prometheus-Alertmanager,
+ zuerst mit dem Status 'pending',
+nach Ablauf der Offset-Zeit mit dem Status 'active' (siehe Kapitel Grundlagen/Alerting).
+
+\textbf{Schritt 3:}\\
+Der Alertmanager versendet, sobald ein Alert den Status 'active' erhält,
+an alle konfigurierten Ziele eine Alert-Nachricht.
+Diese sind ein Channel des Chatprogramms 'Slack',
+der alleine für Alert-Nachrichten zur Verfügung steht und den Zweck
+ besitzt Administratoren und andere Interessierte zu informieren,
+sowie das in diesem Projekt entwickelte Tool 'Alert-Action-Manager',
+welches den Zweck besitzt anhand eintreffender Alert-Nachrichten
+ Aktionen auf das Kubernetes-Cluster auszuführen.\\
+ 
+\textbf{Schritt 4:}\\
+Beim Eintreffen von Alerts prüft der 'Alert-Action-Manager'
+die eingehenden Nachrichten auf deren Inhalt
+um festzustellen, welche Aktion ausgeführt werden soll.\\
+
+\textbf{Schritt 5:}\\
+Nachdem eine Nachricht durch den Alert-Action-Manager geprüft wurde,
+wird eine entsprechende Aktion auf das Kubernetes-Cluster ausgeführt.\\
+
 
 \section{Alert-Action-Manager}
 
