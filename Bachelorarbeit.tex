@@ -838,11 +838,11 @@ kubectl rollout restart deployment deployment_name
 \subsection{Grenzwerte}
 
 Die Grenzwerte stellen einen variablen Faktor dar, der je nach Deployment neu gesetzt wird. Die Vorgabe für die Ressourcen dieses Projekts sind eine Maximallast von 75\% pro Pod bzw. Deployment, um ausreichend Ressourcen zur Verfügung zu haben, um Lastspitzen abfangen zu können. Zum Optimieren verwendeter Ressourcen wird für ein Deployment ein maximaler Leerlauf von 75\% erlaubt. Diese Grenzwerte sind eine vorgegebene Anforderung.\\
-Die Grenzwerte bilden 
+Die Grenzwerte haben einen Abstand von 50\% Auslastung und bilden somit eine Hysteresekurve. Diese Hysterese ist sinnvoll, um bei schwankenden Messwerten um die Grenzwerte einen ständigen Zustandswechsel zu verhindern
 
 \begin{figure}[htbp]
   \includegraphics{Hysterese.png}
-  \caption{Hysteresegraf der Grenzwerte(eigene Grafik)}
+  \caption{Hysteresekurve der Grenzwerte(eigene Grafik)}
 \end{figure}
 
 
