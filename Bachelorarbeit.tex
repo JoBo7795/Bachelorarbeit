@@ -334,12 +334,12 @@ Die Datenaggregation, also das Erheben und Sammeln von Daten, ist zentraler Best
 
 Als Datenquelle dienen potenziell alle Ziele, die von Prometheus mittels der Target-Discovery innerhalb des Kubernetes-Cluster gefunden werden und Daten bereitstellen.\\
 Von besonderem Interesse für dieses Projekt sind hierbei alle system- und hardwarenahen Targets, wie der kubelet (siehe Kapitel Grundlagen) und cAdvisor in Pods und Containern.
-Prinzipiell eignen sich alle Pods als Datenquelle, Container die produktive Services bereitstellen weisen hierbei ein erhöhtes Interesse auf, gleiches gilt ebenso für Nodes
+Prinzipiell eignen sich alle Pods als Datenquelle, Container die produktive Services bereitstellen weisen hierbei ein erhöhtes Interesse auf, gleiches gilt ebenso für produktiv betriebene Nodes.
 
 \subsubsection{\glqq USE\grqq-Methode}
 
 Das Monitoring der Systemressourcen wird nach der \glqq USE\grqq-Methode durchgeführt. Diese Methode wurde von Brendan Gregg, einem Netflix-Ingenieur im Bereich Cloud-Performance, mit Schwerpunkt auf das Monitoring von Systemressourcen entwickelt, weshalb sie sich für dieses Projekt eignet.
-Ziel der Methode ist es die Utilization, der Zeitdurchschnitt der Arbeit, die eine Ressource beschäftigt erledigt, die Saturation, die \glqq Zusatzarbeit\grqq die eine Ressource verrichten muss, im Moment aber nicht leisten kann sowie die Error-Rate, die Häufigkeit in der Fehler auftreten von Systemkomponenten abzubilden.\\
+Ziel der Methode ist es, die Utilization, Saturation und Error-Rate von Systemkomponenten abzubilden. Die Utilization ist der Zeitdurchschnitt der Arbeit, die eine Ressource beschäftigt ist. Die Saturation, die \glqq Zusatzarbeit\grqq die eine Ressource verrichten muss, im Moment aber nicht leisten kann. Die Error-Rate ist die Häufigkeit in der Fehler bei einer Ressource auftreten.\\
 Systemressource, die es sich lohnt zu überwachen, sind unter anderem:\\
 
 \begin{itemize}
@@ -352,7 +352,7 @@ Systemressource, die es sich lohnt zu überwachen, sind unter anderem:\\
 
 Laut Gregg ist die Methode für Geräte besonders sinnvoll und effektiv, die bei erhöhter Utilization oder Saturation einen Performanceeinbruch erleiden.\\
 
-Gregg will mit dieser Methode eine Möglichkeit bieten serverseitige Performanceprobleme schnell zu erkennen, deren Ursache zu finden um diese dann eliminieren zu können. Sein Ziel ist es mit dieser Methode eine einfache und unkomplizierte aber trotzdem schnelle und komplette Methode zu liefern. Laut Gregg hat sich diese Methode schon in vielen Bereichen mehrfach bewährt in verschiedenen Unternehmen, als Lehrmittel in Schulklassen oder vor Allem aktuell im Cloud-Computing Bereich.\\
+Gregg will mit dieser Methode eine Möglichkeit bieten, serverseitige Performanceprobleme schnell zu erkennen, deren Ursache zu finden, um diese dann eliminieren zu können. Sein Ziel ist es mit dieser Methode eine einfache und unkomplizierte, aber trotzdem schnelle und komplette Methode zu liefern. Laut Gregg hat sich diese Methode schon in vielen Bereichen mehrfach bewährt. In verschiedenen Unternehmen, als Lehrmittel in Schulklassen oder vor Allem aktuell im Cloud-Computing Bereich wird sie verwendet.\\
 
 \begin{figure}[htbp]
 \includegraphics[scale=.7]{img/usemethod_flow.png}
@@ -372,9 +372,9 @@ Die Metriken Utilization und Saturation werden für CPU, RAM und Netzwerkauslast
 \begin{description}
 \item[CPU]:\\
 Utilization:\\
-Die CPU Utilization berechnet sich aus der Summe der Millisekunden, welche die CPU beschäftigt war, geteilt durch eine ganze Sekunde. So erhält man die Utilization pro Sekunde, welche über aufsummiert und der Mittelwert über den beobachteten Zeitraum gebildet wird, um so die durchschnittliche Utilization zu erhalten.\\
+Die CPU Utilization berechnet sich aus der Summe der Millisekunden, welche die CPU beschäftigt war, geteilt durch eine ganze Sekunde. So erhält man die Utilization pro Sekunde, welche aufsummiert und der Mittelwert über den beobachteten Zeitraum gebildet wird, um so die durchschnittliche Utilization zu erhalten.\\
 
-Der gleitende Mittelwert der aufsummierten Zeit U über den Beobachteten Zeitraum von 5 Minuten:\\
+Der gleitende Mittelwert der aufsummierten Zeit U über den beobachteten Zeitraum von 5 Minuten:\\
 Imax entspricht 300 Sekunden
 
 \(
@@ -400,7 +400,7 @@ Diese aufsummiert und über die Zeit gemittelt, ergibt die durchschnittliche Sat
 \)
 \\
 
-Ein weiterer Weg die Saturation zu berechnen ist das Aufsummieren der Zeit in der ein Prozess \glqq throtteld\grqq läuft. Dies funktioniert dann, wenn ein Prozess ein Ressourcenlimit besitzt, übersteigt er dieses wird der Prozess gedrosselt.\\
+Ein weiterer Weg die Saturation zu berechnen, ist das Aufsummieren der Zeit in der ein Prozess \glqq throtteld\grqq läuft. Dies funktioniert dann, wenn ein Prozess ein Ressourcenlimit besitzt. Übersteigt er dieses, wird der Prozess gedrosselt.\\
 Error-Rate:\\
 Die Fehlererkennung wird von handelsüblichen CPUs nicht unterstützt, weswegen in den meisten Fällen keine Fehlererkennung umgesetzt werden kann. Eine mögliche Fehlererkennung würde beispielsweise über ein sogenanntes Lockstep-Verfahren umgesetzt werden, bei dem zwei CPUs jeweils die gleiche Aufgabe erhalten und gegenseitig ihre Ergebnisse vergleichen. Bei Unterschieden im Ergebnis kann daraus ein Fehlerfall ermittelt werden\cite{.}<Zitat US-Patent>.
 \item[RAM]:\\
@@ -423,7 +423,7 @@ Diese aufsummiert und über die Zeit gemittelt, ergibt die durchschnittliche Uti
 \pagebreak
 
 Saturation:\\
-Die RAM Saturation kann am besten berechnet werden, wenn Ressourcenlimits existieren. Unter diesen Voraussetzungen kann die Saturation berechnet werden, indem die Summe des aktuell verwendeten Speichers durch das Ressourcenlimits geteilt wird. Sofern ein Wert über 100\% erreich wird\\
+Die RAM Saturation kann am besten berechnet werden, wenn Ressourcenlimits existieren. Unter diesen Voraussetzungen kann die Saturation berechnet werden, indem die Summe des aktuell verwendeten Speichers durch das Ressourcenlimit geteilt wird. Sofern ein Wert über 100\% erreicht wird\\
 
 
 \(
@@ -453,7 +453,7 @@ Die Berechnung der Fehlerrate wäre wie folgt:\\
 
 \item[Netzwerk-Bandbreite]:\\
 Utilization:\\
-Um die Netzwerk Utilization zu messen werden die Bytes aufsummiert, die versendet sowie empfangen werden und daraus der Mittelwert berechnet.\\
+Um die Netzwerk Utilization zu messen, werden die Bytes aufsummiert, die versendet sowie empfangen werden und daraus der Mittelwert berechnet.\\
 
 \(
 \displaystyle{U_{Net}(t)=\frac{1}{N}{\sum\limits_{i_{w}=0}^{N-1} l_{net}{(t-i_{w})}} }
@@ -461,7 +461,7 @@ Um die Netzwerk Utilization zu messen werden die Bytes aufsummiert, die versende
 \\
 
 Saturation:\\
-Die Netzwerk Saturation kann nur dann sinnvoll gemessen werden, wenn das Bandbreitenlimit bekannt ist. Sofern dies der Fall ist kann die Saturation berechnet werden indem die versendeten bzw. empfangenen Bytes(u\_bytes) durch das Bandbreitenlimit geteilt wird. \\
+Die Netzwerk Saturation kann nur dann sinnvoll gemessen werden, wenn das Bandbreitenlimit bekannt ist. Sofern dies der Fall ist kann die Saturation berechnet werden, indem die versendeten bzw. empfangenen Bytes(u\_bytes) durch das Bandbreitenlimit geteilt wird. \\
 
 
 \(
@@ -479,7 +479,7 @@ Die Netzwerk Saturation kann nur dann sinnvoll gemessen werden, wenn das Bandbre
 Sofern keine Information zum Limit zur Verfügung stehen, können die verworfenen Pakete (dropped Packages) als Indikator dafür dienen, wie hoch die Saturation ist.\\
 
 Error-Rate:\\
-Zum ermitteln der Error-Rate des Netzwerks werden Sende- und Empfangs-Fehler aufsummiert , welche die Error-Rate bilden.
+Zum Ermitteln der Error-Rate des Netzwerks werden Sende- und Empfangs-Fehler aufsummiert, welche die Error-Rate bilden.
 
 
 \(
@@ -576,13 +576,13 @@ Im nachfolgenden Graf wird der Ablauf der Aggregation aufeinander aufbauend visu
 
 Grafana ist das Tool, welches zur Visualisierung verwendet wird. Das Open-Source Tool bietet Möglichkeiten, Metriken in Form von Graphen, Zählern, Histogrammen und vielem mehr über Zeiträume zu visualisieren. Des Weiteren können ganze \glqq Dashboards\grqq erstellt werden, die den Überblick über das ganze Cluster auf einmal erlauben.\\
 Aufgrund der bereits vorhandenen Prometheusintegration ist eine Verwendung bei bereits bestehendem Prometheus-Server einfach und innerhalb kurzer Zeit umzusetzen.
-Der Prometheus-Server, von welchem Grafana Metriken erhalten soll muss als Datenquelle mittels seiner Adresse konfiguriert werden, danach stehen alle Metriken, welche Prometheus kennt auch in Grafana zur Verfügung.\\
-Um Metriken zu visualisieren, wird die aus Prometheus bereits bekannte Abfragesprache PromQL verwendet, was den Vorteil bietet, Abfragen die für Prometheus funktionieren, funktionieren ebenso in der Grafana Oberfläche zum Erstellen von Visualisierungen.\\
+Der Prometheus-Server, von welchem Grafana Metriken erhalten soll muss als Datenquelle mittels seiner Adresse konfiguriert werden. Danach stehen alle Metriken, welche Prometheus kennt auch in Grafana zur Verfügung.\\
+Um Metriken zu visualisieren, wird die aus Prometheus bereits bekannte Abfragesprache PromQL verwendet, was den Vorteil bietet, Abfragen, die für Prometheus funktionieren, ebenfalls in der Grafana Oberfläche zum Erstellen von Visualisierungen zu verwenden.\\
 Da Grafana eines der gängistens Tools ist und teilweise als Quasi-Standard zur Visualisierung von Metriken behandelt wird, findet eine kontinuierliche Weiterentwicklung statt und eine große Community bietet Unterstützung und Erfahrungen.\\%<hier Quelle Logz.io einfügen>
 
 \section{Auswerten der Metriken}
 
-Das Auswerten der Metriken erfolgt für das Monitoring durch das Umsetzen der USE-Methode, beschrieben in Kapitel vier, statt.
+Das Auswerten der Metriken erfolgt für das Monitoring durch das Umsetzen der USE-Methode (beschrieben in Kapitel vier).
 
 \subsection{Klassifizierung}
 
@@ -590,12 +590,12 @@ Die Metriken werden in Node-Level sowie Pod-Level Metriken klassifiziert.\\
 Nodelevelmetriken repräsentieren den Zustand eines ganzen Nodes, das bedeutet, dass die Metriken die Summe aller Pods, Container, Services, etc. des Nodes darstellen.\\
 Podlevelmetriken hingegen repräsentieren den Status eines einzelnen Pods.\\
 Die Podlevelmetriken werden visualisiert um Zustände einzelner Pods einsehen zu können, finden aber vor allem auch bei der Automatisierung von Aktionen ihren Nutzen. Für diese Metriken werden Regeln erstellt, die zur automatisierten Anwendung von Aktionen auf einen Pod dienen.\\
-Nodelevelmetriken werden in diesem Projekt vor allem zum Überwachen des Zustandes des gesamten Nodes verwendet und dienen dazu kritische Zustände eines ganzen Nodes zu erkennen. Daher werden diese visualiert, finden aber bei der Automatisierung und dem Alerting keine weitere Verwendung.
+Nodelevelmetriken werden in diesem Projekt vor allem zum Überwachen des Zustandes des gesamten Nodes verwendet und dienen dazu, kritische Zustände eines ganzen Nodes zu erkennen. Daher werden diese visualiert, finden aber bei der Automatisierung und dem Alerting keine weitere Verwendung.
 
 \subsection{Logische Auswertung}
 
 Die logische Auswertung der Metriken findet an zwei Stellen in diesem Projekt Anwendung. Einmal zum Erstellen von Alerting-Regeln auf dem Prometheus-Server und einmal zur grafischen Darstellung der Metriken in der Grafana-Oberfläche. In beiden Fällen wird zur Auswertung die PromQL-Sprache verwendet.
-Zur logischen Auswertung werden die von Prometheus aggregierten Daten verwendet. Für das Monitoring werden die Schritte der USE-Methode Utilization, Saturation und Error-Rate jeweils für CPU, RAM sowie Netzwerk umgesetzt(siehe Kapitel vier,Metriken). Diese Metriken werden mittels eines \glqq Moving Average\grqq-Filters mit einer Fensterbreite von fünf Minuten gefiltert und ausgewertet. Dies hat zur Folge, dass Ausreißer in der Last nicht schwer ins Gewicht fallen und so starke Schwankungen verhindert werden, was zur Verbesserung der Beobachtbarkeit beiträgt.\\
+Zur logischen Auswertung werden die von Prometheus aggregierten Daten verwendet. Für das Monitoring werden die Schritte der USE-Methode Utilization, Saturation und Error-Rate jeweils für CPU, RAM sowie Netzwerk umgesetzt (siehe Kapitel vier,Metriken). Diese Metriken werden mittels eines \glqq Moving Average\grqq-Filters mit einer Fensterbreite von fünf Minuten gefiltert und ausgewertet. Dies hat zur Folge, dass Ausreißer in der Last nicht schwer ins Gewicht fallen und so starke Schwankungen verhindert werden, was zur Verbesserung der Beobachtbarkeit beiträgt.\\
 Der eingesetzte \glqq Moving-Average\grqq-Filter sieht folgendermaßen aus:\\
 
 \begin{Huge}
@@ -608,7 +608,7 @@ Der Zeitraum von fünf Minuten wurde so gewählt, da bei einem längerem Zeitrau
 Der umgekehrte Fall tritt ein, wenn ein zu kurzer Zeitraum gewählt wird, hierdurch werden Mittelwertschwankungen möglicherweise überbewertet wodurch Ausreißer eine zu große Bedeutung einnehmen.
 Der gewählte Wert von fünf Minuten ist ein variabler Wert, der je nach Lastprofil auch angepasst und verändert werden kann.
 
-\subsubsection{Metric-to-Action Methode}
+\subsection{Metric-to-Action Methode}
 
 Für die logische Auswertung der Daten werden neben dem reinen Auslesen von Metriken auch Grenzwerte benötigt. Zu diesem Zweck ist in diesem Projekt die \glqq Metric-to-Action\grqq-Methode entwickelt worden, welche die Ansätze der USE-Methode mit Grenzwerten verknüpft.\\
 Diese Methode verwendet die Utilization-Metriken von USE, in diesem Projekt, zu CPU, RAM und Netzwerklast, welche mit Grenzwerten vereint werden.\\
@@ -622,9 +622,10 @@ Für die Counter werden grüne Bereiche für unkritische Auslastung und rote Ber
 
 \begin{figure}[htbp]
 \includegraphics[scale=.8]{img/PercantageTransparent.png}
+\caption{Darstellung des Counters(eigene Grafik)}
 \end{figure}
 
-\pagebreak
+
 \section{Automatisierte Aktionen}
 
 Das Kernthema dieser Arbeit ist die Entwicklung eines Systems, welches das Ausführen automatisierter Aktionen auf ein Kubernetes-Cluster ermöglicht. Mithilfe der Komponenten und Tools, Prometheus und dessen Alert-Verwaltungstool \glqq Alertmanager\grqq (siehe Grundlagenkapitel) sowie einer Eigenentwicklung, genannt \glqq Alert-Action-Manager\grqq, welcher Alerts empfängt und auf diese mit einer passenden automatisierten Aktion reagiert, wird dieses Vorhaben in diesem Kapitel umgesetzt. Mittels automatischer Skalierung und Anomalie-Detection wird die Funktion der Systems und der Komponenten nachgewiesen.
@@ -641,17 +642,17 @@ Das System, welches die automatisierten Aktionen möglich macht, besteht aus meh
   \caption{Aufbau der Architektur (eigene Zeichnung)}
 \end{figure}
 
-Die Architektur, welche in diesem Projekt entwickelt wurde, besteht aus sechs Komponenten, vier davon, Grafana, Prometheus Server und Alertmanager sowie der Alert-Action-Manager, wurden im Laufe des Projekts erstellt sowie konfiguriert bzw. entwickelt, zwei davon, das Kubernetes-Cluster, auf dem dieses Projekt basiert, sowie Slack, bestanden schon vorher und wurden in das Projekt miteinbezogen. Die vier für Komponenten Grafana, Prometheus Server und Alertmanager sowie der Alert-Action-Manager laufen selbst als Deployment im Kubernetes-Cluster.\\
-Die Architektur nach Bestandteilen erklärt:\\
+Die Architektur, welche in diesem Projekt entwickelt wurde, besteht aus sechs Komponenten. Vier davon, (Grafana, Prometheus Server und Alertmanager sowie der Alert-Action-Manager) wurden im Laufe des Projekts erstellt sowie konfiguriert bzw. entwickelt. Zwei davon, das Kubernetes-Cluster, auf dem dieses Projekt basiert, sowie Slack, bestanden schon vorher und wurden in das Projekt miteinbezogen. Die vier für Komponenten Grafana, Prometheus Server und Alertmanager sowie der Alert-Action-Manager laufen selbst als Deployment im Kubernetes-Cluster.\\
+Im Folgenden wird die Architektur nach Bestandteilen erklärt:\\
 \begin{description}
 \item[Kubernetes-Cluster:]
-Das Kubernetes-Cluster, auf dem Webservices sowie andere Backendsoftware läuft, ist das Ziel des Monitorings sowie der automatisierten Aktionen. Kubernetes stellt Metriken von sich aus bereit, welche ausgelesen und verarbeitet werden. Die Architektur läuft losgelöst vom restlichen Cluster und dessen Software, sodass durch dieses Projekt keine zusätzliche Anpassung oder Konfiguration von bestehender Software benötigt wird.
+Das Kubernetes-Cluster, auf dem Webservices sowie andere Backendsoftware laufen, ist das Ziel des Monitorings sowie der automatisierten Aktionen. Kubernetes stellt Metriken von sich aus bereit, welche ausgelesen und verarbeitet werden. Die Architektur läuft losgelöst vom restlichen Cluster und dessen Software, sodass durch dieses Projekt keine zusätzliche Anpassung oder Konfiguration von bestehender Software benötigt wird.
 \item[Prometheus-Server:]
 Der Prometheus-Server bildet das Herzstück der Architektur. Er aggregiert die durch das Kubernetes-Cluster bereitgestellten Metriken und wendet Regeln, wie das Alerting, auf diese an. Außerdem macht er diese Metriken, entweder durch das eigene Web-UI oder durch weitere Tools, mittels der Abfragesprache PromQL wieder abrufbar.
 \item[Grafana:]
-Grafana ist das in dieser Architektur eingesetzte Visualisierungstool, mit dem Administrator und andere Benutzer den Zustand des Clusters graphisch aufbereitet einsehen können. Das Tool bietet gegenüber der nativen Prometheus Web-UI deutlich bessere Darstellungsmöglichkeiten (siehe hierzu Kapitel Auswertung der Metriken/Graphische Aufbereitung). Grafana ruft Metriken direkt vom Prometheus-Server ab und unterstützt auch dessen Query-Language PromQL.
+Grafana ist das in dieser Architektur eingesetzte Visualisierungstool, mit dem Administrator und andere Benutzer den Zustand des Clusters graphisch aufbereitet einsehen können. Das Tool bietet gegenüber der nativen Prometheus Web-UI deutlich bessere Darstellungsmöglichkeiten (siehe hierzu Kapitel Auswertung der Metriken). Grafana ruft Metriken direkt vom Prometheus-Server ab und unterstützt auch dessen Query-Language PromQL.
 \item[Prometheus-Alertmanager:]
-Der Prometheus-Alertmanager empfängt Alerts direkt durch den Prometheus-Server. Seine Aufgabe ist es empfangene Alerts an seine Ziele \glqq Alert-Action-Manager\grqq sowie \glqq Slack\grqq und darauf eingerichteten Alert-Channel weiterzuverteilen.
+Der Prometheus-Alertmanager empfängt Alerts direkt durch den Prometheus-Server. Seine Aufgabe ist es, empfangene Alerts an seine Ziele \glqq Alert-Action-Manager\grqq sowie \glqq Slack\grqq und darauf eingerichteten Alert-Channel weiterzuverteilen.
 \item[Alert-Action-Manager:]
 Der \glqq Alert-Action-Manager\grqq empfängt Nachrichten durch den Prometheus-Alertmanager. Dieses Tool ist eine komplette Eigenentwicklung und dafür zuständig, dass auf empfange Alerts mit entsprechenden Aktionen auf das Kubernetes-Cluster reagiert wird.
 \item[Slack:]
@@ -670,14 +671,14 @@ Der Prometheus-Server, wie auch der Alertmanager, stellen ein eigenes Deployment
 
 \subsubsection{Alertmanager}
 
-Der Prometheus-Alertmanager, der in der Architektur als Message-Broker von Alerts dient, ermöglicht die grundsätzliche Kommunikation zwischen Prometheus und externen Tools. Die Möglichkeit mittels des Nachrichtensystems neben vorkonfigurierten Drittanbietertools wie Slack auch eigene sog. Webhooks zu adressieren, erlaubt die Möglichkeit einen eigenen HTTP-Endpunkt als Nachrichtenziel zu verwenden. Da sich für einen Alert mehrere Ziele festlegen lassen, kann so zu jeder automatischen Aktion auch eine Warnung an den für Alerts konfigurierten Slack-Channel gesendet werden. So kann in zukünftigen Alerts auch zwischen rein informativem Alert, der nur an Slack gesendet wird und einem Alert der eine Aktion zur Folge hat unterschieden werden und diese entsprechend konfiguriert.\\
+Der Prometheus-Alertmanager, der in der Architektur als Message-Broker von Alerts dient, ermöglicht die grundsätzliche Kommunikation zwischen Prometheus und externen Tools. Die Möglichkeit, mittels des Nachrichtensystems neben vorkonfigurierten Drittanbietertools wie Slack auch eigene sog. Webhooks zu adressieren, erlaubt die Möglichkeit einen eigenen HTTP-Endpunkt als Nachrichtenziel zu verwenden. Da sich für einen Alert mehrere Ziele festlegen lassen, kann so zu jeder automatischen Aktion auch eine Warnung an den für Alerts konfigurierten Slack-Channel gesendet werden. So kann in zukünftigen Alerts auch zwischen rein informativem Alert, der nur an Slack gesendet wird, und einem Alert, der eine Aktion zur Folge hat, unterschieden werden und diese entsprechend konfiguriert, werden.\\
 
 \subsubsection{Regeln}
 
 Die Regeln, die zum Aktivieren der Alerts verwendet werden, bestehen aus einem Label, einem Ausdruck, der Metriken abgleicht und einem Erfüllungszeitrahmen.
-Der Ausdruck ist, wie die Queries zur Visualisierung auch, in der PromQL-Sprache geschrieben. Ein Ausdruck muss immer als Vergleich geschrieben werden und somit einen boolschen Wert repräsentieren können, also erfüllt(true) oder nicht erfüllt(false).
+Der Ausdruck ist, wie die Queries zur Visualisierung auch, in der PromQL-Sprache geschrieben. Ein Ausdruck muss immer als Vergleich geschrieben werden und somit einen boolschen Wert repräsentieren können, also erfüllt (true) oder nicht erfüllt (false).
 Jeder Ausdruck besitzt einen Zeitrahmen über den er erfüllt sein muss um einen Alert auszulösen, womit vorzeitiges oder zu häufiges Alarmieren eingeschränkt oder verhindert werden kann.
-Um mehrere Bedingungen in einem Ausdruck zu verknüpfen kann auf logische Operatoren zurückgegriffen werden, diese sind AND, OR und UNLESS(Komplement).
+Um mehrere Bedingungen in einem Ausdruck zu verknüpfen, kann auf logische Operatoren zurückgegriffen werden. Diese sind AND, OR und UNLESS (Komplement).
 Zum Inkludieren oder Exkludieren einzelner Metrikquellen, können mittels der Anwendung von regulären Ausdrücken auf die Namen der Quellen Filter für diese erstellt werden.
 
 Die grobe Struktur eines Alerts sieht folgerndermaßen aus:\\
@@ -689,8 +690,8 @@ Die grobe Struktur eines Alerts sieht folgerndermaßen aus:\\
      Anmerkungen:	In Musterlabel ist a kleiner b
 \end{lstlisting}
 
-Ein Alert muss identifiziert werden können, hierfür wird das Label verwendet, das den Namen eindeutig repräsentiert.\\
-Alerts sollen nur dann ausgelöst werden, wenn ein entsprechender Zustand erfüllt ist. Um diesen Zustand zu spezifizieren wird die Vergleichsregel zum bemessen gebraucht.\\
+Ein Alert muss identifiziert werden können. Hierfür wird das Label verwendet, das den Namen eindeutig repräsentiert.\\
+Alerts sollen nur dann ausgelöst werden, wenn ein entsprechender Zustand erfüllt ist. Um diesen Zustand zu spezifizieren wird die Vergleichsregel zum Bemessen gebraucht.\\
 Um kurzzeitige Ausreißer im Zustand nicht überzubewerten, muss dieser eine gewisse Dauer vorliegen. Diese Dauer, auch Offsetzeit genannt, wird zusätzlich zur Regel spezifiziert.\\
 Je nach Alert oder auszuführender Aktion werden Zusatzinformationen benötigt. Diese können als Anmerkung beigefügt werden. Unter anderem kann hier beschrieben werden, wie eine Alert-Nachricht als Chatnachricht aussehen soll.\\
 
@@ -701,7 +702,8 @@ Der Ablauf des Konzepts ist eine Kette von Aktionen, bei der ein Schritt den nä
 \begin{wrapfigure}{r}{0.5\textwidth}
 
 \begin{center}
-  \includegraphics[width=0.45\textwidth,height=1.38\textwidth]{img/AAMtextless.PNG}
+  \includegraphics[width=0.42\textwidth,height=1.32\textwidth]{img/AAMtextless.PNG}
+  \caption{Ablaufgraph(eigene Grafik)}
 \end{center}
 
 \end{wrapfigure}
@@ -738,7 +740,7 @@ wird eine entsprechende Aktion auf das Kubernetes-Cluster ausgeführt.\\
 
 \section{Alert-Action-Manager}
 
-Der Alert-Action-Manager (hier abgekürzt: AAM) ist eine eigenst entwickelte Komponente um aus den von Prometheus versendeten Alerts automatisiert konkrete Aktionen zu schließen und auf das Kubernetes-Cluster anzuwenden.\\
+Der Alert-Action-Manager (hier abgekürzt: AAM) ist eine eigenst entwickelte Komponente, um aus den von Prometheus versendeten Alerts automatisiert konkrete Aktionen zu schließen und auf das Kubernetes-Cluster anzuwenden.\\
 
 
 \subsection{Anforderungen}
@@ -761,26 +763,26 @@ Um die beschriebenen Anforderungen umzusetzen, besitzt der AAM diese grundlegend
 
 \item[HTTP-Endpunkte:]
 Für den AAM wird ein eigener Kubernetes-Service bereitgestellt, der als DNS-Service fungiert.
-Um Alerts zu empfangen wird ein HTTP-POST Endpunkt bereitgestellt. Der Prometheus-Alertmanager wird so konfiguriert, dass er Alerts an den Kubernetes-Service des AAM sendet. Die Requests werden im JSON-Format empfangen, welches auch das Standardformat ist, in dem die Alerts versendet werden.
+Um Alerts zu empfangen, wird ein HTTP-POST Endpunkt bereitgestellt. Der Prometheus-Alertmanager wird so konfiguriert, dass er Alerts an den Kubernetes-Service des AAM sendet. Die Requests werden im JSON-Format empfangen, welches auch das Standardformat ist, in dem die Alerts versendet werden.
 Weitere Endpunkte sind der \glqq health\grqq Pfad, über den sich überprüfen lässt, ob der AAM erreichbar ist und der \glqq podstatus\grqq Pfad, über den sich der Podstatus des AAM und allen Pods in dessen Namespace, in dem sich alle Komponenten der Architektur befinden, einsehen und der korrekte Zugriff des Service auf das \glqq kubectl\grqq überprüfen lässt.
 \item[Alert-Analyse:]
-Alerts die über den HTTP-POST Endpunkt empfangen wurden, werden vom AAM analysiert und eingeordnet. Aus dem POST-Request wird zuerst das Label geparst, was die Einordnung des Alerts ermöglicht. Dieses wird mit den bekannten Labels verglichen, falls es nicht bekannt ist, wird der Alert verworfen, sofern es bekannt ist wird die Funktion des passenden Labels ausgeführt. Der erste Schritt einer Funktion ist das Analysieren des zugehörigen Deployments, also der Pod oder das Deployment auf welches eine Aktion ausgeführt werden soll. Hierzu wird der Name eines Pods verwendet oder vorher der Deployment-Name aus dem Namen des Pods geparst.
+Alerts die über den HTTP-POST Endpunkt empfangen wurden, werden vom AAM analysiert und eingeordnet. Aus dem POST-Request wird zuerst das Label geparst, was die Einordnung des Alerts ermöglicht. Dieses wird mit den bekannten Labels verglichen. Falls es nicht bekannt ist, wird der Alert verworfen, sofern es bekannt ist, wird die Funktion des passenden Labels ausgeführt. Der erste Schritt einer Funktion ist das Analysieren des zugehörigen Deployments, also der Pod oder das Deployment auf welches eine Aktion ausgeführt werden soll. Hierzu wird der Name eines Pods verwendet oder vorher der Deployment-Name aus dem Namen des Pods geparst.
 Nach erfolgreicher Analyse wird die passende Aktion ausgeführt.
 \item[Ausführen von Aktionen:]
-Das Ausführen von Aktionen wird mittels \glqq kubectl\grqq durchgeführt. Die erforderlichen Daten die zum Durchführen einer kubectl-Aktion gebraucht werden, wurden vor dem Ausführen durch die Analyse ermittelt und nun in die Aktion eingebaut.
+Das Ausführen von Aktionen wird mittels \glqq kubectl\grqq durchgeführt. Die erforderlichen Daten, die zum Durchführen einer kubectl-Aktion gebraucht werden, wurden vor dem Ausführen durch die Analyse ermittelt und nun in die Aktion eingebaut.
 \item[Zusatzfunktionen:]
 Es werden zum Ausführen einiger Aktionen zusätzliche Funktionen benötigt. Zum Skalieren der Replicas eines Deployments (beschrieben im folgenden Unterkapitel), ist die Anzahl der Replicas zum Zeitpunkt des Ausführens der Aktion erforderlich. Hierfür besitzt der AAM eine Funktion, welche die Replikaanzahl zu einem Deployment analysieren kann.
 
 \end{description}
 
-\subsubsection{Erweiterung}
+\subsection{Erweiterung}
 
 Sofern zusätzliche Aktionen in der Infrastruktur benötigt werden, ist die Erweiterung mit relativ geringem Aufwand möglich. Es muss einerseits eine neue Regel bzw. neue Regeln mit neuem Label in Prometheus definiert werden sowie die zugehörige Aktion im AAM.
 
 \subsection{Aktionen}
 
 Die Aktionen, welche durch den Alert-Action-Manager automatisiert auf das Kubernetes-Cluster ausgeführt werden, sind in diesem Abschnitt erklärt. Das Ausführen dieser Aktionen wird anhand von Regeln mit statischen Grenzwerten sog. Thresholds entschieden.
-Die beiden Aktionen, welche in diesem Projekt eingesetzt werden sind die Skalierung der Pod-Replikationen eines Deployments und die Anomalie-Detection innerhalb eines Pods bzw. Containers.
+Die beiden Aktionen, welche in diesem Projekt eingesetzt werden, sind die Skalierung der Pod-Replikationen eines Deployments und die Anomalie-Detection innerhalb eines Pods bzw. Containers.
 
 \subsubsection{Skalierung}
 
@@ -790,24 +792,24 @@ Diese Aktion wird durch zwei Regeln realisiert:
 \begin{description}
 \item[PodLowResource]
 
-Diese Regel wird ausgelöst, sobald in einem Pod eine hohe Last der Ressourcen CPU-Utilization oder RAM-Utilization festgestellt wird und dies in Verbindung mit einer hohen Nutzerlast, also einer ausreichend hohen\\ Netzwerkbandbreiten-Utilization steht. Die Thresholds für CPU- und RAM-Utilization liegen bei 75\%, die Auslastung der Netzwerkbandbreite muss bei mindestens einem Megabit pro Sekunde liegen. Diese Last muss für 10 Sekunden bestehen um die die \glqq PodLowResource\grqq -Regel und damit den Alert zu aktivieren.
+Diese Regel wird ausgelöst, sobald in einem Pod eine hohe Last der Ressourcen CPU-Utilization oder RAM-Utilization festgestellt wird und dies in Verbindung mit einer hohen Nutzerlast, also einer ausreichend hohen\\ Netzwerkbandbreiten-Utilization, steht. Die Thresholds für CPU- und RAM-Utilization liegen bei 75\%, die Auslastung der Netzwerkbandbreite muss bei mindestens einem Megabit pro Sekunde liegen. Diese Last muss für 10 Sekunden bestehen, um die \glqq PodLowResource\grqq -Regel und damit den Alert zu aktivieren.
 
 \item[PodHighResource]
 
 \glqq PodHighResource\grqq ist die Gegenaktion zu \glqq PodLowResource\grqq und wird dann ausgelöst, wenn 
-eine niedrige Ressourcenlast in einem Deployment detektiert wird. Die geprüften Metriken sind die CPU-Utilization sowie die RAM-Utilization. Diese müssen über ein Zeitfenster von 10 Sekunden einen Wert von 25\% Auslastung oder niedriger aufweisen um diese Regel zu erfüllen.
+eine niedrige Ressourcenlast in einem Deployment detektiert wird. Die geprüften Metriken sind die CPU-Utilization sowie die RAM-Utilization. Diese müssen über ein Zeitfenster von 10 Sekunden einen Wert von 25\% Auslastung oder niedriger aufweisen, um diese Regel zu erfüllen.
 
 \end{description}
 
 Nach Auslösen einer der Alerts und Aktivieren der Aktion im \glqq Alert-Action-Manager\grqq setzt dieser die Aktion folgendermaßen um:
 
-Für diese Aktion wird einerseits der Name des Deployments benötigt sowie die Anzahl der Pod-Replikation die zum Ausführungszeitpunkt der Regel existieren.\\
-Der Name betroffener Pods wird mit einem Alert mitgeschickt, durch entfernen des Pod-Tags kann daraus der Name des Deployments ermittelt werden.\\
+Für diese Aktion wird einerseits der Name des Deployments benötigt sowie die Anzahl der Pod-Replikation, die zum Ausführungszeitpunkt der Regel existieren.\\
+Der Name betroffener Pods wird mit einem Alert mitgeschickt. Durch entfernen des Pod-Tags kann daraus der Name des Deployments ermittelt werden.\\
 Die Anzahl der Replikationen wird durch eine dafür bereitgestellte Methode aus dem Cluster ermittelt und zurückgeliefert.
 Sobald die benötigten Informationen vorhanden sind, wird aus Ihnen die passende kubectl-Aktion erstellt.\\
 Dieser sieht für diese Regel schlussendlich folgendermaßen aus:\\
 Die Variable \glqq deployment\_name\grqq enthält den analysierten Deploymentname, die Variable actualCount enthält die Anzahl der aktuellen Deployments.
-Für das Hochskalieren wird wie im Beispiel gezeigt die Replicaanzahl +1 verwendet zum Herunterskalieren die Replicaanzahl -1.
+Für das Hochskalieren wird wie im Beispiel gezeigt die Replicaanzahl +1 verwendet, zum Herunterskalieren die Replicaanzahl -1.
 
 \begin{lstlisting}
 kubectl scale deployment deployment_name --replicas= actualCount+1
@@ -825,7 +827,7 @@ Die Thresholds werden so gesetzt, dass entweder die RAM-Auslastung, die CPU-Ausl
 
 Nach Auslösen des \glqq PodAnomalyBehaviour\grqq Alerts wird die zugehörige Aktion folgendermaßen ausgeführt:\\
 
-Für die Aktion wird der zugehörige Deploymentname des anormalen Pods benötigt, dieser wird aus dem im Alert mitgesendeten Podnamen analysiert. Sobald der Name des Deployments bekannt ist wird die zugehörige kubectl-Aktion ausgeführt. Diese nennt sich \glqq rolling restart\grqq und sorgt dafür, dass ein Deployment unterbrechungsfrei neu gestartet wird, was den Vorteil bietet für den Rest des Clusters sowie auch für Nutzer nicht bemerkbar zu sein. Dies bedeutet, dass zuerst ein neues Deployment gestartet wird und sobald dieses arbeitsbereit ist, wird das alte Deployment heruntergefahren. Die resultierende Aktion sieht folgendermaßen aus:\\
+Für die Aktion wird der zugehörige Deploymentname des anormalen Pods benötigt. Dieser wird aus dem im Alert mitgesendeten Podnamen analysiert. Sobald der Name des Deployments bekannt ist, wird die zugehörige kubectl-Aktion ausgeführt. Diese nennt sich \glqq rolling restart\grqq und sorgt dafür, dass ein Deployment unterbrechungsfrei neu gestartet wird, was den Vorteil bietet, für den Rest des Clusters sowie auch für Nutzer nicht bemerkbar zu sein. Dies bedeutet, dass zuerst ein neues Deployment gestartet wird und sobald dieses arbeitsbereit ist, das alte Deployment heruntergefahren wird. Die resultierende Aktion sieht folgendermaßen aus:\\
 Die Variable \glqq deployment\_name\grqq enthält den analysierten Deploymentname.
 \begin{lstlisting}
 kubectl rollout restart deployment deployment_name
@@ -833,7 +835,7 @@ kubectl rollout restart deployment deployment_name
 
 \subsection{Grenzwerte}
 
-Die Grenzwerte stellen einen Variablen Faktor dar, der je nach Deployment neu gesetzt wird. Die Vorgabe für die Ressourcen dieses Projekts sind eine Maximallast von 75\% pro Pod bzw. Deployment um ausreichend Ressourcen zur Verfügung zu haben um Lastspitzen abfangen zu können. Zum optimieren verwendeter Ressourcen wird für ein Deployment ein maximaler Leerlauf von 75\% erlaubt. Diese Grenzwerte sind eine vorgegebene Anforderung.
+Die Grenzwerte stellen einen variablen Faktor dar, der je nach Deployment neu gesetzt wird. Die Vorgabe für die Ressourcen dieses Projekts sind eine Maximallast von 75\% pro Pod bzw. Deployment, um ausreichend Ressourcen zur Verfügung zu haben, um Lastspitzen abfangen zu können. Zum Optimieren verwendeter Ressourcen wird für ein Deployment ein maximaler Leerlauf von 75\% erlaubt. Diese Grenzwerte sind eine vorgegebene Anforderung.
 
 \pagebreak
 \section{Evaluation}
@@ -842,9 +844,9 @@ Zur Evaluierung der korrekten Funktion des System, deren Komponenten und Archite
 
 \subsection{Messaufbau}
 
-Für den Messaufbau wurde ein eigener Kubernetes-Service entwickelt, welcher als Pod in das Cluster ausgeliefert wurde. Der Testservice simuliert anormale oder ressourcenintensive Verhaltensweisen und besitzt Funktionen um die CPU-Last zu maximieren, einen Endpunkt um die Netzwerkkapazität zu maximieren sowie die Funktion den Arbeitsspeicherbedarf des Service an die kritische Grenze zu bringen.
+Für den Messaufbau wurde ein eigener Kubernetes-Service entwickelt, welcher als Pod in das Cluster ausgeliefert wurde. Der Testservice simuliert anormale oder ressourcenintensive Verhaltensweisen und besitzt Funktionen, um die CPU-Last zu maximieren, einen Endpunkt, um die Netzwerkkapazität zu maximieren sowie die Funktion den Arbeitsspeicherbedarf des Service an die kritische Grenze zu bringen.
 Mit diesem Aufbau sollen sowohl die Grenzwerte der Regeln, als auch die Funktion der Komponenten und Architektur als Ganzes und die Anomaliedetection sowie die Ressourcenskalierung getestet werden.
-Zum Messen werden Grafen für die CPU-Utilization und RAM-Saturation, den \glqq Replica-Count\grqq sowie den \glqq Rolling-Restart-Count\grqq für jeden Pod und jedes Deployment des Kubernetes-Clusters in der Grafana-Oberfläche erstellt. Der \glqq Rolling-Restart-Count\grqq ist hierbei die Anzahl der Podneustarts für ein Deployment, die mittels \glqq Alert-Action-Manager\grqq ausgeführt wurden. Der \glqq Replica-Count\grqq die Anzahl der Pods pro Deployment.
+Zum Messen werden Grafen für die CPU-Utilization und RAM-Saturation, den \glqq Replica-Count\grqq sowie den \glqq Rolling-Restart-Count\grqq für jeden Pod und jedes Deployment des Kubernetes-Clusters in der Grafana-Oberfläche erstellt. Der \glqq Rolling-Restart-Count\grqq ist hierbei die Anzahl der Podneustarts für ein Deployment, die mittels \glqq Alert-Action-Manager\grqq ausgeführt wurden. Der \glqq Replica-Count\grqq beschreibt die Anzahl der Pods pro Deployment.
 
 \subsection{Testszenarien}
 
@@ -890,7 +892,7 @@ Die maximale Netzlast ist in den Messungen auf den Grenzwert von einem Megabit f
 \end{minipage}
 
 Der Zustand eines Pods, bei dem eine hohe CPU-Last von mindestens 75\% besteht, die nicht durch eine Last von außen, das heißt durch eine hohe Netzwerklast, begründet werden kann, ist der Zustand der CPU-Anomalie. Wenn dieser Zustand erreicht ist, soll das System einen \glqq Rolling-Restart\grqq ausführen und somit das anormale Verhalten beenden.\\
-Die Graphen zeigen eine stark ansteigende CPU-Last zu beginn der Messungen. Der CPU Utilization-Graf steigt bis auf eine Last von 80\% an. Diese Höhe hält der Graf eine rund Minute lang, von 23:42:30 bis 23:43:30~45, danach sinkt der Stand des Grafen kontinuierlich ab. Die CPU-Saturation zeigt einen sehr ähnlichen Verlauf mit einem Maximalwert von 175\% Last über eine Minute. Der Graf der Netzwerk-Utilization zeigt einen niedrigen Verlauf bei einem Maximum von 20 Bytes pro Sekunden\\
+Die Graphen zeigen eine stark ansteigende CPU-Last zu Beginn der Messungen. Der CPU Utilization-Graf steigt bis auf eine Last von 80\% an. Diese Höhe hält der Graf eine rund Minute lang, von 23:42:30 bis 23:43:30~45, danach sinkt der Stand des Grafen kontinuierlich ab. Die CPU-Saturation zeigt einen sehr ähnlichen Verlauf mit einem Maximalwert von 175\% Last über eine Minute. Der Graf der Netzwerk-Utilization zeigt einen niedrigen Verlauf bei einem Maximum von 20 Bytes pro Sekunden\\
 Der Graf des \glqq Rolling-Restart\grqq -Counter steigt zum Zeitpunkt 23:43:30~45 um eins an.\\
 Die Verläufe der Grafen bestätigen, dass die Anomalie korrekt erkannt wurde. Bei einer CPU-Utilization von 80\%, anhaltend über eine Minute und einer niedrigen Netzwerklast von 20 Bytes pro Sekunde, wurde der \glqq Rolling-Restart\grqq durchgeführt, was anhand des ansteigenden \glqq Rolling-Restart\grqq -Counters nachgewiesen wurde. Die CPU-Saturation und Utilization fielen daraufhin erwartungsgemäß ab.
 
@@ -906,13 +908,13 @@ Die Verläufe der Grafen bestätigen, dass die Anomalie korrekt erkannt wurde. B
             \captionof{figure}{Transfer from R1 to R2 whenK1=1}
 \end{minipage}
 
-Äquivalent zur CPU-Anomalie wird der Zustand eines Pods als anormal angesehen, wenn ein RAM-Last von mindestens 75\% über den Zeitraum von mindestens einer Minute besteht, die nicht durch eine hohe Netzwerklast begründet wird. Wenn dieser Zustand  der RAM-Anomalie erfüllt ist, soll ein \glqq Rolling-Restart\grqq durchgeführt werden, um die Situation zu entschärfen.\\
+Äquivalent zur CPU-Anomalie wird der Zustand eines Pods als anormal angesehen, wenn eine RAM-Last von mindestens 75\% über den Zeitraum von mindestens einer Minute besteht, die nicht durch eine hohe Netzwerklast begründet wird. Wenn dieser Zustand  der RAM-Anomalie erfüllt ist, soll ein \glqq Rolling-Restart\grqq durchgeführt werden, um die Situation zu entschärfen.\\
 Der Graf der RAM-Saturation steigt zwei mal an. Zum Zeitpunkt 02:21:00 auf 75\% und zum Zeitpunkt 02:21:45 bis auf einen Wert von 1,5 an und bricht zwischen den Zeitpunkten 02:22:00 und 02:22:30 ab. Danach ist ein neuer Graf zu erkennen.
 Der Verlauf des RAM-Utilization-Grafs steigt bis 800 MByte und verläuft stetig. Ab dem Zeitpunkt 02:22:00 ist, wie bei der Saturation, der Start eines neuen Grafen zu erkennen.
 Der Graf der Netzwerk-Utilization zeigt einen niedrigen Verlauf bei einem Maximum von 8 Bytes pro Sekunde.\\
 Ab dem Zeitpunkt 02:22:30 ist ein Anstieg um eins bei dem Grafen des \glqq Rolling-Restart\grqq -Counter zu sehen.\\
 Die Grafen bestätigen die korrekte Funktion der Anomalieerkennung. Am Graf der RAM-Saturation ist zu erkennen, dass zum Zeitpunkt 02:21:00 der kritische Wert von 75\% RAM-Auslastung erreicht ist. Eine Minute später zum Zeitpunkt 02:22:00 erscheint der neue Pod des Deployments als neuer Graf im Bild, 30 Sekunden später endet der Graf des \glqq alten\grqq Pods. Der Netzwerklast-Graf belegt, dass keine hohe Last von außen auf dem Pod anlag, wodurch ein anormaler Fall vorliegt und der \glqq Rolling-Restart\grqq die korrekte Methode ist.
-Der \glqq Rolling-Restart\grqq -Counter wurde um eins nach oben gezählt was nachweist, dass der Rolling-Restart durchgeführt wurde. 
+Der \glqq Rolling-Restart\grqq -Counter wurde um eins nach oben gezählt, was nachweist, dass der Rolling-Restart durchgeführt wurde. 
 \pagebreak
 
 \item[Hohe CPU- und RAM-Last, niedrige Netzwerklast]:\\
@@ -926,10 +928,10 @@ Der \glqq Rolling-Restart\grqq -Counter wurde um eins nach oben gezählt was nac
             \captionof{figure}{Transfer from R1 to R2 whenK1=1}
 \end{minipage}
 
-Bei einer zeitgleichen Grenzüberschreitung der RAM- und CPU-Utilization und -Saturation von mindestens 75\% liegt ebenfalls ein anormaler Zustand vor. Der Zustand muss eine Minute anhalten und darf auch ebenfalls nur einmal als Anomalie erkannt werden. Der \glqq Rolling-Restart\grqq wird durchgeführt, um die Situation zu entschärfen.\\
+Bei einer zeitgleichen Grenzüberschreitung der RAM- und CPU-Utilization und -Saturation von mindestens 75\% liegt ebenfalls ein anormaler Zustand vor. Der Zustand muss eine Minute anhalten und darf auch ebenfalls nur einmal als\\ Anomalie erkannt werden. Der \glqq Rolling-Restart\grqq wird durchgeführt, um die Situation zu entschärfen.\\
 Der Graf der CPU-Utilization zeigt von dem Zeitpunkt 18:33:00 bis 18:34:00 einen Wert von über 75\% auf, ab dem Zeitpunkt 18:34:45 ist ein neuer Graf zu erkennen.\\
 Der Graf der RAM-Utilization zeigt einen Anstieg auf 800 MByte zum Zeitpunkt 18:32:45. Zur Zeit 18:34:00 erscheint ein neuer, zweiter Graf mit 0\% Last.
-Der RAM-Saturation Graf zeigt zum Zeitpunkt 18:32:45 einen Anstieg auf 80\% Last. Zum Zeitpunkt 18:33:45 endet der Graf, zum Zeitpunkt 18:34:00 erscheint ein neuer, zweiter Graf.
+Der RAM-Saturation Graf zeigt zum Zeitpunkt 18:32:45 einen Anstieg auf 80\% Last. Zum Zeitpunkt 18:33:45 endet der Graf. Zum Zeitpunkt 18:34:00 erscheint ein neuer, zweiter Graf.
 Ab dem Zeitpunkt 18:34:00 ist ein Anstieg um eins bei dem Grafen des \glqq Rolling-Restart\grqq -Counter zu sehen.\\
 Der Graf der Netzwerk-Utilization zeigt einen niedrigen Verlauf bei einem Maximum von ~22 Bytes pro Sekunde.\\
 Die Grafen belegen die korrekte Funktion und Wirkung der Anomalie-Detection bei hoher RAM- und CPU-Last. Sowohl RAM als auch die CPU haben über den Zeitraum von 18:32:45 ~ 18:33:00 bis 18:34:00 einen Lastwert von über 75\% gehabt. Nach einer Minute wurde ein neuer, zweiter Pod bereitgestellt, was durch den zweiten Grafen zu erkennen ist. Aufgrund der niedrigen Netzlast von 20 Bytes pro Sekunde lag eine anormale Situation vor, weswegen ein \glqq Rolling-Restart\grqq durchzuführen ist. Der \glqq Rolling-Restart-Counter\grqq Graf bestätigt durch das Hochzählen zum Zeitpunkt 18:34:00 die Durchführen dessen. Trotz des Überschreitens zweier Lastwerte wurde wie gewollt nur einmal ein \glqq Rolling-Restart\grqq durchgeführt.
@@ -951,8 +953,8 @@ Die Grafen belegen die korrekte Funktion und Wirkung der Anomalie-Detection bei 
             \captionof{figure}{Transfer from R1 to R2 whenK1=1}
 \end{minipage}
 
-Der Zustand eines Deployments, bei dem eine hohe CPU-Last von mindestens 75\% für den Zeitraum von mindestens einer Minute anliegt, die durch eine  hohe Netzwerklast von mindestens einem Megabit von außen begründet werden kann, ist der Zustand in dem Ressourcen, das heißt die Replikationen der Pods des Deployments hochskaliert werden sollen und somit mehr Ressourcen bereitgestellt werden.\\
-Auf dem dargestellten Grafen der CPU-Utilization ist zu sehen, dass der Grenzwert von 75\% zum Zeitpunkt 23:42:45 überschritten wird. Zum Zeitpunkt 23:44:15 sinkt der Graf wieder unter den Grenzwert, auf 50\%.Der Graf der des \glqq Replica-Count\grqq zeigt bis zum Zeitpunkt 23:44:00 eine Anzahl von drei an, steigt dann zum Zeitpunkt 23:44:15 auf vier an. Der Graf der Netzwerk zeigt eine durchgehend hohe Last von mindestens rund sechs Megabit.\\
+Der Zustand eines Deployments, bei dem eine hohe CPU-Last von mindestens 75\% für den Zeitraum von mindestens einer Minute anliegt, ist der Zustand, in dem Ressourcen hochskaliert werden und somit mehr Ressourcen bereitgestellt werden sollen. Die Ressourcen werden durch das Skalieren der Pods eines Deployments bereitgestellt. Diese Last muss durch eine hohe Netzwerklast von mindestens einem Megabit pro Sekunde von außen begründet werden sein.
+Auf dem dargestellten Grafen der CPU-Utilization ist zu sehen, dass der Grenzwert von 75\% zum Zeitpunkt 23:42:45 überschritten wird. Zum Zeitpunkt 23:44:15 sinkt der Graf wieder unter den Grenzwert, auf 50\%. Der Graf des \glqq Replica-Count\grqq zeigt bis zum Zeitpunkt 23:44:00 eine Anzahl von drei an, steigt dann zum Zeitpunkt 23:44:15 auf vier an. Der Graf der Netzwerk zeigt eine durchgehend hohe Last von mindestens rund sechs Megabit.\\
 Die Grafen belegen die korrekte Funktion der Skalierung eines Deployments bei hoher CPU-Last. Der CPU-Utilization-Graf zeigt über eine Minute, von Zeitpunkt 23:42:45 bis 23:44:15 eine Utilization von 75\% an, während der Netzwerk-Utilization-Graf eine durchgehende Last über einem Megabit zeigt. Hierdurch wird die Skalierung ausgelöst, was durch den steigenden Wert des \glqq Replica-Count\grqq -Graf zum Zeitpunkt 23:44:15 gezeigt wird. Diese Skalierung bewirkt, dass die CPU-Utilization zur selben Zeit auf einen Wert von 50\% absinkt.
 
 \pagebreak
@@ -966,10 +968,10 @@ Die Grafen belegen die korrekte Funktion der Skalierung eines Deployments bei ho
             \captionof{figure}{Transfer from R1 to R2 whenK1=1}
 \end{minipage}
 
-Ein Deployment, dass eine hohe RAM-Last von mindestens 75\% bei einer zeitgleich hohen Netzwerklast von mindestens einem Megabit, über den Zeitraum mindestens einer Minute, aufweist, benötigt zusätzliche Ressourcen. Diese Ressourcen sollen, wie bei der Skalierung bei hoher CPU-Last auch, durch das Bereitstellen neuer Pods geliefert werden.\\
-Auf dem Grafen der RAM-Saturation ist ab dem Zeitpunkt 22:09:00 eine RAM-Saturation von 80\% zu sehen, ab 22:10:45, fällt diese Last wieder ab, unter den Grenzwert auf 60\%. Der Graf der Netzwerklast, liegt fast durchgehend bei einem Wert von 3.9 Megabit, mit einem Einbrauch auf einen Wert auf 3,3 Megabit. Der \glqq Replica-Counter\grqq -Graf liegt bis zum Zeitpunkt 22:10.45 bei konstant bei einem Wert von drei, danach steigt er auf den Wert vier an.\\
+Ein Deployment, dass eine hohe RAM-Last von mindestens 75\% bei einer zeitgleich hohen Netzwerklast von mindestens einem Megabit über den Zeitraum mindestens einer Minute aufweist, benötigt zusätzliche Ressourcen. Diese Ressourcen sollen, wie bei der Skalierung bei hoher CPU-Last auch, durch das Bereitstellen neuer Pods geliefert werden.\\
+Auf dem Grafen der RAM-Saturation ist ab dem Zeitpunkt 22:09:00 eine RAM-Saturation von 80\% zu sehen. Ab 22:10:45, fällt diese Last wieder ab unter den Grenzwert auf 60\%. Der Graf der Netzwerklast liegt fast durchgehend bei einem Wert von 3.9 Megabit, mit einem Einbrauch auf einen Wert von 3,3 Megabit. Der \glqq Replica-Counter\grqq -Graf liegt bis zum Zeitpunkt 22:10.45 konstant bei einem Wert von drei, danach steigt er auf den Wert vier an.\\
 Die Grafen bestätigen die korrekte Funktion der Skalierung bei hoher RAM-Last. 
-Der RAM-Saturation Graf hat über den Zeitraum von über eine Minute einen grenzüberschreitenden Wert von 80\%, während zur selben Zeit die Netzwerklast einen Wert von mindestens 3,3 Megabit und somit einen ausreichend hohen Wert zum Begründen der Last von außen besitzt. In diesem Zustand soll die Skalierung ausgelöst werden, was durch Ansteigen des \glqq Replica-Counter\grqq -Grafen nachgewiesen wird. Der Wert des Grafen steigt zum Zeitpunkt 22:10:45 von den ursprünglichen drei auf vier, während zum selben Zeitpunkt die RAM-Last des Deployments von 80\% auf ~60\% absinkt, was die Funktion der Skalierung bestätigt.
+Der RAM-Saturation Graf hat über den Zeitraum von über eine Minute einen grenzüberschreitenden Wert von 80\%, während zur selben Zeit die Netzwerklast einen Wert von mindestens 3,3 Megabit und somit einen ausreichend hohen Wert zum Begründen der Last von außen besitzt. In diesem Zustand soll die Skalierung ausgelöst werden, was durch das Ansteigen des \glqq Replica-Counter\grqq -Grafen nachgewiesen wird. Der Wert des Grafen steigt zum Zeitpunkt 22:10:45 von den ursprünglichen drei auf vier, während zum selben Zeitpunkt die RAM-Last des Deployments von 80\% auf ~60\% absinkt, was die Funktion der Skalierung bestätigt.
 
 
 \pagebreak
@@ -984,9 +986,9 @@ Der RAM-Saturation Graf hat über den Zeitraum von über eine Minute einen grenz
 \end{minipage}
 
 Für den Fall, dass CPU- sowie RAM-Last den Grenzwert von 75\% für mindestens eine Minute lang überschreiten, während eine Netzwerklast von mindestens einem Megabit pro Sekunde für das Deployment anliegt, sollen ebenso die Ressourcen des Deployments um einen Pod hochskaliert werden.\\
-Die gemessenen Grafen der CPU-Utilization und RAM-Saturation überschreiten beide zum Zeitpunkt 23:56:15 den Grenzwert von 75\% und enden bei einer Last von 80\%. Diese Last hält in beiden Grafen bis zum Zeitpunkt 23:58:00 und sinken danach unter den Grenzwert ab.
-Der Graf Netzwerk-Utilization schwankt stark zwischen Werten von drei bis zu neun Megabit pro Sekunde. Der Wert des \glqq Replica-Counter\grqq sinkt anfangs ab, zum Zeitpunkt 23:56:15 hat er den von eins. Zum Zeitpunkt 23:58:00 steigt er wieder auf den Wert von zwei an.\\
-Die gemessenen Grafen bestätigen, dass die Skalierung auch korrekt funktioniert, wenn gleichzeitig beide Grenzwerte, RAM- sowie CPU-Last, überschritten werden. Beide Werte liegen auf 80\%, für mindestens eine Minute mit einer Netzwerk-Utilization von über einem Megabit, an, bevor die Skalierung durchgeführt wird. Trotz des Überschreitens zweier Werte gleichzeitig, wird nur eine Skalierung durchgeführt. Die Wirkung der Skalierung zeigt sich darin, dass zum Zeitpunkt zu dem der neue Pod für das Deployment bereitgestellt wurde, die Last beider Werte unter den Grenzwert sinken. Die Durchführung der Skalierung wird durch das Ansteigen des \glqq Replica-Counter\grqq -Grafen um eins dargestellt.
+Die gemessenen Grafen der CPU-Utilization und RAM-Saturation überschreiten beide zum Zeitpunkt 23:56:15 den Grenzwert von 75\% und enden bei einer Last von 80\%. Diese Last hält in beiden Grafen bis zum Zeitpunkt 23:58:00 und \\sinkt danach unter den Grenzwert ab.
+Der Graf Netzwerk-Utilization schwankt stark zwischen Werten von drei bis zu neun Megabit pro Sekunde. Der Wert des \glqq Replica-Counter\grqq sinkt anfangs ab, zum Zeitpunkt 23:56:15 hat er den Wert eins. Zum Zeitpunkt 23:58:00 steigt er wieder auf den Wert von zwei an.\\
+Die gemessenen Grafen bestätigen, dass die Skalierung auch korrekt funktioniert, wenn gleichzeitig beide Grenzwerte, RAM- sowie CPU-Last, überschritten werden. Beide Werte liegen auf 80\% für mindestens eine Minute mit einer Netzwerk-Utilization von über einem Megabit, bevor die Skalierung durchgeführt wird. Trotz des Überschreitens zweier Werte gleichzeitig, wird nur eine Skalierung durchgeführt. Die Wirkung der Skalierung zeigt sich darin, dass zum Zeitpunkt, zu dem der neue Pod für das Deployment bereitgestellt wurde, die Last beider Werte unter den Grenzwert sinken. Die Durchführung der Skalierung wird durch das Ansteigen des \glqq Replica-Counter\grqq -Grafen um eins dargestellt.
 
 \end{description}
 
@@ -1006,7 +1008,7 @@ Die gemessenen Grafen bestätigen, dass die Skalierung auch korrekt funktioniert
 \end{minipage}
 
 Im Fall niedriger Ressourcenlast eines Deployments von 25\% CPU-Utilization und RAM-Saturation oder geringer über die Dauer von mindestens einer Minute, soll die Podanzahl des betreffenden Deployments um eins verringert werden.\\
-Der Graf der CPU-Utilization zeigt einen absinkenden Verlauf bis zum Zeitpunkt 21:37:00, wo sie ganz auf Null absinkt. Der Graf der RAM-Saturation zeigt einen leicht schwankenden Verlauf, zum Zeitpunkt 21:37:30 liegt der Wert bei 2,5\% Last, sinkt bei 21:38:00 auf einen Wert von 1,7\% ab, wonach er zum Zeitpunkt 21:39:00 wieder auf den Wert von 2,5\% ansteigt.
+Der Graf der CPU-Utilization zeigt einen absinkenden Verlauf bis zum Zeitpunkt 21:37:00, wo sie ganz auf Null absinkt. Der Graf der RAM-Saturation zeigt einen leicht schwankenden Verlauf. Zum Zeitpunkt 21:37:30 liegt der Wert bei 2,5\% Last, sinkt bei 21:38:00 auf einen Wert von 1,7\% ab, wonach er zum Zeitpunkt 21:39:00 wieder auf den Wert von 2,5\% ansteigt.
 Der \glqq Replica-Count\grqq -Graf hat bis zum Zeitpunkt 21:37:30 den Wert eins, steigt dann bei 21:38:00 auf den Wert zwei an und sinkt dann bei 21:39:00 wieder auf eins ab.\\
 Der Verlauf der Grafen bestätigt die korrekte Funktion des Herunterskalierens. Die Werte der CPU- sowie RAM-Last liegen beide unter dem Grenzwert von 25\%. Am Grafen des \glqq Replica-Counter\grqq ist zu sehen, dass das Deployment \glqq künstlich\grqq von außen zum Zeitpunkt 21:37:30 auf einen Wert von zwei Pods hochskaliert wurde. Diese Anzahl wurde für eine Minute gehalten und danach zum Zeitpunkt 21:39:00 wieder auf den Wert von einem Pod herunterskaliert.
 
@@ -1016,18 +1018,18 @@ Der Verlauf der Grafen bestätigt die korrekte Funktion des Herunterskalierens. 
 
 \section{Diskussion}
 
-Das Durchführen automatisierter Aktionen auf ein Kubernetes-Cluster ist eine Möglichkeit Störungsfälle zu reduzieren und Servicelaufzeiten zu maximieren. Um diese Automatisierung zu ermöglichen ist eine Reihe an Tools, Infrastruktur sowie Konfiguration nötig. In dieser Arbeit wurde eine Möglichkeit erarbeitet diese Automatisierung zu erreichen. Hierfür wurden passende Tools gewählt und entwickelt, mit deren Hilfe sich Daten und Metriken aus einem Kubernetes-Cluster auslesen, darstellen und Aktionen ausführen lassen. Für die gewählten Tools wurde ein System entwickelt, das die korrekte Zusammenarbeit der Tools und Komponenten ermöglicht und koordiniert. Für dieses System wurden Konfiguration sowie ein Regelwerk entworfen und umgesetzt, das Aktionen auf das Cluster definiert und auslöst, die dazu führen, dass auftretende kritische Situationen und Zustände entschärft werden können.\\
-In dieser Arbeit konnte gezeigt und evaluiert werden, dass dieses System mithilfe der ausgewählten, quasistandard Monitoring- und Visualisierungskomponenten des \glqq Cloud-Native-Computing\grqq -Bereiches, Prometheus und Grafana, umsetzbar ist, diese aber durch weitere Komponenten ergänzt werden müssen. Daher wurde im Rahmen der Arbeit das Tool \glqq Alert-Action-Manager\grqq entwickelt, dass die fehlenden Funktionen ergänzt, die das Ableiten von Aktionen aus Alerts von Prometheus ermöglicht. \\
+Das Durchführen automatisierter Aktionen auf ein Kubernetes-Cluster ist eine Möglichkeit, Störungsfälle zu reduzieren und Servicelaufzeiten zu maximieren. Um diese Automatisierung zu ermöglichen, ist eine Reihe an Tools, Infrastruktur sowie Konfiguration nötig. In dieser Arbeit wurde eine Möglichkeit erarbeitet, diese Automatisierung zu erreichen. Hierfür wurden passende Tools gewählt und entwickelt, mit deren Hilfe sich Daten und Metriken aus einem Kubernetes-Cluster auslesen, darstellen und Aktionen ausführen lassen. Für die gewählten Tools wurde ein System entwickelt, das die korrekte Zusammenarbeit der Tools und Komponenten ermöglicht und koordiniert. Für dieses System wurden Konfiguration sowie ein Regelwerk entworfen und umgesetzt, das Aktionen auf das Cluster definiert und auslöst, die dazu führen, dass auftretende kritische Situationen und Zustände entschärft werden können.\\
+In dieser Arbeit konnte gezeigt und evaluiert werden, dass dieses System mithilfe der ausgewählten, quasistandard Monitoring- und Visualisierungskomponenten des \glqq Cloud-Native-Computing\grqq -Bereiches, Prometheus und Grafana, umsetzbar ist, diese aber durch weitere Komponenten ergänzt werden müssen. Daher wurde im Rahmen der Arbeit das Tool \glqq Alert-Action-Manager\grqq entwickelt, das die fehlenden Funktionen ergänzt, die das Ableiten von Aktionen aus Alerts von Prometheus ermöglicht. \\
 In der folgenden Diskussion wird die Evaluation, der Rahmen des Projekts, aufgetretene Probleme und mögliche Verbesserungen in der Zukunft des Projekts diskutiert.
 
 \subsection{Rahmen des Projekts}
 
-Der Rahmen dieses Projekts beinhaltet die Wahl geeigneter Tools zur Umsetzung an einem bereits bestehenden Kubernetes-Cluster, die Entwicklung der geeigneten Systemarchitektur mithilfe dieser Tools und die Konfiguration, die nötig ist um diese funktionsfähig zumachen.
-Neben denen in diesem Projekt eingesetzten, von der \glqq Cloud-Native-Computing-Foundation\grqq empfohlenen Tools, Prometheus und Grafana, gibt es noch weitere Tools, mit denen sich dieses Projekt hätte realisieren lassen können, wie beispielsweise die Tool-Sammlung \glqq ELK\grqq -Stack. Aufgrund des zeitlichen Rahmens und bereits vorhandenen Erfahrungen auf dem Gebiet der Tools Prometheus und Grafana zu Projektbeginn, wurde eine weitere Toolauswahl nicht durchgeführt.
+Der Rahmen dieses Projekts beinhaltet die Wahl geeigneter Tools zur Umsetzung an einem bereits bestehenden Kubernetes-Cluster, die Entwicklung der geeigneten Systemarchitektur mithilfe dieser Tools und die Konfiguration, die nötig ist, um diese funktionsfähig zumachen.
+Neben den in diesem Projekt eingesetzten, von der \glqq Cloud-Native-Computing-Foundation\grqq empfohlenen Tools, Prometheus und Grafana, gibt es noch weitere Tools, mit denen sich dieses Projekt hätte realisieren lassen können, wie beispielsweise die Tool-Sammlung \glqq ELK\grqq -Stack. Aufgrund des zeitlichen Rahmens und bereits vorhandenen Erfahrungen auf dem Gebiet der Tools Prometheus und Grafana zu Projektbeginn, wurde eine weitere Toolauswahl nicht durchgeführt.
 
 \subsection{Evaluation}
 
-In der Evaluation wurde die Funktion des Gesamtsystem getestet und mithilfe von aufgezeichneten Grafen gemessen. Hierbei konnte für alle Testfälle die korrekte Funktion, in angemessener Zeit, nachgewiesen werden.\\
+In der Evaluation wurde die Funktion des Gesamtsystem getestet und mithilfe von aufgezeichneten Grafen gemessen. Hierbei konnte für alle Testfälle die korrekte Funktion in angemessener Zeit nachgewiesen werden.\\
 Die Evaluation ergab indes auch, dass Aktionen teilweise mit einer Verzögerung und Messungenauigkeiten von einigen Sekunden ausgeführt werden, sichtbar beispielsweise im Graf des Testfalls \glqq Hohe CPU- und RAM-Last, hohe Netzwerklast\grqq , bei dem die Skalierung erst deutlich nach einer Minute eintritt. Im Rahmen dieses Projekts ist diese Verzögerung vertretbar, da die durchgeführten Aktionen der Skalierung und Anomaliedetektion nicht sekundenkritisch sind. Für sekundenkritische Aktionen wäre das System dieser Arbeit aufgrund der Verzögerungen aber unter Umständen nicht geeignet.\\
 
 
@@ -1039,11 +1041,11 @@ Während der Bearbeitung sind einige Probleme entstanden, die in diesem Projekt 
 
 \item[Zu viele versendete Alert-Nachrichten]:\\
 
-Prometheus bzw. der Prometheus-Alertmanager versendet Alert-Nachrichten sobald eine Alertregel erfüllt ist. Bei dem versenden der Alerts kann es dazu kommen, dass diese mehrfach versendet werden. Da das Ausführen der Aktionen im \glqq Alert-Action-Manager\grqq auf dem Erhalt der Alert-Nachrichten basiert, eine Aktion teils mehrfach für einen Alert ausgeführt. Dieses Problem musste programmatisch abgefangen werden, indem sich eingegangene Nachrichten anhand ihrer Versendezeit gespeichert werden.
+Prometheus bzw. der Prometheus-Alertmanager versendet Alert-Nachrichten sobald eine Alertregel erfüllt ist. Bei dem Versenden der Alerts kann es dazu kommen, dass diese mehrfach versendet werden. Da das Ausführen der Aktionen im \glqq Alert-Action-Manager\grqq auf dem Erhalt der Alert-Nachrichten basiert, wird eine Aktion teils mehrfach für einen Alert ausgeführt. Dieses Problem musste programmatisch abgefangen werden, indem eingegangene Nachrichten anhand ihrer Versendezeit gespeichert werden.
 
 \item[Zeittoleranzen]:\\
 
-Wie bei der Evaluation bereits erläutert, können Messungenauigkeiten und Toleranzen dazu führen, dass sich Zeiträume in welchen die Aktionen ausgeführt werden erhöhen. Zusätzlich kommen noch mögliche Verzögerungen durch das Versenden und durch die Ausführung der Aktionen hinzu.
+Wie bei der Evaluation bereits erläutert, können Messungenauigkeiten und Toleranzen dazu führen, dass sich Zeiträume, in welchen die Aktionen ausgeführt werden, erhöhen. Zusätzlich kommen noch mögliche Verzögerungen durch das Versenden und durch die Ausführung der Aktionen hinzu.
 
 \item[Statische Grenzwerte und Regeln]:\\
 
@@ -1055,7 +1057,7 @@ Das System basiert auf statisch konfigurierten Regeln mit festen Grenzwerten. Ku
 \subsection{Zukunft des Projekts}
 
 Das in dieser Arbeit bearbeitete Projekt bildet die Grundlage für ein System, das Aktionen aufgrund von Zuständen in einem Cluster ausführen kann. Dieses System kann neben den in diesem Projekt eingesetzten Aktionen Anomaliedetektion und Skalierung um beliebige weitere Aktionen erweitert werden.\\
-Das Weiteren kann es, um den erläuterten Problemen dieses Systems entgegenzuwirken, eine Lösung sein, ein anderes Monitoringsystem mit ähnlichen Eigenschaften und Funktionen, wie das regelbasierte Alerting von Prometheus, zu testen.\\
+Des Weiteren kann es, um den erläuterten Problemen dieses Systems entgegenzuwirken, eine Lösung sein, ein anderes Monitoringsystem mit ähnlichen Eigenschaften und Funktionen wie das regelbasierte Alerting von Prometheus, zu testen.\\
 Sofern dieses Projekt für ein dynamischeres und größeres System in Zukunft eingesetzt werden soll, kann der Ansatz der statischen Regel durch einen \glqq Machine-Learning\grqq -basierten Ansatz, wie im Kapitel drei \glqq Stand der Technik\grqq vorgestellt, ergänzt oder ersetzt werden.
 
 \section{Fazit und Ausblick}
