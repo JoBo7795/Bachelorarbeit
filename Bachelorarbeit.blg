@@ -10,45 +10,45 @@ Warning--I didn't find a database entry for ".20200316T05:14:35+01:00"
 Warning--empty author in .
 Warning--empty journal in .
 Warning--empty year in .
-You've used 13 entries,
+You've used 15 entries,
             1791 wiz_defined-function locations,
-            499 strings with 5314 characters,
-and the built_in function-call counts, 1534 in all, are:
-= -- 100
-> -- 55
+            504 strings with 5387 characters,
+and the built_in function-call counts, 1720 in all, are:
+= -- 112
+> -- 57
 < -- 0
-+ -- 26
++ -- 28
 - -- 13
-* -- 55
-:= -- 189
-add.period$ -- 19
-call.type$ -- 13
-change.case$ -- 13
+* -- 57
+:= -- 203
+add.period$ -- 21
+call.type$ -- 15
+change.case$ -- 15
 chr.to.int$ -- 0
-cite$ -- 16
-duplicate$ -- 76
-empty$ -- 229
+cite$ -- 18
+duplicate$ -- 86
+empty$ -- 265
 format.name$ -- 13
-if$ -- 371
+if$ -- 421
 int.to.chr$ -- 0
-int.to.str$ -- 13
+int.to.str$ -- 15
 missing$ -- 4
-newline$ -- 48
+newline$ -- 54
 num.names$ -- 4
-pop$ -- 91
+pop$ -- 107
 preamble$ -- 1
 purify$ -- 0
 quote$ -- 0
-skip$ -- 57
+skip$ -- 67
 stack$ -- 0
 substring$ -- 0
-swap$ -- 12
+swap$ -- 14
 text.length$ -- 0
 text.prefix$ -- 0
 top$ -- 0
 type$ -- 0
 warning$ -- 3
 while$ -- 4
-width$ -- 15
-write$ -- 94
+width$ -- 17
+write$ -- 106
 (There were 5 warnings)

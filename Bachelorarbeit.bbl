@@ -4,6 +4,9 @@
 Ca-studie: It-ausfall kostet im durchschnitt 400.000 euro - channelpartner.de,
   10.08.2020.
 
+\bibitem{.30.05.2020}
+Kubernetes komponenten, 30.05.2020.
+
 \bibitem{.2018}
 Cncf survey: Use of cloud native technologies in production has grown over
   200{\%} - cloud native computing foundation, 2018.
@@ -17,6 +20,9 @@ Brendan Burns, Joe Beda, and Kelsey Hightower.
 
 \bibitem{.30.05.2020b}
 Pod overview, 30.05.2020.
+
+\bibitem{.24.05.2020}
+Overview of kubectl, 24.05.2020.
 
 \bibitem{GithubUser:dashpole.05.07.2020}
 {Github-User: dashpole}.

@@ -29,13 +29,15 @@
 \title{}
 
 
+
+
 \author{Johannes Bohlig}
 
 \date{\today}
 
 
 \begin{document}
-
+\includepdf{TitelblattBA.pdf}
 
 \begin{abstract}
 
@@ -87,7 +89,7 @@ Zum Schluss, in Kapitel zehn, wird ein Fazit aus dem zurückliegenden Projekt ge
 \subsection{Kubernetes}
 
 Kubernetes, kurz "k8s", ist eine ursprünglich von Google entwickelte, mittlerweile aber quelloffene Software zur Orchestrierung und zum Deployment von containerisierten Anwendungen. Seit seiner Einführung 2014 hat Kubernetes ein starkes Wachstum erlebt und ist zum Quasistandard bei der Entwicklung von Cloud-Native Applikationen geworden.
-Diese Übersicht der Grundlagen spricht die für dieses Projekt benötigten Komponenten an, für weitergehende Informationen gibt es die Dokumentation[Referenz auf Kube-Doku]\\
+Diese Übersicht der Grundlagen spricht die für dieses Projekt benötigten Komponenten an, weitergehende Informationen gibt es in der offiziellen Kubernetes-Dokumentation. \cite{.30.05.2020}\\
 
 \glqq Die Relevanz von Kubernetes lässt sich an der halbjährlichen Befragung der Community der Cloud-Native Computing Foundation ablesen:
 In der Umfrage stellte sich heraus, dass über 78 Prozent der 1337 Befragten Kubernetes verwendet.\grqq \cite{.2018}\\
@@ -138,11 +140,11 @@ Nach der offiziellen Kubernetes-Dokumentation sind Services eine \glqq abstrakte
 Kubernetes Pods können dynamisch in ihrer Anzahl skalieren und so auch ihre IP-Adresse wechseln. Daher ist es sinnvoll die Pods über einen Service anzusprechen, der mit einem DNS ähnlichen System funktioniert und so ein Deployment über einen lesbaren Namen ansprechbar macht. 
 \item [kubectl]:\\
 kubectl ist eine Kontrollanwendung für Kubernetes. Es ist eine direkte Schnittstelle zwischen User und dem Kubernetes API-Server und kann mittels Konsolenbefehlen bedient werden. Das Tool stellt eine einfache Möglichkeit zur Bedienung des Kubernetes-Clusters dar. \\
-Ein kubectl-Befehl beseht aus der Aktion und dessen Ziel und sieht folgendermaßen aus:
+Ein kubectl-Befehl besteht aus der Aktion und dessen Ziel und sieht folgendermaßen aus:
 \begin{lstlisting}
 kubectl <Aktion><Ziel>
 \end{lstlisting}
-
+\cite{.24.05.2020}
 \end{description}
 
 Kubernetes bietet systemseitig Funktionen, die beim ermitteln von Cluster- und Systeminformationen helfen. Eine davon ist der cAdvisor
@@ -835,7 +837,15 @@ kubectl rollout restart deployment deployment_name
 
 \subsection{Grenzwerte}
 
-Die Grenzwerte stellen einen variablen Faktor dar, der je nach Deployment neu gesetzt wird. Die Vorgabe für die Ressourcen dieses Projekts sind eine Maximallast von 75\% pro Pod bzw. Deployment, um ausreichend Ressourcen zur Verfügung zu haben, um Lastspitzen abfangen zu können. Zum Optimieren verwendeter Ressourcen wird für ein Deployment ein maximaler Leerlauf von 75\% erlaubt. Diese Grenzwerte sind eine vorgegebene Anforderung.
+Die Grenzwerte stellen einen variablen Faktor dar, der je nach Deployment neu gesetzt wird. Die Vorgabe für die Ressourcen dieses Projekts sind eine Maximallast von 75\% pro Pod bzw. Deployment, um ausreichend Ressourcen zur Verfügung zu haben, um Lastspitzen abfangen zu können. Zum Optimieren verwendeter Ressourcen wird für ein Deployment ein maximaler Leerlauf von 75\% erlaubt. Diese Grenzwerte sind eine vorgegebene Anforderung.\\
+Die Grenzwerte bilden 
+
+\begin{figure}[htbp]
+  \includegraphics{Hysterese.png}
+  \caption{Hysteresegraf der Grenzwerte(eigene Grafik)}
+\end{figure}
+
+
 
 \pagebreak
 \section{Evaluation}
