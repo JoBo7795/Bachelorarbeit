@@ -124,13 +124,13 @@ Der kubelet ist der primäre \glqq node-agent\grqq. Er ist dafür zuständig die
 
 \end{description}
 
-Kubernetes bietet verschiedene Organisiationskonzepte mit deren Hilfe sich die Kubernetes-Struktur umsetzen lässt, die für dieses Projekt wichtigsten werden im Folgenden erläutert:
+Kubernetes bietet verschiedene Organisiationskonzepte mit deren Hilfe sich die Kubernetes-Struktur umsetzen lässt. Die für dieses Projekt wichtigsten werden im Folgenden erläutert:
 
 \begin{description}
 
 \item [Pod]:\\
 Ein Pod ist eine \glqq execution unit\grqq und repräsentiert einen Prozess, der in einem Cluster läuft. Ein Pod kapselt einen oder mehrere Anwendungs-Container, einen eigenen Speicherbereich, eine eigene IP-Adresse sowie dessen Konfigurationsoptionen.
-Die meistverwendete Container-Runtime ist, wie auch in diesem Projekt, Docker. Es gibt aber auch Unterstützung für Weitere wie beispielsweise Rocket.\\
+Die meistverwendete Container-Runtime ist, wie auch in diesem Projekt, Docker. Es gibt aber auch Unterstützung für weitere wie beispielsweise Rocket.\\
 \item [Deployment]:\\
 Das Deployment ist eine Beschreibung des Zustands, in dem Pods ausgeliefert werden sollen. Hier werden beispielsweise der Name, Namensraum, Ressourcenlimits oder auch die Größe der Skalierung definiert.
 \item [Service]:\\
@@ -145,7 +145,7 @@ kubectl <Aktion><Ziel>
 
 \end{description}
 
-Kubernetes bietet systemseitig Funktionen, die beim ermitteln von Cluster- und Systeminformationen helfen, eine davon ist der cAdvisor
+Kubernetes bietet systemseitig Funktionen, die beim ermitteln von Cluster- und Systeminformationen helfen. Eine davon ist der cAdvisor
  
 \begin{description} 
 \item [cAdvisor]:\\
@@ -162,7 +162,7 @@ Eine Metrik ist eine Funktion, die einen Zustand oder eine Eigenschaft als Maßz
 abbildet. Metriken in der Informatik lassen sich im Grunde in 3 Bereiche einteilen:
 \begin{itemize}
 \item Service-Metriken, welche die Performance eines Service bemessen, zum Beispiel die
-Unterbrechungsfreie Laufzeit.
+Unterbrechungsfreie Laufzeit
 \item Prozess-Metriken, die für die Quantifizierung des Entwicklungsprozesses einer Software verwendet werden
 \item Technologie-Metriken, welche die zugrunde liegende Technologie quantifizieren, zum
 Beispiel die Speicherauslastung
@@ -175,7 +175,7 @@ In dieser Arbeit werden Service-Metriken erstellt und verwendet, welche die Perf
 
 \subsection{Anomalie}
 
-Eine Anomalie oder anormales Verhalten bezeichnet das Verhalten eines Programms oder Service, das stark von dessen Normalzustand abweicht. Dies kann beispielsweise eine hohe Ressourcenlast verursacht durch fehlerhaften Code sein. \cite{.19.07.2020d}
+Eine Anomalie oder anormales Verhalten bezeichnet das Verhalten eines Programms oder Service, das stark von dessen Normalzustand abweicht. Dies kann beispielsweise eine hohe Ressourcenlast, verursacht durch fehlerhaften Code, sein. \cite{.19.07.2020d}
 
 \subsection{Prometheus}
 Prometheus ist ein Open-Source Monitoring-Toolkit. Es wurde ursprünglich von SoundCloud entwickelt, ist aber mittlerweile ein Open-Source Projekt, das der Cloud Native
@@ -184,14 +184,14 @@ sind das Aufzeichnen von Zeitreihen-Metriken und das Alarmieren bei Überschreit
 von Grenzwerten der Metriken. Des weiteren bietet Prometheus:\\
 
 \begin{itemize} 
-\item Ein WebUI zum Visualisieren der aufgezeichneten Daten
-\item Eine eigene Abfragesprache (PromQL) für aufgezeichneten Metriken Regeln, Visualisierungen oder ähnliches erstellen zu können
-\item Einen Alertmanager um Alerts entgegen zu nehmen und weiter verwalten zu können
-\item Eine \glqq Target-Discovery \grqq um selbstständig sinnvolle und parametrisierbare Ziele zu entdecken
+\item ein WebUI zum Visualisieren der aufgezeichneten Daten
+\item eine eigene Abfragesprache (PromQL) für aufgezeichneten Metriken Regeln, Visualisierungen oder ähnliches erstellen zu können
+\item einen Alertmanager, um Alerts entgegen zu nehmen und weiter verwalten zu können
+\item eine \glqq Target-Discovery \grqq, um selbstständig sinnvolle und parametrisierbare Ziele zu entdecken
 
 \end{itemize}
 
-Prometheus bietet eine Vielzahl an Komponenten, die das Überwachen von Systemen und Alarmieren unterstützen. Die grundlegende Komponente ist hierbei der zentrale Prometheus Server. Dieser ist dafür zuständig Metriken zu sammeln, im Folgenden scrapen genannt, und zentral zu speichern, sofern es gewünscht ist.
+Prometheus bietet eine Vielzahl an Komponenten, die das Überwachen von Systemen und Alarmieren unterstützen. Die grundlegende Komponente ist hierbei der zentrale Prometheus Server. Dieser ist dafür zuständig, Metriken zu sammeln, im Folgenden scrapen genannt, und zentral zu speichern sofern es gewünscht ist.
 
 \subsubsection{Scraping}
 
@@ -201,7 +201,7 @@ Der Exporter auf dem Target hat im Normalfall einen Aktualisierungszeitraum eben
 
 \subsubsection{Abfragen}
 
-Das Abfragen von Metriken wird mittels der prometheuseigenen, an SQL angelehnten Query-Language PromQL durchgeführt. PromQL-Requests werden an den Prometheus-Server gestellt, der die Requests prüft, verarbeitet und entsprechende Werte als Antwort zurückgibt. Die Abfragen können sehr einfach sein, indem beispielsweise nur der Name einer Metrik angegeben wird und so der entsprechende Wert zurückgeliefert wird. Requests können aber auch, ähnlich zu SQL, miteinander kombiniert werden um voneinander abhängige Werte abzufragen oder Werte über unterschiedliche Zeiträume zu erhalten.\\
+Das Abfragen von Metriken wird mittels der prometheuseigenen, an SQL angelehnten, Query-Language PromQL durchgeführt. PromQL-Requests werden an den Prometheus-Server gestellt, der die Requests prüft, verarbeitet und entsprechende Werte als Antwort zurückgibt. Die Abfragen können sehr einfach sein, indem beispielsweise nur der Name einer Metrik angegeben wird und so der entsprechende Wert zurückgeliefert wird. Requests können aber auch, ähnlich zu SQL, miteinander kombiniert werden, um voneinander abhängige Werte abzufragen oder Werte über unterschiedliche Zeiträume zu erhalten.\\
 
 Ein beispielhafter Request:
 Dieser Request bildet den Mittelwert der HTTP-Codes 401 über die letzten 5 Minuten ab:
@@ -211,16 +211,16 @@ rate(http_status{code='401'}[5m])
 
 In diesem Projekt werden PromQL-Abfragen vor allem für zwei verschiedene Zwecke verwendet:
 \begin{itemize}
-\item zum erstellen von Regeln, bei deren Erfüllung der Prometheus-Server einen Alert verschickt (siehe nächstes Kapitel Alerting)
+\item zum Erstellen von Regeln, bei deren Erfüllung der Prometheus-Server einen Alert verschickt (siehe nächstes Kapitel Alerting)
 \item zum Visualisieren der Metriken in der Prometheus Web-UI oder in Grafana-Boards
 \end{itemize}
 
 \subsubsection{Alerting}
 
-Das Alerting in Prometheus funktioniert mittels festgelegten Regeln. Diese werden in der PromQL-Sprache auf dem Prometheus-Server definiert und gespeichert. Sobald eine Regel erfüllt ist sendet der Server einen Alert an den Alertmanager, der diesen dann weiter verarbeiten kann.\\
-Der Alert-Vorgang besteht im Grunde aus zwei Teilen. Der erste Teil ist die PromQL-Bedingung, die erfüllt sein muss. Sobald diese erfüllt ist erhält der Alert den Status \glqq pending\grqq. In diesem Status wird der Alert noch nicht versendet, sondern wartet auf das Erfüllen eines vorgegebenen Zeitwertes. Erst nach erfüllen des Wertes wird der Alert an den Manager versendet.\\
+Das Alerting in Prometheus funktioniert mittels festgelegten Regeln. Diese werden in der PromQL-Sprache auf dem Prometheus-Server definiert und gespeichert. Sobald eine Regel erfüllt ist, sendet der Server einen Alert an den Alertmanager, der diesen dann weiter verarbeiten kann.\\
+Der Alert-Vorgang besteht im Grunde aus zwei Teilen. Der erste Teil ist die PromQL-Bedingung, die erfüllt sein muss. Sobald diese erfüllt ist, erhält der Alert den Status \glqq pending\grqq. In diesem Status wird der Alert noch nicht versendet, sondern wartet auf das Erfüllen eines vorgegebenen Zeitwertes. Erst nach Erfüllen des Wertes wird der Alert an den Manager versendet.\\
 
-Der Alertmanager hat mehrere Möglichkeiten mit Alerts umzugehen. Eine der Möglichkeiten ist das Weiterleiten an definierbare Ziele, beispielsweise an bestimmte E-Mail Adressen, Chat-Programme wie Slack oder auch an Webhooks bzw. HTTP-Endpunkte. Außerdem stellt der Alertmanager eingetroffene Alerts auf dem eigenen Web-UI dar. Hier kann eingesehen werden welchen Status ein Alert zum aktuellen Zeitpunkt hat, \glqq pending\grqq oder \glqq active\grqq, außerdem können Alerts stillgelegt werden, welche dann nicht mehr durch den Manager weiterverarbeitet werden.\\
+Der Alertmanager hat mehrere Möglichkeiten mit Alerts umzugehen. Eine der Möglichkeiten ist das Weiterleiten an definierbare Ziele, beispielsweise an bestimmte E-Mail Adressen, Chat-Programme wie Slack oder auch an Webhooks bzw. HTTP-Endpunkte. Außerdem stellt der Alertmanager eingetroffene Alerts auf dem eigenen Web-UI dar. Hier kann eingesehen werden welchen Status ein Alert zum aktuellen Zeitpunkt hat (\glqq pending\grqq oder \glqq active\grqq). Außerdem können Alerts stillgelegt werden, welche dann nicht mehr durch den Manager weiterverarbeitet werden.\\
 
 \begin{figure}[htbp]
   \centering
@@ -228,7 +228,7 @@ Der Alertmanager hat mehrere Möglichkeiten mit Alerts umzugehen. Eine der Mögl
   \caption{Alertmanager Aufbau (eigene Zeichnung)}
 \end{figure}
 
-In Abbildung 2 ist der sequenzielle Ablauf eines Alamierungsvorgangs dargestellt. Nachdem Metriken vom Server von einer Metrikquelle gelesen wurden und eine Alertingregel erfüllen, wird der Zeitraum, in welcher die Regeln erfüllt ist gemessen, der Alert wird mit dem Status \glqq pending\grqq an den Alertmanager gesendet. Besteht der Zustand des Alerts für die konfigurierte Offset-Zeit, wird der Alert in den Status \grqq active\grqq versetzt und an alle im Alertmanager konfigurierten Ziele versendet.
+In Abbildung 2 ist der sequenzielle Ablauf eines Alamierungsvorgangs dargestellt. Nachdem Metriken vom Server von einer Metrikquelle gelesen wurden und eine Alertingregel erfüllen, wird der Zeitraum, in welcher die Regeln erfüllt ist gemessen und der Alert wird mit dem Status \glqq pending\grqq an den Alertmanager gesendet. Besteht der Zustand des Alerts für die konfigurierte Offset-Zeit, wird der Alert in den Status \grqq active\grqq versetzt und an alle im Alertmanager konfigurierten Ziele versendet.
 
 \subsection{Wahl der Sprache}
 
@@ -240,11 +240,11 @@ Welche Vorteile die Features der Sprache compiled, concurrent, garbage-collected
 \begin{description}
 \item[Kompilierung]:\\
 
-Go ist im Gegensatz zu Sprachen JavaScript oder PHP eine kompilierte Sprache. Dadurch bietet Go einen Performancevorteil, den kompilierte Sprachen gegenüber interpretierten typischerweise haben. Des Weiteren wirkt sich die Kompilation positiv auf die Fehlerrate aus, da \glqq compile time errors\grqq von vornherein durch das Kompilieren detektiert werden.\\
+Go ist im Gegensatz zu Sprachen wie JavaScript oder PHP eine kompilierte Sprache, was sich positiv auf die Fehlerrate auswirkt, da \glqq compile time errors\grqq von vornherein durch das Kompilieren detektiert werden.\\
 
 \item[Typsicherheit]:\\
 
-Die Sprache ist statisch typisiert, was bedeutet, dass Typen zur Kompilierzeit überprüft werden und so Fehler durch falsche Typen vermieden werden. 
+Die Sprache ist statisch typisier. Das bedeutet, dass Typen zur Kompilierzeit überprüft werden und so Fehler durch falsche Typen vermieden werden. 
 
 \item[Speichermanagement]:\\
 
@@ -271,7 +271,7 @@ Mit dem mitgelieferten Package-Downloader \glqq go get\grqq kann ein Package her
 
 \item[C-Integration(CGO)]:\\
 
-Mit CGO bietet die Sprache eine Integration der kompletten Sprache C bereit. Dies erlaubt es  C-Libraries zu importieren und zu verwenden oder C-Funktionen innerhalb eines Go-Programms zu benutzen. Dies ist beispielsweise praktisch, wenn trotz der automatischen Speicherverwaltung Speicher manuell allokiert werden soll. So kann mittels CGO die C-Funktion \glqq malloc()\grqq zum reservieren des Speichers verwendet werden.
+Mit CGO bietet die Sprache eine Integration der kompletten Sprache C. Dies erlaubt es,  C-Libraries zu importieren und zu verwenden oder C-Funktionen innerhalb eines Go-Programms zu benutzen. Dies ist beispielsweise praktisch, wenn trotz der automatischen Speicherverwaltung Speicher manuell allokiert werden soll. So kann mittels CGO die C-Funktion \glqq malloc()\grqq zum Reservieren des Speichers verwendet werden.
 
 \end{description}
 
@@ -282,36 +282,36 @@ Go findet vor allem in der Web-Entwicklung eine zunehmend starke Verbreitung, im
 \section{Stand der Technik}
 
 \subsection{Anomaly Detection}
-In ihrem Paper \glqq Anomaly Detection and Diagnosis for Container-based Microservices with Performance Monitoring\grqq \cite{.09.07.2020} beschreiben Qingfeng Du et al. eine Möglichkeit mithilfe der Performance und Hardware-Metriken von Container basierten Microservices und Machine Learning Techniken  Anomalien zu erkennen und so Service Level Agreement valuations(SLAV) zu reduzieren bzw. zu verhindern. Das Anomaly Detection System, folgend ADS abgekürzt, besteht aus drei verschiedenen Modulen. Diese Module sind das Monitoring-Modul, das dafür zuständig ist Performance Daten aus dem Zielsystem auszulesen, das Data-Processing Modul das die ausgelesenen Daten auf Anomalien zu prüfen sowie zuletzt das \glqq Fault-Injection\grqq Modul, das Fehlerfälle im System erzeugt und so einen Datensatz erhält, der dafür genutzt wird das Machine-Learning Model anzulernen und zu validieren.\\
-Die verschiedenen beschriebenen Arten der Anomalien, die das System abdeckt sind \glqq CPU-Hog's \grqq ,\glqq Memory Leaks\grqq oder der\glqq Package-Loss\grqq von Containern. Die beiden Hauptaufgaben des Systems sind daher, die Klassifizierung, ob in einem Microservice eine Anomalie vorliegt und falls dies der Fall ist zu lokalisieren, wo diese stattfindet.\\
-Dieses Paper bezieht sich ausschließlich auf die Detektion der Anomaly, nicht aber auf das Beheben dieser.
+In ihrem Paper \glqq Anomaly Detection and Diagnosis for Container-based Microservices with Performance Monitoring\grqq \cite{.09.07.2020} beschreiben Qingfeng Du et al. eine Möglichkeit mithilfe der Performance und Hardware-Metriken von Container basierten Microservices und Machine Learning Techniken  Anomalien zu erkennen und so Service Level Agreement valuations (SLAV) zu reduzieren bzw. zu verhindern. Das Anomaly Detection System, folgend ADS abgekürzt, besteht aus drei verschiedenen Modulen. Diese Module sind das Monitoring-Modul, das dafür zuständig ist, Performance Daten aus dem Zielsystem auszulesen, das Data-Processing Modul das die ausgelesenen Daten auf Anomalien zu prüfen sowie zuletzt das \glqq Fault-Injection\grqq Modul, das Fehlerfälle im System erzeugt und so einen Datensatz erhält, der dafür genutzt wird, das Machine-Learning Model anzulernen und zu validieren.\\
+Die verschiedenen beschriebenen Arten der Anomalien, die das System abdeckt, sind \glqq CPU-Hog's \grqq ,\glqq Memory Leaks\grqq oder der\glqq Package-Loss\grqq von Containern. Die beiden Hauptaufgaben des Systems sind daher, die Klassifizierung, ob in einem Microservice eine Anomalie vorliegt und falls dies der Fall ist, zu lokalisieren, wo diese stattfindet.\\
+Dieses Paper bezieht sich ausschließlich auf die Detektion der Anomalie, nicht aber auf das Beheben dieser.
 
-Weitere Paper verwenden ebenfalls Machine Learning Modelle. In dem Paper \glqq A Controller Architecture for Anomaly Detection, Root Cause Analysis and Self-Adaptation for Cluster Architectures\grqq von Areeg Samir et al. \cite{.19.07.2020d} , wird eine Controller-Architektur vorgestellt, die autonom Anomalien erkennt und diese selbstständig behebt. Der Controller ermittelt mögliche Anomalien in der zugrundeliegenden Providerinfrastruktur. Um Performance Anomalien zu entdecken und identifizieren werden sogenannte \glqq Hidden Markov\grqq -Machine Learning Modelle verwendet.\\
+Weitere Paper verwenden ebenfalls Machine Learning Modelle. In dem Paper \glqq A Controller Architecture for Anomaly Detection, Root Cause Analysis and Self-Adaptation for Cluster Architectures\grqq von Areeg Samir et al. \cite{.19.07.2020d} , wird eine Controller-Architektur vorgestellt, die autonom Anomalien erkennt und diese selbstständig behebt. Der Controller ermittelt mögliche Anomalien in der zugrundeliegenden Providerinfrastruktur. Um Performance Anomalien zu entdecken und identifizieren, werden sogenannte \glqq Hidden Markov\grqq -Machine Learning Modelle verwendet.\\
 
 \glqq KubAnomaly: Anomaly detection for the Docker orchestration platform with neural network approaches\grqq Chin‐Wei Tien et al. \cite{Tien.2019}, das in dem Journal \glqq Engineering Reports\grqq veröffentlicht wurde. In diesem Paper wird eine Methode untersucht, mit deren Hilfe sich anormales Verhalten von Containern in Kubernetes-Clustern aufspüren lassen soll. Hierfür wird ein neuronaler Ansatz verwendet und ein Klassifikationsmodell trainiert, der das Containerverhalten selbständig untersucht.\\
-In diesem Projekt wird ein anderer Ansatz gewählt, welcher auf Regeln mit statischen Thresholds basiert. Dieser verspricht gegenüber den Machine-Learning Ansätzen einige Vorteile die es zu untersuchen vor Allem die leichte Erweiterbarkeit des System durch einfaches Erweitern von Regeln und die Einsatzmöglichkeit für Firmen, die keine Expertise in Machine Learning besitzen.
+In diesem Projekt wird ein anderer Ansatz gewählt, welcher auf Regeln mit statischen Thresholds basiert. Dieser verspricht gegenüber den Machine-Learning Ansätzen einige Vorteile die es zu untersuchen gibt, vor Allem die leichte Erweiterbarkeit des System durch einfaches Erweitern von Regeln und die Einsatzmöglichkeit für Firmen, die keine Expertise in Machine Learning besitzen.
 
 \subsection{Cluster-Skalierung}
 
 In dem Paper \glqq ACCRS: autonomic based cloud computing resource scaling\grqq geschrieben von Ziad A. Al-Sharif et al. \cite{AlSharif.2016} , wird ein Skalierungssystem für Cloud-Ressourcen beschrieben. Dieses arbeitet mithilfe statischer Regeln und Thresholds.\\
-Das System besteht aus mehreren Komponenten, die Erste, welche die Basis des Ganzen bildet ist die \glqq System State Monitoring\grqq Komponente. Sie zeichnet unter anderem CPU, RAM, Netzwerk Utilization auf. Um aus den aufgezeichnete Monitoringdaten Entscheidungen und entsprechende Funktionen auszuführen gibt es das Modul \glqq System state analyses and decision making algorithm\grqq(SSA-DMA). Das SSA-DMA Modul bietet die zwei Algorithmen, der Erste stellt den Systemdurchsatz der Anzahl der verwendeten VMs gegenüber um so Probleme mit der Hardware zu finden. Im Falle eines erkannten Problems wird ein Root-Cause-Analysis Algorithmus ausgeführt um den fehlerhaften Host auszutauschen.\\
+Das System besteht aus mehreren Komponenten. Die Erste, welche die Basis des Ganzen bildet ist die \glqq System State Monitoring\grqq Komponente. Sie zeichnet unter anderem CPU, RAM, Netzwerk Utilization auf. Um aus den aufgezeichnete Monitoringdaten Entscheidungen und entsprechende Funktionen auszuführen gibt es das Modul \glqq System state analyses and decision making algorithm\grqq(SSA-DMA). Das SSA-DMA Modul bietet zwei Algorithmen. Der erste stellt den Systemdurchsatz der Anzahl der verwendeten VMs gegenüber, um so Probleme mit der Hardware zu finden. Im Falle eines erkannten Problems wird ein Root-Cause-Analysis Algorithmus ausgeführt um den fehlerhaften Host auszutauschen.\\
 Der zweite Algorithmus im SSA-DMA Modul ist der \glqq Workload Classification Algorithm\grqq.
 Dieser sorgt dafür, dass ein System immer die optimale Anzahl an VMs und Ressourcen zur Verfügung hat.\\
-Al-Sharif et al.  beschreiben die Funktionsweise ihres Algorithmus so, dass er die Auslastung eines Systems als hoch oder niedrig einstuft. Mittels Messen der Utilization von CPU,RAM und Netzwerk und Abgleichen mit den Thresholds wird identifiziert, ob die Systemressourcen skaliert werden müssen. Das Skalieren hat den Zweck ein System durch aufwenden zusätzlicher Ressourcen die Auslastung in die sogenannte \glqq Safe-Zone\grqq zu bringen. Die Safe-Zone beschreibt den Bereich zwischen 70\%-80\% Utilization der Ressourcen. Dieser Bereich wird als Bereich der idealen Auslastung beschrieben, da hier weder die Ressourcenlast zu Nahe am Leistungslimit liegt, noch so niedrig ist, dass zu viele Ressourcen verwendet werden, die im Zweifelsfall vermeidbare Kostenaufwände bedeuten können.\\
-In dem Paper werden so in Summe 5 Zustände beschrieben in denen sich das System durch die beiden Algorithmen befinden kann, diese sind:
+Al-Sharif et al.  beschreiben die Funktionsweise ihres Algorithmus so, dass er die Auslastung eines Systems als hoch oder niedrig einstuft. Mittels Messen der Utilization von CPU, RAM und Netzwerk und Abgleichen mit den Thresholds wird identifiziert, ob die Systemressourcen skaliert werden müssen. Das Skalieren hat den Zweck, ein System durch das Aufwenden zusätzlicher Ressourcen, die Auslastung in die sogenannte \glqq Safe-Zone\grqq zu bringen. Die Safe-Zone beschreibt den Bereich zwischen 70\%-80\% Utilization der Ressourcen. Dieser Bereich wird als Bereich der idealen Auslastung beschrieben, da hier weder die Ressourcenlast zu Nahe am Leistungslimit liegt, noch so niedrig ist, dass zu viele Ressourcen verwendet werden, die im Zweifelsfall vermeidbare Kostenaufwände bedeuten können.\\
+In dem Paper werden so in Summe 5 Zustände beschrieben in denen sich das System durch die beiden Algorithmen befinden kann. Diese sind:
 
 \begin{description}
-\item[Safe zone]
-Die Safe-Zone ist der Idealzustand, in dem das System sich befinden kann. Dieser Zustand ist erreicht, wenn sich die Utilization zwischen 70\%-80\% befindet. Hier ist der Utilization Level, der Energieverbrauch und die \glqq Quality of Service\grqq im Optimum.
+\item[Safe-zone]
+Die Safe-Zone ist der Idealzustand, in dem das System sich befinden kann. Dieser Zustand ist erreicht, wenn sich die Utilization zwischen 70\%-80\% befindet. Hier ist das Utilization Level, der Energieverbrauch und die \glqq Quality of Service\grqq im Optimum.
 Alle weiteren Zustände zielen darauf ab, den Zustand der Safe-Zone herzustellen.
 \item[Under-utilization (UU)]
 Der Zustand \glqq Under-utilization\grqq tritt ein, wenn das System eine geringe Auslastung seiner Ressourcen feststellt. Der Energieverbrauch ist in diesem Zustand hoch, während der Durchsatz gering ist.
 \item[Under-utilization with fault (UUF)]
-Dieser Zustand tritt ein, wenn die Bedingungen eine UU-Zustandes erfüllt sind, außerdem aber auch noch ein fehlerhafter Zustand vorliegt(bspw. defekte Hardware)
+Dieser Zustand tritt ein, wenn die Bedingungen eines UU-Zustandes erfüllt sind, außerdem aber auch noch ein fehlerhafter Zustand vorliegt (bspw. defekte Hardware).
 \item[Over-utilization (OU)]
 Der Zustand der \glqq Over-utilization\grqq tritt ein, wenn das System eine Überlastung seiner Ressourcen feststellt. Dieser Zustand wird bei einer Ressourcenauslastung über 80\% erreicht und kann dafür sorgen, dass eingehende Workloads verzögert oder sogar verworfen werden.
 \item[Over-utilization with Fault (OUF)]
-Dieser Zustand wird erreicht, wenn die Voraussetzungen des OU-Zustands erfüllt sind, außerdem aber auch noch ein fehlerhafter Zustand vorliegt(bspw. defekte Hardware)
+Dieser Zustand wird erreicht, wenn die Voraussetzungen des OU-Zustands erfüllt sind, außerdem aber auch noch ein fehlerhafter Zustand vorliegt (bspw. defekte Hardware).
 \end{description}
 
 \begin{figure}[htbp]
@@ -320,7 +320,7 @@ Dieser Zustand wird erreicht, wenn die Voraussetzungen des OU-Zustands erfüllt 
   \caption{Safe-Zone and Resource Scaling Thresholds (from Paper ACCRS: autonomic based cloud computing resource scaling )}
 \end{figure}
 
-Die Grafik stellt die Safe-Zone als grünen Kasten, die Over- bzw. Under-Utilization als rote Kästchen, die an die Grenzen der Safe-Zone grenzen dar. Die X,Y und Z-Achsen, repräsentieren die Auslastung von RAM,Netzwerk und CPU. Anhand von Sprüngen, die der Graph der VM-Operations nach überschreiten der Safe-Zone Grenze zurück in die Safe-Zone macht, kann nachvollzogen werden, dass skaliert wurde und so die Last pro VM gesunken ist.
+Die Grafik stellt die Safe-Zone als grünen Kasten, die Over- bzw. Under-Utilization als rote Kästchen, die an die Grenzen der Safe-Zone grenzen, dar. Die X,Y und Z-Achsen repräsentieren die Auslastung von RAM, Netzwerk und CPU. Anhand von Sprüngen, die der Graph der VM-Operations nach überschreiten der Safe-Zone Grenze zurück in die Safe-Zone macht, kann nachvollzogen werden, dass skaliert wurde und so die Last pro VM gesunken ist.
 
 Die Skalierung in diesem Projekt orientiert sich an dem Verfahren, welches im Paper \glqq ACCRS: autonomic based cloud computing resource scaling\grqq eingesetzt wird. Die Idee der Zustände Safe-Zone, Under-Utilization sowie Over-Utilization und deren Erkennung mittels statischer Regeln werden adaptiert und auf das Kubernetes-Konzept der Deployment-Skalierung übertragen, die Thresholds werden allerdings abgewandelt. 
 
@@ -328,7 +328,7 @@ Die Skalierung in diesem Projekt orientiert sich an dem Verfahren, welches im Pa
 \pagebreak
 \section{Datenaggregation}
 
-Die Datenaggregation, also das Erheben und Sammeln von Daten, ist zentraler Bestandteil des Projektes und der erste grundlegende Schritt. Das Ziel der Aggregation ist es Daten sog. Metriken über den Zustand eines Kubernetes-Clusters(siehe Kapitel Grundlagen/Kubernetes) zu erhalten. Kubernetes stellt selbst Metriken zur Verfügung. Im Folgenden wird beschrieben wie diese Daten ausgelesen und für die weitere Verwendung aufbereitet werden.
+Die Datenaggregation, also das Erheben und Sammeln von Daten, ist zentraler Bestandteil des Projektes und der erste grundlegende Schritt. Das Ziel der Aggregation ist es, Daten (sog. Metriken) über den Zustand eines Kubernetes-Clusters (siehe Kapitel Grundlagen/Kubernetes) zu erhalten. Kubernetes stellt selbst Metriken zur Verfügung. Im Folgenden wird beschrieben wie diese Daten ausgelesen und für die weitere Verwendung aufbereitet werden.
 
 \subsection{Datenquellen}
 
@@ -497,11 +497,11 @@ Wichtige Features von Prometheus zur Datenaggregation sind:
 \begin{description}
 
 \item[Automatische Service-Discovery]
-Das Feature der automatische Service-Discovery ist sehr entscheidend, da sich die Services im Cluster häufig verändern und neue Services hinzugefügt werden. Mithilfe dieser Funktion werden Services automatisch gefunden, Metriken direkt erhoben und Regeln auf diese angewendet, ohne konfiguriert werden zu müssen.
+Das Feature der automatischen Service-Discovery ist sehr entscheidend, da sich die Services im Cluster häufig verändern und neue Services hinzugefügt werden. Mithilfe dieser Funktion werden Services automatisch gefunden, Metriken direkt erhoben und Regeln auf diese angewendet, ohne konfiguriert werden zu müssen.
 \item[Echtzeitmetriken]
-Prometheus zeichnet Metriken in Echtzeit auf. Das ermöglicht es jederzeit den aktuellen Status des Clusters einzusehen und in Echtzeit darauf reagieren zu können.
+Prometheus zeichnet Metriken in Echtzeit auf. Das ermöglicht es, jederzeit den aktuellen Status des Clusters einzusehen und in Echtzeit darauf reagieren zu können.
 \item[Zeitreihen]
-Prometheus zeichnet Metriken als Zeitreihen auf, was das Beobachten, Abfragen und die Definition von Regeln über Zeiträume möglich macht. 
+Prometheus zeichnet Metriken als Zeitreihen auf, was das Beobachten, Abfragen und die Definition von Regeln über Zeiträume ermöglicht. 
 
 \end{description}
 
@@ -509,10 +509,10 @@ Prometheus zeichnet Metriken als Zeitreihen auf, was das Beobachten, Abfragen un
 Neben den Features zur Datenaggregation bietet Prometheus auch noch weitere für dieses Projekt wichtige Features :
 \begin{description}
 \item[Regeln]
-Regeln spielen eine zentrale Rolle in diesem Projekt. Mithilfe dieser lassen sich verschiedene Features von Prometheus regulieren, in diesem Projekt werden sie für das Regulieren von Alerts verwendet.
+Regeln spielen eine zentrale Rolle in diesem Projekt. Mithilfe dieser lassen sich verschiedene Features von Prometheus regulieren. In diesem Projekt werden sie für das Regulieren von Alerts verwendet.
 Regeln werden über Thresholds und optional über Zeiträume von Metriken definiert, sodass bei Überschreiten eines Thresholds für eine bestimmte Zeit eine Regel als erfült gilt.
 \item[Alerting]
-Mithilfe der Alerts ist es möglich anhand von Regeln Alarme zu versenden, die über den Zustand des Clusters informieren. Sie können an Ziele wie E-Mail-Adressen oder Chat-Tools wie Slack oder Telegram gesendet werden, aber auch  an selbst definierte Endpunkte um sie dort zu empfangen oder sie möglicherweise weiterzuverarbeiten.
+Mithilfe der Alerts ist es möglich, anhand von Regeln Alarme zu versenden, die über den Zustand des Clusters informieren. Sie können an Ziele wie E-Mail-Adressen oder Chat-Tools wie Slack oder Telegram gesendet werden, aber auch  an selbst definierte Endpunkte, um sie dort zu empfangen oder sie möglicherweise weiterzuverarbeiten.
 
 \end{description}
 
@@ -520,47 +520,61 @@ Mithilfe der Alerts ist es möglich anhand von Regeln Alarme zu versenden, die �
 
 Die Aggregation der Metriken läuft nach festen Schema ab, welches für die Aufzeichnung aller Metriken gilt.
 Die Metriken werden von Prometheus aggregiert und aufgezeichnet. Dies wird auf allen Zielen, welche durch die automatische Service-Discovery gefunden wurden durchgeführt.\\
+
 \begin{minipage}{\linewidth}
   \includegraphics[scale=.3]{img/Datenaggregation/LupeNew.png} 
-\end{minipage} 
+    \captionof{figure}{Bildrepräsentation der Aggregation(Quelle Draw.io)}
+\end{minipage} \\
 
 Die Metriken werden über einen definierten Zeitraum gesammelt, sodass daraus Zeitreihen-Metriken entstehen. Aus diesen Zeitreihenmetriken kann ein Graf abgeleitet werden.\\
+
 \begin{minipage}{\linewidth}
   \includegraphics[scale=.3]{img/Datenaggregation/GrafAggregationNew.png}
-\end{minipage} 
+    \captionof{figure}{Bildrepräsentation der Zeitreihe(eigene Grafik)}
+\end{minipage} \\
 
 Wenn man diese Zeitreihenmetriken in ein Koordinatensystem überträgt, wäre die X-Achse eines Grafen der Zeitwert zwischen Null und maximalem aufgezeichnetem Zeitwert und die Y-Achse die höhe des Metrikwertes. \\
+
 \begin{minipage}{\linewidth}
   \includegraphics[scale=.3]{img/Datenaggregation/GrafZeitNew.png} 
-\end{minipage} 
+    \captionof{figure}{Bildrepräsentation der Zeitreihe als Graf(eigene Grafik)}
+\end{minipage} \\
 
 
 Anhand der Höhe des Y-Wertes des Grafen lassen sich Regeln definieren und somit ein Grenzwert für Metriken erstellen.\\
+
 \begin{minipage}{\linewidth}
   \includegraphics[scale=.3]{img/Datenaggregation/GrafYWertNew.png} 
-\end{minipage}
+    \captionof{figure}{Bildrepräsentation des Graf mit Y-Achsen Grenzwert(eigene Grafik)}
+\end{minipage}\\
 
 Über den Zeitwert (X-Achse) wird eine Dauer definiert, die der Zustand der Grenzwertüberschreitung bestehen darf.\\
+
 \begin{minipage}{\linewidth}
   \includegraphics[scale=.3]{img/Datenaggregation/GrafAlarmNew.png} 
-\end{minipage}
+    \captionof{figure}{Bildrepräsentation der das Graf mit überschrittenem X-Achsen Grenzwert(eigene Grafik)}
+\end{minipage}\\
 
 Wenn der Grenzwert über die definierte Zeitdauer überschritten wurde wird ein Alarm ausgelöst.\\
+
 \begin{minipage}{\linewidth}
   \includegraphics[scale=.3]{img/Datenaggregation/AlarmNew.png}  
-\end{minipage} 
-
+    \captionof{figure}{Bildrepräsentation des Alarms(Quelle Draw.io)}
+\end{minipage} \\
 
 Im nachfolgenden Graf wird der Ablauf der Aggregation aufeinander aufbauend visualisiert:
 
 \begin{minipage}{\linewidth}
   \centering
-  \scalebox{.8}{\input{DatenaggregationFlow.pdf_tex}}  
+  \scalebox{.8}{\input{DatenaggregationFlow.pdf_tex}} 
+  \captionof{figure}{Graf des Ablaufs der Datenaggregation(eigene Grafik)}
 \end{minipage}
+
+
 
 \subsubsection{Visualisierung}
 
-Grafana ist das Tool, welches zur Visualisierung verwendet wird. Das Open-Source Tool bietet Möglichkeiten Metriken in Form von Graphen, Zählern, Histogrammen und vielem mehr über Zeiträume zu visualisieren. Des Weiteren können ganze \glqq Dashboards\grqq erstellt werden, die den Überblick über das ganze Cluster auf einmal erlauben.\\
+Grafana ist das Tool, welches zur Visualisierung verwendet wird. Das Open-Source Tool bietet Möglichkeiten, Metriken in Form von Graphen, Zählern, Histogrammen und vielem mehr über Zeiträume zu visualisieren. Des Weiteren können ganze \glqq Dashboards\grqq erstellt werden, die den Überblick über das ganze Cluster auf einmal erlauben.\\
 Aufgrund der bereits vorhandenen Prometheusintegration ist eine Verwendung bei bereits bestehendem Prometheus-Server einfach und innerhalb kurzer Zeit umzusetzen.
 Der Prometheus-Server, von welchem Grafana Metriken erhalten soll muss als Datenquelle mittels seiner Adresse konfiguriert werden, danach stehen alle Metriken, welche Prometheus kennt auch in Grafana zur Verfügung.\\
 Um Metriken zu visualisieren, wird die aus Prometheus bereits bekannte Abfragesprache PromQL verwendet, was den Vorteil bietet, Abfragen die für Prometheus funktionieren, funktionieren ebenso in der Grafana Oberfläche zum Erstellen von Visualisierungen.\\
