@@ -884,11 +884,12 @@ Die maximale Netzlast ist in den Messungen auf den Grenzwert von einem Megabit f
 \item[Hohe CPU-Last, niedrige RAM-Last, niedrige Netzwerklast]:\\
 
 \begin{minipage}{\linewidth}
-            \includegraphics[width=.8\textwidth]{img/CPUAnomalie/RollingRestart.PNG}
+
+            \includegraphics[width=1.3\textwidth]{img/CPUAnomalie/RollingRestart.PNG}
             \includegraphics[width=.5\textwidth]{img/CPUAnomalie/Netzwerk.PNG}
             \includegraphics[scale=1,width=.8\textwidth,height=.14\textheight]{img/CPUAnomalie/Saturation.PNG}
   			\includegraphics[scale=1,width=.8\textwidth]{img/CPUAnomalie/Utilization.PNG}
-            \captionof{figure}{} 
+            \captionof{figure}{Abbildungen Testwerte Testfall 1 (eigene Grafiken)} 
 \end{minipage}
 
 Der Zustand eines Pods, bei dem eine hohe CPU-Last von mindestens 75\% besteht, die nicht durch eine Last von außen, das heißt durch eine hohe Netzwerklast, begründet werden kann, ist der Zustand der CPU-Anomalie. Wenn dieser Zustand erreicht ist, soll das System einen \glqq Rolling-Restart\grqq ausführen und somit das anormale Verhalten beenden.\\
@@ -905,7 +906,7 @@ Die Verläufe der Grafen bestätigen, dass die Anomalie korrekt erkannt wurde. B
             \includegraphics[width=.5\textwidth]{img/RAMAnomalie/Netzwerk.PNG}
             \includegraphics[scale=1,width=.5\textwidth,height=.14\textheight]{img/RAMAnomalie/RAMSaturation.PNG}
   			\includegraphics[scale=1,width=.5\textwidth]{img/RAMAnomalie/RAMUtilization.PNG} 
-            \captionof{figure}{Transfer from R1 to R2 whenK1=1}
+            \captionof{figure}{Abbildungen Testwerte Testfall 2 (eigene Grafiken)}
 \end{minipage}
 
 Äquivalent zur CPU-Anomalie wird der Zustand eines Pods als anormal angesehen, wenn eine RAM-Last von mindestens 75\% über den Zeitraum von mindestens einer Minute besteht, die nicht durch eine hohe Netzwerklast begründet wird. Wenn dieser Zustand  der RAM-Anomalie erfüllt ist, soll ein \glqq Rolling-Restart\grqq durchgeführt werden, um die Situation zu entschärfen.\\
@@ -925,7 +926,7 @@ Der \glqq Rolling-Restart\grqq -Counter wurde um eins nach oben gezählt, was na
   			\includegraphics[scale=1,width=.5\textwidth]{img/RAMCPUAnomalie/CPUUtilization.PNG}
   			\includegraphics[scale=1,width=.5\textwidth]{img/RAMCPUAnomalie/RAMUtilization.PNG}
   			\includegraphics[scale=1,width=.5\textwidth]{img/RAMCPUAnomalie/Netzwerk.PNG}
-            \captionof{figure}{Transfer from R1 to R2 whenK1=1}
+            \captionof{figure}{Abbildungen Testwerte Testfall 3 (eigene Grafiken)}
 \end{minipage}
 
 Bei einer zeitgleichen Grenzüberschreitung der RAM- und CPU-Utilization und -Saturation von mindestens 75\% liegt ebenfalls ein anormaler Zustand vor. Der Zustand muss eine Minute anhalten und darf auch ebenfalls nur einmal als\\ Anomalie erkannt werden. Der \glqq Rolling-Restart\grqq wird durchgeführt, um die Situation zu entschärfen.\\
@@ -950,7 +951,7 @@ Die Grafen belegen die korrekte Funktion und Wirkung der Anomalie-Detection bei 
             \includegraphics[width=.5\textwidth]{img/CPUSkalierung/ReplicaCount.PNG}
             \includegraphics[scale=1,width=.5\textwidth,height=.14\textheight]{img/CPUSkalierung/Netzwerk.PNG}
   			\includegraphics[scale=1,width=.5\textwidth]{img/CPUSkalierung/CPUSaturation.PNG}
-            \captionof{figure}{Transfer from R1 to R2 whenK1=1}
+            \captionof{figure}{Abbildungen Testwerte Testfall 4 (eigene Grafiken)}
 \end{minipage}
 
 Der Zustand eines Deployments, bei dem eine hohe CPU-Last von mindestens 75\% für den Zeitraum von mindestens einer Minute anliegt, ist der Zustand, in dem Ressourcen hochskaliert werden und somit mehr Ressourcen bereitgestellt werden sollen. Die Ressourcen werden durch das Skalieren der Pods eines Deployments bereitgestellt. Diese Last muss durch eine hohe Netzwerklast von mindestens einem Megabit pro Sekunde von außen begründet werden sein.
@@ -965,7 +966,7 @@ Die Grafen belegen die korrekte Funktion der Skalierung eines Deployments bei ho
             \includegraphics[scale=1,width=.5\textwidth,height=.14\textheight]{img/RAMSkalierung/Netzwerk.PNG}
   			\includegraphics[scale=1,width=.5\textwidth]{img/RAMSkalierung/RAMSaturation.PNG}
 
-            \captionof{figure}{Transfer from R1 to R2 whenK1=1}
+            \captionof{figure}{Abbildungen Testwerte Testfall 5 (eigene Grafiken)}
 \end{minipage}
 
 Ein Deployment, dass eine hohe RAM-Last von mindestens 75\% bei einer zeitgleich hohen Netzwerklast von mindestens einem Megabit über den Zeitraum mindestens einer Minute aufweist, benötigt zusätzliche Ressourcen. Diese Ressourcen sollen, wie bei der Skalierung bei hoher CPU-Last auch, durch das Bereitstellen neuer Pods geliefert werden.\\
@@ -982,7 +983,7 @@ Der RAM-Saturation Graf hat über den Zeitraum von über eine Minute einen grenz
             \includegraphics[scale=1,width=.5\textwidth,height=.14\textheight]{img/RAMCPUSkalierung/RAMSaturation.PNG}
   			\includegraphics[scale=1,width=.5\textwidth]{img/RAMCPUSkalierung/CPUUtilization.PNG}
   			\includegraphics[scale=1,width=.5\textwidth]{img/RAMCPUSkalierung/Netzwerk.PNG}
-            \captionof{figure}{Transfer from R1 to R2 whenK1=1}
+            \captionof{figure}{Abbildungen Testwerte Testfall 6 (eigene Grafiken)}
 \end{minipage}
 
 Für den Fall, dass CPU- sowie RAM-Last den Grenzwert von 75\% für mindestens eine Minute lang überschreiten, während eine Netzwerklast von mindestens einem Megabit pro Sekunde für das Deployment anliegt, sollen ebenso die Ressourcen des Deployments um einen Pod hochskaliert werden.\\
@@ -1004,7 +1005,7 @@ Die gemessenen Grafen bestätigen, dass die Skalierung auch korrekt funktioniert
             \includegraphics[width=.5\textwidth]{img/Herunterskalieren/ReplicaCount.PNG}
             \includegraphics[scale=1,width=.5\textwidth,height=.14\textheight]{img/Herunterskalieren/RAMSaturation.PNG}
   			\includegraphics[scale=1,width=.5\textwidth]{img/Herunterskalieren/CPUSaturation.PNG}			
-            \captionof{figure}{Transfer from R1 to R2 whenK1=1}
+            \captionof{figure}{Abbildungen Testwerte Testfall 7 (eigene Grafiken)}
 \end{minipage}
 
 Im Fall niedriger Ressourcenlast eines Deployments von 25\% CPU-Utilization und RAM-Saturation oder geringer über die Dauer von mindestens einer Minute, soll die Podanzahl des betreffenden Deployments um eins verringert werden.\\
@@ -1052,7 +1053,6 @@ Wie bei der Evaluation bereits erläutert, können Messungenauigkeiten und Toler
 Das System basiert auf statisch konfigurierten Regeln mit festen Grenzwerten. Kubernetes-Cluster, die sich in ständiger Entwicklung befinden und deren verfügbare Ressourcen sich verändern, bedürfen einer nachträglichen Konfiguration der Regeln und Grenzwerte. Bei einer großen Anzahl von konfigurierten Regeln kann dies zu hohem Aufwand durch Konfiguration und Tests sowie erhöhter Fehleranfälligkeit führen.
 
 \end{description}
-
  
 \subsection{Zukunft des Projekts}
 
@@ -1068,5 +1068,8 @@ Dieses Projekt wird in der Zeit nach dieser Arbeit weiter betrieben und Teil ein
 
 \newpage
 \bibliography{Literatur}
+
+\newpage
+\listoffigures
 
 \end{document}
