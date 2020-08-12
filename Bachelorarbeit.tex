@@ -910,7 +910,6 @@ Diese sind:
 Jedes dieser Szenarien wird in einem eigenen Test evaluiert.
 Die maximale Netzlast ist in den Messungen auf den Grenzwert von einem Megabit festgelegt.
 
-\pagebreak
 \subsection{Messungen}
 
 \subsubsection{Anomalie}
@@ -919,11 +918,16 @@ Die maximale Netzlast ist in den Messungen auf den Grenzwert von einem Megabit f
 \item[Hohe CPU-Last, niedrige RAM-Last, niedrige Netzwerklast]:\\
 
 \begin{minipage}{\linewidth}
+            \includegraphics[width=1\textwidth]{img/CPUAnomalie/RollingRestart.PNG}\\
+                 
+            \includegraphics[width=1\textwidth]{img/CPUAnomalie/Netzwerk.PNG}\\
+            
+            \includegraphics[width=1\textwidth]{img/CPUAnomalie/Saturation.PNG}
+\end{minipage}  
 
-            \includegraphics[width=1\textwidth]{img/CPUAnomalie/RollingRestart.PNG}
-            \includegraphics[width=.5\textwidth]{img/CPUAnomalie/Netzwerk.PNG}
-            \includegraphics[scale=1,width=.8\textwidth,height=.14\textheight]{img/CPUAnomalie/Saturation.PNG}
-  			\includegraphics[scale=1,width=.8\textwidth]{img/CPUAnomalie/Utilization.PNG}
+\pagebreak
+\begin{minipage}{\linewidth}          
+  			\includegraphics[width=1\textwidth]{img/CPUAnomalie/Utilization.PNG}
             \captionof{figure}{Abbildungen Testwerte Testfall 1 } 
 \end{minipage}
 
@@ -937,10 +941,13 @@ Die Verläufe der Grafen bestätigen, dass die Anomalie korrekt erkannt wurde. B
 \item[Niedrige CPU-Last, hohe RAM-Last, niedrige Netzwerklast]:\\
 
 \begin{minipage}{\linewidth}
-            \includegraphics[width=.5\textwidth]{img/RAMAnomalie/RollingRestart.PNG}
-            \includegraphics[width=.5\textwidth]{img/RAMAnomalie/Netzwerk.PNG}
-            \includegraphics[scale=1,width=.5\textwidth,height=.14\textheight]{img/RAMAnomalie/RAMSaturation.PNG}
-  			\includegraphics[scale=1,width=.5\textwidth]{img/RAMAnomalie/RAMUtilization.PNG} 
+            \includegraphics[width=1\textwidth]{img/RAMAnomalie/RollingRestart.PNG}\\
+            
+            \includegraphics[width=1\textwidth]{img/RAMAnomalie/Netzwerk.PNG}\\
+            
+            \includegraphics[width=1\textwidth,height=.14\textheight]{img/RAMAnomalie/RAMSaturation.PNG}\\
+            
+  			\includegraphics[width=1\textwidth]{img/RAMAnomalie/RAMUtilization.PNG}
             \captionof{figure}{Abbildungen Testwerte Testfall 2}
 \end{minipage}
 
@@ -956,11 +963,18 @@ Der \glqq Rolling-Restart\grqq -Counter wurde um eins nach oben gezählt, was na
 \item[Hohe CPU- und RAM-Last, niedrige Netzwerklast]:\\
 
 \begin{minipage}{\linewidth}
-            \includegraphics[width=.5\textwidth]{img/RAMCPUAnomalie/RollingRestart.PNG}
-            \includegraphics[scale=1,width=.5\textwidth,height=.14\textheight]{img/RAMCPUAnomalie/RAMSaturation.PNG}
-  			\includegraphics[scale=1,width=.5\textwidth]{img/RAMCPUAnomalie/CPUUtilization.PNG}
-  			\includegraphics[scale=1,width=.5\textwidth]{img/RAMCPUAnomalie/RAMUtilization.PNG}
-  			\includegraphics[scale=1,width=.5\textwidth]{img/RAMCPUAnomalie/Netzwerk.PNG}
+            \includegraphics[width=1\textwidth]{img/RAMCPUAnomalie/RollingRestart.PNG}\\
+            
+            \includegraphics[width=1\textwidth,height=.14\textheight]{img/RAMCPUAnomalie/RAMSaturation.PNG}\\
+            
+  			\includegraphics[width=1\textwidth]{img/RAMCPUAnomalie/CPUUtilization.PNG}\\
+  			
+  			\includegraphics[width=1\textwidth]{img/RAMCPUAnomalie/RAMUtilization.PNG}
+\end{minipage}	
+\begin{minipage}{\linewidth}	
+
+  			
+  			\includegraphics[width=1\textwidth]{img/RAMCPUAnomalie/Netzwerk.PNG}
             \captionof{figure}{Abbildungen Testwerte Testfall 3}
 \end{minipage}
 
@@ -983,9 +997,11 @@ Die Grafen belegen die korrekte Funktion und Wirkung der Anomalie-Detection bei 
 \item[Hohe CPU-Last, niedrige RAM-Last, hohe Netzwerklast]:\\
 
 \begin{minipage}{\linewidth}
-            \includegraphics[width=.5\textwidth]{img/CPUSkalierung/ReplicaCount.PNG}
-            \includegraphics[scale=1,width=.5\textwidth,height=.14\textheight]{img/CPUSkalierung/Netzwerk.PNG}
-  			\includegraphics[scale=1,width=.5\textwidth]{img/CPUSkalierung/CPUSaturation.PNG}
+            \includegraphics[width=1\textwidth]{img/CPUSkalierung/ReplicaCount.PNG}\\
+            
+            \includegraphics[width=1\textwidth,height=.14\textheight]{img/CPUSkalierung/Netzwerk.PNG}\\
+            
+  			\includegraphics[width=1\textwidth]{img/CPUSkalierung/CPUSaturation.PNG}
             \captionof{figure}{Abbildungen Testwerte Testfall 4}
 \end{minipage}
 
@@ -996,10 +1012,13 @@ Die Grafen belegen die korrekte Funktion der Skalierung eines Deployments bei ho
 \pagebreak
 
 \item[Niedrige CPU-Last, hohe RAM-Last, hohe Netzwerklast]:\\
+
 \begin{minipage}{\linewidth}
-            \includegraphics[width=.5\textwidth]{img/RAMSkalierung/Replica-Count.PNG}
-            \includegraphics[scale=1,width=.5\textwidth,height=.14\textheight]{img/RAMSkalierung/Netzwerk.PNG}
-  			\includegraphics[scale=1,width=.5\textwidth]{img/RAMSkalierung/RAMSaturation.PNG}
+            \includegraphics[width=1\textwidth]{img/RAMSkalierung/Replica-Count.PNG}\\
+            
+            \includegraphics[width=1\textwidth,height=.14\textheight]{img/RAMSkalierung/Netzwerk.PNG}\\
+            
+  			\includegraphics[width=1\textwidth]{img/RAMSkalierung/RAMSaturation.PNG}
 
             \captionof{figure}{Abbildungen Testwerte Testfall 5}
 \end{minipage}
@@ -1013,11 +1032,19 @@ Der RAM-Saturation Graf hat über den Zeitraum von über eine Minute einen grenz
 \pagebreak
 
 \item[Hohe CPU- und RAM-Last, hohe Netzwerklast]:\\
+
 \begin{minipage}{\linewidth}
-            \includegraphics[width=.5\textwidth]{img/RAMCPUSkalierung/ReplicaCount.PNG}
-            \includegraphics[scale=1,width=.5\textwidth,height=.14\textheight]{img/RAMCPUSkalierung/RAMSaturation.PNG}
-  			\includegraphics[scale=1,width=.5\textwidth]{img/RAMCPUSkalierung/CPUUtilization.PNG}
-  			\includegraphics[scale=1,width=.5\textwidth]{img/RAMCPUSkalierung/Netzwerk.PNG}
+            \includegraphics[width=1\textwidth]{img/RAMCPUSkalierung/ReplicaCount.PNG}\\
+            
+            \includegraphics[width=1\textwidth,height=.14\textheight]{img/RAMCPUSkalierung/RAMSaturation.PNG}\\
+            
+  			\includegraphics[width=1\textwidth]{img/RAMCPUSkalierung/CPUUtilization.PNG}\\
+\end{minipage} 	
+
+\pagebreak
+
+\begin{minipage}{\linewidth}		
+  			\includegraphics[width=1\textwidth]{img/RAMCPUSkalierung/Netzwerk.PNG}
             \captionof{figure}{Abbildungen Testwerte Testfall 6}
 \end{minipage}
 
@@ -1037,9 +1064,11 @@ Die gemessenen Grafen bestätigen, dass die Skalierung auch korrekt funktioniert
 \item[Niedrige CPU-Last, niedrige RAM-Last, beliebige Netzwerklast]:\\
 
 \begin{minipage}{\linewidth}
-            \includegraphics[width=.5\textwidth]{img/Herunterskalieren/ReplicaCount.PNG}
-            \includegraphics[scale=1,width=.5\textwidth,height=.14\textheight]{img/Herunterskalieren/RAMSaturation.PNG}
-  			\includegraphics[scale=1,width=.5\textwidth]{img/Herunterskalieren/CPUSaturation.PNG}			
+            \includegraphics[width=1\textwidth]{img/Herunterskalieren/ReplicaCount.PNG}\\
+            
+            \includegraphics[width=1\textwidth,height=.14\textheight]{img/Herunterskalieren/RAMSaturation.PNG}\\
+            
+  			\includegraphics[width=1\textwidth]{img/Herunterskalieren/CPUSaturation.PNG}			
             \captionof{figure}{Abbildungen Testwerte Testfall 7}
 \end{minipage}
 
