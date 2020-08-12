@@ -55,6 +55,9 @@ In der Evaluation zeigte sich, dass das System anormale Zustände in Containern 
 
 \pagebreak
 
+\newpage
+\listoffigures
+
 \clearpage
 
 \pagenumbering{arabic}
@@ -109,7 +112,7 @@ Nodes wiederum stellen die Arbeiter dar, weshalb sie auch "worker" genannt werde
 \begin{figure}[htbp]
   \centering
   \input{KubernetesBasic.pdf_tex}
-  \caption{einfache Darstellung eines Kubernetes-Cluster (eigene Zeichnung)}
+  \caption{einfache Darstellung eines Kubernetes-Cluster}
 \end{figure}
 
 \pagebreak
@@ -157,8 +160,6 @@ cAdvisor beschreibt sich als \glqq ein laufender Daemon, welcher Informationen �
 
 \end{description}
 
-%\subsection{Cloud-Native} 
-%\subsection{Microservice-Architektur}
 \subsection{Metriken}
 Eine Metrik ist eine Funktion, die einen Zustand oder eine Eigenschaft als Maßzahl
 abbildet. Metriken in der Informatik lassen sich im Grunde in 3 Bereiche einteilen:
@@ -227,7 +228,7 @@ Der Alertmanager hat mehrere Möglichkeiten mit Alerts umzugehen. Eine der Mögl
 \begin{figure}[htbp]
   \centering
   \scalebox{.8}{\input{PrometheusAlertUML.pdf_tex}}
-  \caption{Alertmanager Aufbau (eigene Zeichnung)}
+  \caption{Alertmanager Aufbau}
 \end{figure}
 
 In Abbildung 2 ist der sequenzielle Ablauf eines Alamierungsvorgangs dargestellt. Nachdem Metriken vom Server von einer Metrikquelle gelesen wurden und eine Alertingregel erfüllen, wird der Zeitraum, in welcher die Regeln erfüllt ist gemessen und der Alert wird mit dem Status \glqq pending\grqq an den Alertmanager gesendet. Besteht der Zustand des Alerts für die konfigurierte Offset-Zeit, wird der Alert in den Status \grqq active\grqq versetzt und an alle im Alertmanager konfigurierten Ziele versendet.
@@ -379,28 +380,37 @@ Die CPU Utilization berechnet sich aus der Summe der Millisekunden, welche die C
 Der gleitende Mittelwert der aufsummierten Zeit U über den beobachteten Zeitraum von 5 Minuten:\\
 Imax entspricht 300 Sekunden
 
+\begin{minipage}{\linewidth}
 \(
 \displaystyle{U_{CPU}(t)=\frac{1}{N}{\sum\limits_{i_{w}=0}^{N-1} l_{cpu}{(t-i_{w})}} }
-\) 
-\\
+\)
+
+\captionof{figure}{Formel der CPU-Utilization} 
+
+\end{minipage}
 
 Der gesamte Wert eines Utilization Fensters lässt sich dann über die zusammengesetzte Formel berechnen:\\
 
 Saturation:\\
-Die CPU Saturation kann anhand des Ressourcenlimits berechnet werden. In UNIX basierten Betriebssystemen gibt es die Metrik \glqq load\_average\grqq, welche die Anzahl der laufenden sowie wartenden Prozesse enthält. Sofern man diese durch die Anzahl der zur Verfügung stehenden CPU-Kerne \glqq core\_unit\_count\grqq teilt, erhält man eine Kennzahl für die Saturation.
+Die CPU Saturation kann anhand des Ressourcenlimits berechnet werden. In UNIX basierten Betriebssystemen gibt es die Metrik \glqq load\_average\grqq, welche die Anzahl der laufenden sowie wartenden Prozesse enthält. Sofern man diese durch die Anzahl der zur Verfügung stehenden CPU-Kerne \glqq core\_unit\_count\grqq teilt, erhält man eine Kennzahl für die Saturation.\\
 
+\begin{minipage}{\linewidth}
 \(
 \displaystyle{s_{cpu}= load\_average / core\_unit\_count}
 \)
-\\
+\captionof{figure}{Formel der CPU-Saturation} 
+
+\end{minipage}\\
 
 Diese aufsummiert und über die Zeit gemittelt, ergibt die durchschnittliche Saturation.\\
 
-
+\begin{minipage}{\linewidth}
 \(
 \displaystyle{S_{CPU}(t)=\frac{1}{N}{\sum\limits_{i_{w}=0}^{N-1} s_{cpu}{(t-i_{w})}} }
 \)
-\\
+\captionof{figure}{Formel der CPU-Saturation Moving-Average} 
+
+\end{minipage}
 
 Ein weiterer Weg die Saturation zu berechnen, ist das Aufsummieren der Zeit in der ein Prozess \glqq throtteld\grqq läuft. Dies funktioniert dann, wenn ein Prozess ein Ressourcenlimit besitzt. Übersteigt er dieses, wird der Prozess gedrosselt.\\
 Error-Rate:\\
@@ -409,47 +419,55 @@ Die Fehlererkennung wird von handelsüblichen CPUs nicht unterstützt, weswegen 
 Utilization:\\
 Die RAM Utilization berechnet sich aus der Menge des vom System reservierten Speichers, der durch die Menge des gesamten Speichers geteilt wird. Beide stehen in UNIX basierten Betriebssystemen zur Verfügung, sodass die Rechnung zur RAM-Utilization lautet:\\
 
+\begin{minipage}{\linewidth}
 \(
-\displaystyle{l_{ram}=1-RAM_{res}/RAM_{ges}}
+\displaystyle{l_{ram}=1-ram_{res}/ram_{ges}}
 \) 
-\\
+\captionof{figure}{Formel der RAM-Utilization} 
+
+\end{minipage}
 
 Diese aufsummiert und über die Zeit gemittelt, ergibt die durchschnittliche Utilization.\\
 
-
+\begin{minipage}{\linewidth}
 \(
 \displaystyle{U_{RAM}(t)=\frac{1}{N}{\sum\limits_{i_{w}=0}^{N-1} l_{ram}{(t-i_{w})}} }
 \) 
 \\
+\captionof{figure}{Formel der RAM-Utilization Moving-Average} 
+\end{minipage}
 
 \pagebreak
 
 Saturation:\\
 Die RAM Saturation kann am besten berechnet werden, wenn Ressourcenlimits existieren. Unter diesen Voraussetzungen kann die Saturation berechnet werden, indem die Summe des aktuell verwendeten Speichers durch das Ressourcenlimit geteilt wird. Sofern ein Wert über 100\% erreicht wird\\
 
-
+\begin{minipage}{\linewidth}
 \(
 \displaystyle{s_{ram}=RAM_{res}/RAM_{ges}}
 \) 
-\\
+\captionof{figure}{Formel der RAM-Saturation} 
+\end{minipage}
 
 Über diesen wird wiederum der Mittelwert gebildet:\\
 
-
+\begin{minipage}{\linewidth}
 \(
 \displaystyle{S_{RAM}(t)=\frac{1}{N}{\sum\limits_{i_{w}=0}^{N-1} s_{ram}{(t-i_{w})}} }
 \) 
-\\
+\captionof{figure}{Formel der RAM-Saturation Moving-Average} 
+\end{minipage}
 
 Error-Rate:\\
 Zur Ermittlung von Fehlern im Arbeitsspeicher wird sogenanntes \glqq Error Correcting Code\grqq(ECC)-RAM benötigt. Dieses RAM erkennt Fehler in Speicherzellen des Arbeitsspeichers, die aufsummiert die Fehlerrate des RAMs ergeben. Sofern dieses RAM nicht eingesetzt wird ist eine Fehlerkennung nicht genau möglich. Ein alternatives aber möglicherweise ungenaueres Verfahren wäre das Feststellen von fehlgeschlagenen Speicherreservierungen. Dieses Verfahren zählt jedoch Fehlschläge des virtuellen Speicher und nicht des phyischen, was zu Messungenauigkeiten führen kann.
 Die Berechnung der Fehlerrate wäre wie folgt:\\
 
-
+\begin{minipage}{\linewidth}
 \(
 \displaystyle{E_{RAM}(t)=\frac{1}{N}{\sum\limits_{i_{w}=0}^{N-1} e_{ram}{(t-i_{w})}} }
 \) 
-\\
+\captionof{figure}{Formel der RAM-Error-Rate} 
+\end{minipage}
 
 \pagebreak
 
@@ -457,37 +475,43 @@ Die Berechnung der Fehlerrate wäre wie folgt:\\
 Utilization:\\
 Um die Netzwerk Utilization zu messen, werden die Bytes aufsummiert, die versendet sowie empfangen werden und daraus der Mittelwert berechnet.\\
 
+\begin{minipage}{\linewidth}
 \(
 \displaystyle{U_{Net}(t)=\frac{1}{N}{\sum\limits_{i_{w}=0}^{N-1} l_{net}{(t-i_{w})}} }
 \) 
-\\
+\captionof{figure}{Formel der Netzwerk-Utilization} 
+\end{minipage}
 
 Saturation:\\
 Die Netzwerk Saturation kann nur dann sinnvoll gemessen werden, wenn das Bandbreitenlimit bekannt ist. Sofern dies der Fall ist kann die Saturation berechnet werden, indem die versendeten bzw. empfangenen Bytes(u\_bytes) durch das Bandbreitenlimit geteilt wird. \\
 
-
+\begin{minipage}{\linewidth}
 \(
 \displaystyle{s_{net}=u\_bytes/bandwidth}
 \) 
-\\
+\captionof{figure}{Formel der Netzwerk-Saturation} 
+\end{minipage}
 
 Über diese wird wiederum der Mittelwert gebildet.
 
+\begin{minipage}{\linewidth}
 \(
 \displaystyle{S_{Net}(t)=\frac{1}{N}{\sum\limits_{i_{w}=0}^{N-1} s_{net}{(t-i_{w})}} }
 \) 
-\\
+\captionof{figure}{Formel der Netzwerk-Saturation Moving-Average} 
+\end{minipage}
 
 Sofern keine Information zum Limit zur Verfügung stehen, können die verworfenen Pakete (dropped Packages) als Indikator dafür dienen, wie hoch die Saturation ist.\\
 
 Error-Rate:\\
 Zum Ermitteln der Error-Rate des Netzwerks werden Sende- und Empfangs-Fehler aufsummiert, welche die Error-Rate bilden.
 
-
+\begin{minipage}{\linewidth}
 \(
 \displaystyle{E_{Net}(t)=\frac{1}{N}{\sum\limits_{i_{w}=0}^{N-1} e_{net}{(t-i_{w})}} }
 \) 
-\\
+\captionof{figure}{Formel der Netzwerk-Error-Rate} 
+\end{minipage}
 
 \end{description}
 \subsection{Tools}
@@ -532,14 +556,14 @@ Die Metriken werden über einen definierten Zeitraum gesammelt, sodass daraus Ze
 
 \begin{minipage}{\linewidth}
   \includegraphics[scale=.3]{img/Datenaggregation/GrafAggregationNew.png}
-    \captionof{figure}{Bildrepräsentation der Zeitreihe(eigene Grafik)}
+    \captionof{figure}{Bildrepräsentation der Zeitreihe}
 \end{minipage} \\
 
 Wenn man diese Zeitreihenmetriken in ein Koordinatensystem überträgt, wäre die X-Achse eines Grafen der Zeitwert zwischen Null und maximalem aufgezeichnetem Zeitwert und die Y-Achse die höhe des Metrikwertes. \\
 
 \begin{minipage}{\linewidth}
   \includegraphics[scale=.3]{img/Datenaggregation/GrafZeitNew.png} 
-    \captionof{figure}{Bildrepräsentation der Zeitreihe als Graf(eigene Grafik)}
+    \captionof{figure}{Bildrepräsentation der Zeitreihe als Graf}
 \end{minipage} \\
 
 
@@ -547,14 +571,14 @@ Anhand der Höhe des Y-Wertes des Grafen lassen sich Regeln definieren und somit
 
 \begin{minipage}{\linewidth}
   \includegraphics[scale=.3]{img/Datenaggregation/GrafYWertNew.png} 
-    \captionof{figure}{Bildrepräsentation des Graf mit Y-Achsen Grenzwert(eigene Grafik)}
+    \captionof{figure}{Bildrepräsentation des Graf mit Y-Achsen Grenzwert}
 \end{minipage}\\
 
 Über den Zeitwert (X-Achse) wird eine Dauer definiert, die der Zustand der Grenzwertüberschreitung bestehen darf.\\
 
 \begin{minipage}{\linewidth}
   \includegraphics[scale=.3]{img/Datenaggregation/GrafAlarmNew.png} 
-    \captionof{figure}{Bildrepräsentation der das Graf mit überschrittenem X-Achsen Grenzwert(eigene Grafik)}
+    \captionof{figure}{Bildrepräsentation der das Graf mit überschrittenem X-Achsen Grenzwert}
 \end{minipage}\\
 
 Wenn der Grenzwert über die definierte Zeitdauer überschritten wurde wird ein Alarm ausgelöst.\\
@@ -569,7 +593,7 @@ Im nachfolgenden Graf wird der Ablauf der Aggregation aufeinander aufbauend visu
 \begin{minipage}{\linewidth}
   \centering
   \scalebox{.8}{\input{DatenaggregationFlow.pdf_tex}} 
-  \captionof{figure}{Graf des Ablaufs der Datenaggregation(eigene Grafik)}
+  \captionof{figure}{Graf des Ablaufs der Datenaggregation}
 \end{minipage}
 
 
@@ -601,9 +625,12 @@ Zur logischen Auswertung werden die von Prometheus aggregierten Daten verwendet.
 Der eingesetzte \glqq Moving-Average\grqq-Filter sieht folgendermaßen aus:\\
 
 \begin{Huge}
+
 \(
 \displaystyle{m^{(n)}_{MA}(t) = \frac{1}{n}{\sum\limits_{i=0}^{{n-1}} x_{(t-i)}} }
 \)\\
+\captionof{figure}{Formel des \glqq Moving-Average\grqq-Filter}
+
 \end{Huge}
 
 Der Zeitraum von fünf Minuten wurde so gewählt, da bei einem längerem Zeitraum, von beispielsweise zehn Minuten, die beobachtete Menge an Metriken größer wird und so die Reaktionszeiten auf Leistungsschwankungen durch langsamer ansteigende Mittelwerte länger werden.
@@ -624,7 +651,7 @@ Für die Counter werden grüne Bereiche für unkritische Auslastung und rote Ber
 
 \begin{figure}[htbp]
 \includegraphics[scale=.8]{img/PercantageTransparent.png}
-\caption{Darstellung des Counters(eigene Grafik)}
+\caption{Darstellung des Counters}
 \end{figure}
 
 
@@ -641,7 +668,7 @@ Das System, welches die automatisierten Aktionen möglich macht, besteht aus meh
 \begin{figure}[htbp]
   \centering
   \scalebox{.6}{\input{Architektur.pdf_tex}}
-  \caption{Aufbau der Architektur (eigene Zeichnung)}
+  \caption{Aufbau der Architektur}
 \end{figure}
 
 Die Architektur, welche in diesem Projekt entwickelt wurde, besteht aus sechs Komponenten. Vier davon, (Grafana, Prometheus Server und Alertmanager sowie der Alert-Action-Manager) wurden im Laufe des Projekts erstellt sowie konfiguriert bzw. entwickelt. Zwei davon, das Kubernetes-Cluster, auf dem dieses Projekt basiert, sowie Slack, bestanden schon vorher und wurden in das Projekt miteinbezogen. Die vier für Komponenten Grafana, Prometheus Server und Alertmanager sowie der Alert-Action-Manager laufen selbst als Deployment im Kubernetes-Cluster.\\
@@ -705,7 +732,7 @@ Der Ablauf des Konzepts ist eine Kette von Aktionen, bei der ein Schritt den nä
 
 \begin{center}
   \includegraphics[width=0.42\textwidth,height=1.32\textwidth]{img/AAMtextless.PNG}
-  \caption{Ablaufgraph(eigene Grafik)}
+  \caption{Ablaufgraph}
 \end{center}
 
 \end{wrapfigure}
@@ -813,9 +840,9 @@ Dieser sieht für diese Regel schlussendlich folgendermaßen aus:\\
 Die Variable \glqq deployment\_name\grqq enthält den analysierten Deploymentname, die Variable actualCount enthält die Anzahl der aktuellen Deployments.
 Für das Hochskalieren wird wie im Beispiel gezeigt die Replicaanzahl +1 verwendet, zum Herunterskalieren die Replicaanzahl -1.
 
-\begin{lstlisting}
+\begin{verbatim}
 kubectl scale deployment deployment_name --replicas= actualCount+1
-\end{lstlisting}
+\end{verbatim}
 
 \subsubsection{Anomalie-Detection}
 
@@ -831,9 +858,10 @@ Nach Auslösen des \glqq PodAnomalyBehaviour\grqq Alerts wird die zugehörige Ak
 
 Für die Aktion wird der zugehörige Deploymentname des anormalen Pods benötigt. Dieser wird aus dem im Alert mitgesendeten Podnamen analysiert. Sobald der Name des Deployments bekannt ist, wird die zugehörige kubectl-Aktion ausgeführt. Diese nennt sich \glqq rolling restart\grqq und sorgt dafür, dass ein Deployment unterbrechungsfrei neu gestartet wird, was den Vorteil bietet, für den Rest des Clusters sowie auch für Nutzer nicht bemerkbar zu sein. Dies bedeutet, dass zuerst ein neues Deployment gestartet wird und sobald dieses arbeitsbereit ist, das alte Deployment heruntergefahren wird. Die resultierende Aktion sieht folgendermaßen aus:\\
 Die Variable \glqq deployment\_name\grqq enthält den analysierten Deploymentname.
-\begin{lstlisting}
+
+\begin{verbatim}
 kubectl rollout restart deployment deployment_name
-\end{lstlisting}
+\end{verbatim}
 
 \subsection{Grenzwerte}
 
@@ -842,11 +870,8 @@ Die Grenzwerte haben einen Abstand von 50\% Auslastung und bilden somit eine Hys
 
 \begin{figure}[htbp]
   \includegraphics{Hysterese.png}
-  \caption{Hysteresekurve der Grenzwerte(eigene Grafik)}
+  \caption{Hysteresekurve der Grenzwerte}
 \end{figure}
-
-
-
 \pagebreak
 \section{Evaluation}
 
@@ -895,11 +920,11 @@ Die maximale Netzlast ist in den Messungen auf den Grenzwert von einem Megabit f
 
 \begin{minipage}{\linewidth}
 
-            \includegraphics[width=1.3\textwidth]{img/CPUAnomalie/RollingRestart.PNG}
+            \includegraphics[width=1\textwidth]{img/CPUAnomalie/RollingRestart.PNG}
             \includegraphics[width=.5\textwidth]{img/CPUAnomalie/Netzwerk.PNG}
             \includegraphics[scale=1,width=.8\textwidth,height=.14\textheight]{img/CPUAnomalie/Saturation.PNG}
   			\includegraphics[scale=1,width=.8\textwidth]{img/CPUAnomalie/Utilization.PNG}
-            \captionof{figure}{Abbildungen Testwerte Testfall 1 (eigene Grafiken)} 
+            \captionof{figure}{Abbildungen Testwerte Testfall 1 } 
 \end{minipage}
 
 Der Zustand eines Pods, bei dem eine hohe CPU-Last von mindestens 75\% besteht, die nicht durch eine Last von außen, das heißt durch eine hohe Netzwerklast, begründet werden kann, ist der Zustand der CPU-Anomalie. Wenn dieser Zustand erreicht ist, soll das System einen \glqq Rolling-Restart\grqq ausführen und somit das anormale Verhalten beenden.\\
@@ -916,7 +941,7 @@ Die Verläufe der Grafen bestätigen, dass die Anomalie korrekt erkannt wurde. B
             \includegraphics[width=.5\textwidth]{img/RAMAnomalie/Netzwerk.PNG}
             \includegraphics[scale=1,width=.5\textwidth,height=.14\textheight]{img/RAMAnomalie/RAMSaturation.PNG}
   			\includegraphics[scale=1,width=.5\textwidth]{img/RAMAnomalie/RAMUtilization.PNG} 
-            \captionof{figure}{Abbildungen Testwerte Testfall 2 (eigene Grafiken)}
+            \captionof{figure}{Abbildungen Testwerte Testfall 2}
 \end{minipage}
 
 Äquivalent zur CPU-Anomalie wird der Zustand eines Pods als anormal angesehen, wenn eine RAM-Last von mindestens 75\% über den Zeitraum von mindestens einer Minute besteht, die nicht durch eine hohe Netzwerklast begründet wird. Wenn dieser Zustand  der RAM-Anomalie erfüllt ist, soll ein \glqq Rolling-Restart\grqq durchgeführt werden, um die Situation zu entschärfen.\\
@@ -936,7 +961,7 @@ Der \glqq Rolling-Restart\grqq -Counter wurde um eins nach oben gezählt, was na
   			\includegraphics[scale=1,width=.5\textwidth]{img/RAMCPUAnomalie/CPUUtilization.PNG}
   			\includegraphics[scale=1,width=.5\textwidth]{img/RAMCPUAnomalie/RAMUtilization.PNG}
   			\includegraphics[scale=1,width=.5\textwidth]{img/RAMCPUAnomalie/Netzwerk.PNG}
-            \captionof{figure}{Abbildungen Testwerte Testfall 3 (eigene Grafiken)}
+            \captionof{figure}{Abbildungen Testwerte Testfall 3}
 \end{minipage}
 
 Bei einer zeitgleichen Grenzüberschreitung der RAM- und CPU-Utilization und -Saturation von mindestens 75\% liegt ebenfalls ein anormaler Zustand vor. Der Zustand muss eine Minute anhalten und darf auch ebenfalls nur einmal als\\ Anomalie erkannt werden. Der \glqq Rolling-Restart\grqq wird durchgeführt, um die Situation zu entschärfen.\\
@@ -961,7 +986,7 @@ Die Grafen belegen die korrekte Funktion und Wirkung der Anomalie-Detection bei 
             \includegraphics[width=.5\textwidth]{img/CPUSkalierung/ReplicaCount.PNG}
             \includegraphics[scale=1,width=.5\textwidth,height=.14\textheight]{img/CPUSkalierung/Netzwerk.PNG}
   			\includegraphics[scale=1,width=.5\textwidth]{img/CPUSkalierung/CPUSaturation.PNG}
-            \captionof{figure}{Abbildungen Testwerte Testfall 4 (eigene Grafiken)}
+            \captionof{figure}{Abbildungen Testwerte Testfall 4}
 \end{minipage}
 
 Der Zustand eines Deployments, bei dem eine hohe CPU-Last von mindestens 75\% für den Zeitraum von mindestens einer Minute anliegt, ist der Zustand, in dem Ressourcen hochskaliert werden und somit mehr Ressourcen bereitgestellt werden sollen. Die Ressourcen werden durch das Skalieren der Pods eines Deployments bereitgestellt. Diese Last muss durch eine hohe Netzwerklast von mindestens einem Megabit pro Sekunde von außen begründet werden sein.
@@ -976,7 +1001,7 @@ Die Grafen belegen die korrekte Funktion der Skalierung eines Deployments bei ho
             \includegraphics[scale=1,width=.5\textwidth,height=.14\textheight]{img/RAMSkalierung/Netzwerk.PNG}
   			\includegraphics[scale=1,width=.5\textwidth]{img/RAMSkalierung/RAMSaturation.PNG}
 
-            \captionof{figure}{Abbildungen Testwerte Testfall 5 (eigene Grafiken)}
+            \captionof{figure}{Abbildungen Testwerte Testfall 5}
 \end{minipage}
 
 Ein Deployment, dass eine hohe RAM-Last von mindestens 75\% bei einer zeitgleich hohen Netzwerklast von mindestens einem Megabit über den Zeitraum mindestens einer Minute aufweist, benötigt zusätzliche Ressourcen. Diese Ressourcen sollen, wie bei der Skalierung bei hoher CPU-Last auch, durch das Bereitstellen neuer Pods geliefert werden.\\
@@ -993,7 +1018,7 @@ Der RAM-Saturation Graf hat über den Zeitraum von über eine Minute einen grenz
             \includegraphics[scale=1,width=.5\textwidth,height=.14\textheight]{img/RAMCPUSkalierung/RAMSaturation.PNG}
   			\includegraphics[scale=1,width=.5\textwidth]{img/RAMCPUSkalierung/CPUUtilization.PNG}
   			\includegraphics[scale=1,width=.5\textwidth]{img/RAMCPUSkalierung/Netzwerk.PNG}
-            \captionof{figure}{Abbildungen Testwerte Testfall 6 (eigene Grafiken)}
+            \captionof{figure}{Abbildungen Testwerte Testfall 6}
 \end{minipage}
 
 Für den Fall, dass CPU- sowie RAM-Last den Grenzwert von 75\% für mindestens eine Minute lang überschreiten, während eine Netzwerklast von mindestens einem Megabit pro Sekunde für das Deployment anliegt, sollen ebenso die Ressourcen des Deployments um einen Pod hochskaliert werden.\\
@@ -1015,7 +1040,7 @@ Die gemessenen Grafen bestätigen, dass die Skalierung auch korrekt funktioniert
             \includegraphics[width=.5\textwidth]{img/Herunterskalieren/ReplicaCount.PNG}
             \includegraphics[scale=1,width=.5\textwidth,height=.14\textheight]{img/Herunterskalieren/RAMSaturation.PNG}
   			\includegraphics[scale=1,width=.5\textwidth]{img/Herunterskalieren/CPUSaturation.PNG}			
-            \captionof{figure}{Abbildungen Testwerte Testfall 7 (eigene Grafiken)}
+            \captionof{figure}{Abbildungen Testwerte Testfall 7}
 \end{minipage}
 
 Im Fall niedriger Ressourcenlast eines Deployments von 25\% CPU-Utilization und RAM-Saturation oder geringer über die Dauer von mindestens einer Minute, soll die Podanzahl des betreffenden Deployments um eins verringert werden.\\
@@ -1079,7 +1104,6 @@ Dieses Projekt wird in der Zeit nach dieser Arbeit weiter betrieben und Teil ein
 \newpage
 \bibliography{Literatur}
 
-\newpage
-\listoffigures
+
 
 \end{document}

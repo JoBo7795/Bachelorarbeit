@@ -1,23 +1,36 @@
 \babel@toc {ngerman}{}
-\contentsline {figure}{\numberline {1}{\ignorespaces einfache Darstellung eines Kubernetes-Cluster (eigene Zeichnung)}}{4}{figure.1}%
-\contentsline {figure}{\numberline {2}{\ignorespaces Alertmanager Aufbau (eigene Zeichnung)}}{8}{figure.2}%
+\contentsline {figure}{\numberline {1}{\ignorespaces einfache Darstellung eines Kubernetes-Cluster}}{4}{figure.1}%
+\contentsline {figure}{\numberline {2}{\ignorespaces Alertmanager Aufbau}}{8}{figure.2}%
 \contentsline {figure}{\numberline {3}{\ignorespaces Safe-Zone and Resource Scaling Thresholds (from Paper ACCRS: autonomic based cloud computing resource scaling )}}{13}{figure.3}%
 \contentsline {figure}{\numberline {4}{\ignorespaces Darstellung der Vorgehensweise bei Anwendung der USE-Methode ~\cite {.20200810T18:06:18.000Z}}}{16}{figure.4}%
-\contentsline {figure}{\numberline {5}{\ignorespaces Bildrepräsentation der Aggregation(Quelle Draw.io)}}{21}{figure.5}%
-\contentsline {figure}{\numberline {6}{\ignorespaces Bildrepräsentation der Zeitreihe(eigene Grafik)}}{22}{figure.6}%
-\contentsline {figure}{\numberline {7}{\ignorespaces Bildrepräsentation der Zeitreihe als Graf(eigene Grafik)}}{22}{figure.7}%
-\contentsline {figure}{\numberline {8}{\ignorespaces Bildrepräsentation des Graf mit Y-Achsen Grenzwert(eigene Grafik)}}{22}{figure.8}%
-\contentsline {figure}{\numberline {9}{\ignorespaces Bildrepräsentation der das Graf mit überschrittenem X-Achsen Grenzwert(eigene Grafik)}}{22}{figure.9}%
-\contentsline {figure}{\numberline {10}{\ignorespaces Bildrepräsentation des Alarms(Quelle Draw.io)}}{23}{figure.10}%
-\contentsline {figure}{\numberline {11}{\ignorespaces Graf des Ablaufs der Datenaggregation(eigene Grafik)}}{24}{figure.11}%
-\contentsline {figure}{\numberline {12}{\ignorespaces Darstellung des Counters(eigene Grafik)}}{27}{figure.12}%
-\contentsline {figure}{\numberline {13}{\ignorespaces Aufbau der Architektur (eigene Zeichnung)}}{28}{figure.13}%
-\contentsline {figure}{\numberline {14}{\ignorespaces Ablaufgraph(eigene Grafik)}}{32}{figure.14}%
-\contentsline {figure}{\numberline {15}{\ignorespaces Hysteresekurve der Grenzwerte(eigene Grafik)}}{36}{figure.15}%
-\contentsline {figure}{\numberline {16}{\ignorespaces Abbildungen Testwerte Testfall 1 (eigene Grafiken)}}{38}{figure.16}%
-\contentsline {figure}{\numberline {17}{\ignorespaces Abbildungen Testwerte Testfall 2 (eigene Grafiken)}}{40}{figure.17}%
-\contentsline {figure}{\numberline {18}{\ignorespaces Abbildungen Testwerte Testfall 3 (eigene Grafiken)}}{41}{figure.18}%
-\contentsline {figure}{\numberline {19}{\ignorespaces Abbildungen Testwerte Testfall 4 (eigene Grafiken)}}{43}{figure.19}%
-\contentsline {figure}{\numberline {20}{\ignorespaces Abbildungen Testwerte Testfall 5 (eigene Grafiken)}}{44}{figure.20}%
-\contentsline {figure}{\numberline {21}{\ignorespaces Abbildungen Testwerte Testfall 6 (eigene Grafiken)}}{45}{figure.21}%
-\contentsline {figure}{\numberline {22}{\ignorespaces Abbildungen Testwerte Testfall 7 (eigene Grafiken)}}{46}{figure.22}%
+\contentsline {figure}{\numberline {5}{\ignorespaces Formel der CPU-Utilization}}{17}{figure.5}%
+\contentsline {figure}{\numberline {6}{\ignorespaces Formel der CPU-Saturation}}{17}{figure.6}%
+\contentsline {figure}{\numberline {7}{\ignorespaces Formel der CPU-Saturation Moving-Average}}{17}{figure.7}%
+\contentsline {figure}{\numberline {8}{\ignorespaces Formel der RAM-Utilization}}{18}{figure.8}%
+\contentsline {figure}{\numberline {9}{\ignorespaces Formel der RAM-Utilization Moving-Average}}{18}{figure.9}%
+\contentsline {figure}{\numberline {10}{\ignorespaces Formel der RAM-Saturation}}{19}{figure.10}%
+\contentsline {figure}{\numberline {11}{\ignorespaces Formel der RAM-Saturation Moving-Average}}{19}{figure.11}%
+\contentsline {figure}{\numberline {12}{\ignorespaces Formel der RAM-Error-Rate}}{19}{figure.12}%
+\contentsline {figure}{\numberline {13}{\ignorespaces Formel der Netzwerk-Utilization}}{20}{figure.13}%
+\contentsline {figure}{\numberline {14}{\ignorespaces Formel der Netzwerk-Saturation}}{20}{figure.14}%
+\contentsline {figure}{\numberline {15}{\ignorespaces Formel der Netzwerk-Saturation Moving-Average}}{20}{figure.15}%
+\contentsline {figure}{\numberline {16}{\ignorespaces Formel der Netzwerk-Error-Rate}}{20}{figure.16}%
+\contentsline {figure}{\numberline {17}{\ignorespaces Bildrepräsentation der Aggregation(Quelle Draw.io)}}{21}{figure.17}%
+\contentsline {figure}{\numberline {18}{\ignorespaces Bildrepräsentation der Zeitreihe}}{22}{figure.18}%
+\contentsline {figure}{\numberline {19}{\ignorespaces Bildrepräsentation der Zeitreihe als Graf}}{22}{figure.19}%
+\contentsline {figure}{\numberline {20}{\ignorespaces Bildrepräsentation des Graf mit Y-Achsen Grenzwert}}{22}{figure.20}%
+\contentsline {figure}{\numberline {21}{\ignorespaces Bildrepräsentation der das Graf mit überschrittenem X-Achsen Grenzwert}}{23}{figure.21}%
+\contentsline {figure}{\numberline {22}{\ignorespaces Bildrepräsentation des Alarms(Quelle Draw.io)}}{23}{figure.22}%
+\contentsline {figure}{\numberline {23}{\ignorespaces Graf des Ablaufs der Datenaggregation}}{24}{figure.23}%
+\contentsline {figure}{\numberline {24}{\ignorespaces Formel des \glqq Moving-Average\grqq -Filter}}{26}{figure.24}%
+\contentsline {figure}{\numberline {25}{\ignorespaces Darstellung des Counters}}{27}{figure.25}%
+\contentsline {figure}{\numberline {26}{\ignorespaces Aufbau der Architektur}}{28}{figure.26}%
+\contentsline {figure}{\numberline {27}{\ignorespaces Ablaufgraph}}{32}{figure.27}%
+\contentsline {figure}{\numberline {28}{\ignorespaces Hysteresekurve der Grenzwerte}}{36}{figure.28}%
+\contentsline {figure}{\numberline {29}{\ignorespaces Abbildungen Testwerte Testfall 1 }}{38}{figure.29}%
+\contentsline {figure}{\numberline {30}{\ignorespaces Abbildungen Testwerte Testfall 2}}{40}{figure.30}%
+\contentsline {figure}{\numberline {31}{\ignorespaces Abbildungen Testwerte Testfall 3}}{41}{figure.31}%
+\contentsline {figure}{\numberline {32}{\ignorespaces Abbildungen Testwerte Testfall 4}}{43}{figure.32}%
+\contentsline {figure}{\numberline {33}{\ignorespaces Abbildungen Testwerte Testfall 5}}{44}{figure.33}%
+\contentsline {figure}{\numberline {34}{\ignorespaces Abbildungen Testwerte Testfall 6}}{45}{figure.34}%
+\contentsline {figure}{\numberline {35}{\ignorespaces Abbildungen Testwerte Testfall 7}}{46}{figure.35}%
