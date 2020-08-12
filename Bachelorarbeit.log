@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.21 (MiKTeX 20.6.29) (preloaded format=pdflatex 2020.7.2)  12 AUG 2020 22:26
+This is pdfTeX, Version 3.14159265-2.6-1.40.21 (MiKTeX 20.6.29) (preloaded format=pdflatex 2020.7.2)  13 AUG 2020 01:32
 entering extended mode
 **./Bachelorarbeit.tex
 (Bachelorarbeit.tex
@@ -895,7 +895,23 @@ kend-pdfmode.def"
 File: l3backend-pdfmode.def 2020-06-29 L3 backend support: PDF mode
 \l__kernel_color_stack_int=\count303
 \l__pdf_internal_box=\box86
-) (Bachelorarbeit.aux)
+) (Bachelorarbeit.aux
+
+LaTeX Warning: Label `fig:Bild1' multiply defined.
+
+
+LaTeX Warning: Label `fig:Bild1' multiply defined.
+
+
+LaTeX Warning: Label `fig:Bild1' multiply defined.
+
+
+LaTeX Warning: Label `fig:Bild1' multiply defined.
+
+
+LaTeX Warning: Label `fig:Bild1' multiply defined.
+
+)
 \openout1 = `Bachelorarbeit.aux'.
 
 LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 39.
@@ -1494,203 +1510,188 @@ Underfull \hbox (badness 10000) in paragraph at lines 504--505
 
  []
 
-[20]
-Underfull \hbox (badness 10000) in paragraph at lines 547--549
+[20] [21]
+Underfull \hbox (badness 10000) in paragraph at lines 548--550
 
  []
 
-<img/Datenaggregation/LupeNew.png, id=467, 418.56375pt x 234.1247pt>
+
+Underfull \hbox (badness 2158) in paragraph at lines 554--555
+\T1/cmr/m/n/10 Aus die-sen Zeitrei-hen-me-tri-ken kann
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 554--555
+
+ []
+
+<img/Datenaggregation/LupeNew.png, id=471, 418.56375pt x 234.1247pt>
 File: img/Datenaggregation/LupeNew.png Graphic file (type png)
 <use img/Datenaggregation/LupeNew.png>
 Package pdftex.def Info: img/Datenaggregation/LupeNew.png  used on input line 5
-51.
+60.
 (pdftex.def)             Requested size: 125.57008pt x 70.23795pt.
 
-Overfull \hbox (9.99756pt too wide) in paragraph at lines 550--554
-[]$[]$ 
+Underfull \hbox (badness 10000) in paragraph at lines 561--561
+[][][]\T1/cmr/m/n/10 Bildrepräsentation
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 550--554
-
+Underfull \hbox (badness 10000) in paragraph at lines 561--561
+\T1/cmr/m/n/10 des Alarms (Quel-le
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 555--556
+Underfull \hbox (badness 10000) in paragraph at lines 569--570
 
  []
 
-[21 <./img/Datenaggregation/LupeNew.png>]
-<img/Datenaggregation/GrafAggregationNew.png, id=473, 236.38312pt x 241.65282pt
+<img/Datenaggregation/GrafAggregationNew.png, id=472, 236.38312pt x 241.65282pt
 >
 File: img/Datenaggregation/GrafAggregationNew.png Graphic file (type png)
 <use img/Datenaggregation/GrafAggregationNew.png>
 Package pdftex.def Info: img/Datenaggregation/GrafAggregationNew.png  used on i
-nput line 558.
+nput line 575.
 (pdftex.def)             Requested size: 70.91548pt x 72.4964pt.
 
-Overfull \hbox (9.99756pt too wide) in paragraph at lines 557--561
-[]$[]$ 
+Underfull \hbox (badness 10000) in paragraph at lines 576--576
+[][][]\T1/cmr/m/n/10 Bildrepräsentation der
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 557--561
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 562--563
-
- []
-
-<img/Datenaggregation/GrafZeitNew.png, id=474, 281.55188pt x 233.37187pt>
-File: img/Datenaggregation/GrafZeitNew.png Graphic file (type png)
-<use img/Datenaggregation/GrafZeitNew.png>
-Package pdftex.def Info: img/Datenaggregation/GrafZeitNew.png  used on input li
-ne 565.
-(pdftex.def)             Requested size: 84.4662pt x 70.01208pt.
-
-Overfull \hbox (9.99756pt too wide) in paragraph at lines 564--568
-[]$[]$ 
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 564--568
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 570--571
-
- []
-
-<img/Datenaggregation/GrafYWertNew.png, id=475, 309.40594pt x 225.09094pt>
-File: img/Datenaggregation/GrafYWertNew.png Graphic file (type png)
-<use img/Datenaggregation/GrafYWertNew.png>
-Package pdftex.def Info: img/Datenaggregation/GrafYWertNew.png  used on input l
-ine 573.
-(pdftex.def)             Requested size: 92.8225pt x 67.52779pt.
-
-Overfull \hbox (9.99756pt too wide) in paragraph at lines 572--576
-[]$[]$ 
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 572--576
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 577--578
-
- []
-
-<img/Datenaggregation/GrafAlarmNew.png, id=476, 286.82156pt x 235.63031pt>
-File: img/Datenaggregation/GrafAlarmNew.png Graphic file (type png)
-<use img/Datenaggregation/GrafAlarmNew.png>
-Package pdftex.def Info: img/Datenaggregation/GrafAlarmNew.png  used on input l
-ine 580.
-(pdftex.def)             Requested size: 86.04712pt x 70.68964pt.
-
-Overfull \hbox (9.99756pt too wide) in paragraph at lines 579--583
-[]$[]$ 
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 579--583
-
- []
-
-[22 <./img/Datenaggregation/GrafAggregationNew.png> <./img/Datenaggregation/Gra
-fZeitNew.png> <./img/Datenaggregation/GrafYWertNew.png>]
 Underfull \hbox (badness 10000) in paragraph at lines 584--585
 
  []
 
-<img/Datenaggregation/AlarmNew.png, id=484, 373.395pt x 280.79906pt>
+<img/Datenaggregation/GrafZeitNew.png, id=473, 281.55188pt x 233.37187pt>
+File: img/Datenaggregation/GrafZeitNew.png Graphic file (type png)
+<use img/Datenaggregation/GrafZeitNew.png>
+Package pdftex.def Info: img/Datenaggregation/GrafZeitNew.png  used on input li
+ne 590.
+(pdftex.def)             Requested size: 84.4662pt x 70.01208pt.
+
+Underfull \hbox (badness 10000) in paragraph at lines 591--591
+[][][]\T1/cmr/m/n/10 Bildrepräsentation der
+ []
+
+
+Underfull \hbox (badness 2951) in paragraph at lines 599--600
+[]\T1/cmr/m/n/10 Über den Zeit-wert (X-Achse) wird
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 599--600
+
+ []
+
+<img/Datenaggregation/GrafYWertNew.png, id=474, 309.40594pt x 225.09094pt>
+File: img/Datenaggregation/GrafYWertNew.png Graphic file (type png)
+<use img/Datenaggregation/GrafYWertNew.png>
+Package pdftex.def Info: img/Datenaggregation/GrafYWertNew.png  used on input l
+ine 605.
+(pdftex.def)             Requested size: 92.8225pt x 67.52779pt.
+
+Underfull \hbox (badness 10000) in paragraph at lines 614--615
+
+ []
+
+<img/Datenaggregation/GrafAlarmNew.png, id=475, 286.82156pt x 235.63031pt>
+File: img/Datenaggregation/GrafAlarmNew.png Graphic file (type png)
+<use img/Datenaggregation/GrafAlarmNew.png>
+Package pdftex.def Info: img/Datenaggregation/GrafAlarmNew.png  used on input l
+ine 620.
+(pdftex.def)             Requested size: 86.04712pt x 70.68964pt.
+
+Underfull \hbox (badness 10000) in paragraph at lines 621--621
+[][][]\T1/cmr/m/n/10 Bildrepräsentation des
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 621--621
+\T1/cmr/m/n/10 Graf mit Y-Achsen
+ []
+
+<img/Datenaggregation/AlarmNew.png, id=476, 373.395pt x 280.79906pt>
 File: img/Datenaggregation/AlarmNew.png Graphic file (type png)
 <use img/Datenaggregation/AlarmNew.png>
 Package pdftex.def Info: img/Datenaggregation/AlarmNew.png  used on input line 
-587.
+636.
 (pdftex.def)             Requested size: 112.01936pt x 84.24036pt.
 
-Overfull \hbox (9.99756pt too wide) in paragraph at lines 586--590
-[]$[]$ 
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 586--590
-
+Underfull \hbox (badness 10000) in paragraph at lines 637--637
+[][][]\T1/cmr/m/n/10 Bildrepräsentation des
  []
 
 (DatenaggregationFlow.pdf_tex
-<DatenaggregationFlow (3).pdf, id=485, page=1, 313.0215pt x 876.27374pt>
+<DatenaggregationFlow (3).pdf, id=477, page=1, 313.0215pt x 876.27374pt>
 File: DatenaggregationFlow (3).pdf Graphic file (type pdf)
 <use DatenaggregationFlow (3).pdf, page 1>
 Package pdftex.def Info: DatenaggregationFlow (3).pdf , page1 used on input lin
 e 56.
 (pdftex.def)             Requested size: 313.02148pt x 876.32507pt.
-<DatenaggregationFlow (3).pdf, id=486, page=2, 313.0215pt x 876.27374pt>
+<DatenaggregationFlow (3).pdf, id=478, page=2, 313.0215pt x 876.27374pt>
 File: DatenaggregationFlow (3).pdf Graphic file (type pdf)
 <use DatenaggregationFlow (3).pdf, page 2>
 Package pdftex.def Info: DatenaggregationFlow (3).pdf , page2 used on input lin
 e 58.
 (pdftex.def)             Requested size: 313.02148pt x 876.32507pt.
-<DatenaggregationFlow (3).pdf, id=487, page=3, 313.0215pt x 876.27374pt>
+<DatenaggregationFlow (3).pdf, id=479, page=3, 313.0215pt x 876.27374pt>
 File: DatenaggregationFlow (3).pdf Graphic file (type pdf)
 <use DatenaggregationFlow (3).pdf, page 3>
 Package pdftex.def Info: DatenaggregationFlow (3).pdf , page3 used on input lin
 e 60.
 (pdftex.def)             Requested size: 313.02148pt x 876.32507pt.
-<DatenaggregationFlow (3).pdf, id=488, page=4, 313.0215pt x 876.27374pt>
+<DatenaggregationFlow (3).pdf, id=480, page=4, 313.0215pt x 876.27374pt>
 File: DatenaggregationFlow (3).pdf Graphic file (type pdf)
 <use DatenaggregationFlow (3).pdf, page 4>
 Package pdftex.def Info: DatenaggregationFlow (3).pdf , page4 used on input lin
 e 62.
 (pdftex.def)             Requested size: 313.02148pt x 876.32507pt.
-<DatenaggregationFlow (3).pdf, id=489, page=5, 313.0215pt x 876.27374pt>
+<DatenaggregationFlow (3).pdf, id=481, page=5, 313.0215pt x 876.27374pt>
 File: DatenaggregationFlow (3).pdf Graphic file (type pdf)
 <use DatenaggregationFlow (3).pdf, page 5>
 Package pdftex.def Info: DatenaggregationFlow (3).pdf , page5 used on input lin
 e 64.
 (pdftex.def)             Requested size: 313.02148pt x 876.32507pt.
-<DatenaggregationFlow (3).pdf, id=490, page=6, 313.0215pt x 876.27374pt>
+<DatenaggregationFlow (3).pdf, id=482, page=6, 313.0215pt x 876.27374pt>
 File: DatenaggregationFlow (3).pdf Graphic file (type pdf)
 <use DatenaggregationFlow (3).pdf, page 6>
 Package pdftex.def Info: DatenaggregationFlow (3).pdf , page6 used on input lin
 e 67.
 (pdftex.def)             Requested size: 313.02148pt x 876.32507pt.
-<DatenaggregationFlow (3).pdf, id=491, page=7, 313.0215pt x 876.27374pt>
+<DatenaggregationFlow (3).pdf, id=483, page=7, 313.0215pt x 876.27374pt>
 File: DatenaggregationFlow (3).pdf Graphic file (type pdf)
 <use DatenaggregationFlow (3).pdf, page 7>
 Package pdftex.def Info: DatenaggregationFlow (3).pdf , page7 used on input lin
 e 69.
 (pdftex.def)             Requested size: 313.02148pt x 876.32507pt.
-<DatenaggregationFlow (3).pdf, id=492, page=8, 313.0215pt x 876.27374pt>
+<DatenaggregationFlow (3).pdf, id=484, page=8, 313.0215pt x 876.27374pt>
 File: DatenaggregationFlow (3).pdf Graphic file (type pdf)
 <use DatenaggregationFlow (3).pdf, page 8>
 Package pdftex.def Info: DatenaggregationFlow (3).pdf , page8 used on input lin
 e 72.
 (pdftex.def)             Requested size: 313.02148pt x 876.32507pt.
-<DatenaggregationFlow (3).pdf, id=493, page=9, 313.0215pt x 876.27374pt>
+<DatenaggregationFlow (3).pdf, id=485, page=9, 313.0215pt x 876.27374pt>
 File: DatenaggregationFlow (3).pdf Graphic file (type pdf)
 <use DatenaggregationFlow (3).pdf, page 9>
 Package pdftex.def Info: DatenaggregationFlow (3).pdf , page9 used on input lin
 e 76.
 (pdftex.def)             Requested size: 313.02148pt x 876.32507pt.
-<DatenaggregationFlow (3).pdf, id=494, page=10, 313.0215pt x 876.27374pt>
+<DatenaggregationFlow (3).pdf, id=486, page=10, 313.0215pt x 876.27374pt>
 File: DatenaggregationFlow (3).pdf Graphic file (type pdf)
 <use DatenaggregationFlow (3).pdf, page 10>
 Package pdftex.def Info: DatenaggregationFlow (3).pdf , page10 used on input li
 ne 79.
 (pdftex.def)             Requested size: 313.02148pt x 876.32507pt.
 )
-Overfull \hbox (9.99756pt too wide) in paragraph at lines 593--598
+Overfull \hbox (9.99756pt too wide) in paragraph at lines 644--649
 []$[]$ 
  []
 
-[23 <./img/Datenaggregation/GrafAlarmNew.png> <./img/Datenaggregation/AlarmNew.
-png>]
+[22 <./img/Datenaggregation/LupeNew.png> <./img/Datenaggregation/GrafAggregatio
+nNew.png> <./img/Datenaggregation/GrafZeitNew.png>] [23 <./img/Datenaggregation
+/GrafYWertNew.png> <./img/Datenaggregation/GrafAlarmNew.png> <./img/Datenaggreg
+ation/AlarmNew.png>]
 Overfull \vbox (183.62256pt too high) has occurred while \output is active []
 
 
@@ -1731,17 +1732,17 @@ multiple pdfs with page group included in a single page
 pdfTeX warning: pdflatex (file ./DatenaggregationFlow (3).pdf): PDF inclusion: 
 multiple pdfs with page group included in a single page
 >]
-Underfull \hbox (badness 10000) in paragraph at lines 603--608
+Underfull \hbox (badness 10000) in paragraph at lines 654--659
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 623--626
+Underfull \hbox (badness 10000) in paragraph at lines 674--677
 
  []
 
 [25]
-Underfull \hbox (badness 10000) in paragraph at lines 629--632
+Underfull \hbox (badness 10000) in paragraph at lines 680--683
 
  []
 
@@ -1749,11 +1750,11 @@ Underfull \hbox (badness 10000) in paragraph at lines 629--632
 <img/PercantageTransparent.png, id=544, 383.18156pt x 259.7203pt>
 File: img/PercantageTransparent.png Graphic file (type png)
 <use img/PercantageTransparent.png>
-Package pdftex.def Info: img/PercantageTransparent.png  used on input line 653.
+Package pdftex.def Info: img/PercantageTransparent.png  used on input line 704.
 
 (pdftex.def)             Requested size: 306.54565pt x 207.77652pt.
  [27 <./img/PercantageTransparent.png>]
-Underfull \hbox (badness 10000) in paragraph at lines 666--667
+Underfull \hbox (badness 10000) in paragraph at lines 717--718
 
  []
 
@@ -1814,12 +1815,12 @@ File: Architektur.pdf Graphic file (type pdf)
 Package pdftex.def Info: Architektur.pdf , page11 used on input line 78.
 (pdftex.def)             Requested size: 761.09343pt x 451.70016pt.
 )
-Overfull \hbox (83.21823pt too wide) in paragraph at lines 670--671
+Overfull \hbox (83.21823pt too wide) in paragraph at lines 721--722
  [][] 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 674--676
+Underfull \hbox (badness 10000) in paragraph at lines 725--727
 
  []
 
@@ -1864,27 +1865,27 @@ pdfTeX warning: pdflatex (file ./Architektur.pdf): PDF inclusion: multiple pdfs
 pdfTeX warning: pdflatex (file ./Architektur.pdf): PDF inclusion: multiple pdfs
  with page group included in a single page
 >]
-Underfull \hbox (badness 10000) in paragraph at lines 696--697
+Underfull \hbox (badness 10000) in paragraph at lines 747--748
 
  []
 
 [29]
-Underfull \hbox (badness 10000) in paragraph at lines 703--704
+Underfull \hbox (badness 10000) in paragraph at lines 754--755
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 713--714
+Underfull \hbox (badness 10000) in paragraph at lines 764--765
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 722--726
+Underfull \hbox (badness 10000) in paragraph at lines 773--777
 
  []
 
 [30]
-Underfull \hbox (badness 10000) in paragraph at lines 727--728
+Underfull \hbox (badness 10000) in paragraph at lines 778--779
 
  []
 
@@ -1892,113 +1893,113 @@ Underfull \hbox (badness 10000) in paragraph at lines 727--728
 <img/AAMtextless.PNG, id=597, 260.47313pt x 919.93687pt>
 File: img/AAMtextless.PNG Graphic file (type png)
 <use img/AAMtextless.PNG>
-Package pdftex.def Info: img/AAMtextless.PNG  used on input line 734.
+Package pdftex.def Info: img/AAMtextless.PNG  used on input line 785.
 (pdftex.def)             Requested size: 156.84547pt x 492.95447pt.
 
-Overfull \hbox (14.75978pt too wide) in paragraph at lines 739--743
+Overfull \hbox (14.75978pt too wide) in paragraph at lines 790--794
 \T1/cmr/m/n/10 Im ers-ten Schritt ag-gre-giert der Prometheus-
  []
 
 
-Underfull \hbox (badness 1067) in paragraph at lines 739--743
+Underfull \hbox (badness 1067) in paragraph at lines 790--794
 \T1/cmr/m/n/10 temres-sour-cen be-zo-ge-ne Me-tri-ken von
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 739--743
+Underfull \hbox (badness 10000) in paragraph at lines 790--794
 
  []
 
 
-Underfull \hbox (badness 1005) in paragraph at lines 751--760
+Underfull \hbox (badness 1005) in paragraph at lines 802--811
 \T1/cmr/m/n/10 Nachrichten zur Ver-fü-gung steht und
  []
 
 
-Underfull \hbox (badness 3907) in paragraph at lines 751--760
+Underfull \hbox (badness 3907) in paragraph at lines 802--811
 \T1/cmr/m/n/10 te Tool 'Alert-Action-Manager', wel-
  []
 
 
-Underfull \hbox (badness 1817) in paragraph at lines 751--760
+Underfull \hbox (badness 1817) in paragraph at lines 802--811
 \T1/cmr/m/n/10 ches den Zweck be-sitzt an-hand ein-
  []
 
 
-Underfull \hbox (badness 2680) in paragraph at lines 751--760
+Underfull \hbox (badness 2680) in paragraph at lines 802--811
 \T1/cmr/m/n/10 tref-fen-der Alert-Nachrichten Ak-tio-nen
  []
 
 
-Underfull \hbox (badness 1297) in paragraph at lines 751--760
+Underfull \hbox (badness 1297) in paragraph at lines 802--811
 \T1/cmr/m/n/10 auf das Kubernetes-Cluster aus-zu-füh-
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 751--760
+Underfull \hbox (badness 10000) in paragraph at lines 802--811
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 761--765
+Underfull \hbox (badness 10000) in paragraph at lines 812--816
 
  []
 
 
-Underfull \hbox (badness 4156) in paragraph at lines 766--769
+Underfull \hbox (badness 4156) in paragraph at lines 817--820
 \T1/cmr/m/n/10 Nachdem ei-ne Nach-richt durch den
  []
 
 
-Underfull \hbox (badness 5985) in paragraph at lines 766--769
+Underfull \hbox (badness 5985) in paragraph at lines 817--820
 \T1/cmr/m/n/10 Alert-Action-Manager ge-prüft wur-de,
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 766--769
+Underfull \hbox (badness 10000) in paragraph at lines 817--820
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 772--773
+Underfull \hbox (badness 10000) in paragraph at lines 823--824
 
  []
 
 [32 <./img/AAMtextless.PNG>]
-Underfull \hbox (badness 10000) in paragraph at lines 789--790
+Underfull \hbox (badness 10000) in paragraph at lines 840--841
 
  []
 
 
-Overfull \hbox (1.28548pt too wide) in paragraph at lines 794--797
+Overfull \hbox (1.28548pt too wide) in paragraph at lines 845--848
 \T1/cmr/m/n/10 End-punkt be-reit-ge-stellt. Der Prometheus-Alertmanager wird so
  kon-fi-gu-riert, dass
  []
 
 [33]
-Overfull \hbox (23.13692pt too wide) in paragraph at lines 801--802
+Overfull \hbox (23.13692pt too wide) in paragraph at lines 852--853
 []\T1/cmr/m/n/10 Das Aus-füh-ren von Ak-tio-nen wird mit-tels ku-bectldurchge
 führt.
  []
 
 
-Overfull \hbox (8.57648pt too wide) in paragraph at lines 813--815
+Overfull \hbox (8.57648pt too wide) in paragraph at lines 864--866
 \T1/cmr/m/n/10 Die Ak-tio-nen, wel-che durch den Alert-Action-Manager au-to-ma-
 ti-siert auf das Kubernetes-
  []
 
 [34]
-Overfull \hbox (22.15538pt too wide) in paragraph at lines 833--834
+Overfull \hbox (22.15538pt too wide) in paragraph at lines 884--885
 []\T1/cmr/m/n/10 Nach Aus-lö-sen ei-ner der Alerts und Ak-ti-vie-ren der Ak-ti-
 on im Alert-Action-Managersetzt
  []
 
 LaTeX Font Info:    Trying to load font information for T1+cmtt on input line 8
-43.
+94.
 ("C:\Users\Johannes\AppData\Local\Programs\MiKTeX 2.9\tex/latex/base\t1cmtt.fd"
 File: t1cmtt.fd 2019/12/16 v2.5j Standard LaTeX font definitions
 )
-Underfull \hbox (badness 10000) in paragraph at lines 857--858
+Underfull \hbox (badness 10000) in paragraph at lines 908--909
 
  []
 
@@ -2006,39 +2007,44 @@ Underfull \hbox (badness 10000) in paragraph at lines 857--858
 <Hysterese.png, id=617, 291.33844pt x 170.13562pt>
 File: Hysterese.png Graphic file (type png)
 <use Hysterese.png>
-Package pdftex.def Info: Hysterese.png  used on input line 872.
+Package pdftex.def Info: Hysterese.png  used on input line 923.
 (pdftex.def)             Requested size: 291.33772pt x 170.1352pt.
  [36 <./Hysterese.png>]
-Underfull \hbox (badness 10000) in paragraph at lines 918--919
-
+Overfull \hbox (20.96898pt too wide) in paragraph at lines 933--937
+\T1/cmr/m/n/10 ment, die mit-tels Alert-Action-Managerausgeführt wur-den. Der
+ Replica-Countbeschreibt
  []
 
 [37]
+Underfull \hbox (badness 10000) in paragraph at lines 970--971
+
+ []
+
 <img/CPUAnomalie/RollingRestart.PNG, id=627, 958.3303pt x 319.1925pt>
 File: img/CPUAnomalie/RollingRestart.PNG Graphic file (type png)
 <use img/CPUAnomalie/RollingRestart.PNG>
 Package pdftex.def Info: img/CPUAnomalie/RollingRestart.PNG  used on input line
- 921.
+ 973.
 (pdftex.def)             Requested size: 348.44243pt x 116.05377pt.
 
-Underfull \hbox (badness 10000) in paragraph at lines 921--922
+Underfull \hbox (badness 10000) in paragraph at lines 973--974
 
  []
 
 <img/CPUAnomalie/Netzwerk.PNG, id=628, 595.47469pt x 224.33812pt>
 File: img/CPUAnomalie/Netzwerk.PNG Graphic file (type png)
 <use img/CPUAnomalie/Netzwerk.PNG>
-Package pdftex.def Info: img/CPUAnomalie/Netzwerk.PNG  used on input line 923.
+Package pdftex.def Info: img/CPUAnomalie/Netzwerk.PNG  used on input line 975.
 (pdftex.def)             Requested size: 348.44243pt x 131.26979pt.
 
-Underfull \hbox (badness 10000) in paragraph at lines 923--924
+Underfull \hbox (badness 10000) in paragraph at lines 975--976
 
  []
 
 <img/CPUAnomalie/Saturation.PNG, id=629, 602.25pt x 194.22563pt>
 File: img/CPUAnomalie/Saturation.PNG Graphic file (type png)
 <use img/CPUAnomalie/Saturation.PNG>
-Package pdftex.def Info: img/CPUAnomalie/Saturation.PNG  used on input line 925
+Package pdftex.def Info: img/CPUAnomalie/Saturation.PNG  used on input line 977
 .
 (pdftex.def)             Requested size: 348.44243pt x 112.3753pt.
 [38 <./img/CPUAnomalie/RollingRestart.PNG> <./img/CPUAnomalie/Netzwerk.PNG> <./
@@ -2046,17 +2052,17 @@ img/CPUAnomalie/Saturation.PNG>]
 <img/CPUAnomalie/Utilization.PNG, id=638, 587.94656pt x 197.23688pt>
 File: img/CPUAnomalie/Utilization.PNG Graphic file (type png)
 <use img/CPUAnomalie/Utilization.PNG>
-Package pdftex.def Info: img/CPUAnomalie/Utilization.PNG  used on input line 93
-0.
+Package pdftex.def Info: img/CPUAnomalie/Utilization.PNG  used on input line 98
+2.
 (pdftex.def)             Requested size: 348.44243pt x 116.8924pt.
 
-Overfull \hbox (2.80624pt too wide) in paragraph at lines 934--938
+Overfull \hbox (2.80624pt too wide) in paragraph at lines 986--990
 \T1/cmr/m/n/10 Netz-wer-klast von 20 By-tes pro Se-kun-de, wur-de der Rolling-
 Restartdurchgeführt,
  []
 
 [39 <./img/CPUAnomalie/Utilization.PNG>]
-Underfull \hbox (badness 10000) in paragraph at lines 941--942
+Underfull \hbox (badness 10000) in paragraph at lines 993--994
 
  []
 
@@ -2064,20 +2070,20 @@ Underfull \hbox (badness 10000) in paragraph at lines 941--942
 File: img/RAMAnomalie/RollingRestart.PNG Graphic file (type png)
 <use img/RAMAnomalie/RollingRestart.PNG>
 Package pdftex.def Info: img/RAMAnomalie/RollingRestart.PNG  used on input line
- 944.
+ 996.
 (pdftex.def)             Requested size: 348.44243pt x 116.74039pt.
 
-Underfull \hbox (badness 10000) in paragraph at lines 944--945
+Underfull \hbox (badness 10000) in paragraph at lines 996--997
 
  []
 
 <img/RAMAnomalie/Netzwerk.PNG, id=645, 593.21625pt x 223.58531pt>
 File: img/RAMAnomalie/Netzwerk.PNG Graphic file (type png)
 <use img/RAMAnomalie/Netzwerk.PNG>
-Package pdftex.def Info: img/RAMAnomalie/Netzwerk.PNG  used on input line 946.
+Package pdftex.def Info: img/RAMAnomalie/Netzwerk.PNG  used on input line 998.
 (pdftex.def)             Requested size: 348.44243pt x 131.3342pt.
 
-Underfull \hbox (badness 10000) in paragraph at lines 946--947
+Underfull \hbox (badness 10000) in paragraph at lines 998--999
 
  []
 
@@ -2085,10 +2091,10 @@ Underfull \hbox (badness 10000) in paragraph at lines 946--947
 File: img/RAMAnomalie/RAMSaturation.PNG Graphic file (type png)
 <use img/RAMAnomalie/RAMSaturation.PNG>
 Package pdftex.def Info: img/RAMAnomalie/RAMSaturation.PNG  used on input line 
-948.
+1000.
 (pdftex.def)             Requested size: 348.43936pt x 75.31891pt.
 
-Underfull \hbox (badness 10000) in paragraph at lines 948--949
+Underfull \hbox (badness 10000) in paragraph at lines 1000--1001
 
  []
 
@@ -2096,12 +2102,12 @@ Underfull \hbox (badness 10000) in paragraph at lines 948--949
 File: img/RAMAnomalie/RAMUtilization.PNG Graphic file (type png)
 <use img/RAMAnomalie/RAMUtilization.PNG>
 Package pdftex.def Info: img/RAMAnomalie/RAMUtilization.PNG  used on input line
- 950.
+ 1002.
 (pdftex.def)             Requested size: 348.44243pt x 114.38472pt.
 [40 <./img/RAMAnomalie/RollingRestart.PNG> <./img/RAMAnomalie/Netzwerk.PNG> <./
 img/RAMAnomalie/RAMSaturation.PNG> <./img/RAMAnomalie/RAMUtilization.PNG>]
 [41]
-Underfull \hbox (badness 10000) in paragraph at lines 963--964
+Underfull \hbox (badness 10000) in paragraph at lines 1015--1016
 
  []
 
@@ -2109,10 +2115,10 @@ Underfull \hbox (badness 10000) in paragraph at lines 963--964
 File: img/RAMCPUAnomalie/RollingRestart.PNG Graphic file (type png)
 <use img/RAMCPUAnomalie/RollingRestart.PNG>
 Package pdftex.def Info: img/RAMCPUAnomalie/RollingRestart.PNG  used on input l
-ine 966.
+ine 1018.
 (pdftex.def)             Requested size: 348.44243pt x 111.32747pt.
 
-Underfull \hbox (badness 10000) in paragraph at lines 966--967
+Underfull \hbox (badness 10000) in paragraph at lines 1018--1019
 
  []
 
@@ -2120,10 +2126,10 @@ Underfull \hbox (badness 10000) in paragraph at lines 966--967
 File: img/RAMCPUAnomalie/RAMSaturation.PNG Graphic file (type png)
 <use img/RAMCPUAnomalie/RAMSaturation.PNG>
 Package pdftex.def Info: img/RAMCPUAnomalie/RAMSaturation.PNG  used on input li
-ne 968.
+ne 1020.
 (pdftex.def)             Requested size: 348.44835pt x 75.31828pt.
 
-Underfull \hbox (badness 10000) in paragraph at lines 968--969
+Underfull \hbox (badness 10000) in paragraph at lines 1020--1021
 
  []
 
@@ -2131,10 +2137,10 @@ Underfull \hbox (badness 10000) in paragraph at lines 968--969
 File: img/RAMCPUAnomalie/CPUUtilization.PNG Graphic file (type png)
 <use img/RAMCPUAnomalie/CPUUtilization.PNG>
 Package pdftex.def Info: img/RAMCPUAnomalie/CPUUtilization.PNG  used on input l
-ine 970.
+ine 1022.
 (pdftex.def)             Requested size: 348.44243pt x 118.4282pt.
 
-Underfull \hbox (badness 10000) in paragraph at lines 970--971
+Underfull \hbox (badness 10000) in paragraph at lines 1022--1023
 
  []
 
@@ -2142,18 +2148,18 @@ Underfull \hbox (badness 10000) in paragraph at lines 970--971
 File: img/RAMCPUAnomalie/RAMUtilization.PNG Graphic file (type png)
 <use img/RAMCPUAnomalie/RAMUtilization.PNG>
 Package pdftex.def Info: img/RAMCPUAnomalie/RAMUtilization.PNG  used on input l
-ine 972.
+ine 1024.
 (pdftex.def)             Requested size: 348.44243pt x 117.97955pt.
 <img/RAMCPUAnomalie/Netzwerk.PNG, id=664, 596.2275pt x 220.57407pt>
 File: img/RAMCPUAnomalie/Netzwerk.PNG Graphic file (type png)
 <use img/RAMCPUAnomalie/Netzwerk.PNG>
-Package pdftex.def Info: img/RAMCPUAnomalie/Netzwerk.PNG  used on input line 97
-7.
+Package pdftex.def Info: img/RAMCPUAnomalie/Netzwerk.PNG  used on input line 10
+29.
 (pdftex.def)             Requested size: 348.44243pt x 128.90572pt.
 [42 <./img/RAMCPUAnomalie/RollingRestart.PNG> <./img/RAMCPUAnomalie/RAMSaturati
 on.PNG> <./img/RAMCPUAnomalie/CPUUtilization.PNG> <./img/RAMCPUAnomalie/RAMUtil
 ization.PNG>] [43 <./img/RAMCPUAnomalie/Netzwerk.PNG>]
-Underfull \hbox (badness 10000) in paragraph at lines 997--998
+Underfull \hbox (badness 10000) in paragraph at lines 1049--1050
 
  []
 
@@ -2161,21 +2167,21 @@ Underfull \hbox (badness 10000) in paragraph at lines 997--998
 File: img/CPUSkalierung/ReplicaCount.PNG Graphic file (type png)
 <use img/CPUSkalierung/ReplicaCount.PNG>
 Package pdftex.def Info: img/CPUSkalierung/ReplicaCount.PNG  used on input line
- 1000.
+ 1052.
 (pdftex.def)             Requested size: 348.44243pt x 113.48914pt.
 
-Underfull \hbox (badness 10000) in paragraph at lines 1000--1001
+Underfull \hbox (badness 10000) in paragraph at lines 1052--1053
 
  []
 
 <img/CPUSkalierung/Netzwerk.PNG, id=679, 594.72188pt x 204.01219pt>
 File: img/CPUSkalierung/Netzwerk.PNG Graphic file (type png)
 <use img/CPUSkalierung/Netzwerk.PNG>
-Package pdftex.def Info: img/CPUSkalierung/Netzwerk.PNG  used on input line 100
-2.
+Package pdftex.def Info: img/CPUSkalierung/Netzwerk.PNG  used on input line 105
+4.
 (pdftex.def)             Requested size: 348.44177pt x 75.31833pt.
 
-Underfull \hbox (badness 10000) in paragraph at lines 1002--1003
+Underfull \hbox (badness 10000) in paragraph at lines 1054--1055
 
  []
 
@@ -2183,11 +2189,11 @@ Underfull \hbox (badness 10000) in paragraph at lines 1002--1003
 File: img/CPUSkalierung/CPUSaturation.PNG Graphic file (type png)
 <use img/CPUSkalierung/CPUSaturation.PNG>
 Package pdftex.def Info: img/CPUSkalierung/CPUSaturation.PNG  used on input lin
-e 1004.
+e 1056.
 (pdftex.def)             Requested size: 348.44243pt x 117.03947pt.
 [44 <./img/CPUSkalierung/ReplicaCount.PNG> <./img/CPUSkalierung/Netzwerk.PNG> <
 ./img/CPUSkalierung/CPUSaturation.PNG>] [45]
-Underfull \hbox (badness 10000) in paragraph at lines 1014--1015
+Underfull \hbox (badness 10000) in paragraph at lines 1066--1067
 
  []
 
@@ -2195,21 +2201,21 @@ Underfull \hbox (badness 10000) in paragraph at lines 1014--1015
 File: img/RAMSkalierung/Replica-Count.PNG Graphic file (type png)
 <use img/RAMSkalierung/Replica-Count.PNG>
 Package pdftex.def Info: img/RAMSkalierung/Replica-Count.PNG  used on input lin
-e 1017.
+e 1069.
 (pdftex.def)             Requested size: 348.44243pt x 115.8571pt.
 
-Underfull \hbox (badness 10000) in paragraph at lines 1017--1018
+Underfull \hbox (badness 10000) in paragraph at lines 1069--1070
 
  []
 
 <img/RAMSkalierung/Netzwerk.PNG, id=694, 592.46344pt x 219.06844pt>
 File: img/RAMSkalierung/Netzwerk.PNG Graphic file (type png)
 <use img/RAMSkalierung/Netzwerk.PNG>
-Package pdftex.def Info: img/RAMSkalierung/Netzwerk.PNG  used on input line 101
-9.
+Package pdftex.def Info: img/RAMSkalierung/Netzwerk.PNG  used on input line 107
+1.
 (pdftex.def)             Requested size: 348.45653pt x 75.32129pt.
 
-Underfull \hbox (badness 10000) in paragraph at lines 1019--1020
+Underfull \hbox (badness 10000) in paragraph at lines 1071--1072
 
  []
 
@@ -2217,11 +2223,11 @@ Underfull \hbox (badness 10000) in paragraph at lines 1019--1020
 File: img/RAMSkalierung/RAMSaturation.PNG Graphic file (type png)
 <use img/RAMSkalierung/RAMSaturation.PNG>
 Package pdftex.def Info: img/RAMSkalierung/RAMSaturation.PNG  used on input lin
-e 1021.
+e 1073.
 (pdftex.def)             Requested size: 348.44243pt x 103.91763pt.
 [46 <./img/RAMSkalierung/Replica-Count.PNG> <./img/RAMSkalierung/Netzwerk.PNG> 
 <./img/RAMSkalierung/RAMSaturation.PNG>] [47]
-Underfull \hbox (badness 10000) in paragraph at lines 1034--1035
+Underfull \hbox (badness 10000) in paragraph at lines 1086--1087
 
  []
 
@@ -2229,10 +2235,10 @@ Underfull \hbox (badness 10000) in paragraph at lines 1034--1035
 File: img/RAMCPUSkalierung/ReplicaCount.PNG Graphic file (type png)
 <use img/RAMCPUSkalierung/ReplicaCount.PNG>
 Package pdftex.def Info: img/RAMCPUSkalierung/ReplicaCount.PNG  used on input l
-ine 1037.
+ine 1089.
 (pdftex.def)             Requested size: 348.44243pt x 114.25165pt.
 
-Underfull \hbox (badness 10000) in paragraph at lines 1037--1038
+Underfull \hbox (badness 10000) in paragraph at lines 1089--1090
 
  []
 
@@ -2240,10 +2246,10 @@ Underfull \hbox (badness 10000) in paragraph at lines 1037--1038
 File: img/RAMCPUSkalierung/RAMSaturation.PNG Graphic file (type png)
 <use img/RAMCPUSkalierung/RAMSaturation.PNG>
 Package pdftex.def Info: img/RAMCPUSkalierung/RAMSaturation.PNG  used on input 
-line 1039.
+line 1091.
 (pdftex.def)             Requested size: 348.45586pt x 75.32092pt.
 
-Underfull \hbox (badness 10000) in paragraph at lines 1039--1040
+Underfull \hbox (badness 10000) in paragraph at lines 1091--1092
 
  []
 
@@ -2251,10 +2257,10 @@ Underfull \hbox (badness 10000) in paragraph at lines 1039--1040
 File: img/RAMCPUSkalierung/CPUUtilization.PNG Graphic file (type png)
 <use img/RAMCPUSkalierung/CPUUtilization.PNG>
 Package pdftex.def Info: img/RAMCPUSkalierung/CPUUtilization.PNG  used on input
- line 1041.
+ line 1093.
 (pdftex.def)             Requested size: 348.44243pt x 115.6938pt.
 
-Underfull \hbox (badness 10000) in paragraph at lines 1041--1042
+Underfull \hbox (badness 10000) in paragraph at lines 1093--1094
 
  []
 
@@ -2264,10 +2270,10 @@ tion.PNG> <./img/RAMCPUSkalierung/CPUUtilization.PNG>]
 File: img/RAMCPUSkalierung/Netzwerk.PNG Graphic file (type png)
 <use img/RAMCPUSkalierung/Netzwerk.PNG>
 Package pdftex.def Info: img/RAMCPUSkalierung/Netzwerk.PNG  used on input line 
-1047.
+1099.
 (pdftex.def)             Requested size: 348.44243pt x 115.40518pt.
  [49 <./img/RAMCPUSkalierung/Netzwerk.PNG>]
-Underfull \hbox (badness 10000) in paragraph at lines 1064--1065
+Underfull \hbox (badness 10000) in paragraph at lines 1116--1117
 
  []
 
@@ -2275,10 +2281,10 @@ Underfull \hbox (badness 10000) in paragraph at lines 1064--1065
 File: img/Herunterskalieren/ReplicaCount.PNG Graphic file (type png)
 <use img/Herunterskalieren/ReplicaCount.PNG>
 Package pdftex.def Info: img/Herunterskalieren/ReplicaCount.PNG  used on input 
-line 1067.
+line 1119.
 (pdftex.def)             Requested size: 348.44243pt x 120.12602pt.
 
-Underfull \hbox (badness 10000) in paragraph at lines 1067--1068
+Underfull \hbox (badness 10000) in paragraph at lines 1119--1120
 
  []
 
@@ -2286,10 +2292,10 @@ Underfull \hbox (badness 10000) in paragraph at lines 1067--1068
 File: img/Herunterskalieren/RAMSaturation.PNG Graphic file (type png)
 <use img/Herunterskalieren/RAMSaturation.PNG>
 Package pdftex.def Info: img/Herunterskalieren/RAMSaturation.PNG  used on input
- line 1069.
+ line 1121.
 (pdftex.def)             Requested size: 348.4376pt x 75.32039pt.
 
-Underfull \hbox (badness 10000) in paragraph at lines 1069--1070
+Underfull \hbox (badness 10000) in paragraph at lines 1121--1122
 
  []
 
@@ -2297,31 +2303,31 @@ Underfull \hbox (badness 10000) in paragraph at lines 1069--1070
 File: img/Herunterskalieren/CPUSaturation.PNG Graphic file (type png)
 <use img/Herunterskalieren/CPUSaturation.PNG>
 Package pdftex.def Info: img/Herunterskalieren/CPUSaturation.PNG  used on input
- line 1071.
+ line 1123.
 (pdftex.def)             Requested size: 348.44243pt x 114.96486pt.
 [50 <./img/Herunterskalieren/ReplicaCount.PNG> <./img/Herunterskalieren/RAMSatu
 ration.PNG> <./img/Herunterskalieren/CPUSaturation.PNG>] [51]
-Underfull \hbox (badness 10000) in paragraph at lines 1097--1099
+Underfull \hbox (badness 10000) in paragraph at lines 1149--1151
 
  []
 
 [52]
-Underfull \hbox (badness 10000) in paragraph at lines 1103--1104
+Underfull \hbox (badness 10000) in paragraph at lines 1155--1156
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1107--1108
+Underfull \hbox (badness 10000) in paragraph at lines 1159--1160
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1111--1112
+Underfull \hbox (badness 10000) in paragraph at lines 1163--1164
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1115--1116
+Underfull \hbox (badness 10000) in paragraph at lines 1167--1168
 
  []
 
@@ -2345,11 +2351,11 @@ s-and-self-
  []
 
 ) [55]
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 1138.
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 1138.
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 1191.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 1191.
  (Bachelorarbeit.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 1138.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 1138.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 1191.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 1191.
 
 Package rerunfilecheck Info: File `Bachelorarbeit.out' has not changed.
 (rerunfilecheck)             Checksum: D41D8CD98F00B204E9800998ECF8427E;0.
@@ -2357,13 +2363,16 @@ Package rerunfilecheck Info: File `Bachelorarbeit.out' has not changed.
 
 LaTeX Warning: There were undefined references.
 
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 1138.
+
+LaTeX Warning: There were multiply-defined labels.
+
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 1191.
  ) 
 Here is how much of TeX's memory you used:
- 24100 strings out of 480790
- 474294 string characters out of 2893987
- 844312 words of memory out of 3000000
- 39438 multiletter control sequences out of 15000+200000
+ 24101 strings out of 480790
+ 474305 string characters out of 2893987
+ 846311 words of memory out of 3000000
+ 39439 multiletter control sequences out of 15000+200000
  546753 words of font info for 53 fonts, out of 3000000 for 9000
  1141 hyphenation exceptions out of 8191
  64i,18n,81p,10111b,1052s stack positions out of 5000i,500n,10000p,200000b,50000s
@@ -2392,7 +2401,7 @@ ts/cm/cmr17.pfb><C:/Users/Johannes/AppData/Local/Programs/MiKTeX 2.9/fonts/type
 1/public/amsfonts/cm/cmr7.pfb><C:/Users/Johannes/AppData/Local/Programs/MiKTeX 
 2.9/fonts/type1/public/amsfonts/cm/cmsy10.pfb><C:/Users/Johannes/AppData/Local/
 Programs/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmsy7.pfb>
-Output written on Bachelorarbeit.pdf (60 pages, 1511138 bytes).
+Output written on Bachelorarbeit.pdf (60 pages, 1511642 bytes).
 PDF statistics:
  1424 PDF objects out of 1440 (max. 8388607)
  180 named destinations out of 1000 (max. 500000)

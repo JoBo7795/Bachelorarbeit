@@ -541,54 +541,105 @@ Regeln werden über Thresholds und optional über Zeiträume von Metriken defini
 Mithilfe der Alerts ist es möglich, anhand von Regeln Alarme zu versenden, die über den Zustand des Clusters informieren. Sie können an Ziele wie E-Mail-Adressen oder Chat-Tools wie Slack oder Telegram gesendet werden, aber auch  an selbst definierte Endpunkte, um sie dort zu empfangen oder sie möglicherweise weiterzuverarbeiten.
 
 \end{description}
-
+\pagebreak
+\newpage
 \subsubsection{Ablauf der Aggregation}
 
 Die Aggregation der Metriken läuft nach festen Schema ab, welches für die Aufzeichnung aller Metriken gilt.
 Die Metriken werden von Prometheus aggregiert und aufgezeichnet. Dies wird auf allen Zielen, welche durch die automatische Service-Discovery gefunden wurden durchgeführt.\\
 
-\begin{minipage}{\linewidth}
-  \includegraphics[scale=.3]{img/Datenaggregation/LupeNew.png} 
-    \captionof{figure}{Bildrepräsentation der Aggregation(Quelle Draw.io)}
-\end{minipage} \\
-
+\begin{figure}[htbp]
+\begin{minipage}[t]{6cm}
+\vspace{0pt}
 Die Metriken werden über einen definierten Zeitraum gesammelt, sodass daraus Zeitreihen-Metriken entstehen. Aus diesen Zeitreihenmetriken kann ein Graf abgeleitet werden.\\
+\end{minipage}
+\hfill
+\begin{minipage}[t]{6cm}
+\vspace{0pt}
+\centering
+  \includegraphics[scale=.3]{img/Datenaggregation/LupeNew.png} 
+\caption{Bildrepräsentation des Alarms (Quelle Draw.io)}
+\label{fig:Bild1}
+\end{minipage}
+\end{figure}
 
-\begin{minipage}{\linewidth}
-  \includegraphics[scale=.3]{img/Datenaggregation/GrafAggregationNew.png}
-    \captionof{figure}{Bildrepräsentation der Zeitreihe}
-\end{minipage} \\
-
+\begin{figure}[htbp]
+\begin{minipage}[t]{6cm}
+\vspace{0pt}
 Wenn man diese Zeitreihenmetriken in ein Koordinatensystem überträgt, wäre die X-Achse eines Grafen der Zeitwert zwischen Null und maximalem aufgezeichnetem Zeitwert und die Y-Achse die höhe des Metrikwertes. \\
+\end{minipage}
+\hfill
+\begin{minipage}[t]{6cm}
+\vspace{0pt}
+\centering
+  \includegraphics[scale=.3]{img/Datenaggregation/GrafAggregationNew.png}
+\caption{Bildrepräsentation der Zeitreihe}
+\label{fig:Bild1}
+\end{minipage}
+\end{figure}
 
-\begin{minipage}{\linewidth}
-  \includegraphics[scale=.3]{img/Datenaggregation/GrafZeitNew.png} 
-    \captionof{figure}{Bildrepräsentation der Zeitreihe als Graf}
-\end{minipage} \\
-
-
+\begin{figure}[htbp]
+\begin{minipage}[t]{6cm}
+\vspace{0pt}
 Anhand der Höhe des Y-Wertes des Grafen lassen sich Regeln definieren und somit ein Grenzwert für Metriken erstellen.\\
+\end{minipage}
+\hfill
+\begin{minipage}[t]{6cm}
+\vspace{0pt}
+\centering
+  \includegraphics[scale=.3]{img/Datenaggregation/GrafZeitNew.png}
+\caption{Bildrepräsentation der Zeitreihe als Graf}
+\label{fig:Bild1}
+\end{minipage}
+\end{figure}
 
-\begin{minipage}{\linewidth}
-  \includegraphics[scale=.3]{img/Datenaggregation/GrafYWertNew.png} 
-    \captionof{figure}{Bildrepräsentation des Graf mit Y-Achsen Grenzwert}
-\end{minipage}\\
-
+\begin{figure}[htbp]
+\begin{minipage}[t]{6cm}
+\vspace{0pt}
 Über den Zeitwert (X-Achse) wird eine Dauer definiert, die der Zustand der Grenzwertüberschreitung bestehen darf.\\
+\end{minipage}
+\hfill
+\begin{minipage}[t]{6cm}
+\vspace{0pt}
+\centering
+  \includegraphics[scale=.3]{img/Datenaggregation/GrafYWertNew.png} 
+\caption{Bild1}
+\label{fig:Bild1}
+\end{minipage}
+\end{figure}
 
-\begin{minipage}{\linewidth}
-  \includegraphics[scale=.3]{img/Datenaggregation/GrafAlarmNew.png} 
-    \captionof{figure}{Bildrepräsentation der das Graf mit überschrittenem X-Achsen Grenzwert}
-\end{minipage}\\
-
+\begin{figure}[htbp]
+\begin{minipage}[t]{6cm}
+\vspace{0pt}
 Wenn der Grenzwert über die definierte Zeitdauer überschritten wurde wird ein Alarm ausgelöst.\\
+\end{minipage}
+\hfill
+\begin{minipage}[t]{6cm}
+\vspace{0pt}
+\centering
+  \includegraphics[scale=.3]{img/Datenaggregation/GrafAlarmNew.png} 
+\caption{Bildrepräsentation des Graf mit Y-Achsen Grenzwert}
+\label{fig:Bild1}
+\end{minipage}
+\end{figure}
 
-\begin{minipage}{\linewidth}
-  \includegraphics[scale=.3]{img/Datenaggregation/AlarmNew.png}  
-    \captionof{figure}{Bildrepräsentation des Alarms(Quelle Draw.io)}
-\end{minipage} \\
-
+\begin{figure}[htbp]
+\begin{minipage}[t]{6cm}
+\vspace{0pt}
+Wenn der Grenzwert über die definierte Zeitdauer überschritten wurde wird ein Alarm ausgelöst.\\
 Im nachfolgenden Graf wird der Ablauf der Aggregation aufeinander aufbauend visualisiert:
+\end{minipage}
+\hfill
+\begin{minipage}[t]{6cm}
+\vspace{0pt}
+\centering
+  \includegraphics[scale=.3]{img/Datenaggregation/AlarmNew.png}  
+\caption{Bildrepräsentation des Alarms(Quelle Draw.io)}
+\label{fig:Bild1}
+\end{minipage}
+\end{figure}
+
+
 
 \begin{minipage}{\linewidth}
   \centering
@@ -879,7 +930,8 @@ Zur Evaluierung der korrekten Funktion des System, deren Komponenten und Archite
 
 \subsection{Messaufbau}
 
-Für den Messaufbau wurde ein eigener Kubernetes-Service entwickelt, welcher als Pod in das Cluster ausgeliefert wurde. Der Testservice simuliert anormale oder ressourcenintensive Verhaltensweisen und besitzt Funktionen, um die CPU-Last zu maximieren, einen Endpunkt, um die Netzwerkkapazität zu maximieren sowie die Funktion den Arbeitsspeicherbedarf des Service an die kritische Grenze zu bringen.
+Für den Messaufbau wurde ein eigener Kubernetes-Service entwickelt, welcher als Pod in das Cluster ausgeliefert wurde. Der Testservice simuliert anormale oder ressourcenintensive Verhaltensweisen und besitzt Funktionen, um die CPU-Last zu maximieren, einen Endpunkt, um die Netzwerkkapazität zu maximieren sowie die Funktion den Arbeitsspeicherbedarf des Service an die kritische Grenze zu bringen.\\
+Die Maximierung der CPU-Last erfolgt durch das Berechnen einer rekursiven Funktion, welche die Fibonacci-Zahlenfolge berechnet. Dies hat zur Folge, dass die Last über einen gewissen Zeitraum ansteigt und somit eine Anwendung realitätsnäher Simuliert. Die RAM-Last wird durch das Allokieren von 80\% des Speicherplatzes des Services simuliert. Zum Simulieren der Netzwerklast besitzt der Service einen eigenen HTTP-Post Endpunkt. An diesen Endpunkt wird mittels eines Script dauerhaft und wiederholt ein rund 50 Megabyte großes Script versendet, wodurch die Netzwerklast simuliert wird.\\
 Mit diesem Aufbau sollen sowohl die Grenzwerte der Regeln, als auch die Funktion der Komponenten und Architektur als Ganzes und die Anomaliedetection sowie die Ressourcenskalierung getestet werden.
 Zum Messen werden Grafen für die CPU-Utilization und RAM-Saturation, den \glqq Replica-Count\grqq sowie den \glqq Rolling-Restart-Count\grqq für jeden Pod und jedes Deployment des Kubernetes-Clusters in der Grafana-Oberfläche erstellt. Der \glqq Rolling-Restart-Count\grqq ist hierbei die Anzahl der Podneustarts für ein Deployment, die mittels \glqq Alert-Action-Manager\grqq ausgeführt wurden. Der \glqq Replica-Count\grqq beschreibt die Anzahl der Pods pro Deployment.
 
@@ -1133,6 +1185,7 @@ Dieses Projekt wird in der Zeit nach dieser Arbeit weiter betrieben und Teil ein
 \newpage
 \bibliography{Literatur}
 
+\newpage
 
 
 \end{document}
