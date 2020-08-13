@@ -110,7 +110,7 @@ Nodes wiederum stellen die Arbeiter dar, weshalb sie auch "worker" genannt werde
 
 
 \begin{figure}[htbp]
-  \centering
+\hspace{-2.5cm}
   \input{KubernetesBasic.pdf_tex}
   \caption{einfache Darstellung eines Kubernetes-Cluster}
 \end{figure}
@@ -135,19 +135,18 @@ Kubernetes bietet verschiedene Organisiationskonzepte mit deren Hilfe sich die K
 
 \item [Pod]:\\
 Ein Pod ist eine \glqq execution unit\grqq und repräsentiert einen Prozess, der in einem Cluster läuft. Ein Pod kapselt einen oder mehrere Anwendungs-Container, einen eigenen Speicherbereich, eine eigene IP-Adresse sowie dessen Konfigurationsoptionen.
-Die meistverwendete Container-Runtime ist, wie auch in diesem Projekt, Docker. Es gibt aber auch Unterstützung für weitere wie beispielsweise Rocket.\\
+Die meistverwendete Container-Runtime ist, wie auch in diesem Projekt, Docker. Es gibt aber auch Unterstützung für weitere wie beispielsweise Rocket.
 \item [Deployment]:\\
 Das Deployment ist eine Beschreibung des Zustands, in dem Pods ausgeliefert werden sollen. Hier werden beispielsweise der Name, Namensraum, Ressourcenlimits oder auch die Größe der Skalierung definiert.
 \item [Service]:\\
 Nach der offiziellen Kubernetes-Dokumentation sind Services eine \glqq abstrakte Möglichkeit, eine Anwendung, die auf einer Reihe von Pods läuft, als Netzwerkdienst bereitzustellen\grqq. \cite{.30.05.2020b}
 Kubernetes Pods können dynamisch in ihrer Anzahl skalieren und so auch ihre IP-Adresse wechseln. Daher ist es sinnvoll die Pods über einen Service anzusprechen, der mit einem DNS ähnlichen System funktioniert und so ein Deployment über einen lesbaren Namen ansprechbar macht. 
 \item [kubectl]:\\
-kubectl ist eine Kontrollanwendung für Kubernetes. Es ist eine direkte Schnittstelle zwischen User und dem Kubernetes API-Server und kann mittels Konsolenbefehlen bedient werden. Das Tool stellt eine einfache Möglichkeit zur Bedienung des Kubernetes-Clusters dar. \\
+kubectl ist eine Kontrollanwendung für Kubernetes. Es ist eine direkte Schnittstelle zwischen User und dem Kubernetes API-Server und kann mittels Konsolenbefehlen bedient werden. Das Tool stellt eine einfache Möglichkeit zur Bedienung des Kubernetes-Clusters dar.  \cite{.24.05.2020} \\
 Ein kubectl-Befehl besteht aus der Aktion und dessen Ziel und sieht folgendermaßen aus:
 \begin{lstlisting}
 kubectl <Aktion><Ziel>
 \end{lstlisting}
-\cite{.24.05.2020}
 \end{description}
 
 Kubernetes bietet systemseitig Funktionen, die beim ermitteln von Cluster- und Systeminformationen helfen. Eine davon ist der cAdvisor
@@ -226,7 +225,7 @@ Der Alert-Vorgang besteht im Grunde aus zwei Teilen. Der erste Teil ist die Prom
 Der Alertmanager hat mehrere Möglichkeiten mit Alerts umzugehen. Eine der Möglichkeiten ist das Weiterleiten an definierbare Ziele, beispielsweise an bestimmte E-Mail Adressen, Chat-Programme wie Slack oder auch an Webhooks bzw. HTTP-Endpunkte. Außerdem stellt der Alertmanager eingetroffene Alerts auf dem eigenen Web-UI dar. Hier kann eingesehen werden welchen Status ein Alert zum aktuellen Zeitpunkt hat (\glqq pending\grqq oder \glqq active\grqq). Außerdem können Alerts stillgelegt werden, welche dann nicht mehr durch den Manager weiterverarbeitet werden.\\
 
 \begin{figure}[htbp]
-  \centering
+  \hspace{-1.7cm}
   \scalebox{.8}{\input{PrometheusAlertUML.pdf_tex}}
   \caption{Alertmanager Aufbau}
 \end{figure}
@@ -323,9 +322,9 @@ Dieser Zustand wird erreicht, wenn die Voraussetzungen des OU-Zustands erfüllt 
   \caption{Safe-Zone and Resource Scaling Thresholds (from Paper ACCRS: autonomic based cloud computing resource scaling )}
 \end{figure}
 
-Die Grafik stellt die Safe-Zone als grünen Kasten, die Over- bzw. Under-Utilization als rote Kästchen, die an die Grenzen der Safe-Zone grenzen, dar. Die X,Y und Z-Achsen repräsentieren die Auslastung von RAM, Netzwerk und CPU. Anhand von Sprüngen, die der Graph der VM-Operations nach überschreiten der Safe-Zone Grenze zurück in die Safe-Zone macht, kann nachvollzogen werden, dass skaliert wurde und so die Last pro VM gesunken ist.
+Die Grafik stellt die Safe-Zone als grünen Bereich, die Over- bzw. Under-Utilization als rote Würfel, die an die Grenzen der Safe-Zone grenzen, dar. Die X,Y und Z-Achsen repräsentieren die Auslastung von RAM, Netzwerk und CPU. Anhand von Sprüngen, die der Graph der VM-Operations nach überschreiten der Safe-Zone Grenze zurück in die Safe-Zone macht, kann nachvollzogen werden, dass skaliert wurde und so die Last pro VM gesunken ist.
 
-Die Skalierung in diesem Projekt orientiert sich an dem Verfahren, welches im Paper \glqq ACCRS: autonomic based cloud computing resource scaling\grqq eingesetzt wird. Die Idee der Zustände Safe-Zone, Under-Utilization sowie Over-Utilization und deren Erkennung mittels statischer Regeln werden adaptiert und auf das Kubernetes-Konzept der Deployment-Skalierung übertragen, die Thresholds werden allerdings abgewandelt. 
+Die Skalierung in diesem Projekt orientiert sich an dem Verfahren, welches im Paper \glqq ACCRS: autonomic based cloud computing resource scaling\grqq \cite{AlSharif.2016} eingesetzt wird. Die Idee der Zustände Safe-Zone, Under-Utilization sowie Over-Utilization und deren Erkennung mittels statischer Regeln werden adaptiert und auf das Kubernetes-Konzept der Deployment-Skalierung übertragen, die Thresholds werden allerdings abgewandelt. 
 
 
 \pagebreak
@@ -374,7 +373,7 @@ Die Metriken Utilization und Saturation werden für CPU, RAM und Netzwerkauslast
 
 \begin{description}
 \item[CPU]:\\
-Utilization:\\
+\underline{Utilization:}\\
 Die CPU Utilization berechnet sich aus der Summe der Millisekunden, welche die CPU beschäftigt war, geteilt durch eine ganze Sekunde. So erhält man die Utilization pro Sekunde, welche aufsummiert und der Mittelwert über den beobachteten Zeitraum gebildet wird, um so die durchschnittliche Utilization zu erhalten.\\
 
 Der gleitende Mittelwert der aufsummierten Zeit U über den beobachteten Zeitraum von 5 Minuten:\\
@@ -391,7 +390,7 @@ Imax entspricht 300 Sekunden
 
 Der gesamte Wert eines Utilization Fensters lässt sich dann über die zusammengesetzte Formel berechnen:\\
 
-Saturation:\\
+\underline{Saturation:}\\
 Die CPU Saturation kann anhand des Ressourcenlimits berechnet werden. In UNIX basierten Betriebssystemen gibt es die Metrik \glqq load\_average\grqq, welche die Anzahl der laufenden sowie wartenden Prozesse enthält. Sofern man diese durch die Anzahl der zur Verfügung stehenden CPU-Kerne \glqq core\_unit\_count\grqq teilt, erhält man eine Kennzahl für die Saturation.\\
 
 \begin{minipage}{\linewidth}
@@ -413,10 +412,10 @@ Diese aufsummiert und über die Zeit gemittelt, ergibt die durchschnittliche Sat
 \end{minipage}
 
 Ein weiterer Weg die Saturation zu berechnen, ist das Aufsummieren der Zeit in der ein Prozess \glqq throtteld\grqq läuft. Dies funktioniert dann, wenn ein Prozess ein Ressourcenlimit besitzt. Übersteigt er dieses, wird der Prozess gedrosselt.\\
-Error-Rate:\\
+\underline{Error-Rate:}\\
 Die Fehlererkennung wird von handelsüblichen CPUs nicht unterstützt, weswegen in den meisten Fällen keine Fehlererkennung umgesetzt werden kann. Eine mögliche Fehlererkennung würde beispielsweise über ein sogenanntes Lockstep-Verfahren umgesetzt werden, bei dem zwei CPUs jeweils die gleiche Aufgabe erhalten und gegenseitig ihre Ergebnisse vergleichen. Bei Unterschieden im Ergebnis kann daraus ein Fehlerfall ermittelt werden\cite{.}<Zitat US-Patent>.
 \item[RAM]:\\
-Utilization:\\
+\underline{Utilization:}\\
 Die RAM Utilization berechnet sich aus der Menge des vom System reservierten Speichers, der durch die Menge des gesamten Speichers geteilt wird. Beide stehen in UNIX basierten Betriebssystemen zur Verfügung, sodass die Rechnung zur RAM-Utilization lautet:\\
 
 \begin{minipage}{\linewidth}
@@ -439,7 +438,7 @@ Diese aufsummiert und über die Zeit gemittelt, ergibt die durchschnittliche Uti
 
 \pagebreak
 
-Saturation:\\
+\underline{Saturation:}\\
 Die RAM Saturation kann am besten berechnet werden, wenn Ressourcenlimits existieren. Unter diesen Voraussetzungen kann die Saturation berechnet werden, indem die Summe des aktuell verwendeten Speichers durch das Ressourcenlimit geteilt wird. Sofern ein Wert über 100\% erreicht wird\\
 
 \begin{minipage}{\linewidth}
@@ -458,7 +457,7 @@ Die RAM Saturation kann am besten berechnet werden, wenn Ressourcenlimits existi
 \captionof{figure}{Formel der RAM-Saturation Moving-Average} 
 \end{minipage}
 
-Error-Rate:\\
+\underline{Error-Rate:}\\
 Zur Ermittlung von Fehlern im Arbeitsspeicher wird sogenanntes \glqq Error Correcting Code\grqq(ECC)-RAM benötigt. Dieses RAM erkennt Fehler in Speicherzellen des Arbeitsspeichers, die aufsummiert die Fehlerrate des RAMs ergeben. Sofern dieses RAM nicht eingesetzt wird ist eine Fehlerkennung nicht genau möglich. Ein alternatives aber möglicherweise ungenaueres Verfahren wäre das Feststellen von fehlgeschlagenen Speicherreservierungen. Dieses Verfahren zählt jedoch Fehlschläge des virtuellen Speicher und nicht des phyischen, was zu Messungenauigkeiten führen kann.
 Die Berechnung der Fehlerrate wäre wie folgt:\\
 
@@ -472,7 +471,7 @@ Die Berechnung der Fehlerrate wäre wie folgt:\\
 \pagebreak
 
 \item[Netzwerk-Bandbreite]:\\
-Utilization:\\
+\underline{Utilization:}\\
 Um die Netzwerk Utilization zu messen, werden die Bytes aufsummiert, die versendet sowie empfangen werden und daraus der Mittelwert berechnet.\\
 
 \begin{minipage}{\linewidth}
@@ -482,7 +481,7 @@ Um die Netzwerk Utilization zu messen, werden die Bytes aufsummiert, die versend
 \captionof{figure}{Formel der Netzwerk-Utilization} 
 \end{minipage}
 
-Saturation:\\
+\underline{Saturation:}\\
 Die Netzwerk Saturation kann nur dann sinnvoll gemessen werden, wenn das Bandbreitenlimit bekannt ist. Sofern dies der Fall ist kann die Saturation berechnet werden, indem die versendeten bzw. empfangenen Bytes(u\_bytes) durch das Bandbreitenlimit geteilt wird. \\
 
 \begin{minipage}{\linewidth}
@@ -503,7 +502,7 @@ Die Netzwerk Saturation kann nur dann sinnvoll gemessen werden, wenn das Bandbre
 
 Sofern keine Information zum Limit zur Verfügung stehen, können die verworfenen Pakete (dropped Packages) als Indikator dafür dienen, wie hoch die Saturation ist.\\
 
-Error-Rate:\\
+\underline{Error-Rate:}\\
 Zum Ermitteln der Error-Rate des Netzwerks werden Sende- und Empfangs-Fehler aufsummiert, welche die Error-Rate bilden.
 
 \begin{minipage}{\linewidth}
@@ -1135,7 +1134,7 @@ Der Verlauf der Grafen bestätigt die korrekte Funktion des Herunterskalierens. 
 
 \section{Diskussion}
 
-Das Durchführen automatisierter Aktionen auf ein Kubernetes-Cluster ist eine Möglichkeit, Störungsfälle zu reduzieren und Servicelaufzeiten zu maximieren. Um diese Automatisierung zu ermöglichen, ist eine Reihe an Tools, Infrastruktur sowie Konfiguration nötig. In dieser Arbeit wurde eine Möglichkeit erarbeitet, diese Automatisierung zu erreichen. Hierfür wurden passende Tools gewählt und entwickelt, mit deren Hilfe sich Daten und Metriken aus einem Kubernetes-Cluster auslesen, darstellen und Aktionen ausführen lassen. Für die gewählten Tools wurde ein System entwickelt, das die korrekte Zusammenarbeit der Tools und Komponenten ermöglicht und koordiniert. Für dieses System wurden Konfiguration sowie ein Regelwerk entworfen und umgesetzt, das Aktionen auf das Cluster definiert und auslöst, die dazu führen, dass auftretende kritische Situationen und Zustände entschärft werden können.\\
+Das Durchführen automatisierter Aktionen auf ein Kubernetes-Cluster ist eine Möglichkeit, Störungsfälle zu reduzieren und unterbrechungsfreie Zeiten zu maximieren. Um diese Automatisierung zu ermöglichen, ist eine Reihe an Tools, Infrastruktur sowie Konfiguration nötig. In dieser Arbeit wurde eine Möglichkeit erarbeitet, diese Automatisierung zu erreichen. Hierfür wurden passende Tools gewählt und entwickelt, mit deren Hilfe sich Daten und Metriken aus einem Kubernetes-Cluster auslesen, darstellen und Aktionen ausführen lassen. Für die gewählten Tools wurde ein System entwickelt, das die korrekte Zusammenarbeit der Tools und Komponenten ermöglicht und koordiniert. Für dieses System wurden Konfiguration sowie ein Regelwerk entworfen und umgesetzt, das Aktionen auf das Cluster definiert und auslöst, die dazu führen, dass auftretende kritische Situationen und Zustände entschärft werden können.\\
 In dieser Arbeit konnte gezeigt und evaluiert werden, dass dieses System mithilfe der ausgewählten, quasistandard Monitoring- und Visualisierungskomponenten des \glqq Cloud-Native-Computing\grqq -Bereiches, Prometheus und Grafana, umsetzbar ist, diese aber durch weitere Komponenten ergänzt werden müssen. Daher wurde im Rahmen der Arbeit das Tool \glqq Alert-Action-Manager\grqq entwickelt, das die fehlenden Funktionen ergänzt, die das Ableiten von Aktionen aus Alerts von Prometheus ermöglicht. \\
 In der folgenden Diskussion wird die Evaluation, der Rahmen des Projekts, aufgetretene Probleme und mögliche Verbesserungen in der Zukunft des Projekts diskutiert.
 
@@ -1147,8 +1146,7 @@ Neben den in diesem Projekt eingesetzten, von der \glqq Cloud-Native-Computing-F
 \subsection{Evaluation}
 
 In der Evaluation wurde die Funktion des Gesamtsystem getestet und mithilfe von aufgezeichneten Grafen gemessen. Hierbei konnte für alle Testfälle die korrekte Funktion in angemessener Zeit nachgewiesen werden.\\
-Die Evaluation ergab indes auch, dass Aktionen teilweise mit einer Verzögerung und Messungenauigkeiten von einigen Sekunden ausgeführt werden, sichtbar beispielsweise im Graf des Testfalls \glqq Hohe CPU- und RAM-Last, hohe Netzwerklast\grqq , bei dem die Skalierung erst deutlich nach einer Minute eintritt. Im Rahmen dieses Projekts ist diese Verzögerung vertretbar, da die durchgeführten Aktionen der Skalierung und Anomaliedetektion nicht sekundenkritisch sind. Für sekundenkritische Aktionen wäre das System dieser Arbeit aufgrund der Verzögerungen aber unter Umständen nicht geeignet.\\
-
+Die Evaluation ergab indes auch, dass Aktionen teilweise mit einer Verzögerung und Messungenauigkeiten von einigen Sekunden ausgeführt werden, sichtbar beispielsweise im Graf des Testfalls \glqq Hohe CPU- und RAM-Last, hohe Netzwerklast\grqq , bei dem die Skalierung erst deutlich nach einer Minute eintritt. Im Rahmen dieses Projekts ist diese Verzögerung vertretbar, da die durchgeführten Aktionen der Skalierung und Anomaliedetektion nicht sekundenkritisch sind und auch mit einigen Sekunden Verzögerung ausgeführt, immer noch ihren Zweck erfüllen. Für sekundenkritische Aktionen wäre das System dieser Arbeit aufgrund der Verzögerungen aber unter Umständen nicht geeignet.\\
 
 \subsection{Probleme}
 
