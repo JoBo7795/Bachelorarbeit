@@ -1,8 +1,8 @@
 \babel@toc {ngerman}{}
 \contentsline {figure}{\numberline {1}{\ignorespaces einfache Darstellung eines Kubernetes-Cluster}}{4}{figure.1}%
 \contentsline {figure}{\numberline {2}{\ignorespaces Alertmanager Aufbau}}{8}{figure.2}%
-\contentsline {figure}{\numberline {3}{\ignorespaces Safe-Zone and Resource Scaling Thresholds (from Paper ACCRS: autonomic based cloud computing resource scaling )}}{13}{figure.3}%
-\contentsline {figure}{\numberline {4}{\ignorespaces Darstellung der Vorgehensweise bei Anwendung der USE-Methode ~\cite {.20200810T18:06:18.000Z}}}{16}{figure.4}%
+\contentsline {figure}{\numberline {3}{\ignorespaces Safe-Zone and Resource Scaling Thresholds (from Paper ACCRS: autonomic based cloud computing resource scaling \cite {AlSharif.2016} )}}{13}{figure.3}%
+\contentsline {figure}{\numberline {4}{\ignorespaces Darstellung der Vorgehensweise bei Anwendung der USE-Methode ~\cite {brendan-gregg-use}}}{16}{figure.4}%
 \contentsline {figure}{\numberline {5}{\ignorespaces Formel der CPU-Utilization}}{17}{figure.5}%
 \contentsline {figure}{\numberline {6}{\ignorespaces Formel der CPU-Saturation}}{17}{figure.6}%
 \contentsline {figure}{\numberline {7}{\ignorespaces Formel der CPU-Saturation Moving-Average}}{17}{figure.7}%
@@ -22,7 +22,7 @@
 \contentsline {figure}{\numberline {21}{\ignorespaces Bildrepräsentation des Graf mit Y-Achsen Grenzwert}}{23}{figure.21}%
 \contentsline {figure}{\numberline {22}{\ignorespaces Bildrepräsentation des Alarms(Quelle Draw.io)}}{23}{figure.22}%
 \contentsline {figure}{\numberline {23}{\ignorespaces Graf des Ablaufs der Datenaggregation}}{24}{figure.23}%
-\contentsline {figure}{\numberline {24}{\ignorespaces Formel des \glqq Moving-Average\grqq -Filter}}{26}{figure.24}%
+\contentsline {figure}{\numberline {24}{\ignorespaces Formel des \glqq Moving-Average\grqq -Filter \cite {wiki:xx0} }}{26}{figure.24}%
 \contentsline {figure}{\numberline {25}{\ignorespaces Darstellung des Counters}}{27}{figure.25}%
 \contentsline {figure}{\numberline {26}{\ignorespaces Aufbau der Architektur}}{28}{figure.26}%
 \contentsline {figure}{\numberline {27}{\ignorespaces Ablaufgraph}}{32}{figure.27}%

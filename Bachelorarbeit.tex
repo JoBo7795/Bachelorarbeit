@@ -12,7 +12,7 @@
 \usepackage{listings}
 \usepackage{abstract}
 \usepackage{wrapfig}
-
+\usepackage{url}
 
 \bibliographystyle{unsrt}
 
@@ -95,7 +95,7 @@ Kubernetes, kurz "k8s", ist eine ursprünglich von Google entwickelte, mittlerwe
 Diese Übersicht der Grundlagen spricht die für dieses Projekt benötigten Komponenten an, weitergehende Informationen gibt es in der offiziellen Kubernetes-Dokumentation. \cite{.30.05.2020}\\
 
 \glqq Die Relevanz von Kubernetes lässt sich an der halbjährlichen Befragung der Community der Cloud-Native Computing Foundation ablesen:
-In der Umfrage stellte sich heraus, dass über 78 Prozent der 1337 Befragten Kubernetes verwendet.\grqq \cite{.2018}\\
+In der Umfrage stellte sich heraus, dass über 78 Prozent der 1337 Befragten Kubernetes verwendet.\grqq \cite{cncf2019}\\
 
 Kubernetes ist eine mittlerweile bewährte Infrastruktur und bietet Software die nötig ist um zuverlässige und skalierbare verteile Systeme zu entwickeln. \cite{Burns.2019} \\
 \subsubsection{Master Worker Prinzip}
@@ -103,9 +103,8 @@ Der Zweck eines Kubernetes-Clusters besteht darin, viele einzelne Computer als e
 Ein Cluster besteht aus zwei verschiedenen Arten von Komponenten, die zusammenarbeiten:
 dem Node und dem Master.
 Der Master stellt den Verwalter im Cluster dar. Er koordiniert alle Vorgänge, trifft also Entscheidungen, die von globaler Bedeutung für das gesamte Cluster sind. Beispielsweise startet er Komponenten oder schaltet sie ab, ist aber auch für Tasks wie die Zeitplanung zuständig. Er wird über die Kubernetes-API angesprochen und steht in direkter Verbindung mit den Nodes.
-\cite{.20200530T15:19:3404:00} \cite{.20200316T05:14:35+01:00}
 Nodes wiederum stellen die Arbeiter dar, weshalb sie auch "worker" genannt werden. Deren Aufgaben bestehen darin, Pods[siehe Relevante Komponenten] aufrecht zu erhalten und die Laufzeitumgebung bereitzustellen. Nodes halten auch die Container-Runtime bereit, welche dafür zuständig ist, containerisierte Anwendungen auszuführen und so das Verteilen einer Anwendung auf beliebige Hardware möglich macht.
-
+\cite{Kubernetes.20200814T19:35:13.000Z} \cite{Kubernetes.20200530T15:19:3404:00} \cite{Kubernetes.20200730T23:05:24+02:00}
 %<evtl. hier nochmal Grafik Master/Node>
 
 
@@ -125,7 +124,7 @@ Kubernetes bietet eine Vielzahl von Komponenten für unterschiedliche Aufgaben. 
 
 \item[kubelet]:\\
 Der kubelet ist der primäre \glqq node-agent\grqq. Er ist dafür zuständig die Nodes beim Kubernetes API-Server zu registrieren. Des Weiteren verwaltet er Pods anhand einer Podspezifikation(PodSpec) und sorgt dafür, dass die Pods im Rahmen der Spezifikation \glqq gesund\grqq{} laufen.\\
-Über den kubelet können diverse Metriken gesammelt werden, die über den Status des Nodes oder der darin laufenden Pods und Container Auskunft geben.\\
+Über den kubelet können diverse Metriken gesammelt werden, die über den Status des Nodes oder der darin laufenden Pods und Container Auskunft geben. \cite{Kubernetes.20200609T21:01:2404:00} \\
 
 \end{description}
 
@@ -135,9 +134,9 @@ Kubernetes bietet verschiedene Organisiationskonzepte mit deren Hilfe sich die K
 
 \item [Pod]:\\
 Ein Pod ist eine \glqq execution unit\grqq und repräsentiert einen Prozess, der in einem Cluster läuft. Ein Pod kapselt einen oder mehrere Anwendungs-Container, einen eigenen Speicherbereich, eine eigene IP-Adresse sowie dessen Konfigurationsoptionen.
-Die meistverwendete Container-Runtime ist, wie auch in diesem Projekt, Docker. Es gibt aber auch Unterstützung für weitere wie beispielsweise Rocket.
+Die meistverwendete Container-Runtime ist, wie auch in diesem Projekt, Docker. Es gibt aber auch Unterstützung für weitere wie beispielsweise Rocket. \cite{.20200814T19:56:28.000Z}
 \item [Deployment]:\\
-Das Deployment ist eine Beschreibung des Zustands, in dem Pods ausgeliefert werden sollen. Hier werden beispielsweise der Name, Namensraum, Ressourcenlimits oder auch die Größe der Skalierung definiert.
+Das Deployment ist eine Beschreibung des Zustands, in dem Pods ausgeliefert werden sollen. Hier werden beispielsweise der Name, Namensraum, Ressourcenlimits oder auch die Größe der Skalierung definiert. \cite{.13.06.2020}
 \item [Service]:\\
 Nach der offiziellen Kubernetes-Dokumentation sind Services eine \glqq abstrakte Möglichkeit, eine Anwendung, die auf einer Reihe von Pods läuft, als Netzwerkdienst bereitzustellen\grqq. \cite{.30.05.2020b}
 Kubernetes Pods können dynamisch in ihrer Anzahl skalieren und so auch ihre IP-Adresse wechseln. Daher ist es sinnvoll die Pods über einen Service anzusprechen, der mit einem DNS ähnlichen System funktioniert und so ein Deployment über einen lesbaren Namen ansprechbar macht. 
@@ -199,7 +198,7 @@ Prometheus bietet eine Vielzahl an Komponenten, die das Überwachen von Systemen
 
 Der Begriff Scraping bezeichnet das Sammeln von Metriken durch den Prometheus-Server. In Prometheus funktioniert dies folgendermaßen:
 Ein Scraping-Target, beispielsweise ein Kubernetes-Node, besitzt einen sog. Exporter, der Metriken aus dem System ausließt und diese an einem HTTP-Endpunkt \glqq<IP-Adresse/DNS-Name>/metrics\grqq bereitstellt. Der Prometheus-Server findet entweder per automatischem Target-Disovery Mechanismus das Target oder wird per Konfiguration darauf eingestellt.
-Der Exporter auf dem Target hat im Normalfall einen Aktualisierungszeitraum ebenso wie der Prometheus-Server, sodass die Metriken automatisch aktualisiert werden und eine Zeitreihenmetrik erzeugt wird.
+Der Exporter auf dem Target hat im Normalfall einen Aktualisierungszeitraum ebenso wie der Prometheus-Server, sodass die Metriken automatisch aktualisiert werden und eine Zeitreihenmetrik erzeugt wird. 
 
 \subsubsection{Abfragen}
 
@@ -231,6 +230,8 @@ Der Alertmanager hat mehrere Möglichkeiten mit Alerts umzugehen. Eine der Mögl
 \end{figure}
 
 In Abbildung 2 ist der sequenzielle Ablauf eines Alamierungsvorgangs dargestellt. Nachdem Metriken vom Server von einer Metrikquelle gelesen wurden und eine Alertingregel erfüllen, wird der Zeitraum, in welcher die Regeln erfüllt ist gemessen und der Alert wird mit dem Status \glqq pending\grqq an den Alertmanager gesendet. Besteht der Zustand des Alerts für die konfigurierte Offset-Zeit, wird der Alert in den Status \grqq active\grqq versetzt und an alle im Alertmanager konfigurierten Ziele versendet.
+
+Die Grundlage der Informationen ist die offizielle Prometheus-Dokumentation \cite{Prometheus.06.07.2020}.
 
 \subsection{Wahl der Sprache}
 
@@ -319,7 +320,7 @@ Dieser Zustand wird erreicht, wenn die Voraussetzungen des OU-Zustands erfüllt 
 \begin{figure}[htbp]
   \centering
   \includegraphics[scale=1.2]{img/SDTScaling.png}
-  \caption{Safe-Zone and Resource Scaling Thresholds (from Paper ACCRS: autonomic based cloud computing resource scaling )}
+  \caption{Safe-Zone and Resource Scaling Thresholds (from Paper ACCRS: autonomic based cloud computing resource scaling \cite{AlSharif.2016} )}
 \end{figure}
 
 Die Grafik stellt die Safe-Zone als grünen Bereich, die Over- bzw. Under-Utilization als rote Würfel, die an die Grenzen der Safe-Zone grenzen, dar. Die X,Y und Z-Achsen repräsentieren die Auslastung von RAM, Netzwerk und CPU. Anhand von Sprüngen, die der Graph der VM-Operations nach überschreiten der Safe-Zone Grenze zurück in die Safe-Zone macht, kann nachvollzogen werden, dass skaliert wurde und so die Last pro VM gesunken ist.
@@ -358,11 +359,11 @@ Gregg will mit dieser Methode eine Möglichkeit bieten, serverseitige Performanc
 
 \begin{figure}[htbp]
 \includegraphics[scale=.7]{img/usemethod_flow.png}
-\caption{Darstellung der Vorgehensweise bei Anwendung der USE-Methode ~\protect\cite{.20200810T18:06:18.000Z}}
+\caption{Darstellung der Vorgehensweise bei Anwendung der USE-Methode ~\protect\cite{brendan-gregg-use}}
 \end{figure}
 
 Die Reihenfolge des Vorgehens wird in diesem Diagram dargestellt. Um die Geschwindigkeit zu optimieren sollten Errors als erstes überprüft werden, da sie typischerweise schneller und einfacher zu interpretieren sind. Die Utilization oder Saturation können in beliebiger Reihenfolge beobachtet werden.
-\cite{.27.07.2020}
+\cite{brendan-gregg-use}
 
 \pagebreak
 
@@ -413,7 +414,7 @@ Diese aufsummiert und über die Zeit gemittelt, ergibt die durchschnittliche Sat
 
 Ein weiterer Weg die Saturation zu berechnen, ist das Aufsummieren der Zeit in der ein Prozess \glqq throtteld\grqq läuft. Dies funktioniert dann, wenn ein Prozess ein Ressourcenlimit besitzt. Übersteigt er dieses, wird der Prozess gedrosselt.\\
 \underline{Error-Rate:}\\
-Die Fehlererkennung wird von handelsüblichen CPUs nicht unterstützt, weswegen in den meisten Fällen keine Fehlererkennung umgesetzt werden kann. Eine mögliche Fehlererkennung würde beispielsweise über ein sogenanntes Lockstep-Verfahren umgesetzt werden, bei dem zwei CPUs jeweils die gleiche Aufgabe erhalten und gegenseitig ihre Ergebnisse vergleichen. Bei Unterschieden im Ergebnis kann daraus ein Fehlerfall ermittelt werden\cite{.}<Zitat US-Patent>.
+Die Fehlererkennung wird von handelsüblichen CPUs nicht unterstützt, weswegen in den meisten Fällen keine Fehlererkennung umgesetzt werden kann. Eine mögliche Fehlererkennung würde beispielsweise über ein sogenanntes Lockstep-Verfahren umgesetzt werden, bei dem zwei CPUs jeweils die gleiche Aufgabe erhalten und gegenseitig ihre Ergebnisse vergleichen. Bei Unterschieden im Ergebnis kann daraus ein Fehlerfall ermittelt werden\cite{patent}.
 \item[RAM]:\\
 \underline{Utilization:}\\
 Die RAM Utilization berechnet sich aus der Menge des vom System reservierten Speichers, der durch die Menge des gesamten Speichers geteilt wird. Beide stehen in UNIX basierten Betriebssystemen zur Verfügung, sodass die Rechnung zur RAM-Utilization lautet:\\
@@ -679,7 +680,7 @@ Der eingesetzte \glqq Moving-Average\grqq-Filter sieht folgendermaßen aus:\\
 \(
 \displaystyle{m^{(n)}_{MA}(t) = \frac{1}{n}{\sum\limits_{i=0}^{{n-1}} x_{(t-i)}} }
 \)\\
-\captionof{figure}{Formel des \glqq Moving-Average\grqq-Filter}
+\captionof{figure}{Formel des \glqq Moving-Average\grqq-Filter \cite{wiki:xx0} }
 
 \end{Huge}
 
@@ -1181,7 +1182,7 @@ Trotzdem stellt dieser Ansatz vor allem einen sehr leichtgewichtigen und im Gege
 Dieses Projekt wird in der Zeit nach dieser Arbeit weiter betrieben und Teil einer produktiven Infrastruktur werden. Zu diesem Zeitpunkt geplante Erweiterungen sind weitere Regeln sowie der Einsatz der kuberneteseigenen Skalierungsfunktion \glqq HPA\grqq.
 
 \newpage
-\bibliography{Literatur}
+\bibliography{Literatur,ManLiteratur}
 
 \newpage
 \includepdf{Eid.pdf}
