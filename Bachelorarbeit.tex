@@ -247,7 +247,7 @@ Go ist im Gegensatz zu Sprachen wie JavaScript oder PHP eine kompilierte Sprache
 
 \item[Typsicherheit]:\\
 
-Die Sprache ist statisch typisier. Das bedeutet, dass Typen zur Kompilierzeit überprüft werden und so Fehler durch falsche Typen vermieden werden. 
+Die Sprache ist statisch typisiert. Das bedeutet, dass Typen zur Kompilierzeit überprüft werden und so Fehler durch falsche Typen vermieden werden. 
 
 \item[Speichermanagement]:\\
 
@@ -372,6 +372,8 @@ Die Reihenfolge des Vorgehens wird in diesem Diagram dargestellt. Um die Geschwi
 Die Metriken, mit denen die USE-Methode umgesetzt wird, werden aus den Systemmetriken, die durch Prometheus gesammelt werden, zusammengesetzt. 
 Die Metriken Utilization und Saturation werden für CPU, RAM und Netzwerkauslastung folgendermaßen berechnet:
 
+(Die Formeln stammen teilweise aus einem Guide, der diese in Form der Prometheus PromQL-Sprache geschrieben hat und werden mit der entsprechenden Quelle vermerkt.)
+
 \begin{description}
 \item[CPU]:\\
 \underline{Utilization:}\\
@@ -385,7 +387,7 @@ Imax entspricht 300 Sekunden
 \displaystyle{U_{CPU}(t)=\frac{1}{N}{\sum\limits_{i_{w}=0}^{N-1} l_{cpu}{(t-i_{w})}} }
 \)
 
-\captionof{figure}{Formel der CPU-Utilization} 
+\captionof{figure}{Formel der CPU-Utilization \cite{.20200814T22:19:43.000Z} } 
 
 \end{minipage}
 
@@ -398,7 +400,7 @@ Die CPU Saturation kann anhand des Ressourcenlimits berechnet werden. In UNIX ba
 \(
 \displaystyle{s_{cpu}= load\_average / core\_unit\_count}
 \)
-\captionof{figure}{Formel der CPU-Saturation} 
+\captionof{figure}{Formel der CPU-Saturation \cite{.20200814T22:19:43.000Z} } 
 
 \end{minipage}\\
 
@@ -414,7 +416,7 @@ Diese aufsummiert und über die Zeit gemittelt, ergibt die durchschnittliche Sat
 
 Ein weiterer Weg die Saturation zu berechnen, ist das Aufsummieren der Zeit in der ein Prozess \glqq throtteld\grqq läuft. Dies funktioniert dann, wenn ein Prozess ein Ressourcenlimit besitzt. Übersteigt er dieses, wird der Prozess gedrosselt.\\
 \underline{Error-Rate:}\\
-Die Fehlererkennung wird von handelsüblichen CPUs nicht unterstützt, weswegen in den meisten Fällen keine Fehlererkennung umgesetzt werden kann. Eine mögliche Fehlererkennung würde beispielsweise über ein sogenanntes Lockstep-Verfahren umgesetzt werden, bei dem zwei CPUs jeweils die gleiche Aufgabe erhalten und gegenseitig ihre Ergebnisse vergleichen. Bei Unterschieden im Ergebnis kann daraus ein Fehlerfall ermittelt werden\cite{patent}.
+Die Fehlererkennung wird von handelsüblichen CPUs nicht unterstützt, weswegen in den meisten Fällen keine Fehlererkennung umgesetzt werden kann. Wie im Patent Self-Checked, Lock Step Processor Pairs \cite{patent} beschrieben, könnte eine mögliche Fehlererkennung beispielsweise über ein sogenanntes Lockstep-Verfahren umgesetzt werden, bei dem zwei CPUs jeweils die gleiche Aufgabe erhalten und gegenseitig ihre Ergebnisse vergleichen. Bei Unterschieden im Ergebnis kann daraus ein Fehlerfall ermittelt werden.
 \item[RAM]:\\
 \underline{Utilization:}\\
 Die RAM Utilization berechnet sich aus der Menge des vom System reservierten Speichers, der durch die Menge des gesamten Speichers geteilt wird. Beide stehen in UNIX basierten Betriebssystemen zur Verfügung, sodass die Rechnung zur RAM-Utilization lautet:\\
@@ -423,7 +425,7 @@ Die RAM Utilization berechnet sich aus der Menge des vom System reservierten Spe
 \(
 \displaystyle{l_{ram}=1-ram_{res}/ram_{ges}}
 \) 
-\captionof{figure}{Formel der RAM-Utilization} 
+\captionof{figure}{Formel der RAM-Utilization \cite{.20200814T22:19:43.000Z} } 
 
 \end{minipage}
 
@@ -446,7 +448,7 @@ Die RAM Saturation kann am besten berechnet werden, wenn Ressourcenlimits existi
 \(
 \displaystyle{s_{ram}=RAM_{res}/RAM_{ges}}
 \) 
-\captionof{figure}{Formel der RAM-Saturation} 
+\captionof{figure}{Formel der RAM-Saturation \cite{.20200814T23:12:04.000Z} } 
 \end{minipage}
 
 Über diesen wird wiederum der Mittelwert gebildet:\\
@@ -479,7 +481,7 @@ Um die Netzwerk Utilization zu messen, werden die Bytes aufsummiert, die versend
 \(
 \displaystyle{U_{Net}(t)=\frac{1}{N}{\sum\limits_{i_{w}=0}^{N-1} l_{net}{(t-i_{w})}} }
 \) 
-\captionof{figure}{Formel der Netzwerk-Utilization} 
+\captionof{figure}{Formel der Netzwerk-Utilization \cite{.20200814T22:19:43.000Z} } 
 \end{minipage}
 
 \underline{Saturation:}\\
@@ -510,7 +512,7 @@ Zum Ermitteln der Error-Rate des Netzwerks werden Sende- und Empfangs-Fehler auf
 \(
 \displaystyle{E_{Net}(t)=\frac{1}{N}{\sum\limits_{i_{w}=0}^{N-1} e_{net}{(t-i_{w})}} }
 \) 
-\captionof{figure}{Formel der Netzwerk-Error-Rate} 
+\captionof{figure}{Formel der Netzwerk-Error-Rate \cite{.20200814T22:19:43.000Z} } 
 \end{minipage}
 
 \end{description}
