@@ -1,5 +1,6 @@
 \documentclass[a4paper,10pt]{scrartcl}
  
+
 \usepackage[utf8]{inputenc} 
 \usepackage[ngerman]{babel}
 \usepackage[T1]{fontenc}
@@ -14,7 +15,8 @@
 \usepackage{wrapfig}
 \usepackage{url}
 
-\bibliographystyle{unsrt}
+
+\bibliographystyle{unsrtdin}
 
 \hypersetup{
     colorlinks,
@@ -27,9 +29,6 @@
 
 
 \title{}
-
-
-
 
 \author{Johannes Bohlig}
 
@@ -75,9 +74,11 @@ Neben der Möglichkeit, automatisierte Aktionen auszuführen, ist es auch sinnvo
 Diese Arbeit setzt sich das Ziel, die Durchführbarkeit der automatisierten Anomalie- und Engpasserkennung nachzuweisen und die erste Implementierung innerhalb eines schon bestehenden Kubernetes-Clusters durchzuführen. 
 Im Rahmen dieser Arbeit werden die passenden Komponenten gewählt, die zur Umsetzung der Anforderungen benötigt werden, die Infrastruktur geplant, erstellt und die korrekte Funktion evaluiert.\\
 Des Weiteren wird die Relevanz verschiedener erhobener Metriken in Bezug auf ihre Verwendbarkeit beim automatisierten Detektieren von Anomalien und Engpässen dargestellt und geklärt.\\
-Es werden die Tools Prometheus und Grafana verwendet und durch Eigenentwicklungen ergänzt und so eine Infrastruktur geschaffen, welche die Anforderungen erfüllen kann.
+Es werden die Tools Prometheus und Grafana verwendet und durch Eigenentwicklungen ergänzt und so eine Infrastruktur geschaffen, welche die Anforderungen erfüllen kann.\\
 
-\subsection{Struktur}
+\begin{Large}
+\textbf{Struktur}\\
+\end{Large}
 
 Diese Arbeit ist in zehn Kapitel strukturiert. Im zweiten Kapitel werden die Grundlagen und für das Verständnis der weiteren Arbeit benötigtes Wissen vermittelt. Das Kapitel vermittelt grundlegendes Wissen zu den verwendeten Tools. Im dritten Kapitel wird der Status Quo der Technik recherchiert und somit die technische Ausgangslage der Arbeit geklärt. Mit dem vierten Kapitel beginnt der praktische Teil des Projekts. Am Anfang dessen steht die Vorgehensweise beim Aggregieren von Daten aus einem Kubernetes-Cluster. Nachdem Daten aggregiert wurden, müssen diese verarbeitet und ausgewertet werden. Das Vorgehen hierfür wird in Kapitel fünf erläutert. Die ausgewerteten Daten haben den Zweck automatisierte Aktionen auszulösen. Das sechste Kapitel befasst sich damit, wie passende Aktionen gewählt und angewandt werden.
 Hier werden verwendete Komponenten, Architektur, Aktionen, Regeln sowie die passende Programmiersprache erläutert. Nachdem die geplanten Features implementiert sind, müssen diese auf ihre korrekte Funktion getestet werden.
@@ -97,14 +98,15 @@ Diese Übersicht der Grundlagen spricht die für dieses Projekt benötigten Komp
 \glqq Die Relevanz von Kubernetes lässt sich an der halbjährlichen Befragung der Community der Cloud-Native Computing Foundation ablesen:
 In der Umfrage stellte sich heraus, dass über 78 Prozent der 1337 Befragten Kubernetes verwendet.\grqq \cite{cncf2019}\\
 
-Kubernetes ist eine mittlerweile bewährte Infrastruktur und bietet Software die nötig ist um zuverlässige und skalierbare verteile Systeme zu entwickeln. \cite{Burns} \\
+Burns et al. zufolge ist Kubernetes eine mittlerweile bewährte Infrastruktur und bietet Software die nötig ist um zuverlässige und skalierbare verteile Systeme zu entwickeln. \cite{Burns} \\
 \subsubsection{Master Worker Prinzip}
 Der Zweck eines Kubernetes-Clusters besteht darin, viele einzelne Computer als eine einzige Einheit zusammenarbeiten zu lassen.
 Ein Cluster besteht aus zwei verschiedenen Arten von Komponenten, die zusammenarbeiten:
 dem Node und dem Master.
 Der Master stellt den Verwalter im Cluster dar. Er koordiniert alle Vorgänge, trifft also Entscheidungen, die von globaler Bedeutung für das gesamte Cluster sind. Beispielsweise startet er Komponenten oder schaltet sie ab, ist aber auch für Tasks wie die Zeitplanung zuständig. Er wird über die Kubernetes-API angesprochen und steht in direkter Verbindung mit den Nodes.
 Nodes wiederum stellen die Arbeiter dar, weshalb sie auch "worker" genannt werden. Deren Aufgaben bestehen darin, Pods[siehe Relevante Komponenten] aufrecht zu erhalten und die Laufzeitumgebung bereitzustellen. Nodes halten auch die Container-Runtime bereit, welche dafür zuständig ist, containerisierte Anwendungen auszuführen und so das Verteilen einer Anwendung auf beliebige Hardware möglich macht.
-\cite{Kubernetes.20200814T19:35:13.000Z} \cite{Kubernetes.20200530T15:19:3404:00} \cite{Kubernetes.20200730T23:05:24+02:00}
+
+\cite{components} \cite{node} \cite{concepts}
 %<evtl. hier nochmal Grafik Master/Node>
 
 
@@ -176,7 +178,7 @@ In dieser Arbeit werden Service-Metriken erstellt und verwendet, welche die Perf
 
 \subsection{Anomalie}
 
-Eine Anomalie oder anormales Verhalten bezeichnet das Verhalten eines Programms oder Service, das stark von dessen Normalzustand abweicht. Dies kann beispielsweise eine hohe Ressourcenlast, verursacht durch fehlerhaften Code, sein. \cite{.19.07.2020d}
+Die folgende Definition orientiert sich an der Definition von Pahl et al.\cite{.19.07.2020d}. Eine Anomalie oder anormales Verhalten bezeichnet das Verhalten eines Programms oder Services, das stark von dessen Normalzustand abweicht. Dies kann beispielsweise eine hohe Ressourcenlast, verursacht durch fehlerhaften Code, sein. 
 
 \subsection{Prometheus}
 Prometheus ist ein Open-Source Monitoring-Toolkit. Es wurde ursprünglich von SoundCloud entwickelt, ist aber mittlerweile ein Open-Source Projekt, das der Cloud Native
@@ -702,12 +704,6 @@ Zur Visualisierung der Metriken stehen in der Grafana-Oberfläche verschiedene M
 Da schnell erkennbar sein soll, an welcher Stelle ungewöhnliche oder kritische Werte auftreten, werden die Zähler als Visualisierungsmethode für alle Metriken gewählt. Hierbei steht pro Metrik ein eigener Zähler zur Verfügung, womit sich der Zustand jeder Ressource einzeln einsehen lässt.\\
 Für die Counter werden grüne Bereiche für unkritische Auslastung und rote Bereiche für kritische Auslastung mit einen Grenzwert von 75\% eingerichtet, um kritische Zustände hervorzuheben.
 
-\begin{figure}[htbp]
-\includegraphics[scale=.8]{img/PercantageTransparent.png}
-\caption{Darstellung des Counters}
-\end{figure}
-
-
 \section{Automatisierte Aktionen}
 
 Das Kernthema dieser Arbeit ist die Entwicklung eines Systems, welches das Ausführen automatisierter Aktionen auf ein Kubernetes-Cluster ermöglicht. Mithilfe der Komponenten und Tools, Prometheus und dessen Alert-Verwaltungstool \glqq Alertmanager\grqq (siehe Grundlagenkapitel) sowie einer Eigenentwicklung, genannt \glqq Alert-Action-Manager\grqq, welcher Alerts empfängt und auf diese mit einer passenden automatisierten Aktion reagiert, wird dieses Vorhaben in diesem Kapitel umgesetzt. Mittels automatischer Skalierung und Anomalie-Detection wird die Funktion der Systems und der Komponenten nachgewiesen.
@@ -1184,7 +1180,7 @@ Trotzdem stellt dieser Ansatz vor allem einen sehr leichtgewichtigen und im Gege
 Dieses Projekt wird in der Zeit nach dieser Arbeit weiter betrieben und Teil einer produktiven Infrastruktur werden. Zu diesem Zeitpunkt geplante Erweiterungen sind weitere Regeln sowie der Einsatz der kuberneteseigenen Skalierungsfunktion \glqq HPA\grqq.
 
 \newpage
-\bibliography{Literatur,ManLiteratur}
+\bibliography{ManLiteratur}
 
 \newpage
 \includepdf{Eid.pdf}
