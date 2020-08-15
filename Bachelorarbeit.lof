@@ -3,18 +3,18 @@
 \contentsline {figure}{\numberline {2}{\ignorespaces Alertmanager Aufbau}}{8}{figure.2}%
 \contentsline {figure}{\numberline {3}{\ignorespaces Safe-Zone and Resource Scaling Thresholds (from Paper ACCRS: autonomic based cloud computing resource scaling \cite {AlSharif.2016} )}}{13}{figure.3}%
 \contentsline {figure}{\numberline {4}{\ignorespaces Darstellung der Vorgehensweise bei Anwendung der USE-Methode ~\cite {brendan-gregg-use}}}{16}{figure.4}%
-\contentsline {figure}{\numberline {5}{\ignorespaces Formel der CPU-Utilization \cite {.20200814T22:19:43.000Z} }}{17}{figure.5}%
-\contentsline {figure}{\numberline {6}{\ignorespaces Formel der CPU-Saturation \cite {.20200814T22:19:43.000Z} }}{17}{figure.6}%
+\contentsline {figure}{\numberline {5}{\ignorespaces Formel der CPU-Utilization \cite {metrics2} }}{17}{figure.5}%
+\contentsline {figure}{\numberline {6}{\ignorespaces Formel der CPU-Saturation \cite {metrics2} }}{17}{figure.6}%
 \contentsline {figure}{\numberline {7}{\ignorespaces Formel der CPU-Saturation Moving-Average}}{18}{figure.7}%
-\contentsline {figure}{\numberline {8}{\ignorespaces Formel der RAM-Utilization \cite {.20200814T22:19:43.000Z} }}{18}{figure.8}%
+\contentsline {figure}{\numberline {8}{\ignorespaces Formel der RAM-Utilization \cite {metrics2} }}{18}{figure.8}%
 \contentsline {figure}{\numberline {9}{\ignorespaces Formel der RAM-Utilization Moving-Average}}{18}{figure.9}%
-\contentsline {figure}{\numberline {10}{\ignorespaces Formel der RAM-Saturation \cite {.20200814T23:12:04.000Z} }}{19}{figure.10}%
+\contentsline {figure}{\numberline {10}{\ignorespaces Formel der RAM-Saturation \cite {metrics3} }}{19}{figure.10}%
 \contentsline {figure}{\numberline {11}{\ignorespaces Formel der RAM-Saturation Moving-Average}}{19}{figure.11}%
 \contentsline {figure}{\numberline {12}{\ignorespaces Formel der RAM-Error-Rate}}{19}{figure.12}%
-\contentsline {figure}{\numberline {13}{\ignorespaces Formel der Netzwerk-Utilization \cite {.20200814T22:19:43.000Z} }}{20}{figure.13}%
+\contentsline {figure}{\numberline {13}{\ignorespaces Formel der Netzwerk-Utilization \cite {metrics2} }}{20}{figure.13}%
 \contentsline {figure}{\numberline {14}{\ignorespaces Formel der Netzwerk-Saturation}}{20}{figure.14}%
 \contentsline {figure}{\numberline {15}{\ignorespaces Formel der Netzwerk-Saturation Moving-Average}}{20}{figure.15}%
-\contentsline {figure}{\numberline {16}{\ignorespaces Formel der Netzwerk-Error-Rate \cite {.20200814T22:19:43.000Z} }}{20}{figure.16}%
+\contentsline {figure}{\numberline {16}{\ignorespaces Formel der Netzwerk-Error-Rate \cite {metrics2} }}{20}{figure.16}%
 \contentsline {figure}{\numberline {17}{\ignorespaces Bildrepräsentation des Alarms (Quelle Draw.io)}}{22}{figure.17}%
 \contentsline {figure}{\numberline {18}{\ignorespaces Bildrepräsentation der Zeitreihe}}{22}{figure.18}%
 \contentsline {figure}{\numberline {19}{\ignorespaces Bildrepräsentation der Zeitreihe als Graf}}{22}{figure.19}%

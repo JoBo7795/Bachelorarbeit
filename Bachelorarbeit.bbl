@@ -2,19 +2,26 @@
 
 \bibitem{AlSharif.2016}
 Ziad~A. Al-Sharif, Yaser Jararweh, Ahmad Al-Dahoud, and Luay~M. Alawneh.
-\newblock Accrs: autonomic based cloud computing resource scaling, 2016.
+\newblock Accrs: autonomic based cloud computing resource scaling.
+\newblock https://link.springer.com/article/10.1007/s10586-016-0682-6, 2016.
 
 \bibitem{brendan-gregg-use}
 {The USE Method}.
 \newblock http://www.brendangregg.com/usemethod.html, 10.08.2020.
 
-\bibitem{.20200814T22:19:43.000Z}
+\bibitem{metrics2}
 A deep dive into kubernetes metrics --- part 2 | by bob cotton |
-  freshtracks.io, 15.08.2020.
+  freshtracks.io.
+\newblock
+  \url{https://blog.freshtracks.io/a-deep-dive-into-kubernetes-metrics-part-2-c869581e9f29},
+  19.07.2020.
 
-\bibitem{.20200814T23:12:04.000Z}
+\bibitem{metrics3}
 A deep dive into kubernetes metrics --- part 3 container resource metrics | by
-  bob cotton | freshtracks.io, 15.08.2020.
+  bob cotton | freshtracks.io.
+\newblock
+  \url{https://blog.freshtracks.io/a-deep-dive-into-kubernetes-metrics-part-3-container-resource-metrics-361c5ee46e66},
+  19.07.2020.
 
 \bibitem{wiki:xx0}
 Wikipedia.
@@ -24,12 +31,16 @@ Wikipedia.
   2020.
 \newblock [Online; Stand 14. August 2020].
 
-\bibitem{.20200810T16:14:45.000Z}
-Ca-studie: It-ausfall kostet im durchschnitt 400.000 euro - channelpartner.de,
+\bibitem{CA-Studie}
+Ca-studie: It-ausfall kostet im durchschnitt 400.000 euro - channelpartner.de.
+\newblock
+  https://www.channelpartner.de/a/it-ausfall-kostet-im-durchschnitt-400-000-euro,296511,
   10.08.2020.
 
-\bibitem{.30.05.2020}
-Kubernetes komponenten, 30.05.2020.
+\bibitem{components}
+Kubernetes komponenten.
+\newblock \url{https://kubernetes.io/de/docs/concepts/overview/components/},
+  30.05.2020.
 
 \bibitem{cncf2019}
 {CNCF SURVEY 2019: Deployments are getting larger as cloud native adoption
@@ -39,52 +50,56 @@ Kubernetes komponenten, 30.05.2020.
   2020.
 \newblock [Online; Stand 06. Juli 2020].
 
-\bibitem{Burns.2019}
+\bibitem{Burns}
 Brendan Burns, Joe Beda, and Kelsey Hightower.
 \newblock {\em Kubernetes: Up and running : dive into the future of
   infrastructure}.
 \newblock {O'Reilly Media, Incorporated}, Sebastopol, CA, second edition
   edition, 2019.
 
-\bibitem{Kubernetes.20200814T19:35:13.000Z}
-Kubernetes.
-\newblock Konzepte, 14.08.2020.
+\bibitem{kubelet}
+kubelet.
+\newblock
+  \url{https://kubernetes.io/docs/reference/command-line-tools-reference/kubelet/},
+  10.06.2020.
 
-\bibitem{Kubernetes.20200530T15:19:3404:00}
-Kubernetes.
-\newblock Kubernetes komponenten, 30.05.2020.
+\bibitem{pod}
+Pod overview.
+\newblock
+  \url{https://kubernetes.io/docs/concepts/workloads/pods/pod-overview/},
+  30.05.2020.
 
-\bibitem{Kubernetes.20200730T23:05:24+02:00}
-Kubernetes.
-\newblock Nodes, 30.07.2020.
+\bibitem{deployment}
+Deployments.
+\newblock
+  \url{https://kubernetes.io/docs/concepts/workloads/controllers/deployment/},
+  13.06.2020.
 
-\bibitem{Kubernetes.20200609T21:01:2404:00}
-Kubernetes.
-\newblock kubelet, 10.06.2020.
+\bibitem{service}
+Service.
+\newblock
+  \url{https://kubernetes.io/docs/concepts/services-networking/service/},
+  30.05.2020.
 
-\bibitem{.20200814T19:56:28.000Z}
-Pod overview, 14.08.2020.
-
-\bibitem{.13.06.2020}
-Deployments, 13.06.2020.
-
-\bibitem{.30.05.2020b}
-Pod overview, 30.05.2020.
-
-\bibitem{.24.05.2020}
-Overview of kubectl, 24.05.2020.
+\bibitem{kubectl}
+Overview of kubectl.
+\newblock \url{https://kubernetes.io/docs/reference/kubectl/overview/},
+  24.05.2020.
 
 \bibitem{GithubUser:dashpole.05.07.2020}
 {Github-User: dashpole}.
-\newblock google/cadvisor, 05.07.2020.
+\newblock google/cadvisor.
+\newblock https://github.com/google/cadvisor, 05.07.2020.
 
 \bibitem{.19.07.2020d}
-https://www.researchgate.net/profile/claus{\_}pahl/publication/333235851{\_}a{\_}controller{\_}architecture{\_}for{\_}anomaly{\_}detection{\_}root{\_}cause{\_}analysis{\_}and{\_}self-adaptation{\_}for{\_}cluster{\_}architectures/links/5ce391b3a6fdccc9ddc1550f/a-controller-architecture-for-anomaly-detection-root-cause-analysis-and-self-adaptation-for-cluster-architectures.pdf,
-  19.07.2020.
+Areeg Samir and Claus Pahl.
+\newblock A controller architecture for anomaly detection, root cause analysis
+  andself-adaptation for cluster architectures, 19.07.2020.
 
 \bibitem{Prometheus.06.07.2020}
 Prometheus.
-\newblock Overview | prometheus, 06.07.2020.
+\newblock Overview | prometheus.
+\newblock https://prometheus.io/docs/introduction/overview/, 06.07.2020.
 
 \bibitem{Tien.2019}
 Chin-Wei Tien, Tse-Yung Huang, Chia-Wei Tien, Ting-Chun Huang, and Sy-Yen Kuo.
@@ -93,10 +108,19 @@ Chin-Wei Tien, Tse-Yung Huang, Chia-Wei Tien, Ting-Chun Huang, and Sy-Yen Kuo.
 \newblock {\em Engineering Reports}, 1(5), 2019.
 
 \bibitem{.04.07.2020}
-index | tiobe - the software quality company, 04.07.2020.
+index | tiobe - the software quality company.
+\newblock https://www.tiobe.com/tiobe-index/, 04.07.2020.
 
 \bibitem{.09.07.2020}
-Anomaly detection and diagnosis for container-based microservices with
-  performance monitoring, 09.07.2020.
+{Anomaly Detection and Diagnosis for Container-Based Microservices with
+  Performance Monitoring}.
+\newblock \url{https://link.springer.com/chapter/10.1007/978-3-030-05063-4_42},
+  09.07.2020.
+
+\bibitem{patent}
+Robert Horst W.~et al.
+\newblock {SELF-CHECKED, LOCK STEP PROCESSOR PAIRS}.
+\newblock 15.05.2001.
+\newblock Patent No.: US 6,233,702 B1.
 
 \end{thebibliography}

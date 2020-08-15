@@ -64,7 +64,7 @@ In der Evaluation zeigte sich, dass das System anormale Zustände in Containern 
 
 \section{Einleitung}
 
-Anbieter von Cloud-Services haben den Anspruch, möglichst geringe und kurze Ausfallzeiten mit ihren Services zu erreichen, da diese hohe Kosten zur Folge haben können. Im Jahr 2010 betrugen diese Kosten im Schnitt bis knapp 400.000€ \cite{.20200810T16:14:45.000Z} pro Jahr für deutsche Unternehmen Um eine maximal lange, störungsfreie Servicelaufzeit zu erreichen, ist es notwendig jederzeit den Servicestatus einsehen und mögliches Fehlverhalten frühzeitig erkennen zu können. 
+Anbieter von Cloud-Services haben den Anspruch, möglichst geringe und kurze Ausfallzeiten mit ihren Services zu erreichen, da diese hohe Kosten zur Folge haben können. Im Jahr 2010 betrugen diese Kosten im Schnitt bis knapp 400.000€ \cite{CA-Studie} pro Jahr für deutsche Unternehmen Um eine maximal lange, störungsfreie Servicelaufzeit zu erreichen, ist es notwendig jederzeit den Servicestatus einsehen und mögliches Fehlverhalten frühzeitig erkennen zu können. 
 Da für eine dauerhafte Kontrolle eines Services ein oder sogar mehrere Mitarbeiter benötigt würden, welche eine eintönige Kontrollaufgabe übernehmen müssten, ist es sinnvoll möglichst viele Teile der Kontrolle zu automatisieren. Diese Automatisierung bringt einerseits den Vorteil der Kosteneinsparung, da keine Mitarbeiter für diese Aufgabe benötigt werden und andererseits einen Geschwindigkeitsvorteil durch die wesentlich geringere Reaktionszeit, die durch die Geschwindigkeit von Computern gegenüber dem Menschen einhergeht.\\
 Hierbei sollen vor allem Engpässe bei Ressourcen ausfindig gemacht werden sowie Anomalien, also Fehlverhalten, in einzelnen Komponenten der Infrastruktur gefunden und behoben werden, bestenfalls noch bevor sich größere Auswirkungen auf die restlichen Komponenten ergeben.
 Sofern Ressourcenengpässe, also hohe Last, auftreten und dies frühzeitig erkannt wird, können einzelne Services gezielt skaliert und so Beeinträchtigungen auf die Funktion verhindert werden. Da Engpässe oft temporär auftreten, werden Services sowohl hoch- als herunterskaliert, um so immer die ideale Zahl an Ressourcen bereitzustellen.
@@ -92,12 +92,12 @@ Zum Schluss, in Kapitel zehn, wird ein Fazit aus dem zurückliegenden Projekt ge
 \subsection{Kubernetes}
 
 Kubernetes, kurz "k8s", ist eine ursprünglich von Google entwickelte, mittlerweile aber quelloffene Software zur Orchestrierung und zum Deployment von containerisierten Anwendungen. Seit seiner Einführung 2014 hat Kubernetes ein starkes Wachstum erlebt und ist zum Quasistandard bei der Entwicklung von Cloud-Native Applikationen geworden.
-Diese Übersicht der Grundlagen spricht die für dieses Projekt benötigten Komponenten an, weitergehende Informationen gibt es in der offiziellen Kubernetes-Dokumentation. \cite{.30.05.2020}\\
+Diese Übersicht der Grundlagen spricht die für dieses Projekt benötigten Komponenten an, weitergehende Informationen gibt es in der offiziellen Kubernetes-Dokumentation. \cite{components}\\
 
 \glqq Die Relevanz von Kubernetes lässt sich an der halbjährlichen Befragung der Community der Cloud-Native Computing Foundation ablesen:
 In der Umfrage stellte sich heraus, dass über 78 Prozent der 1337 Befragten Kubernetes verwendet.\grqq \cite{cncf2019}\\
 
-Kubernetes ist eine mittlerweile bewährte Infrastruktur und bietet Software die nötig ist um zuverlässige und skalierbare verteile Systeme zu entwickeln. \cite{Burns.2019} \\
+Kubernetes ist eine mittlerweile bewährte Infrastruktur und bietet Software die nötig ist um zuverlässige und skalierbare verteile Systeme zu entwickeln. \cite{Burns} \\
 \subsubsection{Master Worker Prinzip}
 Der Zweck eines Kubernetes-Clusters besteht darin, viele einzelne Computer als eine einzige Einheit zusammenarbeiten zu lassen.
 Ein Cluster besteht aus zwei verschiedenen Arten von Komponenten, die zusammenarbeiten:
@@ -124,7 +124,7 @@ Kubernetes bietet eine Vielzahl von Komponenten für unterschiedliche Aufgaben. 
 
 \item[kubelet]:\\
 Der kubelet ist der primäre \glqq node-agent\grqq. Er ist dafür zuständig die Nodes beim Kubernetes API-Server zu registrieren. Des Weiteren verwaltet er Pods anhand einer Podspezifikation(PodSpec) und sorgt dafür, dass die Pods im Rahmen der Spezifikation \glqq gesund\grqq{} laufen.\\
-Über den kubelet können diverse Metriken gesammelt werden, die über den Status des Nodes oder der darin laufenden Pods und Container Auskunft geben. \cite{Kubernetes.20200609T21:01:2404:00} \\
+Über den kubelet können diverse Metriken gesammelt werden, die über den Status des Nodes oder der darin laufenden Pods und Container Auskunft geben. \cite{kubelet} \\
 
 \end{description}
 
@@ -134,14 +134,14 @@ Kubernetes bietet verschiedene Organisiationskonzepte mit deren Hilfe sich die K
 
 \item [Pod]:\\
 Ein Pod ist eine \glqq execution unit\grqq und repräsentiert einen Prozess, der in einem Cluster läuft. Ein Pod kapselt einen oder mehrere Anwendungs-Container, einen eigenen Speicherbereich, eine eigene IP-Adresse sowie dessen Konfigurationsoptionen.
-Die meistverwendete Container-Runtime ist, wie auch in diesem Projekt, Docker. Es gibt aber auch Unterstützung für weitere wie beispielsweise Rocket. \cite{.20200814T19:56:28.000Z}
+Die meistverwendete Container-Runtime ist, wie auch in diesem Projekt, Docker. Es gibt aber auch Unterstützung für weitere wie beispielsweise Rocket. \cite{pod}%\cite{.20200814T19:56:28.000Z}
 \item [Deployment]:\\
-Das Deployment ist eine Beschreibung des Zustands, in dem Pods ausgeliefert werden sollen. Hier werden beispielsweise der Name, Namensraum, Ressourcenlimits oder auch die Größe der Skalierung definiert. \cite{.13.06.2020}
+Das Deployment ist eine Beschreibung des Zustands, in dem Pods ausgeliefert werden sollen. Hier werden beispielsweise der Name, Namensraum, Ressourcenlimits oder auch die Größe der Skalierung definiert. \cite{deployment}%\cite{.13.06.2020}
 \item [Service]:\\
-Nach der offiziellen Kubernetes-Dokumentation sind Services eine \glqq abstrakte Möglichkeit, eine Anwendung, die auf einer Reihe von Pods läuft, als Netzwerkdienst bereitzustellen\grqq. \cite{.30.05.2020b}
+Nach der offiziellen Kubernetes-Dokumentation sind Services eine \glqq abstrakte Möglichkeit, eine Anwendung, die auf einer Reihe von Pods läuft, als Netzwerkdienst bereitzustellen\grqq. \cite{service} %\cite{.30.05.2020b}
 Kubernetes Pods können dynamisch in ihrer Anzahl skalieren und so auch ihre IP-Adresse wechseln. Daher ist es sinnvoll die Pods über einen Service anzusprechen, der mit einem DNS ähnlichen System funktioniert und so ein Deployment über einen lesbaren Namen ansprechbar macht. 
 \item [kubectl]:\\
-kubectl ist eine Kontrollanwendung für Kubernetes. Es ist eine direkte Schnittstelle zwischen User und dem Kubernetes API-Server und kann mittels Konsolenbefehlen bedient werden. Das Tool stellt eine einfache Möglichkeit zur Bedienung des Kubernetes-Clusters dar.  \cite{.24.05.2020} \\
+kubectl ist eine Kontrollanwendung für Kubernetes. Es ist eine direkte Schnittstelle zwischen User und dem Kubernetes API-Server und kann mittels Konsolenbefehlen bedient werden. Das Tool stellt eine einfache Möglichkeit zur Bedienung des Kubernetes-Clusters dar.  \cite{kubectl} \\
 Ein kubectl-Befehl besteht aus der Aktion und dessen Ziel und sieht folgendermaßen aus:
 \begin{lstlisting}
 kubectl <Aktion><Ziel>
@@ -387,7 +387,7 @@ Imax entspricht 300 Sekunden
 \displaystyle{U_{CPU}(t)=\frac{1}{N}{\sum\limits_{i_{w}=0}^{N-1} l_{cpu}{(t-i_{w})}} }
 \)
 
-\captionof{figure}{Formel der CPU-Utilization \cite{.20200814T22:19:43.000Z} } 
+\captionof{figure}{Formel der CPU-Utilization \cite{metrics2} } 
 
 \end{minipage}
 
@@ -400,7 +400,7 @@ Die CPU Saturation kann anhand des Ressourcenlimits berechnet werden. In UNIX ba
 \(
 \displaystyle{s_{cpu}= load\_average / core\_unit\_count}
 \)
-\captionof{figure}{Formel der CPU-Saturation \cite{.20200814T22:19:43.000Z} } 
+\captionof{figure}{Formel der CPU-Saturation \cite{metrics2} } 
 
 \end{minipage}\\
 
@@ -425,7 +425,7 @@ Die RAM Utilization berechnet sich aus der Menge des vom System reservierten Spe
 \(
 \displaystyle{l_{ram}=1-ram_{res}/ram_{ges}}
 \) 
-\captionof{figure}{Formel der RAM-Utilization \cite{.20200814T22:19:43.000Z} } 
+\captionof{figure}{Formel der RAM-Utilization \cite{metrics2} } 
 
 \end{minipage}
 
@@ -448,7 +448,7 @@ Die RAM Saturation kann am besten berechnet werden, wenn Ressourcenlimits existi
 \(
 \displaystyle{s_{ram}=RAM_{res}/RAM_{ges}}
 \) 
-\captionof{figure}{Formel der RAM-Saturation \cite{.20200814T23:12:04.000Z} } 
+\captionof{figure}{Formel der RAM-Saturation \cite{metrics3} } 
 \end{minipage}
 
 Über diesen wird wiederum der Mittelwert gebildet:\\
@@ -481,7 +481,7 @@ Um die Netzwerk Utilization zu messen, werden die Bytes aufsummiert, die versend
 \(
 \displaystyle{U_{Net}(t)=\frac{1}{N}{\sum\limits_{i_{w}=0}^{N-1} l_{net}{(t-i_{w})}} }
 \) 
-\captionof{figure}{Formel der Netzwerk-Utilization \cite{.20200814T22:19:43.000Z} } 
+\captionof{figure}{Formel der Netzwerk-Utilization \cite{metrics2} } 
 \end{minipage}
 
 \underline{Saturation:}\\
@@ -512,7 +512,7 @@ Zum Ermitteln der Error-Rate des Netzwerks werden Sende- und Empfangs-Fehler auf
 \(
 \displaystyle{E_{Net}(t)=\frac{1}{N}{\sum\limits_{i_{w}=0}^{N-1} e_{net}{(t-i_{w})}} }
 \) 
-\captionof{figure}{Formel der Netzwerk-Error-Rate \cite{.20200814T22:19:43.000Z} } 
+\captionof{figure}{Formel der Netzwerk-Error-Rate \cite{metrics2} } 
 \end{minipage}
 
 \end{description}
