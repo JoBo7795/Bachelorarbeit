@@ -66,7 +66,7 @@ In der Evaluation zeigte sich, dass das System anormale Zustände in Containern 
 
 \section{Einleitung}
 
-Anbieter von Cloud-Services haben den Anspruch, möglichst geringe und kurze Ausfallzeiten mit ihren Services zu erreichen, da diese hohe Kosten zur Folge haben können. Im Jahr 2010 betrugen diese Kosten im Schnitt bis knapp 400.000€ \cite{CA-Studie} pro Jahr für deutsche Unternehmen Um eine maximal lange, störungsfreie Servicelaufzeit zu erreichen, ist es notwendig jederzeit den Servicestatus einsehen und mögliches Fehlverhalten frühzeitig erkennen zu können. 
+Anbieter von Cloud-Services haben den Anspruch, möglichst geringe und kurze Ausfallzeiten mit ihren Services zu erreichen, da diese hohe Kosten zur Folge haben können. Im Jahr 2010 betrugen diese Kosten im Schnitt bis knapp 400.000€ \cite{CA-Studie} pro Jahr für deutsche Unternehmen. Um eine maximal lange, störungsfreie Servicelaufzeit zu erreichen, ist es notwendig jederzeit den Servicestatus einsehen und mögliches Fehlverhalten frühzeitig erkennen zu können. 
 Da für eine dauerhafte Kontrolle eines Services ein oder sogar mehrere Mitarbeiter benötigt würden, welche eine eintönige Kontrollaufgabe übernehmen müssten, ist es sinnvoll möglichst viele Teile der Kontrolle zu automatisieren. Diese Automatisierung bringt einerseits den Vorteil der Kosteneinsparung, da keine Mitarbeiter für diese Aufgabe benötigt werden und andererseits einen Geschwindigkeitsvorteil durch die wesentlich geringere Reaktionszeit, die durch die Geschwindigkeit von Computern gegenüber dem Menschen einhergeht.\\
 Hierbei sollen vor allem Engpässe bei Ressourcen ausfindig gemacht werden sowie Anomalien, also Fehlverhalten, in einzelnen Komponenten der Infrastruktur gefunden und behoben werden, bestenfalls noch bevor sich größere Auswirkungen auf die restlichen Komponenten ergeben.
 Sofern Ressourcenengpässe, also hohe Last, auftreten und dies frühzeitig erkannt wird, können einzelne Services gezielt skaliert und so Beeinträchtigungen auf die Funktion verhindert werden. Da Engpässe oft temporär auftreten, werden Services sowohl hoch- als herunterskaliert, um so immer die ideale Zahl an Ressourcen bereitzustellen.
@@ -85,7 +85,7 @@ Es werden die Tools Prometheus und Grafana verwendet und durch Eigenentwicklunge
 
 Diese Arbeit ist in zehn Kapitel strukturiert. Im zweiten Kapitel werden die Grundlagen und für das Verständnis der weiteren Arbeit benötigtes Wissen vermittelt. Das Kapitel vermittelt grundlegendes Wissen zu den verwendeten Tools. Im dritten Kapitel wird der Status Quo der Technik recherchiert und somit die technische Ausgangslage der Arbeit geklärt. Mit dem vierten Kapitel beginnt der praktische Teil des Projekts. Am Anfang dessen steht die Vorgehensweise beim Aggregieren von Daten aus einem Kubernetes-Cluster. Nachdem Daten aggregiert wurden, müssen diese verarbeitet und ausgewertet werden. Das Vorgehen hierfür wird in Kapitel fünf erläutert. Die ausgewerteten Daten haben den Zweck automatisierte Aktionen auszulösen. Das sechste Kapitel befasst sich damit, wie passende Aktionen gewählt und angewandt werden.
 Hier werden verwendete Komponenten, Architektur, Aktionen, Regeln sowie die passende Programmiersprache erläutert. Nachdem die geplanten Features implementiert sind, müssen diese auf ihre korrekte Funktion getestet werden.
-Eine spezielle und eigens für das Projekt entwickelte Komponente ist der \glqq Alert-Action-Manager\grqq, dessen Aufbau und Funktion in Kapitel acht beschrieben und erklärt.
+Eine spezielle und eigens für das Projekt entwickelte Komponente ist der \glqq Alert-Action-Manager\grqq, dessen Aufbau und Funktion in Kapitel sieben beschrieben und erklärt.
 Im achten Kapitel wird geklärt, wie die korrekte Funktion evaluiert wird, wie der Messaufbau gestaltet wurde und welche Komponenten auf welche Art und Weise getestet wurden.\\
 Nach der Evaluation werden die Ergebnisse der Arbeit diskutiert. Hier wird geklärt, ob alle Ziele erreicht wurden oder aus welchem Grund Entscheidungen getroffen wurden. Diese und weitere Fragen werden in der Diskussion in Kapitel neun diskutiert.\\
 Zum Schluss, in Kapitel zehn, wird ein Fazit aus dem zurückliegenden Projekt gezogen und ein möglicher Ausblick in die Zukunft gegeben.
@@ -98,8 +98,8 @@ Zum Schluss, in Kapitel zehn, wird ein Fazit aus dem zurückliegenden Projekt ge
 Kubernetes, kurz "k8s", ist eine ursprünglich von Google entwickelte, mittlerweile aber quelloffene Software zur Orchestrierung und zum Deployment von containerisierten Anwendungen. Seit seiner Einführung 2014 hat Kubernetes ein starkes Wachstum erlebt und ist zum Quasistandard bei der Entwicklung von Cloud-Native Applikationen geworden.
 Diese Übersicht der Grundlagen spricht die für dieses Projekt benötigten Komponenten an, weitergehende Informationen gibt es in der offiziellen Kubernetes-Dokumentation. \cite{components}\\
 
-\glqq Die Relevanz von Kubernetes lässt sich an der halbjährlichen Befragung der Community der Cloud-Native Computing Foundation ablesen:
-In der Umfrage stellte sich heraus, dass über 78 Prozent der 1337 Befragten Kubernetes verwendet.\grqq \cite{cncf2019}\\
+Die Relevanz von Kubernetes lässt sich an der halbjährlichen Befragung der Community der Cloud-Native Computing Foundation ablesen:
+In der Umfrage stellte sich heraus, dass über 78 Prozent der 1337 Befragten Kubernetes verwendet. \cite{cncf2019}\\
 
 Burns et al. zufolge ist Kubernetes eine mittlerweile bewährte Infrastruktur und bietet Software die nötig ist um zuverlässige und skalierbare verteile Systeme zu entwickeln. \cite{Burns} \\
 \subsubsection{Master Worker Prinzip}
@@ -138,8 +138,8 @@ Kubernetes bietet verschiedene Organisiationskonzepte mit deren Hilfe sich die K
 \begin{description}
 
 \item [Pod]:\\
-Ein Pod ist eine \glqq execution unit\grqq und repräsentiert einen Prozess, der in einem Cluster läuft. Ein Pod kapselt einen oder mehrere Anwendungs-Container, einen eigenen Speicherbereich, eine eigene IP-Adresse sowie dessen Konfigurationsoptionen.
-Die meistverwendete Container-Runtime ist, wie auch in diesem Projekt, Docker. Es gibt aber auch Unterstützung für weitere wie beispielsweise Rocket. \cite{pod}%\cite{.20200814T19:56:28.000Z}
+Ein Pod ist eine \glqq execution unit\grqq{} und repräsentiert einen Prozess, der in einem Cluster läuft. Ein Pod kapselt einen oder mehrere Anwendungs-Container, einen eigenen Speicherbereich, eine eigene IP-Adresse sowie dessen Konfigurationsoptionen.
+Die meistverwendete Container-Runtime ist, wie auch in diesem Projekt, Docker. Es gibt aber auch Unterstützung für Weitere wie beispielsweise Rocket. \cite{pod}%\cite{.20200814T19:56:28.000Z}
 \item [Deployment]:\\
 Das Deployment ist eine Beschreibung des Zustands, in dem Pods ausgeliefert werden sollen. Hier werden beispielsweise der Name, Namensraum, Ressourcenlimits oder auch die Größe der Skalierung definiert. \cite{deployment}%\cite{.13.06.2020}
 \item [Service]:\\
@@ -165,19 +165,17 @@ cAdvisor beschreibt sich als \glqq ein laufender Daemon, welcher Informationen �
 
 \subsection{Metriken}
 Eine Metrik ist eine Funktion, die einen Zustand oder eine Eigenschaft als Maßzahl
-abbildet. Metriken in der Informatik lassen sich im Grunde in 3 Bereiche einteilen:
+abbildet. Im Buch \glqq IT Service Management: A Guide for ITIL Foundation Exam Candidates\grqq{} werden Metriken \glqq zur kontinuierlichen Verbesserung von Services\grqq{}\cite{Brewster.2012} im Grunde in 3 Bereiche eingeteilt:
 \begin{itemize}
 \item Service-Metriken, welche die Performance eines Service bemessen, zum Beispiel die
-Unterbrechungsfreie Laufzeit
-\item Prozess-Metriken, die für die Quantifizierung des Entwicklungsprozesses einer Software verwendet werden
-\item Technologie-Metriken, welche die zugrunde liegende Technologie quantifizieren, zum
-Beispiel die Speicherauslastung
-\end{itemize}
+unterbrechungs bzw. ausfallfreie Laufzeit in einem Monat.
+\item Prozess-Metriken, die für die Quantifizierung des Entwicklungsprozesses einer Software verwendet werden und um Verbesserungsmöglichkeiten zu identifizieren.
+\item Technologie-Metriken, welche die zugrunde liegende Technologie und Komponenten quantifizieren, zum
+Beispiel die Speicherauslastung.
+\end{itemize} \cite{Brewster.2012}
 
 Wenn Metriken über einen Zeitraum beobachtet werden und nach Messzeit strukturiert werden, werden sie Zeitreihen-Metriken genannt.\\
-In dieser Arbeit werden Service-Metriken erstellt und verwendet, welche die Performance der in einem Kubernetes-Cluster laufenden Services beziffert.
-
-%<hier Quelle finden !>
+In dieser Arbeit werden Service und Technologie-Metriken erstellt und verwendet, welche die Performance der in einem Kubernetes-Cluster laufenden Services beziffert.
 
 \subsection{Anomalie}
 
@@ -391,7 +389,7 @@ Imax entspricht 300 Sekunden
 
 \begin{minipage}{\linewidth}
 \(
-\displaystyle{U_{CPU}(t)=\frac{1}{N}{\sum\limits_{i_{w}=0}^{N-1} l_{cpu}{(t-i_{w})}} }
+\displaystyle{U_{cpu}(t)=\frac{1}{N}{\sum\limits_{i_{w}=0}^{N-1} l_{cpu}{(t-i_{w})}} }
 \)
 
 \captionof{figure}{Formel der CPU-Utilization \cite{metrics2} } 
@@ -415,7 +413,7 @@ Diese aufsummiert und über die Zeit gemittelt, ergibt die durchschnittliche Sat
 
 \begin{minipage}{\linewidth}
 \(
-\displaystyle{S_{CPU}(t)=\frac{1}{N}{\sum\limits_{i_{w}=0}^{N-1} s_{cpu}{(t-i_{w})}} }
+\displaystyle{S_{cpu}(t)=\frac{1}{N}{\sum\limits_{i_{w}=0}^{N-1} s_{cpu}{(t-i_{w})}} }
 \)
 \captionof{figure}{Formel der CPU-Saturation Moving-Average} 
 
@@ -423,14 +421,14 @@ Diese aufsummiert und über die Zeit gemittelt, ergibt die durchschnittliche Sat
 
 Ein weiterer Weg die Saturation zu berechnen, ist das Aufsummieren der Zeit in der ein Prozess \glqq throtteld\grqq läuft. Dies funktioniert dann, wenn ein Prozess ein Ressourcenlimit besitzt. Übersteigt er dieses, wird der Prozess gedrosselt.\\
 \underline{Error-Rate:}\\
-Die Fehlererkennung wird von handelsüblichen CPUs nicht unterstützt, weswegen in den meisten Fällen keine Fehlererkennung umgesetzt werden kann. Wie im Patent Self-Checked, Lock Step Processor Pairs \cite{patent} beschrieben, könnte eine mögliche Fehlererkennung beispielsweise über ein sogenanntes Lockstep-Verfahren umgesetzt werden, bei dem zwei CPUs jeweils die gleiche Aufgabe erhalten und gegenseitig ihre Ergebnisse vergleichen. Bei Unterschieden im Ergebnis kann daraus ein Fehlerfall ermittelt werden.
+Die Fehlererkennung wird von handelsüblichen CPUs nicht unterstützt, weswegen in den meisten Fällen keine Fehlererkennung umgesetzt werden kann. Wie im Patent Self-Checked, Lock Step Processor Pairs  beschrieben, könnte eine mögliche Fehlererkennung beispielsweise über ein sogenanntes Lockstep-Verfahren umgesetzt werden, bei dem zwei CPUs jeweils die gleiche Aufgabe erhalten und gegenseitig ihre Ergebnisse vergleichen. Bei Unterschieden im Ergebnis kann daraus ein Fehlerfall ermittelt werden.\cite{patent}
 \item[RAM]:\\
 \underline{Utilization:}\\
 Die RAM Utilization berechnet sich aus der Menge des vom System reservierten Speichers, der durch die Menge des gesamten Speichers geteilt wird. Beide stehen in UNIX basierten Betriebssystemen zur Verfügung, sodass die Rechnung zur RAM-Utilization lautet:\\
 
 \begin{minipage}{\linewidth}
 \(
-\displaystyle{l_{ram}=1-ram_{res}/ram_{ges}}
+\displaystyle{l_{ram}=1-RAM_{res}/RAM_{ges}}
 \) 
 \captionof{figure}{Formel der RAM-Utilization \cite{metrics2} } 
 
@@ -440,7 +438,7 @@ Diese aufsummiert und über die Zeit gemittelt, ergibt die durchschnittliche Uti
 
 \begin{minipage}{\linewidth}
 \(
-\displaystyle{U_{RAM}(t)=\frac{1}{N}{\sum\limits_{i_{w}=0}^{N-1} l_{ram}{(t-i_{w})}} }
+\displaystyle{U_{ram}(t)=\frac{1}{N}{\sum\limits_{i_{w}=0}^{N-1} l_{ram}{(t-i_{w})}} }
 \) 
 \\
 \captionof{figure}{Formel der RAM-Utilization Moving-Average} 
@@ -462,7 +460,7 @@ Die RAM Saturation kann am besten berechnet werden, wenn Ressourcenlimits existi
 
 \begin{minipage}{\linewidth}
 \(
-\displaystyle{S_{RAM}(t)=\frac{1}{N}{\sum\limits_{i_{w}=0}^{N-1} s_{ram}{(t-i_{w})}} }
+\displaystyle{S_{ram}(t)=\frac{1}{N}{\sum\limits_{i_{w}=0}^{N-1} s_{ram}{(t-i_{w})}} }
 \) 
 \captionof{figure}{Formel der RAM-Saturation Moving-Average} 
 \end{minipage}
@@ -473,7 +471,7 @@ Die Berechnung der Fehlerrate wäre wie folgt:\\
 
 \begin{minipage}{\linewidth}
 \(
-\displaystyle{E_{RAM}(t)=\frac{1}{N}{\sum\limits_{i_{w}=0}^{N-1} e_{ram}{(t-i_{w})}} }
+\displaystyle{E_{ram}(t)=\frac{1}{N}{\sum\limits_{i_{w}=0}^{N-1} e_{ram}{(t-i_{w})}} }
 \) 
 \captionof{figure}{Formel der RAM-Error-Rate} 
 \end{minipage}
@@ -486,7 +484,7 @@ Um die Netzwerk Utilization zu messen, werden die Bytes aufsummiert, die versend
 
 \begin{minipage}{\linewidth}
 \(
-\displaystyle{U_{Net}(t)=\frac{1}{N}{\sum\limits_{i_{w}=0}^{N-1} l_{net}{(t-i_{w})}} }
+\displaystyle{U_{net}(t)=\frac{1}{N}{\sum\limits_{i_{w}=0}^{N-1} l_{net}{(t-i_{w})}} }
 \) 
 \captionof{figure}{Formel der Netzwerk-Utilization \cite{metrics2} } 
 \end{minipage}
@@ -505,7 +503,7 @@ Die Netzwerk Saturation kann nur dann sinnvoll gemessen werden, wenn das Bandbre
 
 \begin{minipage}{\linewidth}
 \(
-\displaystyle{S_{Net}(t)=\frac{1}{N}{\sum\limits_{i_{w}=0}^{N-1} s_{net}{(t-i_{w})}} }
+\displaystyle{S_{net}(t)=\frac{1}{N}{\sum\limits_{i_{w}=0}^{N-1} s_{net}{(t-i_{w})}} }
 \) 
 \captionof{figure}{Formel der Netzwerk-Saturation Moving-Average} 
 \end{minipage}
@@ -517,7 +515,7 @@ Zum Ermitteln der Error-Rate des Netzwerks werden Sende- und Empfangs-Fehler auf
 
 \begin{minipage}{\linewidth}
 \(
-\displaystyle{E_{Net}(t)=\frac{1}{N}{\sum\limits_{i_{w}=0}^{N-1} e_{net}{(t-i_{w})}} }
+\displaystyle{E_{net}(t)=\frac{1}{N}{\sum\limits_{i_{w}=0}^{N-1} e_{net}{(t-i_{w})}} }
 \) 
 \captionof{figure}{Formel der Netzwerk-Error-Rate \cite{metrics2} } 
 \end{minipage}
