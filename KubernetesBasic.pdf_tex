@@ -38,7 +38,7 @@
   \newcommand*\fsize{\dimexpr\f@size pt\relax}%
   \newcommand*\lineheight[1]{\fontsize{\fsize}{#1\fsize}\selectfont}%
   \ifx\svgwidth\undefined%
-    \setlength{\unitlength}{510.375bp}%
+    \setlength{\unitlength}{512.25bp}%
     \ifx\svgscale\undefined%
       \relax%
     \else%
@@ -50,22 +50,28 @@
   \global\let\svgwidth\undefined%
   \global\let\svgscale\undefined%
   \makeatother%
-  \begin{picture}(1,0.52240999)%
+  \begin{picture}(1,1.16764275)%
     \lineheight{1}%
     \setlength\tabcolsep{0pt}%
     \put(0,0){\includegraphics[width=\unitlength,page=1]{KubernetesBasic.pdf}}%
-    \put(0.04335048,0.21528288){\color[rgb]{0.1372549,0.18431373,0.24313725}\makebox(0,0)[t]{\lineheight{1.25}\smash{\begin{tabular}[t]{c}Users\end{tabular}}}}%
+    \put(0.0431918,0.51756955){\color[rgb]{0.1372549,0.18431373,0.24313725}\makebox(0,0)[t]{\lineheight{1.25}\smash{\begin{tabular}[t]{c}Users\end{tabular}}}}%
     \put(0,0){\includegraphics[width=\unitlength,page=2]{KubernetesBasic.pdf}}%
-    \put(0.57237325,0.28141073){\color[rgb]{0,0,0}\makebox(0,0)[t]{\lineheight{1.25}\smash{\begin{tabular}[t]{c}API-Server\end{tabular}}}}%
+    \put(0.57027818,0.58345534){\color[rgb]{0,0,0}\makebox(0,0)[t]{\lineheight{1.25}\smash{\begin{tabular}[t]{c}API-Server\end{tabular}}}}%
     \put(0,0){\includegraphics[width=\unitlength,page=3]{KubernetesBasic.pdf}}%
-    \put(0.88831741,0.28141073){\color[rgb]{0,0,0}\makebox(0,0)[t]{\lineheight{1.25}\smash{\begin{tabular}[t]{c}Container\end{tabular}}}}%
+    \put(0.88506589,0.92752562){\color[rgb]{0,0,0}\makebox(0,0)[t]{\lineheight{1.25}\smash{\begin{tabular}[t]{c}Container\end{tabular}}}}%
     \put(0,0){\includegraphics[width=\unitlength,page=4]{KubernetesBasic.pdf}}%
-    \put(0.88831741,0.14180749){\color[rgb]{0,0,0}\makebox(0,0)[t]{\lineheight{1.25}\smash{\begin{tabular}[t]{c}Pod\end{tabular}}}}%
+    \put(0.88506589,0.78843338){\color[rgb]{0,0,0}\makebox(0,0)[t]{\lineheight{1.25}\smash{\begin{tabular}[t]{c}Pod\end{tabular}}}}%
     \put(0,0){\includegraphics[width=\unitlength,page=5]{KubernetesBasic.pdf}}%
-    \put(0.23438648,0.19764879){\color[rgb]{0,0,0}\makebox(0,0)[t]{\lineheight{1.25}\smash{\begin{tabular}[t]{c}kubectl\end{tabular}}}}%
+    \put(0.23352855,0.5){\color[rgb]{0,0,0}\makebox(0,0)[t]{\lineheight{1.25}\smash{\begin{tabular}[t]{c}kubectl\end{tabular}}}}%
     \put(0,0){\includegraphics[width=\unitlength,page=6]{KubernetesBasic.pdf}}%
-    \put(0.57237325,0.0095518){\color[rgb]{0,0,0}\makebox(0,0)[t]{\lineheight{1.25}\smash{\begin{tabular}[t]{c}Master\end{tabular}}}}%
+    \put(0.57027818,0.31259151){\color[rgb]{0,0,0}\makebox(0,0)[t]{\lineheight{1.25}\smash{\begin{tabular}[t]{c}Master\end{tabular}}}}%
     \put(0,0){\includegraphics[width=\unitlength,page=7]{KubernetesBasic.pdf}}%
-    \put(0.88831741,0.0095518){\color[rgb]{0,0,0}\makebox(0,0)[t]{\lineheight{1.25}\smash{\begin{tabular}[t]{c}Node\end{tabular}}}}%
+    \put(0.88506589,0.65666179){\color[rgb]{0,0,0}\makebox(0,0)[t]{\lineheight{1.25}\smash{\begin{tabular}[t]{c}Node\end{tabular}}}}%
+    \put(0,0){\includegraphics[width=\unitlength,page=8]{KubernetesBasic.pdf}}%
+    \put(0.88945827,0.28038067){\color[rgb]{0,0,0}\makebox(0,0)[t]{\lineheight{1.25}\smash{\begin{tabular}[t]{c}Container\end{tabular}}}}%
+    \put(0,0){\includegraphics[width=\unitlength,page=9]{KubernetesBasic.pdf}}%
+    \put(0.88945827,0.14128843){\color[rgb]{0,0,0}\makebox(0,0)[t]{\lineheight{1.25}\smash{\begin{tabular}[t]{c}Pod\end{tabular}}}}%
+    \put(0,0){\includegraphics[width=\unitlength,page=10]{KubernetesBasic.pdf}}%
+    \put(0.88945827,0.00951684){\color[rgb]{0,0,0}\makebox(0,0)[t]{\lineheight{1.25}\smash{\begin{tabular}[t]{c}Node\end{tabular}}}}%
   \end{picture}%
 \endgroup%
