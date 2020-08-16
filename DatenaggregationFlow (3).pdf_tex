@@ -76,5 +76,7 @@
     \put(0,0){\includegraphics[width=\unitlength,page=9]{DatenaggregationFlow (3).pdf}}%
     \put(0.2472392,0.20682885){\makebox(0,0)[t]{\lineheight{1.25}\smash{\begin{tabular}[t]{c}Bei langem Überschreiten\end{tabular}}}}%
     \put(0.2472392,0.17315903){\makebox(0,0)[t]{\lineheight{1.25}\smash{\begin{tabular}[t]{c} wird ein Alert ausgelöst\end{tabular}}}}%
+    \put(0,0){\includegraphics[width=\unitlength,page=10]{DatenaggregationFlow (3).pdf}}%
+    \put(0.27128906,2.95572852){\makebox(0,0)[t]{\lineheight{1.25}\smash{\begin{tabular}[t]{c}Metriken aufzeichnen\end{tabular}}}}%
   \end{picture}%
 \endgroup%
